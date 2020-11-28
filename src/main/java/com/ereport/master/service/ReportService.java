@@ -1,8 +1,11 @@
 package com.ereport.master.service;
 
 import com.ereport.master.domain.Report;
+import com.ereport.master.exceptions.ErrorCode;
+import com.ereport.master.exceptions.ServiceException;
 import com.ereport.master.repository.PublicationsRepo;
 import com.ereport.master.repository.ReportRepo;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -11,33 +14,41 @@ import java.util.List;
 @Service
 public class ReportService {
     private final ReportRepo reportRepo;
-    private final PublicationsRepo publicationsRepo;
 
-
-    public ReportService(ReportRepo reportRepo, PublicationsRepo publicationsRepo) {
+    public ReportService(ReportRepo reportRepo) {
         this.reportRepo = reportRepo;
-        this.publicationsRepo = publicationsRepo;
-
     }
 
     public List<Report> findAll() {
         return reportRepo.findAllByDeletedAtIsNull();
     }
 
-    public Report add(Long id, Report report) {
-        return reportRepo.save(report);
+    public Report add(Report report) throws ServiceException {
+        if(report.getId() == null){
+            return reportRepo.save(report);
+        }else{
+            throw ServiceException.builder()
+                    .errorCode(ErrorCode.SYSTEM_ERROR)
+                    .httpStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .message("id is null")
+                    .build();
+        }
     }
 
-    public Report findId(Long id) {
+    public Report findById(Long id) {
         return reportRepo.findByIdAndDeletedAtIsNull(id);
     }
 
-    public String update(Long id, String name, String daysOfPublications) {
-        Report report = reportRepo.findByIdAndDeletedAtIsNull(id);
-        report.setName(name);
-        report.setDaysOfPublications(daysOfPublications);
-        reportRepo.save(report);
-        return "updated";
+    public Report update(Report report) throws ServiceException {
+        if(report.getId() != null){
+            return reportRepo.save(report);
+        }else{
+            throw ServiceException.builder()
+                    .errorCode(ErrorCode.SYSTEM_ERROR)
+                    .httpStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .message("id is null")
+                    .build();
+        }
     }
 
     public void delete(Long id) {

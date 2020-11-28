@@ -1,6 +1,7 @@
 package com.ereport.master.controller;
 
 import com.ereport.master.domain.Report;
+import com.ereport.master.exceptions.ServiceException;
 import com.ereport.master.service.ReportService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,20 +22,18 @@ public class ReportController extends BaseController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<?> add(@RequestParam Long id, @RequestBody Report report) {
-        return buildResponse(reportService.add(id, report), HttpStatus.OK);
+    public ResponseEntity<?> add(@RequestBody Report report) throws ServiceException {
+        return buildResponse(reportService.add(report), HttpStatus.OK);
     }
 
     @GetMapping("/findId")
     public ResponseEntity<?> getId(@RequestParam Long id) {
-        return buildResponse(reportService.findId(id), HttpStatus.OK);
+        return buildResponse(reportService.findById(id), HttpStatus.OK);
     }
 
     @PutMapping("/update")
-    public ResponseEntity<?> update(@RequestParam Long id,
-                                    @RequestParam String name,
-                                    @RequestParam String daysOfPublications) {
-        return buildResponse(reportService.update(id, name, daysOfPublications), HttpStatus.OK);
+    public ResponseEntity<?> update(@RequestBody Report report) throws ServiceException {
+        return buildResponse(reportService.update(report), HttpStatus.OK);
     }
 
     @DeleteMapping("/delete")

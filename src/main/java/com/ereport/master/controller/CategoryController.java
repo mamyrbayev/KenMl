@@ -1,6 +1,7 @@
 package com.ereport.master.controller;
 
 import com.ereport.master.domain.Category;
+import com.ereport.master.exceptions.ServiceException;
 import com.ereport.master.service.CategoryService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,8 +22,8 @@ public class CategoryController extends BaseController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<?> add(@RequestParam Long id, @RequestBody Category category) {
-        return buildResponse(categoryService.add(id, category), HttpStatus.OK);
+    public ResponseEntity<?> add(@RequestBody Category category) throws ServiceException {
+        return buildResponse(categoryService.add( category), HttpStatus.OK);
     }
 
     @GetMapping("/findId")
@@ -31,10 +32,8 @@ public class CategoryController extends BaseController {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<?> update(@RequestParam Long id,
-                                    @RequestBody String CategoryName,
-                                    @RequestBody String description) {
-        return buildResponse(categoryService.update(id, CategoryName, description), HttpStatus.OK);
+    public ResponseEntity<?> update(@RequestBody Category category) throws ServiceException {
+        return buildResponse(categoryService.update(category), HttpStatus.OK);
     }
 
     @DeleteMapping("/delete")

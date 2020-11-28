@@ -21,14 +21,14 @@ import javax.persistence.*;
         allocationSize = 1
 )
 public class Contractor extends AuditModel{
-    @Column(name = "contr_name")
-    private String contrName;
+    @Column(name = "contractor_name")
+    private String contractorName;
     @Column(name = "bin")
     private int bin;
-    @Column(name = "eMail")
+    @Column(name = "e_mail")
     private String eMail;
-    @Column(name = "phoneNum")
-    private int phoneNum;
+    @Column(name = "phone_number")
+    private int phoneNumber;
     @ManyToOne
     private Category category;
 }

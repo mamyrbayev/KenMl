@@ -2,7 +2,10 @@ package com.ereport.master.service;
 
 import com.ereport.master.domain.MaterialList;
 import com.ereport.master.domain.Report;
+import com.ereport.master.exceptions.ErrorCode;
+import com.ereport.master.exceptions.ServiceException;
 import com.ereport.master.repository.MaterialListRepo;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -22,19 +25,32 @@ public class MaterialListService {
         return materialListRepo.findAllByDeletedAtIsNull();
     }
 
-    public MaterialList add(Long id, MaterialList materialList) {
-        return materialListRepo.save(materialList);
+    public MaterialList add(MaterialList materialList) throws ServiceException {
+        if(materialList.getId() == null){
+            return materialListRepo.save(materialList);
+        }else {
+            throw ServiceException.builder()
+                    .errorCode(ErrorCode.SYSTEM_ERROR)
+                    .httpStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .message("id is not null")
+                    .build();
+        }
     }
 
     public MaterialList findId(Long id) {
         return materialListRepo.findByIdAndDeletedAtIsNull(id);
     }
 
-    public String update(Long id, String materialName) {
-        MaterialList materialList = materialListRepo.findByIdAndDeletedAtIsNull(id);
-        materialList.setMaterialName(materialName);
-        materialListRepo.save(materialList);
-        return "updated";
+    public MaterialList update(MaterialList materialList) throws ServiceException {
+        if(materialList.getId() == null){
+            return materialListRepo.save(materialList);
+        }else {
+            throw ServiceException.builder()
+                    .errorCode(ErrorCode.SYSTEM_ERROR)
+                    .httpStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .message("id is not null")
+                    .build();
+        }
     }
 
     public void delete(Long id) {

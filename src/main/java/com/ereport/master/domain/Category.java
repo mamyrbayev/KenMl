@@ -21,13 +21,10 @@ import java.util.List;
         allocationSize = 1
 )
 public class Category extends AuditModel{
-    @Column(name = "CategoryName")
+    @Column(name = "category_name")
     private String CategoryName;
     @Column(name = "description")
     private String description;
-
-//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "category")
-//    private List<Contractor> contractors;
 
     @ManyToMany
     @JsonIgnore

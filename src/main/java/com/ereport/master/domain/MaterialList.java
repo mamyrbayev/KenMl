@@ -11,17 +11,17 @@ import javax.persistence.*;
 @Data
 @Entity
 @Component
-@Table(name="materialList")
+@Table(name="material_list")
 @NoArgsConstructor
 @AllArgsConstructor
 @SequenceGenerator(
         name = "seq",
-        sequenceName = "s_materialList",
+        sequenceName = "s_material_list",
         initialValue = 1,
         allocationSize = 1
 )
 public class MaterialList extends AuditModel{
-    @Column(name = "materialName")
+    @Column(name = "material_name")
     private String materialName;
     @ManyToOne
     private Report report;

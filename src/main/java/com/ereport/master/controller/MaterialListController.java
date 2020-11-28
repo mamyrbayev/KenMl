@@ -2,6 +2,7 @@ package com.ereport.master.controller;
 
 
 import com.ereport.master.domain.MaterialList;
+import com.ereport.master.exceptions.ServiceException;
 import com.ereport.master.service.MaterialListService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,8 +23,8 @@ public class MaterialListController extends BaseController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<?> add(@RequestParam Long id, @RequestBody MaterialList materialList) {
-        return buildResponse(materialListService.add(id, materialList), HttpStatus.OK);
+    public ResponseEntity<?> add(@RequestBody MaterialList materialList) throws ServiceException {
+        return buildResponse(materialListService.add(materialList), HttpStatus.OK);
     }
 
     @GetMapping("/findId")
@@ -32,9 +33,8 @@ public class MaterialListController extends BaseController {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<?> update(@RequestParam Long id,
-                                    @RequestParam String materialName) {
-        return buildResponse(materialListService.update(id, materialName), HttpStatus.OK);
+    public ResponseEntity<?> update(@RequestBody MaterialList materialList) throws ServiceException {
+        return buildResponse(materialListService.update(materialList), HttpStatus.OK);
     }
 
     @DeleteMapping("/delete")

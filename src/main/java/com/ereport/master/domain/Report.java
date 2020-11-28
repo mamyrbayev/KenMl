@@ -25,14 +25,9 @@ public class Report extends AuditModel {
     @Column( name = "name")
     private String name;
 
-    @Column(name = "daysOfPublications")
+    @Column(name = "days_of_publications")
     private String daysOfPublications;
 
-//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "report")
-//    private List<Publications> publications;
-//
-//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "report")
-//    private List<MaterialList> materialLists;
 
     @ManyToMany
     @JsonIgnore

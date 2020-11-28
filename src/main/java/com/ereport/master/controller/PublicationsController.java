@@ -1,7 +1,8 @@
 package com.ereport.master.controller;
 
-import com.ereport.master.Status;
+import com.ereport.master.domain.enums.Status;
 import com.ereport.master.domain.Publications;
+import com.ereport.master.exceptions.ServiceException;
 import com.ereport.master.service.PublicationsService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,8 +26,8 @@ public class PublicationsController extends BaseController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<?> add(@RequestParam Long id, @RequestBody Publications publications) {
-        return buildResponse(publicationsService.add(publications, id), HttpStatus.OK);
+    public ResponseEntity<?> add(@RequestBody Publications publications) throws ServiceException {
+        return buildResponse(publicationsService.add(publications), HttpStatus.OK);
     }
 
     @GetMapping("/findId")
@@ -35,11 +36,8 @@ public class PublicationsController extends BaseController {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<?> update(@RequestParam Long id,
-                                    @RequestParam Date publicationDate,
-                                    @RequestParam Date sendingDate,
-                                    @RequestParam Status status){
-        return buildResponse(publicationsService.update(id, publicationDate, sendingDate, status), HttpStatus.OK);
+    public ResponseEntity<?> update(@RequestBody Publications publications) throws ServiceException {
+        return buildResponse(publicationsService.update(publications), HttpStatus.OK);
     }
 
     @DeleteMapping("/delete")

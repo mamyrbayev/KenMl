@@ -1,6 +1,7 @@
 package com.ereport.master.controller;
 
 import com.ereport.master.domain.Contractor;
+import com.ereport.master.exceptions.ServiceException;
 import com.ereport.master.service.ContractorService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,8 +22,8 @@ public class ContractorController extends BaseController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<?> add(@RequestParam Long id, @RequestBody Contractor contractor) {
-        return buildResponse(contractorService.add(id, contractor), HttpStatus.OK);
+    public ResponseEntity<?> add(@RequestBody Contractor contractor) throws ServiceException {
+        return buildResponse(contractorService.add(contractor), HttpStatus.OK);
     }
 
     @GetMapping("/findId")
@@ -31,11 +32,8 @@ public class ContractorController extends BaseController {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<?> update(@RequestParam Long id,
-                                    @RequestBody String contrName,
-                                    @RequestBody String eMail,
-                                    @RequestBody int phoneNum) {
-        return buildResponse(contractorService.update(id, contrName, eMail, phoneNum), HttpStatus.OK);
+    public ResponseEntity<?> update(@RequestBody Contractor contractor) throws ServiceException {
+        return buildResponse(contractorService.update(contractor), HttpStatus.OK);
     }
 
     @DeleteMapping("/delete")

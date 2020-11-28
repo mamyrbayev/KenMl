@@ -1,6 +1,6 @@
 package com.ereport.master.domain;
 
-import com.ereport.master.Status;
+import com.ereport.master.domain.enums.Status;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,13 +22,13 @@ import java.util.Date;
         allocationSize = 1
 )
 public class Publications extends AuditModel {
-    @Column( name = "publicationDate")
+    @Column( name = "publication_date")
     private Date publicationDate;
-    @Column(name = "sendingDate")
+    @Column(name = "sending_date")
     private Date sendingDate;
     @Column(name = "status")
     private Status status;
-    @Column(name= "autoSending")
+    @Column(name= "auto_sending")
     private boolean autoSending;
     @ManyToOne
     private Report report;

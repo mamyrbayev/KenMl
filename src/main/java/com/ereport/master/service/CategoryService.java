@@ -1,8 +1,11 @@
 package com.ereport.master.service;
 
 import com.ereport.master.domain.Category;
+import com.ereport.master.exceptions.ErrorCode;
+import com.ereport.master.exceptions.ServiceException;
 import com.ereport.master.repository.CategoryRepo;
 import com.ereport.master.repository.ContractorRepo;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -23,20 +26,32 @@ public class CategoryService {
         return categoryRepo.findAllByDeletedAtIsNull();
     }
 
-    public Category add(Long id, Category category) {
-        return categoryRepo.save(category);
+    public Category add(Category category) throws ServiceException {
+        if(category.getId() == null){
+            return categoryRepo.save(category);
+        }else {
+            throw ServiceException.builder()
+                    .errorCode(ErrorCode.SYSTEM_ERROR)
+                    .httpStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .message("id is not null")
+                    .build();
+        }
     }
 
     public Category findId(Long id) {
         return categoryRepo.findByIdAndDeletedAtIsNull(id);
     }
 
-    public String update(Long id, String CategoryName, String description) {
-        Category category = categoryRepo.findByIdAndDeletedAtIsNull(id);
-        category.setCategoryName(CategoryName);
-        category.setDescription(description);
-        categoryRepo.save(category);
-        return "updated";
+    public Category update(Category category) throws ServiceException {
+        if(category.getId() == null){
+            return categoryRepo.save(category);
+        }else {
+            throw ServiceException.builder()
+                    .errorCode(ErrorCode.SYSTEM_ERROR)
+                    .httpStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .message("id is null")
+                    .build();
+        }
     }
 
     public void delete(Long id){

@@ -1,9 +1,11 @@
 package com.ereport.master.service;
 
-import com.ereport.master.Status;
+import com.ereport.master.domain.enums.Status;
 import com.ereport.master.domain.Publications;
-import com.ereport.master.domain.Report;
+import com.ereport.master.exceptions.ErrorCode;
+import com.ereport.master.exceptions.ServiceException;
 import com.ereport.master.repository.PublicationsRepo;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -23,15 +25,16 @@ public class PublicationsService {
         return publicationsRepo.findAllByDeletedAtIsNull();
     }
 
-    public Publications add(Publications publications, Long id) {
-        Report report = reportService.findId(id);
-        publications.setReport(report);
-        if (publications.getReport().getId() == null) {
-            System.out.println("there is no such id");
-            return publications;
-        } else {
+    public Publications add(Publications publications) throws ServiceException {
+        if(publications.getId() == null){
             publicationsRepo.save(publications);
             return publications;
+        }else {
+            throw ServiceException.builder()
+                    .errorCode(ErrorCode.SYSTEM_ERROR)
+                    .httpStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .message("id is not null")
+                    .build();
         }
     }
 
@@ -39,13 +42,17 @@ public class PublicationsService {
         return publicationsRepo.findByIdAndDeletedAtIsNull(id);
     }
 
-    public String update(Long id, Date publicationDate, Date sendingDate, Status status) {
-        Publications publications = publicationsRepo.findByIdAndDeletedAtIsNull(id);
-        publications.setPublicationDate(publicationDate);
-        publications.setSendingDate(sendingDate);
-        publications.setStatus(status);
-        publicationsRepo.save(publications);
-        return "updated";
+    public Publications update(Publications publications) throws ServiceException {
+        if(publications != null){
+            publicationsRepo.save(publications);
+            return publications;
+        }else {
+            throw ServiceException.builder()
+                    .errorCode(ErrorCode.SYSTEM_ERROR)
+                    .httpStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .message("id is null")
+                    .build();
+        }
     }
 
     public void delete(Long id) {

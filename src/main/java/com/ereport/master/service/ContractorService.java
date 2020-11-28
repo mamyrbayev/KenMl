@@ -2,7 +2,10 @@ package com.ereport.master.service;
 
 
 import com.ereport.master.domain.Contractor;
+import com.ereport.master.exceptions.ErrorCode;
+import com.ereport.master.exceptions.ServiceException;
 import com.ereport.master.repository.ContractorRepo;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -20,21 +23,32 @@ public class ContractorService {
         return contractorRepo.findAllByDeletedAtIsNull();
     }
 
-    public Contractor add(Long id, Contractor contractor) {
-        return contractorRepo.save(contractor);
+    public Contractor add(Contractor contractor) throws ServiceException {
+        if(contractor.getId() == null){
+            return contractorRepo.save(contractor);
+        }else {
+            throw ServiceException.builder()
+                    .errorCode(ErrorCode.SYSTEM_ERROR)
+                    .httpStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .message("id is not null")
+                    .build();
+        }
     }
 
     public Contractor findId(Long id){
         return contractorRepo.findByIdAndDeletedAtIsNull(id);
     }
 
-    public String update(Long id, String contrName, String eMail, int phoneNum) {
-        Contractor contractor = contractorRepo.findByIdAndDeletedAtIsNull(id);
-        contractor.setContrName(contrName);
-        contractor.setEMail(eMail);
-        contractor.setPhoneNum(phoneNum);
-        contractorRepo.save(contractor);
-        return "updated";
+    public Contractor update(Contractor contractor) throws ServiceException {
+        if(contractor.getId() == null){
+            return contractorRepo.save(contractor);
+        }else {
+            throw ServiceException.builder()
+                    .errorCode(ErrorCode.SYSTEM_ERROR)
+                    .httpStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .message("id is null")
+                    .build();
+        }
     }
 
     public void delete(Long id){
