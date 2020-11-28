@@ -43,7 +43,7 @@ public class CategoryService {
     }
 
     public Category update(Category category) throws ServiceException {
-        if(category.getId() == null){
+        if(category.getId() != null){
             return categoryRepo.save(category);
         }else {
             throw ServiceException.builder()

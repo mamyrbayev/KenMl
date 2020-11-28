@@ -40,7 +40,7 @@ public class ContractorService {
     }
 
     public Contractor update(Contractor contractor) throws ServiceException {
-        if(contractor.getId() == null){
+        if(contractor.getId() != null){
             return contractorRepo.save(contractor);
         }else {
             throw ServiceException.builder()

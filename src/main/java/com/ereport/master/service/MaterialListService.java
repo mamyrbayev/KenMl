@@ -42,7 +42,7 @@ public class MaterialListService {
     }
 
     public MaterialList update(MaterialList materialList) throws ServiceException {
-        if(materialList.getId() == null){
+        if(materialList.getId() != null){
             return materialListRepo.save(materialList);
         }else {
             throw ServiceException.builder()

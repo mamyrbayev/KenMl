@@ -24,12 +24,10 @@ import java.util.Date;
 public class Publications extends AuditModel {
     @Column( name = "publication_date")
     private Date publicationDate;
-    @Column(name = "sending_date")
-    private Date sendingDate;
     @Column(name = "status")
     private Status status;
     @Column(name= "auto_sending")
-    private boolean autoSending;
+    private boolean autoSending = false;
     @ManyToOne
     private Report report;
 
