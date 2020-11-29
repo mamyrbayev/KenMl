@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
 import java.util.Date;
 
 
@@ -45,4 +46,11 @@ public class PublicationsController extends BaseController {
         publicationsService.delete(id);
         return buildResponse("deleted", HttpStatus.OK);
     }
+
+    @GetMapping("/test")
+    public ResponseEntity<?> test() throws ParseException {
+        publicationsService.sendPublicationByScheduler();
+        return buildResponse("done", HttpStatus.OK);
+    }
+
 }

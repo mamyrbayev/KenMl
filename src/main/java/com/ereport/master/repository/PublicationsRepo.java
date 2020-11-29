@@ -11,4 +11,5 @@ import java.util.List;
 public interface PublicationsRepo extends JpaRepository<Publications, Long> {
     List<Publications> findAllByDeletedAtIsNull();
     Publications findByIdAndDeletedAtIsNull(Long id);
+    List<Publications> findAllByStatus(String status);
 }

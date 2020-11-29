@@ -1,11 +1,14 @@
 package com.ereport.master.controller;
 
+import com.ereport.master.domain.Category;
 import com.ereport.master.domain.Report;
 import com.ereport.master.exceptions.ServiceException;
 import com.ereport.master.service.ReportService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/reports")
@@ -40,5 +43,10 @@ public class ReportController extends BaseController {
     public ResponseEntity<?> delete(@RequestParam Long id) {
         reportService.delete(id);
         return buildResponse("deleted", HttpStatus.OK);
+    }
+
+    @PutMapping("/update/categoryList")
+    public ResponseEntity<?> update(@RequestParam Long id, @RequestBody List<Category> categories) throws ServiceException {
+        return buildResponse(reportService.setCategoryList(id, categories), HttpStatus.OK);
     }
 }

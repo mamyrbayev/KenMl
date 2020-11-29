@@ -31,15 +31,15 @@ public class Report extends AuditModel {
     private String timeOfPublication;
 
     @Column(name = "send_after_time")
-    private String sendAfterTime;
+    private Long sendAfterTime;
 
     private boolean generateInMonday = false;
     private boolean generateInTuesday = false;
     private boolean generateInWednesday = false;
     private boolean generateInThursday = false;
     private boolean generateInFriday = false;
-    private boolean generateInSunday = false;
     private boolean generateInSaturday = false;
+    private boolean generateInSunday = false;
 
     @Column(name= "auto_sending")
     private boolean autoSending = false;

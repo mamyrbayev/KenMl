@@ -1,5 +1,6 @@
 package com.ereport.master.service;
 
+import com.ereport.master.domain.Category;
 import com.ereport.master.domain.Report;
 import com.ereport.master.exceptions.ErrorCode;
 import com.ereport.master.exceptions.ServiceException;
@@ -56,5 +57,12 @@ public class ReportService {
         Date date = new Date();
         report.setDeletedAt(date);
         reportRepo.save(report);
+    }
+
+    public List<Category> setCategoryList(Long id, List<Category> categories) throws ServiceException {
+        Report report = findById(id);
+        report.setCategory(categories);
+        update(report);
+        return categories;
     }
 }
