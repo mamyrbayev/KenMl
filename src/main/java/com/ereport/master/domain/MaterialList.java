@@ -23,6 +23,16 @@ import javax.persistence.*;
 public class MaterialList extends AuditModel{
     @Column(name = "material_name")
     private String materialName;
+
+    @Column(name = "material_link")
+    private String materialLink;
+
+    @Column(name = "material_owner")
+    private String materialOwner;
+
+    @Column(name = "material_measure")
+    private String materialMeasure;
+
     @ManyToOne
     private Report report;
 }

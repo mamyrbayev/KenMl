@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/materialList")
 public class MaterialListController extends BaseController {
@@ -24,7 +26,7 @@ public class MaterialListController extends BaseController {
 
     @PostMapping("/add")
     public ResponseEntity<?> add(@RequestBody MaterialList materialList) throws ServiceException {
-        return buildResponse(materialListService.add(materialList), HttpStatus.OK);
+        return buildResponse(materialListService.save(materialList), HttpStatus.OK);
     }
 
     @GetMapping("/findId")
@@ -41,5 +43,10 @@ public class MaterialListController extends BaseController {
     public ResponseEntity<?> delete(@RequestParam Long id) {
         materialListService.delete(id);
         return buildResponse("deleted", HttpStatus.OK);
+    }
+
+    @PostMapping("/useFilter")
+    public ResponseEntity<?> useFilter(@RequestBody List<MaterialList> materialLists) throws ServiceException {
+        return buildResponse(materialListService.useFilter(materialLists), HttpStatus.OK);
     }
 }

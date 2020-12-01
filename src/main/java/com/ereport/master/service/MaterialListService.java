@@ -1,13 +1,13 @@
 package com.ereport.master.service;
 
 import com.ereport.master.domain.MaterialList;
-import com.ereport.master.domain.Report;
 import com.ereport.master.exceptions.ErrorCode;
 import com.ereport.master.exceptions.ServiceException;
 import com.ereport.master.repository.MaterialListRepo;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -25,7 +25,7 @@ public class MaterialListService {
         return materialListRepo.findAllByDeletedAtIsNull();
     }
 
-    public MaterialList add(MaterialList materialList) throws ServiceException {
+    public MaterialList save(MaterialList materialList) throws ServiceException {
         if(materialList.getId() == null){
             return materialListRepo.save(materialList);
         }else {
@@ -58,5 +58,18 @@ public class MaterialListService {
         Date date = new Date();
         materialList.setDeletedAt(date);
         materialListRepo.save(materialList);
+    }
+
+    public List<MaterialList> useFilter(List<MaterialList> materialLists) throws ServiceException {
+        List<MaterialList> oldMaterials = materialListRepo.findAllByDeletedAtIsNull();
+        for(MaterialList materialList: oldMaterials){
+            materialList.setDeletedAt(new Date());
+            materialListRepo.save(materialList);
+        }
+        List<MaterialList> resp = new ArrayList<>();
+        for(MaterialList materialList: materialLists){
+            resp.add(save(materialList));
+        }
+        return resp;
     }
 }
