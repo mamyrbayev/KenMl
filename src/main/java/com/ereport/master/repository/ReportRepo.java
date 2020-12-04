@@ -14,12 +14,12 @@ public interface ReportRepo extends JpaRepository<Report, Long> {
 
     @Query(value = "SELECT *\n" +
             "from report\n" +
-            "where deleted_at = null", nativeQuery = true)
+            "where deleted_at is null", nativeQuery = true)
     List<Report> findAllByDeletedAtIsNull();
 
     @Query(value = "SELECT *\n" +
             "from report\n" +
             "where id = :id\n" +
-            "and deleted_at = null", nativeQuery = true)
+            "and deleted_at is null", nativeQuery = true)
     Report findByIdAndDeletedAtIsNull(Long id);
 }

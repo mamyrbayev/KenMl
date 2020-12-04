@@ -18,4 +18,8 @@ public class MaterialService {
     public List<Material> getAllMaterialsByOwner(Long mtOwner){
         return materialRepo.findAllByOwner(mtOwner);
     }
+
+    public Material getByMaterialCode(String mtCode){
+        return materialRepo.findByMaterialCode(mtCode);
+    }
 }

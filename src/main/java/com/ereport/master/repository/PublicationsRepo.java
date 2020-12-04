@@ -13,13 +13,13 @@ public interface PublicationsRepo extends JpaRepository<Publications, Long> {
 
     @Query(value = "SELECT *\n" +
             "from publication\n" +
-            "where deleted_at = null", nativeQuery = true)
+            "where deleted_at is null", nativeQuery = true)
     List<Publications> findAllByDeletedAtIsNull();
 
     @Query(value = "SELECT *\n" +
             "from publication\n" +
             "where id = :id\n" +
-            "and deleted_at = null", nativeQuery = true)
+            "and deleted_at is null", nativeQuery = true)
     Publications findByIdAndDeletedAtIsNull(Long id);
 
     @Query(value = "SELECT *\n" +

@@ -14,12 +14,12 @@ public interface MaterialListRepo extends JpaRepository<MaterialList, Long> {
 
     @Query(value = "SELECT *\n" +
             "from material_list\n" +
-            "where deleted_at = null", nativeQuery = true)
+            "where deleted_at is null", nativeQuery = true)
     List<MaterialList> findAllByDeletedAtIsNull();
 
     @Query(value = "SELECT *\n" +
             "from material_list\n" +
             "where id = :id\n" +
-            "and deleted_at = null", nativeQuery = true)
+            "and deleted_at is null", nativeQuery = true)
     MaterialList findByIdAndDeletedAtIsNull(Long id);
 }

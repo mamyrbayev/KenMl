@@ -12,5 +12,7 @@ import java.util.List;
 public class ReportGenerationResponse {
     private List<MaterialDTO> topTen;
     private List<OverallForYear> overallForYears;
+    private List<OverallForYearByRegion> overallForYearByRegions;
+    private List<Potrebnosti> potrebnostis;
 
 }

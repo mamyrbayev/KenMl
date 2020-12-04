@@ -1,7 +1,10 @@
 package com.ereport.master.kenML.service;
 
 import com.ereport.master.domain.MaterialList;
+import com.ereport.master.kenML.domain.Material;
+import com.ereport.master.kenML.domain.dto.LocalitiesByMatrial;
 import com.ereport.master.kenML.domain.dto.MaterialDTO;
+import com.ereport.master.kenML.domain.dto.Potrebnosti;
 import com.ereport.master.kenML.domain.dto.ReportGenerationResponse;
 import com.ereport.master.service.MaterialListService;
 import org.springframework.stereotype.Service;
@@ -13,10 +16,14 @@ import java.util.List;
 public class ReportGenerationService {
     private final ObjectService objectService;
     private final MaterialListService materialListService;
+    private final RegionsService regionsService;
+    private final MaterialService materialService;
 
-    public ReportGenerationService(ObjectService objectService, MaterialListService materialListService) {
+    public ReportGenerationService(ObjectService objectService, MaterialListService materialListService, RegionsService regionsService, MaterialService materialService) {
         this.objectService = objectService;
         this.materialListService = materialListService;
+        this.regionsService = regionsService;
+        this.materialService = materialService;
     }
 
 
@@ -29,10 +36,21 @@ public class ReportGenerationService {
         }
         reportGenerationResponse.setTopTen(materialDTOS);
         reportGenerationResponse.setOverallForYears(objectService.getOverallForYear());
+        reportGenerationResponse.setOverallForYearByRegions(regionsService.getOverallForYear());
+
+
+        List<Potrebnosti> potrebnostis = new ArrayList<>();
+
+        Material material = materialService.getByMaterialCode("210102010604");
+        
+        List<LocalitiesByMatrial> localitiesByMatrials = new ArrayList<>();
+
 
 
 
         return reportGenerationResponse;
     }
+
+
 
 }

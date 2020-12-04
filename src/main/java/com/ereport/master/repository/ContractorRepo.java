@@ -12,12 +12,12 @@ public interface ContractorRepo extends JpaRepository<Contractor, Long> {
 
     @Query(value = "SELECT *\n" +
             "from contractor\n" +
-            "where deleted_at = null", nativeQuery = true)
+            "where deleted_at is null", nativeQuery = true)
     List<Contractor> findAllByDeletedAtIsNull();
 
     @Query(value = "SELECT *\n" +
             "from contractor\n" +
             "where id = :id\n" +
-            "and deleted_at = null", nativeQuery = true)
+            "and deleted_at is null", nativeQuery = true)
     Contractor findByIdAndDeletedAtIsNull(Long id);
 }

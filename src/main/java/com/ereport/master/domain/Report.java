@@ -33,12 +33,25 @@ public class Report extends AuditModel {
     @Column(name = "send_after_time")
     private Long sendAfterTime;
 
+    @Column(name = "generate_in_monday")
     private boolean generateInMonday = false;
+
+    @Column(name = "generate_in_tuesday")
     private boolean generateInTuesday = false;
+
+    @Column(name = "generate_in_wednesday")
     private boolean generateInWednesday = false;
+
+    @Column(name = "generate_in_thursday")
     private boolean generateInThursday = false;
+
+    @Column(name = "generate_in_friday")
     private boolean generateInFriday = false;
+
+    @Column(name = "generate_in_saturday")
     private boolean generateInSaturday = false;
+
+    @Column(name = "generate_in_sunday")
     private boolean generateInSunday = false;
 
     @Column(name= "auto_sending")

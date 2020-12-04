@@ -15,5 +15,11 @@ public interface MaterialRepo extends JpaRepository<Material, Long> {
             "WHERE MT_OWNER = ?;", nativeQuery = true)
     List<Material> findAllByOwner(Long mtOwner);
 
+    @Query(value = "select *\n" +
+            "from kenml.Materials\n" +
+            "where MT_CODE = ?", nativeQuery = true)
+    Material findByMaterialCode(String mtCode);
+
+
 
 }

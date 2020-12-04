@@ -14,12 +14,12 @@ public interface CategoryRepo extends JpaRepository<Category, Long> {
 
     @Query(value = "SELECT *\n" +
             "from category\n" +
-            "where deleted_at = null", nativeQuery = true)
+            "where deleted_at is null", nativeQuery = true)
     List<Category> findAllByDeletedAtIsNull();
 
     @Query(value = "SELECT *\n" +
             "from category\n" +
             "where id = :id\n" +
-            "and deleted_at = null", nativeQuery = true)
+            "and deleted_at is null", nativeQuery = true)
     Category findByIdAndDeletedAtIsNull(Long id);
 }
