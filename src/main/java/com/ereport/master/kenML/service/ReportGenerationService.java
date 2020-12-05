@@ -18,12 +18,14 @@ public class ReportGenerationService {
     private final MaterialListService materialListService;
     private final RegionsService regionsService;
     private final MaterialService materialService;
+    private final LocalitiesService localitiesService;
 
-    public ReportGenerationService(ObjectService objectService, MaterialListService materialListService, RegionsService regionsService, MaterialService materialService) {
+    public ReportGenerationService(ObjectService objectService, MaterialListService materialListService, RegionsService regionsService, MaterialService materialService, LocalitiesService localitiesService) {
         this.objectService = objectService;
         this.materialListService = materialListService;
         this.regionsService = regionsService;
         this.materialService = materialService;
+        this.localitiesService = localitiesService;
     }
 
 
@@ -40,11 +42,13 @@ public class ReportGenerationService {
 
 
         List<Potrebnosti> potrebnostis = new ArrayList<>();
-
         Material material = materialService.getByMaterialCode("210102010604");
-        
-        List<LocalitiesByMatrial> localitiesByMatrials = new ArrayList<>();
-
+        List<LocalitiesByMatrial> localitiesByMatrials = localitiesService.getAllByMaterialCode(material.getMyCode());
+        potrebnostis.add(Potrebnosti.builder()
+                .material(material)
+                .localitiesByMatrials(localitiesByMatrials)
+                .build());
+        reportGenerationResponse.setPotrebnostis(potrebnostis);
 
 
 

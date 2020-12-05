@@ -14,7 +14,8 @@ import javax.persistence.Id;
 @AllArgsConstructor
 public class Material {
     @Id
-    private Long id;
+    @Column(name = "id")
+    private Integer id;
 
     @Column(name = "MT_LINK")
     private Long mtLink;

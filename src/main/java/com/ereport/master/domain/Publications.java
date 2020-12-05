@@ -11,7 +11,6 @@ import java.util.Date;
 
 @Data
 @Entity
-@Component
 @Table(name="publication")
 @NoArgsConstructor
 @AllArgsConstructor

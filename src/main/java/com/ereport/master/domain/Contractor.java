@@ -10,7 +10,6 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Component
 @Table(name="contractor")
 @NoArgsConstructor
 @AllArgsConstructor

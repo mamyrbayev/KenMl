@@ -13,7 +13,6 @@ import java.util.List;
 
 @Data
 @Entity
-@Component
 @Table(name="report")
 @NoArgsConstructor
 @AllArgsConstructor

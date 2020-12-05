@@ -14,5 +14,4 @@ public class ReportGenerationResponse {
     private List<OverallForYear> overallForYears;
     private List<OverallForYearByRegion> overallForYearByRegions;
     private List<Potrebnosti> potrebnostis;
-
 }

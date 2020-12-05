@@ -10,7 +10,6 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Component
 @Table(name="material_list")
 @NoArgsConstructor
 @AllArgsConstructor
@@ -21,14 +20,17 @@ import javax.persistence.*;
         allocationSize = 1
 )
 public class MaterialList extends AuditModel{
-    @Column(name = "material_name")
-    private String materialName;
-
     @Column(name = "material_link")
-    private String materialLink;
+    private Long materialLink;
 
     @Column(name = "material_owner")
-    private String materialOwner;
+    private Long materialOwner;
+
+    @Column(name = "material_code")
+    private String materialCode;
+
+    @Column(name = "material_name")
+    private String materialName;
 
     @Column(name = "material_measure")
     private String materialMeasure;
