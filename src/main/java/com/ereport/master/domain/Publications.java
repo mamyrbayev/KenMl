@@ -1,6 +1,8 @@
 package com.ereport.master.domain;
 
 import com.ereport.master.domain.enums.Status;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,7 +23,8 @@ import java.util.Date;
         allocationSize = 1
 )
 public class Publications extends AuditModel {
-    @Column( name = "publication_date")
+    @Column( name = "publication_date", columnDefinition = "TIMESTAMP WITH TIME ZONE")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, timezone="Asia/Almaty")
     private Date publicationDate;
 
     @Enumerated(EnumType.STRING)
@@ -32,6 +35,7 @@ public class Publications extends AuditModel {
     private boolean autoSending = false;
 
     @ManyToOne
+    @JsonIgnore
     private Report report;
 
 }

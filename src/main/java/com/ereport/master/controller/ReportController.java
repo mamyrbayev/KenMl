@@ -49,4 +49,19 @@ public class ReportController extends BaseController {
     public ResponseEntity<?> update(@RequestParam Long id, @RequestBody List<Category> categories) throws ServiceException {
         return buildResponse(reportService.setCategoryList(id, categories), HttpStatus.OK);
     }
+
+    @GetMapping("/findAll/V2")
+    public ResponseEntity<?> getAllV2() {
+        return buildResponse(reportService.findAllToFront(), HttpStatus.OK);
+    }
+
+    @GetMapping("/findId/V2")
+    public ResponseEntity<?> getIdV2(@RequestParam Long id) {
+        return buildResponse(reportService.findByIdToFront(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/expiration")
+    public ResponseEntity<?> getExpirationTime(@RequestParam Long id){
+        return buildResponse(reportService.getExpirationTime(id), HttpStatus.OK);
+    }
 }

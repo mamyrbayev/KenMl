@@ -1,5 +1,6 @@
 package com.ereport.master.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -21,16 +22,19 @@ public abstract class AuditModel implements Serializable {
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_at", nullable = false, updatable = false)
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     @CreatedDate
     private Date createdAt = new Date();
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "updated_at", nullable = false)
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     @LastModifiedDate
     private Date updatedAt = new Date();
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "deleted_at")
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     private Date deletedAt;
 
 

@@ -53,4 +53,10 @@ public class PublicationsController extends BaseController {
         return buildResponse("done", HttpStatus.OK);
     }
 
+
+    @GetMapping("/report")
+    public ResponseEntity<?> getByReportId(@RequestParam Long id){
+        return buildResponse(publicationsService.getAllByReportIdToFront(id), HttpStatus.OK);
+    }
+
 }

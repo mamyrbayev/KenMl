@@ -41,4 +41,9 @@ public class ContractorController extends BaseController {
         contractorService.delete(id);
         return buildResponse("deleted", HttpStatus.OK);
     }
+
+    @GetMapping("/report")
+    public ResponseEntity<?> getByReportId(@RequestParam Long id) {
+        return buildResponse(contractorService.getAllByReportId(id), HttpStatus.OK);
+    }
 }

@@ -34,4 +34,22 @@ public class ResourcesService {
                 .volume(volume)
                 .build();
     }
+
+
+
+    public OverallVolumeAndPrice getOverallForCompany(String codeSnb, Integer companyId, Integer localityId){
+        List<Resources> resources = resourcesRepo.findallByForCompany(codeSnb, companyId, localityId);
+        Float volume = 0f;
+        Float price = 0f;
+
+        for(Resources resources1: resources){
+            volume += resources1.getNorma();
+            price += resources1.getPrice();
+        }
+        return OverallVolumeAndPrice.builder()
+                .price(price)
+                .volume(volume)
+                .build();
+    }
+
  }

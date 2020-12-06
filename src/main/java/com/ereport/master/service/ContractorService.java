@@ -58,4 +58,14 @@ public class ContractorService {
         contractorRepo.save(contractor);
     }
 
+    public List<Contractor> getAllByCategory(Long id){
+        return contractorRepo.findAllByCategoryId(id);
+    }
+
+
+    public List<Contractor> getAllByReportId(Long id){
+        return contractorRepo.findAllByReportId(id);
+    }
+
+
 }

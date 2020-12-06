@@ -23,12 +23,13 @@ public class Contractor extends AuditModel{
     @Column(name = "contractor_name")
     private String contractorName;
     @Column(name = "bin")
-    private int bin;
+    private String bin;
     @Column(name = "e_mail")
     private String eMail;
     @Column(name = "phone_number")
-    private int phoneNumber;
+    private String phoneNumber;
     @ManyToOne
+    @JsonIgnore
     private Category category;
 }
 

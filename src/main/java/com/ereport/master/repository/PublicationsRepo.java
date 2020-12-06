@@ -26,4 +26,16 @@ public interface PublicationsRepo extends JpaRepository<Publications, Long> {
             "from publication\n" +
             "where status = :status", nativeQuery = true)
     List<Publications> findAllByStatus(String status);
+
+    List<Publications> findAllByDeletedAtIsNullAndReportId(Long reportId);
+
+    @Query(value = "select *\n" +
+            "from publication\n" +
+            "where id in (\n" +
+            "    select max(id)\n" +
+            "    from publication\n" +
+            "    where deleted_at is null\n" +
+            "      and report_id = 1\n" +
+            ");", nativeQuery = true)
+    Publications findLastByDeletedAtIsNullAndReportId(Long reportId);
 }

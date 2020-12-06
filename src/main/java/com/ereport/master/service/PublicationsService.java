@@ -1,11 +1,15 @@
 package com.ereport.master.service;
 
+import com.ereport.master.domain.Category;
+import com.ereport.master.domain.Contractor;
 import com.ereport.master.domain.Report;
+import com.ereport.master.domain.dto.PublicationsResponse;
 import com.ereport.master.domain.enums.Status;
 import com.ereport.master.domain.Publications;
 import com.ereport.master.exceptions.ErrorCode;
 import com.ereport.master.exceptions.ServiceException;
 import com.ereport.master.repository.PublicationsRepo;
+import com.ereport.master.service.wrapper.Wrapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -20,16 +24,20 @@ import java.util.List;
 @Service
 public class PublicationsService {
     private final PublicationsRepo publicationsRepo;
-    private final ReportService reportService;
+    private final Wrapper wrapper;
+    private final ContractorService contractorService;
 
-    public PublicationsService(PublicationsRepo publicationsRepo, ReportService reportService) {
+    public PublicationsService(PublicationsRepo publicationsRepo, Wrapper wrapper, ContractorService contractorService) {
         this.publicationsRepo = publicationsRepo;
-        this.reportService = reportService;
+        this.wrapper = wrapper;
+        this.contractorService = contractorService;
     }
 
     public List<Publications> findAll() {
         return publicationsRepo.findAllByDeletedAtIsNull();
     }
+
+
 
     public Publications add(Publications publications) throws ServiceException {
         if(publications.getId() == null){
@@ -70,7 +78,7 @@ public class PublicationsService {
 
 
     public void createPublicationByScheduler() throws ParseException {
-        List<Report> reports = reportService.findAll();
+        List<Report> reports = wrapper.getReportService().findAll();
         for(Report report: reports){
             List<Integer> sendingDays = getSendingDays(report);
             Calendar c = Calendar.getInstance();
@@ -137,5 +145,55 @@ public class PublicationsService {
         }
         return integers;
     }
+
+    public List<Publications> getAllByReportId(Long reportId) {
+        return publicationsRepo.findAllByDeletedAtIsNullAndReportId(reportId);
+    }
+
+    public Publications getLastByReportId(Long reportId) {
+        return publicationsRepo.findLastByDeletedAtIsNullAndReportId(reportId);
+    }
+
+    public String getStatusFromPublications(Long reportId){
+        List<Publications> publications = getAllByReportId(reportId);
+        int sent = 0;
+        for(Publications publications1: publications){
+            if(publications1.getStatus().equals(Status.SENT)) {
+                sent++;
+            }
+        }
+        String response =  "Отправлен "+sent + "/" + publications.size();
+        return response;
+    }
+
+    public PublicationsResponse findIdResp(Long id) {
+        Publications publications = publicationsRepo.findByIdAndDeletedAtIsNull(id);
+        PublicationsResponse publicationsResponse = PublicationsResponse.builder()
+                .createdAt(publications.getCreatedAt())
+                .autoSending(publications.isAutoSending())
+                .publicationDate(publications.getPublicationDate())
+                .report(wrapper.getReportService().findByIdToFront(publications.getReport().getId()))
+                .status(publications.getStatus())
+                .build();
+        List<Contractor> contractors = new ArrayList<>();
+        List<Category> categories = publications.getReport().getCategory();
+        for(Category category: categories){
+            contractors.addAll(contractorService.getAllByCategory(category.getId()));
+        }
+        publicationsResponse.setReceivers(contractors);
+
+        return publicationsResponse;
+    }
+
+    public List<PublicationsResponse> getAllByReportIdToFront(Long reportId) {
+        List<PublicationsResponse> publicationsResponses = new ArrayList<>();
+        List<Publications> publications = publicationsRepo.findAllByDeletedAtIsNullAndReportId(reportId);
+
+        for(Publications publications1: publications){
+            publicationsResponses.add(findIdResp(publications1.getId()));
+        }
+        return publicationsResponses;
+    }
+
 
 }

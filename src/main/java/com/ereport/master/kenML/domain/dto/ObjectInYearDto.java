@@ -1,7 +1,5 @@
 package com.ereport.master.kenML.domain.dto;
 
-import com.ereport.master.kenML.domain.Companies;
-import com.ereport.master.kenML.domain.Localities;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,9 +11,9 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class LocalitiesByMatrial {
-    private Localities localities;
+public class ObjectInYearDto {
+    private String year;
     private Float overallVolume;
     private Float overallPrice;
-    private List<CompaniesDto> companiesList;
+    private List<MonthVolumePrice> monthVolumePrices;
 }

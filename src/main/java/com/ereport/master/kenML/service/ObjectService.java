@@ -1,7 +1,10 @@
 package com.ereport.master.kenML.service;
 
 import com.ereport.master.kenML.domain.Objects;
+import com.ereport.master.kenML.domain.Resources;
+import com.ereport.master.kenML.domain.dto.ObjectInYearDto;
 import com.ereport.master.kenML.domain.dto.ObjectWorkDate;
+import com.ereport.master.kenML.domain.dto.ObjectsDto;
 import com.ereport.master.kenML.domain.dto.OverallForYear;
 import com.ereport.master.kenML.repository.ObjectsRepo;
 import org.springframework.stereotype.Service;
@@ -16,9 +19,11 @@ import java.util.stream.Collectors;
 @Service
 public class ObjectService {
     private final ObjectsRepo objectsRepo;
+    private final ResourcesService resourcesService;
 
-    public ObjectService(ObjectsRepo objectsRepo) {
+    public ObjectService(ObjectsRepo objectsRepo, ResourcesService resourcesService) {
         this.objectsRepo = objectsRepo;
+        this.resourcesService = resourcesService;
     }
 
     public List<Objects> getAll(){
@@ -74,7 +79,13 @@ public class ObjectService {
                     .overall(completed + underConstruction)
                     .build());
         }
-        return overallForYears;
+        List<OverallForYear> resp = new ArrayList<>();
+        for(OverallForYear overallForYear: overallForYears){
+            if(overallForYear.getYear().equals("2020") || overallForYear.getYear().equals("2021") || overallForYear.getYear().equals("2022")){
+                resp.add(overallForYear);
+            }
+        }
+        return resp;
     }
 
 
@@ -95,4 +106,32 @@ public class ObjectService {
 
         return objectWorkDates;
     }
+
+    public List<ObjectsDto> getObjectsByCompanyAndLocality(Integer companyId, Integer localityId){
+        List<ObjectsDto> objectsDtos = new ArrayList<>();
+        List<Objects> objects = objectsRepo.findAllByCompanyAndLocality(companyId, localityId);
+
+        for(Objects object: objects){
+            ObjectsDto objectsDto = ObjectsDto.builder()
+                    .id(object.getId())
+                    .objectName(object.getObjectName())
+                    .companyId(object.getCompanyId())
+                    .localityId(object.getLocalityId())
+                    .lastUpdatedOn(object.getLastUpdatedOn())
+                    .build();
+
+            // return objectInYearDtos
+
+            objectsDtos.add(objectsDto);
+        }
+
+        return objectsDtos;
+    }
+
+//
+//    public List<ObjectInYearDto> getObjectInYearDtos(Integer objectId){
+//        List<Resources> resources =
+//
+//
+//    }
 }

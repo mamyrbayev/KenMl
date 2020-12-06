@@ -1,6 +1,7 @@
 package com.ereport.master.service;
 
 import com.ereport.master.domain.Category;
+import com.ereport.master.domain.dto.CategoryDTO;
 import com.ereport.master.exceptions.ErrorCode;
 import com.ereport.master.exceptions.ServiceException;
 import com.ereport.master.repository.CategoryRepo;
@@ -8,19 +9,19 @@ import com.ereport.master.repository.ContractorRepo;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Service
 public class CategoryService {
     private final CategoryRepo categoryRepo;
-    private final ContractorRepo contractorRepo;
+    private final ContractorService contractorService;
 
-    public CategoryService(CategoryRepo categoryRepo, ContractorRepo contractorRepo ) {
+    public CategoryService(CategoryRepo categoryRepo, ContractorService contractorService) {
         this.categoryRepo = categoryRepo;
-        this.contractorRepo = contractorRepo;
+        this.contractorService = contractorService;
     }
-
 
     public List<Category> findAll() {
         return categoryRepo.findAllByDeletedAtIsNull();
@@ -60,4 +61,25 @@ public class CategoryService {
         category.setDeletedAt(date);
         categoryRepo.save(category);
     }
+
+
+    public List<Category> findAllByReportId(Long id) {
+        return categoryRepo.findAllByReportId(id);
+    }
+
+
+    public List<CategoryDTO> findAllByReportIdV2(Long id) {
+        List<CategoryDTO> resp = new ArrayList<>();
+        List<Category> categories =  categoryRepo.findAllByReportId(id);
+        for(Category category: categories){
+            resp.add(CategoryDTO.builder()
+                    .CategoryName(category.getCategoryName())
+                    .description(category.getDescription())
+                    .contractors(contractorService.getAllByCategory(category.getId()))
+                    .build());
+        }
+        return resp;
+    }
+
+
 }

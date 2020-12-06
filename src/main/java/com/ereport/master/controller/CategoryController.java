@@ -41,4 +41,14 @@ public class CategoryController extends BaseController {
         categoryService.delete(id);
         return buildResponse("deleted", HttpStatus.OK);
     }
+
+    @GetMapping("/report")
+    public ResponseEntity<?> getByReportId(@RequestParam Long id) {
+        return buildResponse(categoryService.findAllByReportId(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/report/v2")
+    public ResponseEntity<?> getByReportIdV2(@RequestParam Long id) {
+        return buildResponse(categoryService.findAllByReportIdV2(id), HttpStatus.OK);
+    }
 }

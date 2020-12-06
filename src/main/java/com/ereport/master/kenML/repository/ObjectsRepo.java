@@ -38,4 +38,12 @@ public interface ObjectsRepo extends JpaRepository<Objects, Integer> {
             ")", nativeQuery = true)
     List<Objects> findAllByRegion(Integer id);
 
+
+
+    @Query(value = "select *\n" +
+            "from kenml.Objects\n" +
+            "where CompanyID = ?\n" +
+            "and LocalityID = ?", nativeQuery = true)
+    List<Objects> findAllByCompanyAndLocality(Integer companyId, Integer localityId);
+
 }

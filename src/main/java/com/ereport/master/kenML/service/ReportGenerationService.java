@@ -56,5 +56,13 @@ public class ReportGenerationService {
     }
 
 
+    public List<MaterialDTO> getTopTen(){
+        List<MaterialDTO> materialDTOS = new ArrayList<>();
+        List<MaterialList> materialLists = materialListService.findAll();
+            for(MaterialList materialList: materialLists){
+            materialDTOS.add(new MaterialDTO(materialList.getMaterialName(), 0));
+        }
+        return materialDTOS;
+    }
 
 }
