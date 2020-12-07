@@ -46,4 +46,9 @@ public class ContractorController extends BaseController {
     public ResponseEntity<?> getByReportId(@RequestParam Long id) {
         return buildResponse(contractorService.getAllByReportId(id), HttpStatus.OK);
     }
+
+    @GetMapping("/category")
+    public ResponseEntity<?> getByCategoryId(@RequestParam Long id) {
+        return buildResponse(contractorService.getAllByCategoryId(id), HttpStatus.OK);
+    }
 }

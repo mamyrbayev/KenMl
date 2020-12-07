@@ -70,6 +70,18 @@ public interface ResourcesRepo extends JpaRepository<Resources, Integer> {
     List<Resources> findallByForCompany(String codeSnb, Integer companyId, Integer localityId);
 
 
-//    @Query(value = "", nativeQuery = true)
-//    List<Resources> findallByObjectId(Integer id);
+//    @Query(value = "select *\n" +
+//            "from kenml.Resources r\n" +
+//            "where ResourceType = 2\n" +
+//            "  and CodeSNB = :codeSnb \n" +
+//            "  and r.FileSectionID in(\n" +
+//            "    select fs.ID\n" +
+//            "    from kenml.FileSections fs\n" +
+//            "    where fs.FileID in (\n" +
+//            "        select f.ID\n" +
+//            "        from kenml.Files f\n" +
+//            "        where f.ObjectID = :objectId \n" +
+//            "    )\n" +
+//            ")", nativeQuery = true)
+//    List<Resources> findallByObjectId(String codeSnb, Integer id);
 }

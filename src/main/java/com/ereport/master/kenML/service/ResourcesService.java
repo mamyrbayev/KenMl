@@ -52,4 +52,19 @@ public class ResourcesService {
                 .build();
     }
 
+//    public OverallVolumeAndPrice getOverallForObject(String codeSnb, Integer objectId){
+//        List<Resources> resources = resourcesRepo.findallByObjectId(codeSnb, objectId);
+//        Float volume = 0f;
+//        Float price = 0f;
+//
+//        for(Resources resources1: resources){
+//            volume += resources1.getNorma();
+//            price += resources1.getPrice();
+//        }
+//        return OverallVolumeAndPrice.builder()
+//                .price(price)
+//                .volume(volume)
+//                .build();
+//    }
+
  }

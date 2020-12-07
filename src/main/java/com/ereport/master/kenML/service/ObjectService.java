@@ -2,10 +2,7 @@ package com.ereport.master.kenML.service;
 
 import com.ereport.master.kenML.domain.Objects;
 import com.ereport.master.kenML.domain.Resources;
-import com.ereport.master.kenML.domain.dto.ObjectInYearDto;
-import com.ereport.master.kenML.domain.dto.ObjectWorkDate;
-import com.ereport.master.kenML.domain.dto.ObjectsDto;
-import com.ereport.master.kenML.domain.dto.OverallForYear;
+import com.ereport.master.kenML.domain.dto.*;
 import com.ereport.master.kenML.repository.ObjectsRepo;
 import org.springframework.stereotype.Service;
 
@@ -107,7 +104,7 @@ public class ObjectService {
         return objectWorkDates;
     }
 
-    public List<ObjectsDto> getObjectsByCompanyAndLocality(Integer companyId, Integer localityId){
+    public List<ObjectsDto> getObjectsByCompanyAndLocality(String mtCode, Integer companyId, Integer localityId){
         List<ObjectsDto> objectsDtos = new ArrayList<>();
         List<Objects> objects = objectsRepo.findAllByCompanyAndLocality(companyId, localityId);
 
@@ -128,9 +125,26 @@ public class ObjectService {
         return objectsDtos;
     }
 
+
+//    public List<ObjectInYearDto> getObjectInYearDtos(String mtCode, Integer objectId){
+//        List<ObjectInYearDto> objectInYearDtos = new ArrayList<>();
+//        OverallVolumeAndPrice overallVolumeAndPrice = resourcesService.getOverallForObject(mtCode, objectId);
 //
-//    public List<ObjectInYearDto> getObjectInYearDtos(Integer objectId){
-//        List<Resources> resources =
+//
+////        ObjectWorkDate objectWorkDate = ObjectWorkDate.builder()
+////                .id(objects.getId())
+////                .companyId(objects.getCompanyId())
+////                .lastUpdatedOn(objects.getLastUpdatedOn())
+////                .localityId(objects.getLocalityId())
+////                .objectName(objects.getObjectName())
+////                .endDate(objectsRepo.getEndDateForObject(objects.getId()))
+////                .build();
+////
+////        workDates.add(objectWorkDate);
+////        DateFormat dateFormat = new SimpleDateFormat("yyyy");
+////        years.add(dateFormat.format(objectWorkDate.getEndDate()));
+//
+//        return null;
 //
 //
 //    }

@@ -67,5 +67,9 @@ public class ContractorService {
         return contractorRepo.findAllByReportId(id);
     }
 
+    public List<Contractor> getAllByCategoryId(Long id){
+        return contractorRepo.findAllByCategoryIdd(id);
+    }
+
 
 }

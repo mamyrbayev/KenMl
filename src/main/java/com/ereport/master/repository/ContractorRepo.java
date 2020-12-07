@@ -35,4 +35,10 @@ public interface ContractorRepo extends JpaRepository<Contractor, Long> {
             "    )\n" +
             "    )", nativeQuery = true)
     List<Contractor> findAllByReportId(Long id);
+
+
+    @Query(value = "select *\n" +
+            "from contractor cn\n" +
+            "where cn.category_id = :id", nativeQuery = true)
+    List<Contractor> findAllByCategoryIdd(Long id);
 }

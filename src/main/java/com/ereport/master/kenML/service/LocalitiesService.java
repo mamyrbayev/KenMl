@@ -46,7 +46,7 @@ public class LocalitiesService {
                         .emailAddress(company.getEmailAddress())
                         .physicalAddress(company.getPhysicalAddress())
                         .categoryID(company.getCategoryID())
-                        .objectsDto(objectService.getObjectsByCompanyAndLocality(company.getId(), locality.getId()))
+                        .objectsDto(objectService.getObjectsByCompanyAndLocality(mtCode, company.getId(), locality.getId()))
                         .overallPrice(overallForCompany.getPrice())
                         .overallVolume(overallForCompany.getVolume())
                         .build();

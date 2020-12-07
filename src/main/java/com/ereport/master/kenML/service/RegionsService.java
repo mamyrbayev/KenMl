@@ -48,8 +48,6 @@ public class RegionsService {
         uniqueYears = years.stream().distinct().collect(Collectors.toList());
 
         for(String uniqueYear: uniqueYears){
-
-
             List<OverallByRegion> overallByRegions = new ArrayList<>();
             for(Regions regions: regionsList){
                 int completed = 0;
@@ -67,14 +65,19 @@ public class RegionsService {
                         }
                     }
                 }
-                OverallByRegion overallByRegion = OverallByRegion.builder()
-                        .regionName(regions.getName())
-                        .regionId(regions.getId())
-                        .completed(completed)
-                        .underConstruction(underConstruction)
-                        .overall(completed + underConstruction)
-                        .build();
-                overallByRegions.add(overallByRegion);
+                if(regions.getName() != null){
+                    if(completed + underConstruction != 0){
+                        OverallByRegion overallByRegion = OverallByRegion.builder()
+                                .regionName(regions.getName())
+                                .regionId(regions.getId())
+                                .completed(completed)
+                                .underConstruction(underConstruction)
+                                .overall(completed + underConstruction)
+                                .build();
+                        overallByRegions.add(overallByRegion);
+                    }
+                }
+
             }
             OverallForYearByRegion overallForYearByRegion = OverallForYearByRegion.builder()
                     .year(uniqueYear)
@@ -82,7 +85,15 @@ public class RegionsService {
                     .build();
             overallForYearByRegions.add(overallForYearByRegion);
         }
-        return overallForYearByRegions;
+
+        List<OverallForYearByRegion> resp = new ArrayList<>();
+        for(OverallForYearByRegion o: overallForYearByRegions){
+            if(o.getYear().equals("2020") || o.getYear().equals("2021") || o.getYear().equals("2022")){
+                resp.add(o);
+            }
+        }
+
+        return resp;
     }
 
 }
