@@ -1,8 +1,9 @@
 package com.ereport.master.kenML.service;
 
+import com.ereport.master.kenML.domain.FileSections;
 import com.ereport.master.kenML.domain.Objects;
-import com.ereport.master.kenML.domain.Resources;
 import com.ereport.master.kenML.domain.dto.*;
+import com.ereport.master.kenML.repository.FileSectionRepo;
 import com.ereport.master.kenML.repository.ObjectsRepo;
 import org.springframework.stereotype.Service;
 
@@ -17,10 +18,14 @@ import java.util.stream.Collectors;
 public class ObjectService {
     private final ObjectsRepo objectsRepo;
     private final ResourcesService resourcesService;
+    private final FileSectionRepo fileSectionRepo;
 
-    public ObjectService(ObjectsRepo objectsRepo, ResourcesService resourcesService) {
+    private static String[] monthKeys = {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"};
+
+    public ObjectService(ObjectsRepo objectsRepo, ResourcesService resourcesService, FileSectionRepo fileSectionRepo) {
         this.objectsRepo = objectsRepo;
         this.resourcesService = resourcesService;
+        this.fileSectionRepo = fileSectionRepo;
     }
 
     public List<Objects> getAll(){
@@ -46,7 +51,9 @@ public class ObjectService {
 
             workDates.add(objectWorkDate);
             DateFormat dateFormat = new SimpleDateFormat("yyyy");
-            years.add(dateFormat.format(objectWorkDate.getEndDate()));
+            if(objectWorkDate.getEndDate() != null){
+                years.add(dateFormat.format(objectWorkDate.getEndDate()));
+            }
         }
 
         List<String> uniqueYears = new ArrayList<>();
@@ -59,13 +66,17 @@ public class ObjectService {
 
             for(ObjectWorkDate objectWorkDate: workDates){
                 DateFormat dateFormat = new SimpleDateFormat("yyyy");
-                String year = dateFormat.format(objectWorkDate.getEndDate());
-
-                if(uniqueYear.equals(year)){
-                    if(objectWorkDate.getEndDate().before(new Date())){
-                        completed++;
-                    }else {
-                        underConstruction++;
+                String year = null;
+                if(objectWorkDate.getEndDate() != null){
+                    year = dateFormat.format(objectWorkDate.getEndDate());
+                }
+                if(year != null){
+                    if(uniqueYear.equals(year)){
+                        if(objectWorkDate.getEndDate().before(new Date())){
+                            completed++;
+                        }else {
+                            underConstruction++;
+                        }
                     }
                 }
             }
@@ -78,8 +89,10 @@ public class ObjectService {
         }
         List<OverallForYear> resp = new ArrayList<>();
         for(OverallForYear overallForYear: overallForYears){
-            if(overallForYear.getYear().equals("2020") || overallForYear.getYear().equals("2021") || overallForYear.getYear().equals("2022")){
-                resp.add(overallForYear);
+            if(overallForYear.getYear() != null){
+                if(overallForYear.getYear().equals("2020") || overallForYear.getYear().equals("2021") || overallForYear.getYear().equals("2022")){
+                    resp.add(overallForYear);
+                }
             }
         }
         return resp;
@@ -115,9 +128,10 @@ public class ObjectService {
                     .companyId(object.getCompanyId())
                     .localityId(object.getLocalityId())
                     .lastUpdatedOn(object.getLastUpdatedOn())
+                    .objectInYearDtos(getObjectInYearDtos(mtCode, object.getId()))
                     .build();
 
-            // return objectInYearDtos
+
 
             objectsDtos.add(objectsDto);
         }
@@ -126,26 +140,72 @@ public class ObjectService {
     }
 
 
-//    public List<ObjectInYearDto> getObjectInYearDtos(String mtCode, Integer objectId){
-//        List<ObjectInYearDto> objectInYearDtos = new ArrayList<>();
+    public List<ObjectInYearDto> getObjectInYearDtos(String mtCode, Integer objectId){
+        List<ObjectInYearDto> objectInYearDtos = new ArrayList<>();
 //        OverallVolumeAndPrice overallVolumeAndPrice = resourcesService.getOverallForObject(mtCode, objectId);
-//
-//
-////        ObjectWorkDate objectWorkDate = ObjectWorkDate.builder()
-////                .id(objects.getId())
-////                .companyId(objects.getCompanyId())
-////                .lastUpdatedOn(objects.getLastUpdatedOn())
-////                .localityId(objects.getLocalityId())
-////                .objectName(objects.getObjectName())
-////                .endDate(objectsRepo.getEndDateForObject(objects.getId()))
-////                .build();
-////
-////        workDates.add(objectWorkDate);
-////        DateFormat dateFormat = new SimpleDateFormat("yyyy");
-////        years.add(dateFormat.format(objectWorkDate.getEndDate()));
-//
-//        return null;
-//
-//
-//    }
+
+        List<FileSections> fileSections = fileSectionRepo.findAllByObjectIdAndMaterial(objectId, mtCode);
+        List<String> years = new ArrayList<>();
+
+        for(FileSections fileSection: fileSections){
+            DateFormat dateFormat = new SimpleDateFormat("yyyy");
+            years.add(dateFormat.format(fileSection.getEndDate()));
+        }
+
+        List<String> uniqueYears = new ArrayList<>();
+        uniqueYears = years.stream().distinct().collect(Collectors.toList());
+
+        for(String year: uniqueYears){
+            List<OverallVolumeAndPrice> volumeAndPrices = new ArrayList<>();
+            for(FileSections fileSection: fileSections){
+                DateFormat dateFormat = new SimpleDateFormat("yyyy");
+                if(year.equals(dateFormat.format(fileSection.getEndDate()))){
+                    volumeAndPrices.add(resourcesService.getOverallForFileSection(mtCode, fileSection.getId()));
+                }
+            }
+            Float overallVolume = 0f;
+            Float overallPrice = 0f;
+            for(OverallVolumeAndPrice vp: volumeAndPrices){
+                overallVolume += vp.getVolume();
+                overallPrice += vp.getPrice();
+            }
+
+
+            List<MonthVolumePrice> monthVolumePrices = new ArrayList<>();
+            for(String month: monthKeys){
+                String date = year + ":" + month;
+                List<OverallVolumeAndPrice> volumeAndPricesMonths = new ArrayList<>();
+                for(FileSections fileSection: fileSections){
+                    DateFormat dateFormat = new SimpleDateFormat("yyyy:MM");
+                    if(date.equals(dateFormat.format(fileSection.getEndDate()))){
+                        volumeAndPricesMonths.add(resourcesService.getOverallForFileSection(mtCode, fileSection.getId()));
+                    }
+                }
+                Float overallVolumeMonths = 0f;
+                Float overallPriceMonths = 0f;
+                for(OverallVolumeAndPrice vp: volumeAndPricesMonths){
+                    overallVolumeMonths += vp.getVolume();
+                    overallPriceMonths += vp.getPrice();
+                }
+                MonthVolumePrice monthVolumePrice = MonthVolumePrice.builder()
+                        .monthIndex(month)
+                        .price(overallPriceMonths)
+                        .volume(overallVolumeMonths)
+                        .build();
+                monthVolumePrices.add(monthVolumePrice);
+            }
+
+            ObjectInYearDto objectInYearDto = ObjectInYearDto.builder()
+                    .year(year)
+                    .overallPrice(overallPrice)
+                    .overallVolume(overallVolume)
+                    .monthVolumePrices(monthVolumePrices)
+                    .build();
+
+            objectInYearDtos.add(objectInYearDto);
+
+        }
+
+        return objectInYearDtos;
+    }
 }

@@ -17,11 +17,12 @@ public interface ObjectsRepo extends JpaRepository<Objects, Integer> {
 
     @Query(value = "SELECT MAX(fs.EndDate)\n" +
             "FROM  [kenml].[FileSections] fs\n" +
-            "WHERE fs.FileID in (\n" +
-            "    SELECT f.ID\n" +
-            "    FROM  [kenml].[Files] f\n" +
-            "    WHERE f.ObjectID = ?\n" +
-            ")", nativeQuery = true)
+            "WHERE fs.EndDate is not null\n" +
+            " and fs.FileID in (\n" +
+            "SELECT f.ID\n" +
+            "FROM  [kenml].[Files] f\n" +
+            " WHERE f.ObjectID = ?\n" +
+            " )", nativeQuery = true)
     Date getEndDateForObject(Integer id);
 
 

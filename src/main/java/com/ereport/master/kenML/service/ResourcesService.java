@@ -52,19 +52,35 @@ public class ResourcesService {
                 .build();
     }
 
-//    public OverallVolumeAndPrice getOverallForObject(String codeSnb, Integer objectId){
-//        List<Resources> resources = resourcesRepo.findallByObjectId(codeSnb, objectId);
-//        Float volume = 0f;
-//        Float price = 0f;
-//
-//        for(Resources resources1: resources){
-//            volume += resources1.getNorma();
-//            price += resources1.getPrice();
-//        }
-//        return OverallVolumeAndPrice.builder()
-//                .price(price)
-//                .volume(volume)
-//                .build();
-//    }
+    public OverallVolumeAndPrice getOverallForObject(String codeSnb, Integer objectId){
+        List<Resources> resources = resourcesRepo.findAllByObjectIdd(codeSnb, objectId);
+        Float volume = 0f;
+        Float price = 0f;
+
+        for(Resources resources1: resources){
+            volume += resources1.getNorma();
+            price += resources1.getPrice();
+        }
+        return OverallVolumeAndPrice.builder()
+                .price(price)
+                .volume(volume)
+                .build();
+    }
+
+
+    public OverallVolumeAndPrice getOverallForFileSection(String codeSnb, Integer fileSectionId){
+        List<Resources> resources = resourcesRepo.findAllByFileSectionIdd(codeSnb, fileSectionId);
+        Float volume = 0f;
+        Float price = 0f;
+
+        for(Resources resources1: resources){
+            volume += resources1.getNorma();
+            price += resources1.getPrice();
+        }
+        return OverallVolumeAndPrice.builder()
+                .price(price)
+                .volume(volume)
+                .build();
+    }
 
  }

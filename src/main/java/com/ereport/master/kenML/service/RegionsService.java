@@ -41,7 +41,10 @@ public class RegionsService {
         List<Objects> objectsList = objectService.getAll();
         for(Objects objects: objectsList){
             DateFormat dateFormat = new SimpleDateFormat("yyyy");
-            years.add(dateFormat.format(objectsRepo.getEndDateForObject(objects.getId())));
+            Date date = objectsRepo.getEndDateForObject(objects.getId());
+            if(date != null){
+                years.add(dateFormat.format(date));
+            }
         }
 
         List<String> uniqueYears = new ArrayList<>();
@@ -56,12 +59,14 @@ public class RegionsService {
                 List<ObjectWorkDate> objectWorkDates = objectService.getAllWorkDatesByRegion(regions.getId());
                 for(ObjectWorkDate objectWorkDate: objectWorkDates){
                     DateFormat dateFormat = new SimpleDateFormat("yyyy");
-                    String objectYear = dateFormat.format(objectWorkDate.getEndDate());
-                    if(uniqueYear.equals(objectYear)){
-                        if(objectWorkDate.getEndDate().before(new Date())){
-                            completed++;
-                        }else {
-                            underConstruction++;
+                    if(objectWorkDate.getEndDate() != null){
+                        String objectYear = dateFormat.format(objectWorkDate.getEndDate());
+                        if(uniqueYear.equals(objectYear)){
+                            if(objectWorkDate.getEndDate().before(new Date())){
+                                completed++;
+                            }else {
+                                underConstruction++;
+                            }
                         }
                     }
                 }
@@ -88,8 +93,10 @@ public class RegionsService {
 
         List<OverallForYearByRegion> resp = new ArrayList<>();
         for(OverallForYearByRegion o: overallForYearByRegions){
-            if(o.getYear().equals("2020") || o.getYear().equals("2021") || o.getYear().equals("2022")){
-                resp.add(o);
+            if(o != null){
+                if(o.getYear().equals("2020") || o.getYear().equals("2021") || o.getYear().equals("2022")){
+                    resp.add(o);
+                }
             }
         }
 

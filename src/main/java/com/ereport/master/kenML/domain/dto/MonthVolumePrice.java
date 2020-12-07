@@ -10,8 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MonthVolumePrice {
-    private String months;
-    private int monthIndex;
+    private String monthIndex;
     private Float volume;
     private Float price;
 }
