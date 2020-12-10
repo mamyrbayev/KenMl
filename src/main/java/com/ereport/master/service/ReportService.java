@@ -27,12 +27,12 @@ public class ReportService {
     }
 
     public List<Report> findAll() {
-        return reportRepo.findAllByDeletedAtIsNull();
+        return reportRepo.findAllReportsByDeletedAtIsNull();
     }
 
     public List<ReportDTO> findAllToFront() {
         List<ReportDTO> reportDTOS = new ArrayList<>();
-        List<Report> reports = reportRepo.findAllByDeletedAtIsNull();
+        List<Report> reports = reportRepo.findAllReportsByDeletedAtIsNull();
         for(Report report: reports){
             ReportDTO reportDTO = ReportDTO.builder()
                     .id(report.getId())
