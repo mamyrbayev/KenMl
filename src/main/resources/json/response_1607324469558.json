@@ -1,0 +1,674 @@
+{
+  "topTen": [
+    {
+      "name": "Щебень из плотных горных пород для строительных работ М1000, фракция 5-10 мм СТ РК 1284-2004",
+      "marketShare": 0
+    },
+    {
+      "name": "Бетон тяжелый класса В3,5 ГОСТ 7473-2010",
+      "marketShare": 0
+    },
+    {
+      "name": "Рубероид кровельный с пылевидной посыпкой РКП-350Б ГОСТ 10923-93",
+      "marketShare": 0
+    },
+    {
+      "name": "Гвозди строительные ГОСТ 283-75",
+      "marketShare": 0
+    },
+    {
+      "name": "Известь строительная негашеная комовая, сорт 1, ГОСТ 9179-77",
+      "marketShare": 0
+    },
+    {
+      "name": "Щебень из плотных горных пород для строительных работ М1000, фракция 40-70 мм СТ РК 1284-2004",
+      "marketShare": 0
+    },
+    {
+      "name": "Электроды, d=4 мм, Э42 ГОСТ 9466-75",
+      "marketShare": 0
+    },
+    {
+      "name": "Вода техническая",
+      "marketShare": 0
+    },
+    {
+      "name": "Бруски обрезные хвойных пород длиной от 4 м до 6,5 м, шириной от 75 мм до 150 мм, толщиной от 40 мм до 75 мм, 3 сорта ГОСТ 8486-86",
+      "marketShare": 0
+    },
+    {
+      "name": "Доски обрезные хвойных пород длиной до 6,5 м, шириной от 75 мм до 150 мм, толщиной 44 мм и более, 3 сорта ГОСТ 8486-86",
+      "marketShare": 0
+    }
+  ],
+  "overallForYears": [
+    {
+      "year": "2021",
+      "completed": 0,
+      "underConstruction": 2,
+      "overall": 2
+    },
+    {
+      "year": "2020",
+      "completed": 2,
+      "underConstruction": 3,
+      "overall": 5
+    }
+  ],
+  "overallForYearByRegions": [
+    {
+      "year": "2021",
+      "overallByRegions": [
+        {
+          "regionId": 9,
+          "regionName": "Карагандинская",
+          "completed": 0,
+          "underConstruction": 1,
+          "overall": 1
+        },
+        {
+          "regionId": 17,
+          "regionName": "Туркестанская",
+          "completed": 0,
+          "underConstruction": 1,
+          "overall": 1
+        }
+      ]
+    },
+    {
+      "year": "2020",
+      "overallByRegions": [
+        {
+          "regionId": 1,
+          "regionName": "г.Нур-Султан",
+          "completed": 1,
+          "underConstruction": 0,
+          "overall": 1
+        },
+        {
+          "regionId": 4,
+          "regionName": "Актюбинская",
+          "completed": 0,
+          "underConstruction": 1,
+          "overall": 1
+        },
+        {
+          "regionId": 13,
+          "regionName": "г.Шымкент",
+          "completed": 1,
+          "underConstruction": 0,
+          "overall": 1
+        }
+      ]
+    }
+  ],
+  "potrebnostis": [
+    {
+      "material": {
+        "id": 1,
+        "mtLink": 210102010604,
+        "mtOwner": 210102010600,
+        "myCode": "210102010604",
+        "mtName": "Щебень из плотных горных пород для строительных работ М1000, фракция 40-70 мм СТ РК 1284-2004",
+        "mtMeasure": "м3"
+      },
+      "localitiesByMatrials": [
+        {
+          "localities": {
+            "id": 6,
+            "name": "Актобе",
+            "regionId": 4
+          },
+          "overallVolume": 1,
+          "overallPrice": 2715,
+          "companiesList": [
+            {
+              "id": 247,
+              "bin": null,
+              "title": "ТОО \"Актобе Саулет\"                               ",
+              "directorName": null,
+              "directorPhone": null,
+              "emailAddress": null,
+              "physicalAddress": null,
+              "categoryID": null,
+              "overallVolume": 1,
+              "overallPrice": 2715,
+              "objectsDto": [
+                {
+                  "id": 3937,
+                  "objectName": "Капитальный ремонт наружных ограждающих конструкци",
+                  "companyId": 247,
+                  "localityId": 6,
+                  "objectInYearDtos": [
+                    {
+                      "year": "2020",
+                      "overallVolume": 1,
+                      "overallPrice": 2715,
+                      "monthVolumePrices": [
+                        {
+                          "monthIndex": "01",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "02",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "03",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "04",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "05",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "06",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "07",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "08",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "09",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "10",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "11",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "12",
+                          "volume": 1,
+                          "price": 2715
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "localities": {
+            "id": 8,
+            "name": "Алматы",
+            "regionId": 2},
+          "overallVolume": 9.000921,
+          "overallPrice": 63627,
+          "companiesList": [
+            {
+              "id": 25,
+              "bin": null,
+              "title": "ТОО  «Артемида»",
+              "directorName": null,
+              "directorPhone": null,
+              "emailAddress": null,
+              "physicalAddress": null,
+              "categoryID": null,
+              "overallVolume": 9.000881,
+              "overallPrice": 61923,
+              "objectsDto": [
+                {
+                  "id": 410,
+                  "objectName": "Многоквартирный ЖД в мкр. Айгерим-2, (Нуркент) пят",
+                  "companyId": 25,
+                  "localityId": 8,
+                  "objectInYearDtos": [
+                    {
+                      "year": "2017",
+                      "overallVolume": 2.0008812,
+                      "overallPrice": 42918,
+                      "monthVolumePrices": [
+                        {
+                          "monthIndex": "01",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "02",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "03",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "04",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "05",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "06",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "07",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "08",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "09",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "10",
+                          "volume": 2.0008812,
+                          "price": 42918
+                        },
+                        {
+                          "monthIndex": "11",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "12",
+                          "volume": 0,
+                          "price": 0
+                        }
+                      ]
+                    },
+                    {
+                      "year": "2016",
+                      "overallVolume": 7,
+                      "overallPrice": 19005,
+                      "monthVolumePrices": [
+                        {
+                          "monthIndex": "01",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "02",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "03",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "04",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "05",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "06",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "07",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "08",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "09",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "10",
+                          "volume": 7,
+                          "price": 19005
+                        },
+                        {
+                          "monthIndex": "11",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "12",
+                          "volume": 0,
+                          "price": 0
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": 39,
+              "bin": null,
+              "title": "ТОО «Болашак-МА»",
+              "directorName": null,
+              "directorPhone": null,
+              "emailAddress": null,
+              "physicalAddress": null,
+              "categoryID": null,
+              "overallVolume": 0.00004,
+              "overallPrice": 1704,
+              "objectsDto": [
+                {
+                  "id": 1040,
+                  "objectName": "Строительство многоквартирных жилых домов мкр. «Ал",
+                  "companyId": 39,
+                  "localityId": 8,
+                  "objectInYearDtos": [
+                    {
+                      "year": "2019",
+                      "overallVolume": 0.00004,
+                      "overallPrice": 1704,
+                      "monthVolumePrices": [
+                        {
+                          "monthIndex": "01",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "02",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "03",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "04",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "05",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "06",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "07",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "08",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "09",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "10",
+                          "volume": 0.00004,
+                          "price": 1704
+                        },
+                        {
+                          "monthIndex": "11",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "12",
+                          "volume": 0,
+                          "price": 0
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "localities": {
+            "id": 35,
+            "name": "Караганды",
+            "regionId": 9
+          },
+          "overallVolume": 1,
+          "overallPrice": 2715,
+          "companiesList": [
+            {
+              "id": 630,
+              "bin": null,
+              "title": " ТОО «Novacom Corporation»                        ",
+              "directorName": null,
+              "directorPhone": null,
+              "emailAddress": null,
+              "physicalAddress": null,
+              "categoryID": null,
+              "overallVolume": 1,
+              "overallPrice": 2715,
+              "objectsDto": [
+                {
+                  "id": 3800,
+                  "objectName": "г.Караганда,Октябрьский район, 9-ти этажный доммкр",
+                  "companyId": 630,
+                  "localityId": 35,
+                  "objectInYearDtos": [
+                    {
+                      "year": "2020",
+                      "overallVolume": 1,
+                      "overallPrice": 2715,
+                      "monthVolumePrices": [
+                        {
+                          "monthIndex": "01",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "02",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "03",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "04",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "05",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "06",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "07",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "08",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "09",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "10",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "11",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "12",
+                          "volume": 1,
+                          "price": 2715
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "localities": {
+            "id": 71,
+            "name": "Туркестан",
+            "regionId": 17
+          },
+          "overallVolume": 0.00004,
+          "overallPrice": 1704,
+          "companiesList": [
+            {
+              "id": 254,
+              "bin": null,
+              "title": "ТОО \"ЕРЕН-групп\"",
+              "directorName": null,
+              "directorPhone": null,
+              "emailAddress": null,
+              "physicalAddress": null,
+              "categoryID": null,
+              "overallVolume": 0.00004,
+              "overallPrice": 1704,
+              "objectsDto": [
+                {
+                  "id": 3929,
+                  "objectName": "Строительство пяти 9-ти этажных домов в г. Туркест",
+                  "companyId": 254,
+                  "localityId": 71,
+                  "objectInYearDtos": [
+                    {
+                      "year": "2021",
+                      "overallVolume": 0.00004,
+                      "overallPrice": 1704,
+                      "monthVolumePrices": [
+                        {
+                          "monthIndex": "01",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "02",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "03",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "04",
+                          "volume": 0.00004,
+                          "price": 1704
+                        },
+                        {
+                          "monthIndex": "05",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "06",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "07",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "08",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "09",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "10",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "11",
+                          "volume": 0,
+                          "price": 0
+                        },
+                        {
+                          "monthIndex": "12",
+                          "volume": 0,
+                          "price": 0
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

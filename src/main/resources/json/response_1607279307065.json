@@ -1,0 +1,106 @@
+{
+  "topTen": [
+    {
+      "name": "Щебень из плотных горных пород для строительных работ М1000, фракция 5-10 мм СТ РК 1284-2004",
+      "marketShare": 0
+    },
+    {
+      "name": "Бетон тяжелый класса В3,5 ГОСТ 7473-2010",
+      "marketShare": 0
+    },
+    {
+      "name": "Рубероид кровельный с пылевидной посыпкой РКП-350Б ГОСТ 10923-93",
+      "marketShare": 0
+    },
+    {
+      "name": "Гвозди строительные ГОСТ 283-75",
+      "marketShare": 0
+    },
+    {
+      "name": "Известь строительная негашеная комовая, сорт 1, ГОСТ 9179-77",
+      "marketShare": 0
+    },
+    {
+      "name": "Щебень из плотных горных пород для строительных работ М1000, фракция 40-70 мм СТ РК 1284-2004",
+      "marketShare": 0
+    },
+    {
+      "name": "Электроды, d=4 мм, Э42 ГОСТ 9466-75",
+      "marketShare": 0
+    },
+    {
+      "name": "Вода техническая",
+      "marketShare": 0
+    },
+    {
+      "name": "Бруски обрезные хвойных пород длиной от 4 м до 6,5 м, шириной от 75 мм до 150 мм, толщиной от 40 мм до 75 мм, 3 сорта ГОСТ 8486-86",
+      "marketShare": 0
+    },
+    {
+      "name": "Доски обрезные хвойных пород длиной до 6,5 м, шириной от 75 мм до 150 мм, толщиной 44 мм и более, 3 сорта ГОСТ 8486-86",
+      "marketShare": 0
+    }
+  ],
+  "overallForYears": [
+    {
+      "year": "2021",
+      "completed": 0,
+      "underConstruction": 2,
+      "overall": 2
+    },
+    {
+      "year": "2020",
+      "completed": 2,
+      "underConstruction": 3,
+      "overall": 5
+    }
+  ],
+  "overallForYearByRegions": [
+    {
+      "year": "2021",
+      "overallByRegions": [
+        {
+          "regionId": 9,
+          "regionName": "Карагандинская",
+          "completed": 0,
+          "underConstruction": 1,
+          "overall": 1
+        },
+        {
+          "regionId": 17,
+          "regionName": "Туркестанская",
+          "completed": 0,
+          "underConstruction": 1,
+          "overall": 1
+        }
+      ]
+    },
+    {
+      "year": "2020",
+      "overallByRegions": [
+        {
+          "regionId": 1,
+          "regionName": "г.Нур-Султан",
+          "completed": 1,
+          "underConstruction": 0,
+          "overall": 1
+        },
+        {
+          "regionId": 4,
+          "regionName": "Актюбинская",
+          "completed": 0,
+          "underConstruction": 1,
+          "overall": 1
+        },
+        {
+          "regionId": 13,
+          "regionName": "г.Шымкент",
+          "completed": 1,
+          "underConstruction": 0,
+          "overall": 1
+        }
+      ]
+    }
+  ],
+  "potrebnostis": []
+}

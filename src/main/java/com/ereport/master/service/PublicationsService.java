@@ -13,6 +13,7 @@ import com.ereport.master.service.wrapper.Wrapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -26,11 +27,14 @@ public class PublicationsService {
     private final PublicationsRepo publicationsRepo;
     private final Wrapper wrapper;
     private final ContractorService contractorService;
+    private final HtmlToPdfService htmlToPdfService;
 
-    public PublicationsService(PublicationsRepo publicationsRepo, Wrapper wrapper, ContractorService contractorService) {
+    public PublicationsService(PublicationsRepo publicationsRepo, Wrapper wrapper,
+                               ContractorService contractorService, HtmlToPdfService htmlToPdfService) {
         this.publicationsRepo = publicationsRepo;
         this.wrapper = wrapper;
         this.contractorService = contractorService;
+        this.htmlToPdfService = htmlToPdfService;
     }
 
     public List<Publications> findAll() {
@@ -77,7 +81,7 @@ public class PublicationsService {
     }
 
 
-    public void createPublicationByScheduler() throws ParseException {
+    public void createPublicationByScheduler() throws ParseException, IOException, InterruptedException {
         List<Report> reports = wrapper.getReportService().findAll();
         for(Report report: reports){
             List<Integer> sendingDays = getSendingDays(report);
@@ -96,7 +100,8 @@ public class PublicationsService {
                     String sendingDate = currentDate + " " + report.getTimeOfPublication();
 
                     if(fullDate.equals(sendingDate)){
-                        System.out.println("!!! GENERATED PDF !!!");
+                        String fileName = htmlToPdfService.generate();
+                        System.out.println("PDF file name " + fileName);
                     }
                 }
             }
