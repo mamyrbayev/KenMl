@@ -21,19 +21,19 @@ import javax.persistence.*;
 )
 public class MaterialList extends AuditModel{
     @Column(name = "material_link")
-    private Long materialLink;
+    private Long mtLink;
 
     @Column(name = "material_owner")
-    private Long materialOwner;
+    private Long mtOwner;
 
     @Column(name = "material_code")
-    private String materialCode;
+    private String myCode;
 
     @Column(name = "material_name")
-    private String materialName;
+    private String mtName;
 
     @Column(name = "material_measure")
-    private String materialMeasure;
+    private String mtMeasure;
 
     @ManyToOne
     private Report report;

@@ -20,7 +20,7 @@ public class Scheduler {
 
     @Scheduled(cron = "0 * * * * *") //Every minute
     private void checkGenerationDate() throws ServiceException, ParseException {
-        logger.info("CHECK GENERATION DATE");
+        logger.info("KUKA KUKA || CHECK GENERATION DATE ");
 //        publicationsService.createPublicationByScheduler();
     }
 

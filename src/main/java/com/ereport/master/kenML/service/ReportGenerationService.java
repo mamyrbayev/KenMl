@@ -34,7 +34,7 @@ public class ReportGenerationService {
         List<MaterialDTO> materialDTOS = new ArrayList<>();
         List<MaterialList> materialLists = materialListService.findAll();
         for(MaterialList materialList: materialLists){
-            materialDTOS.add(new MaterialDTO(materialList.getMaterialName(), 0));
+            materialDTOS.add(new MaterialDTO(materialList.getMtName(), 0));
         }
         reportGenerationResponse.setTopTen(materialDTOS);
         reportGenerationResponse.setOverallForYears(objectService.getOverallForYear());
@@ -60,7 +60,7 @@ public class ReportGenerationService {
         List<MaterialDTO> materialDTOS = new ArrayList<>();
         List<MaterialList> materialLists = materialListService.findAll();
             for(MaterialList materialList: materialLists){
-            materialDTOS.add(new MaterialDTO(materialList.getMaterialName(), 0));
+            materialDTOS.add(new MaterialDTO(materialList.getMtName(), 0));
         }
         return materialDTOS;
     }

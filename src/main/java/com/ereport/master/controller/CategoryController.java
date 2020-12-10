@@ -3,7 +3,6 @@ package com.ereport.master.controller;
 import com.ereport.master.domain.Category;
 import com.ereport.master.domain.dto.CategoryContractorsRequest;
 import com.ereport.master.exceptions.ServiceException;
-import com.ereport.master.kenML.domain.models.requests.CategoryRequest;
 import com.ereport.master.service.CategoryService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +14,7 @@ public class CategoryController extends BaseController {
     private final CategoryService categoryService;
 
     public CategoryController(CategoryService categoryService) {
-        this.categoryService = categoryService;
+        this.categoryService= categoryService ;
     }
 
     @GetMapping("/findAll")
@@ -24,8 +23,8 @@ public class CategoryController extends BaseController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<?> add(@RequestBody CategoryRequest categoryRequest) throws ServiceException {
-        return buildResponse(categoryService.add(categoryRequest), HttpStatus.OK);
+    public ResponseEntity<?> add(@RequestBody Category category) throws ServiceException {
+        return buildResponse(categoryService.add(category), HttpStatus.OK);
     }
 
     @PostMapping("/add/with/contractors")
