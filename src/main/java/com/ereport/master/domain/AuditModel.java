@@ -17,7 +17,7 @@ public abstract class AuditModel implements Serializable {
 
     @Id
     @GeneratedValue(generator = "seq")
-    @Column(updatable = false, nullable = false)
+    @Column(name = "ID", updatable = false, nullable = false)
     private Long id;
 
     @Temporal(TemporalType.TIMESTAMP)

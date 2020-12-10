@@ -7,6 +7,8 @@ import com.ereport.master.domain.dto.CategoryDTO;
 import com.ereport.master.domain.dto.ContractorDTO;
 import com.ereport.master.exceptions.ErrorCode;
 import com.ereport.master.exceptions.ServiceException;
+import com.ereport.master.kenML.domain.models.requests.CategoryRequest;
+import com.ereport.master.kenML.domain.models.responses.CategoryResponse;
 import com.ereport.master.repository.CategoryRepo;
 import com.ereport.master.repository.ContractorRepo;
 import org.springframework.http.HttpStatus;
@@ -30,16 +32,20 @@ public class CategoryService {
         return categoryRepo.findAllByDeletedAtIsNull();
     }
 
-    public Category add(Category category) throws ServiceException {
-        if(category.getId() == null){
-            return categoryRepo.save(category);
-        }else {
-            throw ServiceException.builder()
-                    .errorCode(ErrorCode.SYSTEM_ERROR)
-                    .httpStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .message("id is not null")
-                    .build();
-        }
+    public long add(CategoryRequest categoryRequest) throws ServiceException {
+        System.out.println("CATEGORY REQUEST" + categoryRequest);
+        return categoryRepo.save(categoryRequest.getCategoryName(),
+                    categoryRequest.getDescription(), new Date(), new Date(),
+                    null, null);
+//        if(category.getId() == null){
+//            return categoryRepo.save(category);
+//        }else {
+//            throw ServiceException.builder()
+//                    .errorCode(ErrorCode.SYSTEM_ERROR)
+//                    .httpStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+//                    .message("id is not null")
+//                    .build();
+//        }
     }
 
     public Category findId(Long id) {
@@ -47,9 +53,9 @@ public class CategoryService {
     }
 
     public Category update(Category category) throws ServiceException {
-        if(category.getId() != null){
+        if (category.getId() != null) {
             return categoryRepo.save(category);
-        }else {
+        } else {
             throw ServiceException.builder()
                     .errorCode(ErrorCode.SYSTEM_ERROR)
                     .httpStatus(HttpStatus.INTERNAL_SERVER_ERROR)
@@ -58,10 +64,10 @@ public class CategoryService {
         }
     }
 
-    public void delete(Long id){
+    public void delete(Long id) {
         Category category = categoryRepo.findByIdAndDeletedAtIsNull(id);
         Date date = new Date();
-        category.setDeletedAt(date);
+//        category.setDeletedAt(date);
         categoryRepo.save(category);
     }
 
@@ -73,8 +79,8 @@ public class CategoryService {
 
     public List<CategoryDTO> findAllByReportIdV2(Long id) {
         List<CategoryDTO> resp = new ArrayList<>();
-        List<Category> categories =  categoryRepo.findAllByReportId(id);
-        for(Category category: categories){
+        List<Category> categories = categoryRepo.findAllByReportId(id);
+        for (Category category : categories) {
             resp.add(CategoryDTO.builder()
                     .CategoryName(category.getCategoryName())
                     .description(category.getDescription())
@@ -91,7 +97,7 @@ public class CategoryService {
                 .description(ccr.getDescription())
                 .build());
 
-        for(ContractorDTO contractor: ccr.getContractors()){
+        for (ContractorDTO contractor : ccr.getContractors()) {
             contractorService.add(Contractor.builder()
                     .contractorName(contractor.getContractorName())
                     .bin(contractor.getBin())

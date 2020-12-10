@@ -18,4 +18,9 @@ public interface CompaniesRepo extends JpaRepository<Companies, Integer> {
             "    where o.LocalityID = ?\n" +
             "    )", nativeQuery = true)
     List<Companies> findAllByLocalityId(Integer localityId);
+
+
+//    Query query = session.createSQLQuery("CALL GetAllFoos()").addEntity(Foo.class);
+//    @Query(value = "CALL Booklet_FindAllCompaniesByLocalityId()", nativeQuery = true)
+//    List<Companies> findAllByLocalityId(Integer localityId);
 }

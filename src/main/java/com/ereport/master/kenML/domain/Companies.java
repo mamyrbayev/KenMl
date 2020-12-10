@@ -44,4 +44,10 @@ public class Companies {
     @Column(name = "CategoryID")
     private Integer categoryID;
 
+    @Column(name = "ContactName")
+    private String contactName;
+
+    @Column(name = "ContactPhone")
+    private String contactPhone;
+
 }
