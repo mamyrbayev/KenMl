@@ -3,6 +3,7 @@ package com.ereport.master.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +12,7 @@ import java.util.List;
 
 @Data
 @Entity
+@Builder
 @Table(name="category")
 @NoArgsConstructor
 @AllArgsConstructor
@@ -22,7 +24,7 @@ import java.util.List;
 )
 public class Category extends AuditModel{
     @Column(name = "category_name")
-    private String CategoryName;
+    private String categoryName;
     @Column(name = "description")
     private String description;
 

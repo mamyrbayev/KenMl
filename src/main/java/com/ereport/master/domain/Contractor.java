@@ -2,6 +2,7 @@ package com.ereport.master.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -10,6 +11,7 @@ import javax.persistence.*;
 
 @Data
 @Entity
+@Builder
 @Table(name="contractor")
 @NoArgsConstructor
 @AllArgsConstructor
@@ -29,7 +31,6 @@ public class Contractor extends AuditModel{
     @Column(name = "phone_number")
     private String phoneNumber;
     @ManyToOne
-    @JsonIgnore
     private Category category;
 }
 

@@ -1,7 +1,10 @@
 package com.ereport.master.service;
 
 import com.ereport.master.domain.Category;
+import com.ereport.master.domain.Contractor;
+import com.ereport.master.domain.dto.CategoryContractorsRequest;
 import com.ereport.master.domain.dto.CategoryDTO;
+import com.ereport.master.domain.dto.ContractorDTO;
 import com.ereport.master.exceptions.ErrorCode;
 import com.ereport.master.exceptions.ServiceException;
 import com.ereport.master.repository.CategoryRepo;
@@ -82,4 +85,21 @@ public class CategoryService {
     }
 
 
+    public CategoryContractorsRequest addCategoriesWithContractors(CategoryContractorsRequest ccr) throws ServiceException {
+        Category category = categoryRepo.save(Category.builder()
+                .categoryName(ccr.getCategoryName())
+                .description(ccr.getDescription())
+                .build());
+
+        for(ContractorDTO contractor: ccr.getContractors()){
+            contractorService.add(Contractor.builder()
+                    .contractorName(contractor.getContractorName())
+                    .bin(contractor.getBin())
+                    .eMail(contractor.getEMail())
+                    .phoneNumber(contractor.getPhoneNumber())
+                    .category(category)
+                    .build());
+        }
+        return ccr;
+    }
 }

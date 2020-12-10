@@ -48,7 +48,7 @@ public interface ResourcesRepo extends JpaRepository<Resources, Integer> {
     List<Resources> findallByCodeSNBAndLocalityId(String codeSnb, Integer id);
 
 
-
+//FindAllResourcesForCompanyByCodeSNBAndLocalityId
     @Query(value = "select *\n" +
             "from kenml.Resources r\n" +
             "where ResourceType = 2\n" +
@@ -69,7 +69,7 @@ public interface ResourcesRepo extends JpaRepository<Resources, Integer> {
             ")\n", nativeQuery = true)
     List<Resources> findallByForCompany(String codeSnb, Integer companyId, Integer localityId);
 
-
+//FindAllResourcesByObjectIdAndCodeSNB
     @Query(value = "select *\n" +
             "from kenml.Resources r\n" +
             "where ResourceType = 2\n" +
@@ -86,7 +86,7 @@ public interface ResourcesRepo extends JpaRepository<Resources, Integer> {
     List<Resources> findAllByObjectIdd(String codeSnb, Integer objectId);
 
 
-
+//FindAllResourcesByFileSectionIdAndCodeSNB
     @Query(value = "select *\n" +
             "from kenml.Resources r\n" +
             "where ResourceType = 2\n" +

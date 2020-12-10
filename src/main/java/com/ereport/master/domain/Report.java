@@ -56,6 +56,11 @@ public class Report extends AuditModel {
     @Column(name= "auto_sending")
     private boolean autoSending = false;
 
+    @Column(name= "publicate")
+    private boolean publicate = false;
+
+
+
 
     @ManyToMany
     @JsonIgnore

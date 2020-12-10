@@ -1,6 +1,7 @@
 package com.ereport.master.controller;
 
 import com.ereport.master.domain.Category;
+import com.ereport.master.domain.dto.CategoryContractorsRequest;
 import com.ereport.master.exceptions.ServiceException;
 import com.ereport.master.service.CategoryService;
 import org.springframework.http.HttpStatus;
@@ -24,6 +25,11 @@ public class CategoryController extends BaseController {
     @PostMapping("/add")
     public ResponseEntity<?> add(@RequestBody Category category) throws ServiceException {
         return buildResponse(categoryService.add( category), HttpStatus.OK);
+    }
+
+    @PostMapping("/add/with/contractors")
+    public ResponseEntity<?> add(@RequestBody CategoryContractorsRequest category) throws ServiceException {
+        return buildResponse(categoryService.addCategoriesWithContractors(category), HttpStatus.OK);
     }
 
     @GetMapping("/findId")

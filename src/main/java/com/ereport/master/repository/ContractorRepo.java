@@ -39,6 +39,7 @@ public interface ContractorRepo extends JpaRepository<Contractor, Long> {
 
     @Query(value = "select *\n" +
             "from contractor cn\n" +
-            "where cn.category_id = :id", nativeQuery = true)
+            "where cn.category_id = :id\n" +
+            "and deleted_at is null", nativeQuery = true)
     List<Contractor> findAllByCategoryIdd(Long id);
 }

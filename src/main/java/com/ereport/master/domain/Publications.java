@@ -34,6 +34,12 @@ public class Publications extends AuditModel {
     @Column(name= "auto_sending")
     private boolean autoSending = false;
 
+    @Column(name= "icon_path")
+    private String iconPath;
+
+    @Column(name= "file_path")
+    private String filePath;
+
     @ManyToOne
     @JsonIgnore
     private Report report;
