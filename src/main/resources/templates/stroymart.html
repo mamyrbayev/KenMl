@@ -5,7 +5,6 @@
     <title>StoryMart</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" type="text/css" href="style/all.css"> -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -24,52 +23,21 @@
         page-break-after: always;
     }
 
-
-    /*@page {*/
-    /*    margin: 0;*/
-    /*}*/
-
-    /*body*/
-    /*{*/
-    /*    !* this affects the margin on the content before sending to printer *!*/
-    /*    margin: 0px;*/
-    /*}*/
-
     .header-title {
-        /*display: -webkit-box; !* wkhtmltopdf uses this one *!*/
         display: -webkit-flex;
-        /*display: flex;*/
         -webkit-box-ordinal-group: 3;
         -ms-flex-order: 2;
         order: 2;
-        /*-webkit-box-pack: center; !* wkhtmltopdf uses this one *!*/
-        /*-webkit-justify-content: space-between;*/
-        /*justify-content: space-between;*/
         -webkit-box-align: center;
         -ms-flex-align: center;
         align-items: center;
     }
 
     .container-title {
-        /*width: 2480px;*/
-        /*height: 3508px;*/
-        /*height: 1842px;*/
-        /*width: 100%;*/
-        /*position: relative;*/
-        /*!*width: 2480px;*!*/
         height: 1400px;
-        /*min-height: 40.6cm;*/
-        /*height: 40.6cm;*/
-        /*-webkit-margin-start: auto;*/
-        /*margin-left: ;*/
         width: 100%;
-        /*height: 100%;*/
         margin-left: auto;
     }
-
-    /*section .top {*/
-    /*    height: 3000px;*/
-    /*}*/
 
     .header-title-text {
         color: #152731;
@@ -255,6 +223,19 @@
         }
 
     }
+
+    /*@media screen {*/
+    /*    .footer {*/
+    /*        display: none !important;*/
+    /*    }*/
+    /*}*/
+    /*@media print {*/
+    /*    .footer {*/
+    /*        position: fixed !important;*/
+    /*        bottom: 0 !important;*/
+    /*    }*/
+    /*}*/
+
 
     /*@media print {*/
     /*    .title-page {*/
@@ -582,6 +563,7 @@
 
     .chart-bars-block-common {
         width: 95%;
+        page-break-inside: avoid;
         border-bottom-right-radius: 30px;
         border-top-right-radius: 30px;
         -webkit-box-shadow: 15px 15px 60px #EAEEF1;
@@ -589,47 +571,6 @@
         padding: 50px 0;
         margin: 50px 0;
     }
-
-    .chart-bars-block1 {
-        width: 95%;
-        border-bottom-right-radius: 30px;
-        border-top-right-radius: 30px;
-        -webkit-box-shadow: 15px 15px 60px #EAEEF1;
-        box-shadow: 15px 15px 60px #EAEEF1;
-        padding: 50px 0;
-        margin: 50px 0;
-    }
-
-    .chart-bars-block2 {
-        width: 95%;
-        border-bottom-right-radius: 30px;
-        border-top-right-radius: 30px;
-        -webkit-box-shadow: 15px 15px 60px #EAEEF1;
-        box-shadow: 15px 15px 60px #EAEEF1;
-        padding: 50px 0;
-        margin: 50px 0;
-    }
-
-    .chart-bars-block3 {
-        width: 95%;
-        border-bottom-right-radius: 30px;
-        border-top-right-radius: 30px;
-        -webkit-box-shadow: 15px 15px 60px #EAEEF1;
-        box-shadow: 15px 15px 60px #EAEEF1;
-        padding: 50px 0;
-        margin: 50px 0;
-    }
-
-    .chart-bars-block4 {
-        width: 95%;
-        border-bottom-right-radius: 30px;
-        border-top-right-radius: 30px;
-        -webkit-box-shadow: 15px 15px 60px #EAEEF1;
-        box-shadow: 15px 15px 60px #EAEEF1;
-        padding: 50px 0;
-        margin: 50px 0;
-    }
-
 
     .chart-bar-title {
         margin-left: 12%;
@@ -938,7 +879,6 @@
 
 
     .canvas-div {
-        /*here*/
         display: -webkit-box; /* wkhtmltopdf uses this one */
         display: -ms-flexbox;
         display: flex;
@@ -947,13 +887,6 @@
         margin-bottom: 70px;
         width: 100%;
         height: 400px;
-
-        /*display: flex;*/
-        /*position: relative;*/
-        /*margin-top: 100px;*/
-        /*width: 100%;*/
-        /*height: 400px;*/
-
     }
 
     .pieNums {
@@ -1104,37 +1037,43 @@
     }
 
     .progress-table1 {
-        width: 22%;
-        /*-webkit-display: -webkit-box;*/
-        /*-webkit-display: -webkit-flex;*/
+        /*display: -webkit-flex !important;*/
+        /*display: -ms-flexbox !important;*/
+        /*display: flex !important;*/
+        /*-webkit-flex-wrap: wrap !important;*/
+        /*-ms-flex-wrap: wrap !important;*/
+        /*flex-wrap: wrap !important;*/
+        /*margin-right: -15px !important;*/
+        /*margin-left: -15px !important;*/
+        /*width: 100%;*/
         /*display: -webkit-box;*/
         /*display: -ms-flexbox;*/
         /*display: flex;*/
-        -webkit-flex-wrap: wrap;
+        /*overflow-wrap: break-word;*/
+        /*-webkit-flex-wrap: wrap !important;*/
     }
 
     .progress-line {
-        /*-webkit-display: -webkit-box;*/
-        /*-webkit-display: -webkit-flex;*/
+        -webkit-display: -webkit-flex;
         display: -webkit-box; /* wkhtmltopdf uses this one */
         display: -webkit-flex;
         display: flex;
-
         -webkit-box-pack: center; /* wkhtmltopdf uses this one */
         -webkit-justify-content: space-between;
         justify-content: space-between;
-        width: 50%;
-        -webkit-box-align: end;
-        -ms-flex-align: end;
-        align-items: flex-end;
+        width: 22%;
+        /*-webkit-box-align: end;*/
+        /*-ms-flex-align: end;*/
+        /*align-items: flex-end;*/
         margin-bottom: 40px;
     }
 
     .progress-line p {
         margin: 0;
         /*!*line-height: 1;*!*/
-        width: 100%;
-        font-size: 24px;
+        margin-left: 9px;
+        width: 90%;
+        font-size: 20px;
     }
 
 
@@ -1488,9 +1427,6 @@
         width: 650px;
     }
 
-    section {
-        padding-left: 15px !important;
-    }
 
     .footer-top {
         margin-top: 250px;
@@ -1514,26 +1450,16 @@
     figure, figcaption, footer, header, hgroup,
     menu, nav, output, ruby, section, summary,
     time, mark, audio, video {
-        /*here*/
         margin: 0;
         padding: 0;
         border: 0;
-        /*font-size: 100%;*/
-        /*font: inherit;*/
         vertical-align: baseline;
         text-decoration: none;
-        /*-webkit-box-sizing: border-box;*/
-        /*box-sizing: border-box;*/
 
-        /*margin: 0;*/
-        /*padding: 0;*/
-        /*border: 0;*/
-        /*font-size: 100%;*/
-        /*font: inherit;*/
-        /*vertical-align: baseline;*/
-        /*text-decoration: none;*/
-        /*box-sizing: border-box;*/
+    }
 
+    section {
+        padding-left: 20px !important;
     }
 
     .header-count-inner1 {
@@ -1595,7 +1521,6 @@
 
     .footer {
         width: 80%;
-
     }
 
     .header p {
@@ -1797,7 +1722,7 @@
     </div>
 </section>
 
-<div id="secondBlock" style="page-break-after: always !important;"></div>
+<div id="secondBlock"></div>
 
 <div style="page-break-before: always !important;">
     <section class="count">
@@ -1856,30 +1781,30 @@
         };
     };
 
-
-
-    // createSecondBlock();
-
     var months = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
     var date2 = new Date();
     // document.getElementById("monthName1").innerHTML = months[date2.getMonth()] + ' ' + date2.getFullYear();
     // document.getElementById("monthName2").innerHTML = months[date2.getMonth()] + ' ' + date2.getFullYear();
 
-    var table = document.getElementById("pt1")
-    var table1 = document.getElementById("pt2")
-    var table2 = document.getElementById("pt3")
+    var table = document.getElementById("pt1");
+    var table1 = document.getElementById("pt2");
+    var table2 = document.getElementById("pt3");
 
 
     var arrFirst = /*[[${overallForYearByRegions}]]*/ [];
 
-    var arr = []
-    var arr2 = []
-    var arr3 = []
-    // getFirstHeader();
-    // getStat();
+    var arr = [];
+    var arr2 = [];
+    var arr3 = [];
+
     var secondBlock = document.getElementById('secondBlock');
 
 
+    function testFunction() {
+        console.log(arrFirst);
+    }
+
+    testFunction();
 
     function getProgress() {
         var progressId = 1;
@@ -1891,7 +1816,7 @@
             prStr += '<div id="progress-height"><div class="header-count-inner1">' +
                 '<div class="container"><div class="header-block"><div class="logo-title-count" style="width: 60%;">' +
                 '<h4>Строящиеся объекты ' +
-                'в разрезе регионов на '+arrFirst[pr1].year + ' год</h4></div></div></div>' +
+                'в разрезе регионов на ' + arrFirst[pr1].year + ' год</h4></div></div></div>' +
                 '<div style="transform: rotate(-180deg);background: -webkit-linear-gradient(180deg, #FFFFFF 0.34%, rgba(255, 255, 255, 0) 27.8%); padding: 20px 0;"></div>' +
                 '</div>' +
                 '<div class="container">' +
@@ -1910,89 +1835,70 @@
                 '<p>Всего</p>' +
                 '</div>' +
                 '</div>' +
-                '<div class="progress-table1" id="pt' + progressId + '">';
-
-
+                '<div class="progress-table1" id="pt' + progressId + '">' +
+                '<div class="row">';
             var breakStr = '';
-            // getTable(progressId);
+
+
             for (var pr2 = 0; pr2 < arrFirst[pr1].overallByRegions.length; pr2++) {
-                if (prStr.length <= 5000) {
+                console.log("pr2" + pr2);
+                console.log(arrFirst[pr1]);
+                console.log(prStr);
+                console.log(prStr.length);
 
-                    console.log("progressId1  " + progressId);
 
-                    var prStrLine = '';
-                    // progressDataLoading(arrFirst[pr1].overallByRegions[pr2], progressId)
-                    console.log("progressId " + progressId);
+                console.log("progressId1  " + progressId);
 
-                    prStr += '<div class="progress-line">' +
-                        '<p>' + arrFirst[pr1].overallByRegions[pr2].regionName + '</p>' +
-                        '<div class="progress-wrap1">' +
-                        '<p>' + arrFirst[pr1].overallByRegions[pr2].underConstruction + '</p>' +
-                        '<div class="progress">' +
-                        '<div class="progress-bar" role="progressbar" style="width:' + (arrFirst[pr1].overallByRegions[pr2].underConstruction / arrFirst[pr1].overallByRegions[pr2].overall) * 100 + '%;" aria-valuenow="' + arrFirst[pr1].overallByRegions[pr2].underConstruction + '" aria-valuemin="0" aria-valuemax="' + arrFirst[pr1].overallByRegions[pr2].overall + '"></div>' +
-                        '</div>' +
-                        '</div>' +
-                        '<div class="progress-wrap2">' +
-                        '<p>' + arrFirst[pr1].overallByRegions[pr2].completed + '</p>' +
-                        '<div class="progress">' +
-                        '<div class="progress-bar" role="progressbar" style="width:' + (arrFirst[pr1].overallByRegions[pr2].completed / arrFirst[pr1].overallByRegions[pr2].overall) * 100 + '%;" aria-valuenow="' + arrFirst[pr1].overallByRegions[pr2].completed + '" aria-valuemin="0" aria-valuemax="' + arrFirst[pr1].overallByRegions[pr2].overall + '"></div>' +
-                        '</div>' +
-                        '</div>' +
-                        '<p class="progress-sum">' + arrFirst[pr1].overallByRegions[pr2].overall + '</p>' +
-                        '</div>'
-
-                } else {
-                    breakStr = getFooter() + getSecondHeader();
-                    break;
+                var prStrLine = '';
+                console.log("progressId " + progressId);
+                if (pr2 === 0) {
+                    prStr += '<div class="col-6">'
                 }
+
+                prStr += '<div class="progress-line">' +
+                    '<p>' + arrFirst[pr1].overallByRegions[pr2].regionName + '</p>' +
+                    '<div class="progress-wrap1">' +
+                    '<p>' + arrFirst[pr1].overallByRegions[pr2].underConstruction + '</p>' +
+                    '<div class="progress">' +
+                    '<div class="progress-bar" role="progressbar" style="width:' + (arrFirst[pr1].overallByRegions[pr2].underConstruction / arrFirst[pr1].overallByRegions[pr2].overall) * 100 + '%;" aria-valuenow="' + arrFirst[pr1].overallByRegions[pr2].underConstruction + '" aria-valuemin="0" aria-valuemax="' + arrFirst[pr1].overallByRegions[pr2].overall + '"></div>' +
+                    '</div>' +
+                    '</div>' +
+                    '<div class="progress-wrap2">' +
+                    '<p>' + arrFirst[pr1].overallByRegions[pr2].completed + '</p>' +
+                    '<div class="progress">' +
+                    '<div class="progress-bar" role="progressbar" style="width:' + (arrFirst[pr1].overallByRegions[pr2].completed / arrFirst[pr1].overallByRegions[pr2].overall) * 100 + '%;" aria-valuenow="' + arrFirst[pr1].overallByRegions[pr2].completed + '" aria-valuemin="0" aria-valuemax="' + arrFirst[pr1].overallByRegions[pr2].overall + '"></div>' +
+                    '</div>' +
+                    '</div>' +
+                    '<p class="progress-sum">' + arrFirst[pr1].overallByRegions[pr2].overall + '</p>' +
+                    '</div>';
+
+                if (pr2 === 8) {
+                    prStr += '</div><div class="col-6">'
+                }
+                console.log("pr2 " + pr2)
+
             }
 
-            prStr += '</div>' +
+            if (pr1 === 0) {
+                breakStr = getFooter() + getSecondHeader();
+            } else if (pr1 % 2 === 0) {
+                breakStr = getFooter();
+            }
+
+            prStr += '</div></div>' +
                 '</div>' +
-                '</div>' + '</div>' + breakStr;
+                '</div>' + '</div>' + '</div>' + breakStr;
             allStr += prStr;
-            breakStr = '';
             prStr = '';
 
             progressId++;
 
         }
 
-
-
-
-        // if (Number(arrFirst[i].year) === 2020) {
-        //     for (var j = 0; j < arrFirst[i].overallByRegions.length; j++) {
-        //         arr.push(arrFirst[i].overallByRegions[j])
-        //     }
-        // } else if (Number(arrFirst[i].year) === 2021) {
-        //     for (var j = 0; j < arrFirst[i].overallByRegions.length; j++) {
-        //         arr2.push(arrFirst[i].overallByRegions[j])
-        //     }
-        // } else if (Number(arrFirst[i].year) === 2019) {
-        //     for (var j = 0; j < arrFirst[i].overallByRegions.length; j++) {
-        //         arr3.push(arrFirst[i].overallByRegions[j])
-        //     }
-        // }
-
-
         return allStr;
     }
 
-    console.log("getProgress " + getProgress())
-
-
     secondBlock.innerHTML = getFirstHeader() + getStat() + getProgress();
-
-    // var box = document.querySelector('top');
-    // console.log("box " + box)
-    // var width = box.className;
-    // var height = box.clientHeight;
-    //
-    // console.log("width " + width + " height  " + height)
-
-
-
 
     // mynda
     var overallForYears = /*[[${overallForYears}]]*/ [];
@@ -2020,49 +1926,9 @@
         document.getElementById("pt" + progressId).innerHTML = str
     }
 
-    function progressDataLoading2() {
-        var str = '';
-        for (var i = 0; i < arr2.length; i++) {
-            str += '<div class="progress-line">' +
-                '<p>' + arr2[i].regionName + '</p>' +
-                '<div class="progress-wrap3">' +
-                '<p>' + arr2[i].underConstruction + '</p>' +
-                '<div class="progress">' +
-                '<div class="progress-bar" role="progressbar" style="width:' + (arr2[i].underConstruction / arr2[i].overall) * 100 + '%;" aria-valuenow="' + arr2[i].underConstruction + '" aria-valuemin="0" aria-valuemax="' + arr2[i].overall + '"></div>' +
-                '</div>' +
-                '</div>' +
-                '<p class="progress-sum">' + arr2[i].overall + '</p>' +
-                '</div>'
-        }
-        table1.innerHTML = str
-    }
-
-    function progressDataLoading3() {
-        var str = '';
-        for (var i = 0; i < arr3.length; i++) {
-            str += '<div class="progress-line">' +
-                '<p>' + arr3[i].regionName + '</p>' +
-                '<div class="progress-wrap3">' +
-                '<p>' + arr3[i].underConstruction + '</p>' +
-                '<div class="progress">' +
-                '<div class="progress-bar" role="progressbar" style="width:' + (arr3[i].underConstruction / arr3[i].overall) * 100 + '%;" aria-valuenow="' + arr3[i].underConstruction + '" aria-valuemin="0" aria-valuemax="' + arr3[i].overall + '"></div>' +
-                '</div>' +
-                '</div>' +
-                '<p class="progress-sum">' + arr3[i].overall + '</p>' +
-                '</div>'
-        }
-        table2.innerHTML = str
-    }
-
-    // progressDataLoading();
-    // progressDataLoading2();
-    // progressDataLoading3();
-
     var barItems = document.getElementById("bar-items");
 
-
     var arrTop = /*[[${topTenList}]]*/ [];
-
 
     var str = '';
 
@@ -2226,13 +2092,9 @@
                                 '</div>';
                         }
 
-
-                        // processChart(chartBarId);
                         chartBarId++;
 
-                        // window.myLineChart.update();
                         potr += '</div>' + '</div>' + '</div>';
-                        // drawGraphs(months, prices);
 
                     }
 
@@ -2309,7 +2171,6 @@
             document.getElementById("pieNum-one").innerHTML = overall;
             document.getElementById("pieNum-two").innerHTML = completed;
             document.getElementById("pieNum-three").innerHTML = underConstruction;
-            // document.getElementById("pieNum-currentYear").innerHTML = currentYear;
 
             chartNums += '<div class="chart-number">' +
                 '<p>' + currentYear + '</p>' +
@@ -2341,8 +2202,6 @@
         }
 
     }
-    console.log(years)
-    console.log(yearValues)
 
     new Chart(document.getElementById("bar-chart"), {
         type: 'bar',
@@ -2394,12 +2253,6 @@
 
 
     });
-    // document.getElementById("chart-numbers").innerHTML = chartNums;
-
-
-    var randomScalingFactor = function () {
-        return Math.round(Math.random() * 100);
-    };
 
     var config = {
         type: 'doughnut',
@@ -2415,8 +2268,6 @@
                     '#9A9B9C',
                     '#000000',
                     '#05C43C'
-                    // window.chartColors.green,
-                    // window.chartColors.blue,
                 ],
                 label: 'Dataset 1'
             }],
@@ -2434,42 +2285,42 @@
     };
 
     function getFirstHeader() {
-        return "<section class='count'>" +
-            "<div class='header-count-inner'>" +
-            "<div class='container'>" +
-            "<header class='header'>" +
-            "<p>StroyMart.<span>kz</span></p>" +
-            "</header>" +
-            "<div class='header-block'>" +
-            "<div class='header-bg'>" +
-            "<img src='http://localhost:8080/assets/header-bg.png'>" +
-            "</div>" +
-            "<div class='logo-title-count'>" +
-            "<h3>Количество</h3>" +
-            "<h4>строящихся" +
-            " объектов </h4>" +
-            "</div>" +
-            "</div>" +
-            "</div>" +
-            "<div style=' -webkit-transform: rotate(-180deg);" +
-            " -ms-transform: rotate(-180deg);" +
-            "transform: rotate(-180deg);background: -webkit-linear-gradient(180deg, #FFFFFF 0.34%, rgba(255, 255, 255, 0) 27.8%); padding: 20px 0;'></div>" +
-            "</div>" +
-            "<div class='container' style='display:block; clear:both; '>" +
-            "<div class='count-labels'>" +
-            "<div class='count-label--item'>" +
-            "<div class='color color-finished'>" +
-            "</div>" +
-            "<span>- Завершенные</span>" +
-            "</div>" +
-            "<div class='count-label--item'>" +
-            "<div class='color color-progress'>" +
-            "</div>" +
-            "<span>- Строящиеся </span>" +
-            "</div>" +
-            "</div>" +
-            "</div>" +
-            "</section>";
+        return '<section class="count">' +
+            '<div class="header-count-inner">' +
+            '<div class="container">' +
+            '<header class="header">' +
+            '<p>StroyMart.<span>kz</span></p>' +
+            '</header>' +
+            '<div class="header-block">' +
+            '<div class="header-bg">' +
+            '<img src="http://localhost:8080/assets/header-bg.png">' +
+            '</div>' +
+            '<div class="logo-title-count">' +
+            '<h3>Количество</h3>' +
+            '<h4>строящихся' +
+            ' объектов </h4>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '<div style=" -webkit-transform: rotate(-180deg);' +
+            ' -ms-transform: rotate(-180deg);' +
+            'transform: rotate(-180deg);background: -webkit-linear-gradient(180deg, #FFFFFF 0.34%, rgba(255, 255, 255, 0) 27.8%); padding: 20px 0;"></div>' +
+            '</div>' +
+            '<div class="container" style="display:block; clear:both; ">' +
+            '<div class="count-labels">' +
+            '<div class="count-label--item">' +
+            '<div class="color color-finished">' +
+            '</div>' +
+            '<span>- Завершенные</span>' +
+            '</div>' +
+            '<div class="count-label--item">' +
+            '<div class="color color-progress">' +
+            '</div>' +
+            '<span>- Строящиеся </span>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</section>';
     }
 
     function getStat() {
@@ -2496,13 +2347,11 @@
             "<canvas id='bar-chart'></canvas>" +
             "</div>" +
             "</div>" +
-            // "<div id='chart-numbers'>" +
-            // "</div>" +
             "</div>"
     }
 
     function getSecondHeader() {
-        return "<div class='header-count-inner'>" +
+        return "<div class='header-count-inner' style='page-break-before: always;'>" +
             "<div class='container'>" +
             "<header class='header'>" +
             "<p>StroyMart.<span>kz</span></p>" +
@@ -2522,7 +2371,7 @@
         return '<div class="header-count-inner1">' +
             '<div class="container"><div class="header-block"><div class="logo-title-count" style="width: 60%;">' +
             '<h4>Строящиеся объекты ' +
-            'в разрезе регионов на '+year + ' год</h4></div></div></div>' +
+            'в разрезе регионов на ' + year + ' год</h4></div></div></div>' +
             '<div style="transform: rotate(-180deg);background: -webkit-linear-gradient(180deg, #FFFFFF 0.34%, rgba(255, 255, 255, 0) 27.8%); padding: 20px 0;"></div>' +
             '</div>' +
             '<div class="container">' +
@@ -2548,8 +2397,8 @@
     }
 
     function getFooter() {
-        return "<div class='container'>" +
-            "<footer class='footer footer-count'>" +
+        return "<div>" +
+            "<footer class='footer'>" +
             "<p>Потребность строительного рынка на 2020-2021гг.</p>" +
             "<div class='line'></div>" +
             "<p>Разработано на основании автоматического анализа KENML смет системой GENRO (АО Институт цифровой" +
@@ -2559,16 +2408,6 @@
             "</div>";
     }
 
-    // var aba = document.getElementById("secondBlock").getBoundingClientRect().height;
-    // console.log("Aba " + aba)
-    //
-    // var height = $("#secondBlock").height();
-    // console.log("NExt " + height)
-
-    function createSecondBlock() {
-        var secondBlock = document.getElementById('secondBlock');
-        secondBlock.innerHTML = getFirstHeader() + getStat() + getTable(1) + getFooter() + getSecondHeader() + getTable(2) + getFooter();
-    }
 </script>
 </body>
 </html>
