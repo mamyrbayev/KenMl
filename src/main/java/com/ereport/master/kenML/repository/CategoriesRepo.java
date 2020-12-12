@@ -31,5 +31,8 @@ public interface CategoriesRepo extends JpaRepository<Categories, Integer>{
     Categories update(Integer id, String name, String description, Integer updatedBy, Date updatedAt);
 
 
+    @Query(value = "exec [kenml].[Booklet_FindAllCategoriesByReportId] @ReportId = :id", nativeQuery = true)
+    List<Categories> findAllCategoriesByReportId(Integer id);
+
 
 }

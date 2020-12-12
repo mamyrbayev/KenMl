@@ -1,13 +1,17 @@
 package com.ereport.master.kenML.controller;
 
 import com.ereport.master.controller.BaseController;
+import com.ereport.master.domain.Category;
 import com.ereport.master.exceptions.ServiceException;
+import com.ereport.master.kenML.domain.Categories;
 import com.ereport.master.kenML.domain.Reports;
 import com.ereport.master.kenML.service.ReportsService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @AllArgsConstructor
@@ -51,5 +55,10 @@ public class ReportsController extends BaseController {
     @GetMapping("/findAll/V2")
     public ResponseEntity<?> getAllV2() {
         return buildResponse(reportsService.findAllToFront(), HttpStatus.OK);
+    }
+
+    @PutMapping("/update/categoryList")
+    public ResponseEntity<?> update(@RequestParam Integer id, @RequestBody List<Integer> categories) throws ServiceException {
+        return buildResponse(reportsService.setCategoryList(id, categories), HttpStatus.OK);
     }
 }

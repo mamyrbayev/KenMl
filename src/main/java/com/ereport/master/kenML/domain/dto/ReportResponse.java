@@ -1,6 +1,6 @@
 package com.ereport.master.kenML.domain.dto;
 
-import com.ereport.master.domain.Category;
+import com.ereport.master.kenML.domain.Categories;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -42,7 +42,7 @@ public class ReportResponse {
 
     private Long sendAfterTime;
 
-//    private List<Category> category;
+    private List<Categories> category;
 
     private String status;
     private Integer numOfReports;

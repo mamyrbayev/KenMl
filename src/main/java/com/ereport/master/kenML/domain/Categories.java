@@ -29,7 +29,6 @@ public class Categories {
     @Column( name = "Description")
     private String description;
 
-
     @Column(name = "created_by")
     private Integer createdBy;
 

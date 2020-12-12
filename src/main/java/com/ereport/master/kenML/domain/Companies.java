@@ -21,7 +21,7 @@ public class Companies {
     private Integer id;
 
     @Column(name = "LastUpdatedOn")
-    private Date lastUpdatedOn;
+    private Date lastUpdatedOn = new Date();
 
     @Column(name = "BIN")
     private String bin;

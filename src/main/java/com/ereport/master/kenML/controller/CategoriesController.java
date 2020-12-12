@@ -42,6 +42,16 @@ public class CategoriesController extends BaseController {
     }
 
 
+    @GetMapping("/report")
+    public ResponseEntity<?> getByReportId(@RequestParam Integer id) {
+        return buildResponse(categoriesService.findAllByReportId(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/report/v2")
+    public ResponseEntity<?> getByReportIdV2(@RequestParam Integer id) {
+        return buildResponse(categoriesService.findAllByReportIdV2(id), HttpStatus.OK);
+    }
+
 
 
 }

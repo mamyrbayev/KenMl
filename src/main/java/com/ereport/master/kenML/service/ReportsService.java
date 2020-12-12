@@ -1,10 +1,10 @@
 package com.ereport.master.kenML.service;
 
 import com.ereport.master.domain.dto.ExpirationTimeResponse;
-import com.ereport.master.domain.dto.ReportDTO;
 import com.ereport.master.kenML.domain.Publications;
 import com.ereport.master.kenML.domain.Reports;
 import com.ereport.master.kenML.domain.dto.ReportResponse;
+import com.ereport.master.kenML.repository.ReportCategoriesRepo;
 import com.ereport.master.kenML.repository.ReportsRepo;
 import com.ereport.master.kenML.service.wrapper.ServiceWrapper;
 import org.springframework.stereotype.Service;
@@ -17,10 +17,14 @@ import java.util.List;
 public class ReportsService {
     private final ReportsRepo reportsRepo;
     private final ServiceWrapper serviceWrapper;
+    private final ReportCategoriesRepo reportCategoriesRepo;
+    private final CategoriesService categoriesService;
 
-    public ReportsService(ReportsRepo reportsRepo, ServiceWrapper serviceWrapper) {
+    public ReportsService(ReportsRepo reportsRepo, ServiceWrapper serviceWrapper, ReportCategoriesRepo reportCategoriesRepo, CategoriesService categoriesService) {
         this.reportsRepo = reportsRepo;
         this.serviceWrapper = serviceWrapper;
+        this.reportCategoriesRepo = reportCategoriesRepo;
+        this.categoriesService = categoriesService;
     }
 
     public Reports save(Reports r){
@@ -93,7 +97,7 @@ public class ReportsService {
                 .generateInSaturday(report.isGenerateInSaturday())
                 .generateInSunday(report.isGenerateInSunday())
                 .autoSending(report.isAutoSending())
-//                .category(report.getCategory())
+                .category(categoriesService.findAllByReportId(id))
                 .numOfReports(serviceWrapper.getPublicationsService().getAllByReportId(report.getId()).size())
                 .status(serviceWrapper.getPublicationsService().getStatusFromPublications(report.getId()))
                 .build();
@@ -107,6 +111,23 @@ public class ReportsService {
             reportResponses.add(findByIdToFront(report.getId()));
         }
         return reportResponses;
+    }
+
+
+    public List<Integer> setCategoryList(Integer id, List<Integer> categories) {
+        try {
+            reportCategoriesRepo.deleteAllByReportIdd(id);
+        }catch (Exception e){
+
+        }
+        for(Integer category: categories){
+            try {
+                reportCategoriesRepo.add(id, category);
+            }catch (Exception e) {
+
+            }
+        }
+        return categories;
     }
 
 
