@@ -1,7 +1,7 @@
 package com.ereport.master.service.wrapper;
 
 import com.ereport.master.service.MaterialListService;
-import com.ereport.master.service.PublicationsService;
+import com.ereport.master.service.PublicationsServiceOld;
 import com.ereport.master.service.ReportService;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
@@ -9,14 +9,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class Wrapper {
     private final ReportService reportService;
-    private final PublicationsService publicationsService;
+    private final PublicationsServiceOld publicationsServiceOld;
     private final MaterialListService materialListService;
 
 
     @Lazy
-    public Wrapper(ReportService reportService, PublicationsService publicationsService, MaterialListService materialListService) {
+    public Wrapper(ReportService reportService, PublicationsServiceOld publicationsServiceOld, MaterialListService materialListService) {
         this.reportService = reportService;
-        this.publicationsService = publicationsService;
+        this.publicationsServiceOld = publicationsServiceOld;
         this.materialListService = materialListService;
     }
 
@@ -24,8 +24,8 @@ public class Wrapper {
         return reportService;
     }
 
-    public PublicationsService getPublicationsService() {
-        return publicationsService;
+    public PublicationsServiceOld getPublicationsServiceOld() {
+        return publicationsServiceOld;
     }
 
     public MaterialListService getMaterialListService(){

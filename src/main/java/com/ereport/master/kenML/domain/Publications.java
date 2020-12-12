@@ -31,7 +31,7 @@ public class Publications {
 
     @Column( name = "PublicationDate")
     @JsonFormat(shape = JsonFormat.Shape.STRING, timezone="Asia/Almaty")
-    private Date publicationDate;
+    private Date publicationDate = new Date();
 
     @Column( name = "SendingDate")
     @JsonFormat(shape = JsonFormat.Shape.STRING, timezone="Asia/Almaty")
@@ -44,7 +44,7 @@ public class Publications {
     @Column(name= "AutoSending")
     private boolean autoSending = false;
 
-    @Column(name= "file_path")
+    @Column(name= "FilePath")
     private String filePath;
 
     @Column(name = "created_by")

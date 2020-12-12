@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface PublicationsRepo extends JpaRepository<Publications, Long> {
+public interface PublicationsRepoOld extends JpaRepository<Publications, Long> {
 
     @Query(value = "SELECT *\n" +
             "from publication\n" +

@@ -48,8 +48,8 @@ public class ReportService {
                     .generateInSunday(report.isGenerateInSunday())
                     .autoSending(report.isAutoSending())
                     .category(report.getCategory())
-                    .numOfReports(wrapper.getPublicationsService().getAllByReportId(report.getId()).size())
-                    .status(wrapper.getPublicationsService().getStatusFromPublications(report.getId()))
+                    .numOfReports(wrapper.getPublicationsServiceOld().getAllByReportId(report.getId()).size())
+                    .status(wrapper.getPublicationsServiceOld().getStatusFromPublications(report.getId()))
                     .build();
             reportDTOS.add(reportDTO);
         }
@@ -88,8 +88,8 @@ public class ReportService {
                 .generateInSunday(report.isGenerateInSunday())
                 .autoSending(report.isAutoSending())
                 .category(report.getCategory())
-                .numOfReports(wrapper.getPublicationsService().getAllByReportId(report.getId()).size())
-                .status(wrapper.getPublicationsService().getStatusFromPublications(report.getId()))
+                .numOfReports(wrapper.getPublicationsServiceOld().getAllByReportId(report.getId()).size())
+                .status(wrapper.getPublicationsServiceOld().getStatusFromPublications(report.getId()))
                 .build();
         return reportDTO;
     }
@@ -122,7 +122,7 @@ public class ReportService {
 
 
     public ExpirationTimeResponse getExpirationTime(Long reportId){
-        Publications publications = wrapper.getPublicationsService().getLastByReportId(reportId);
+        Publications publications = wrapper.getPublicationsServiceOld().getLastByReportId(reportId);
 
 
         Long sendingTime = publications.getPublicationDate().getTime() + publications.getReport().getSendAfterTime();

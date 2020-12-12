@@ -8,7 +8,7 @@ import com.ereport.master.domain.enums.Status;
 import com.ereport.master.domain.Publications;
 import com.ereport.master.exceptions.ErrorCode;
 import com.ereport.master.exceptions.ServiceException;
-import com.ereport.master.repository.PublicationsRepo;
+import com.ereport.master.repository.PublicationsRepoOld;
 import com.ereport.master.service.wrapper.Wrapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -23,29 +23,29 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-public class PublicationsService {
-    private final PublicationsRepo publicationsRepo;
+public class PublicationsServiceOld {
+    private final PublicationsRepoOld publicationsRepoOld;
     private final Wrapper wrapper;
     private final ContractorService contractorService;
     private final HtmlToPdfService htmlToPdfService;
 
-    public PublicationsService(PublicationsRepo publicationsRepo, Wrapper wrapper,
-                               ContractorService contractorService, HtmlToPdfService htmlToPdfService) {
-        this.publicationsRepo = publicationsRepo;
+    public PublicationsServiceOld(PublicationsRepoOld publicationsRepoOld, Wrapper wrapper,
+                                  ContractorService contractorService, HtmlToPdfService htmlToPdfService) {
+        this.publicationsRepoOld = publicationsRepoOld;
         this.wrapper = wrapper;
         this.contractorService = contractorService;
         this.htmlToPdfService = htmlToPdfService;
     }
 
     public List<Publications> findAll() {
-        return publicationsRepo.findAllByDeletedAtIsNull();
+        return publicationsRepoOld.findAllByDeletedAtIsNull();
     }
 
 
 
     public Publications add(Publications publications) throws ServiceException {
         if(publications.getId() == null){
-            publicationsRepo.save(publications);
+            publicationsRepoOld.save(publications);
             return publications;
         }else {
             throw ServiceException.builder()
@@ -57,12 +57,12 @@ public class PublicationsService {
     }
 
     public Publications findId(Long id) {
-        return publicationsRepo.findByIdAndDeletedAtIsNull(id);
+        return publicationsRepoOld.findByIdAndDeletedAtIsNull(id);
     }
 
     public Publications update(Publications publications) throws ServiceException {
         if(publications != null){
-            publicationsRepo.save(publications);
+            publicationsRepoOld.save(publications);
             return publications;
         }else {
             throw ServiceException.builder()
@@ -74,10 +74,10 @@ public class PublicationsService {
     }
 
     public void delete(Long id) {
-        Publications publications = publicationsRepo.findByIdAndDeletedAtIsNull(id);
+        Publications publications = publicationsRepoOld.findByIdAndDeletedAtIsNull(id);
         Date date = new Date();
         publications.setDeletedAt(date);
-        publicationsRepo.save(publications);
+        publicationsRepoOld.save(publications);
     }
 
 
@@ -109,7 +109,7 @@ public class PublicationsService {
     }
 
     public void sendPublicationByScheduler() throws ParseException {
-        List<Publications> publications = publicationsRepo.findAllByStatus(String.valueOf(Status.PUBLISHED));
+        List<Publications> publications = publicationsRepoOld.findAllByStatus(String.valueOf(Status.PUBLISHED));
         for(Publications publication: publications){
             long tenMinsInMills = publication.getReport().getSendAfterTime();//millisecs
 
@@ -152,11 +152,11 @@ public class PublicationsService {
     }
 
     public List<Publications> getAllByReportId(Long reportId) {
-        return publicationsRepo.findAllByDeletedAtIsNullAndReportId(reportId);
+        return publicationsRepoOld.findAllByDeletedAtIsNullAndReportId(reportId);
     }
 
     public Publications getLastByReportId(Long reportId) {
-        return publicationsRepo.findLastByDeletedAtIsNullAndReportId(reportId);
+        return publicationsRepoOld.findLastByDeletedAtIsNullAndReportId(reportId);
     }
 
     public String getStatusFromPublications(Long reportId){
@@ -172,7 +172,7 @@ public class PublicationsService {
     }
 
     public PublicationsResponse findIdResp(Long id) {
-        Publications publications = publicationsRepo.findByIdAndDeletedAtIsNull(id);
+        Publications publications = publicationsRepoOld.findByIdAndDeletedAtIsNull(id);
         PublicationsResponse publicationsResponse = PublicationsResponse.builder()
                 .createdAt(publications.getCreatedAt())
                 .autoSending(publications.isAutoSending())
@@ -192,7 +192,7 @@ public class PublicationsService {
 
     public List<PublicationsResponse> getAllByReportIdToFront(Long reportId) {
         List<PublicationsResponse> publicationsResponses = new ArrayList<>();
-        List<Publications> publications = publicationsRepo.findAllByDeletedAtIsNullAndReportId(reportId);
+        List<Publications> publications = publicationsRepoOld.findAllByDeletedAtIsNullAndReportId(reportId);
 
         for(Publications publications1: publications){
             publicationsResponses.add(findIdResp(publications1.getId()));

@@ -21,7 +21,7 @@ public class ReportsController extends BaseController {
     }
 
 
-    @GetMapping("/all")
+    @GetMapping("/findAll")
     public ResponseEntity<?> getAll() {
         return buildResponse(reportsService.findAll(), HttpStatus.OK);
     }
@@ -38,6 +38,18 @@ public class ReportsController extends BaseController {
         return buildResponse(reportsService.update(reports), HttpStatus.OK);
     }
 
+    @GetMapping("/expiration")
+    public ResponseEntity<?> getExpirationTime(@RequestParam Integer id){
+        return buildResponse(reportsService.getExpirationTime(id), HttpStatus.OK);
+    }
 
+    @GetMapping("/findId/V2")
+    public ResponseEntity<?> getIdV2(@RequestParam Integer id) {
+        return buildResponse(reportsService.findByIdToFront(id), HttpStatus.OK);
+    }
 
+    @GetMapping("/findAll/V2")
+    public ResponseEntity<?> getAllV2() {
+        return buildResponse(reportsService.findAllToFront(), HttpStatus.OK);
+    }
 }
