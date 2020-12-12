@@ -25,16 +25,6 @@ public interface CompaniesRepo extends JpaRepository<Companies, Integer> {
     List<Companies> findAllByLocalityId(Integer localityId);
 
 
-    @Query(value = "exec [kenml].[Booklet_SaveCompanies] @LastUpdatedOn = :lastUpdatedOn, @BIN = :bin, " +
-            "@Title = :title, @DirectorName = :directorName, " +
-            "@DirectorPhone = :directorPhone, @EmailAddress = :emailAddress, " +
-            "@PhysicalAddress = :physicalAddress, @CategoryID = :categoryID, " +
-            "@ContactName = :contactName, @ContactPhone = :contactPhone, ", nativeQuery = true)
-    Companies add(Date lastUpdatedOn, String bin, String title,
-                  String directorName, String directorPhone, String emailAddress,
-                  String physicalAddress, Integer categoryID, String contactName,
-                  String contactPhone);
-
 
     @Query(value = "exec [kenml].[Booklet_FindAllCompaniesByDeletedAtIsNull]", nativeQuery = true)
     List<Companies> findAllCompaniesByDeletedAtIsNull();
@@ -43,11 +33,11 @@ public interface CompaniesRepo extends JpaRepository<Companies, Integer> {
     Companies findCompaniesByIdAndDeletedAtIsNull(Integer id);
 
 
-    @Query(value = "exec [kenml].[Booklet_SaveCompanies] @ID = :id, @LastUpdatedOn = :lastUpdatedOn, @BIN = :bin, " +
+    @Query(value = "exec [kenml].[Booklet_UpdateCompanies] @ID = :id, @LastUpdatedOn = :lastUpdatedOn, @BIN = :bin, " +
             "@Title = :title, @DirectorName = :directorName, " +
             "@DirectorPhone = :directorPhone, @EmailAddress = :emailAddress, " +
             "@PhysicalAddress = :physicalAddress, @CategoryID = :categoryID, " +
-            "@ContactName = :contactName, @ContactPhone = :contactPhone, ", nativeQuery = true)
+            "@ContactName = :contactName, @ContactPhone = :contactPhone ", nativeQuery = true)
     Companies update(Integer id, Date lastUpdatedOn, String bin, String title,
                      String directorName, String directorPhone, String emailAddress,
                      String physicalAddress, Integer categoryID, String contactName,

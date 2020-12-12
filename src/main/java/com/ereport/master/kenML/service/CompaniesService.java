@@ -18,12 +18,6 @@ public class CompaniesService {
         return companiesRepo.findAllByLocalityId(localityId);
     }
 
-    public Companies save(Companies c){
-        return companiesRepo.add(c.getLastUpdatedOn(), c.getBin(), c.getTitle(), c.getDirectorName(),
-                c.getDirectorPhone(), c.getEmailAddress(), c.getPhysicalAddress(), c.getCategoryID(),
-                c.getContactName(), c.getContactPhone());
-    }
-
     public List<Companies> findAll(){
         return companiesRepo.findAllCompaniesByDeletedAtIsNull();
     }

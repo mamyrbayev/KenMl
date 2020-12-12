@@ -16,22 +16,22 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/api/reportmaterials")
+@RequestMapping("/api/materialList")
 public class ReportMaterialsController extends BaseController {
-
-
     private final ReportMaterialsService reportMaterialsService;
-
 
     @GetMapping("/all")
     public ResponseEntity<?> getAll() {
         return buildResponse(reportMaterialsService.findAll(), HttpStatus.OK);
     }
 
-
     @PostMapping("/useFilter")
     public ResponseEntity<?> useFilter(@RequestBody List<ReportMaterials> reportMaterialsList) throws ServiceException {
         return buildResponse(reportMaterialsService.useFilter(reportMaterialsList), HttpStatus.OK);
     }
 
+    @PostMapping("/add")
+    public ResponseEntity<?> useFilter(@RequestBody ReportMaterials reportMaterials) throws ServiceException {
+        return buildResponse(reportMaterialsService.save(reportMaterials), HttpStatus.OK);
+    }
 }

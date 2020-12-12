@@ -29,7 +29,7 @@ public class ReportMaterials {
 
 
     @Column( name = "MaterialCode")
-    private String materialCode;
+    private String mtCode;
 
 
 }

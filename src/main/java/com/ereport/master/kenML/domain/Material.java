@@ -24,7 +24,7 @@ public class Material {
     private Long mtOwner;
 
     @Column(name = "MT_CODE")
-    private String myCode;
+    private String mtCode;
 
     @Column(name = "MT_NAME")
     private String mtName;

@@ -43,7 +43,7 @@ public class ReportGenerationService {
 
         List<Potrebnosti> potrebnostis = new ArrayList<>();
         Material material = materialService.getByMaterialCode("210102010604");
-        List<LocalitiesByMatrial> localitiesByMatrials = localitiesService.getAllByMaterialCode(material.getMyCode());
+        List<LocalitiesByMatrial> localitiesByMatrials = localitiesService.getAllByMaterialCode(material.getMtCode());
         potrebnostis.add(Potrebnosti.builder()
                 .material(material)
                 .localitiesByMatrials(localitiesByMatrials)

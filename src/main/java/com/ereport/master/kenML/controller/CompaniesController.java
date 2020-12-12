@@ -14,12 +14,6 @@ import org.springframework.web.bind.annotation.*;
 public class CompaniesController extends BaseController {
     private final CompaniesService companiesService;
 
-    @PostMapping("/add")
-    public ResponseEntity<?> add(@RequestBody Companies companies){
-        return buildResponse(companiesService.save(companies), HttpStatus.OK);
-    }
-
-
     @GetMapping("/all")
     public ResponseEntity<?> getAll() {
         return buildResponse(companiesService.findAll(), HttpStatus.OK);

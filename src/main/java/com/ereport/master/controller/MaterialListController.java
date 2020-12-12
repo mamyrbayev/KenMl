@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/materialList")
+@RequestMapping("/api/materialList/old")
 public class MaterialListController extends BaseController {
     private final MaterialListService materialListService;
 
