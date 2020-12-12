@@ -1,4 +1,4 @@
-package com.ereport.master.service;
+package com.ereport.master.kenML.service;
 
 import com.ereport.master.email.emailHelper.EmailHelper;
 import com.ereport.master.kenML.domain.dto.*;

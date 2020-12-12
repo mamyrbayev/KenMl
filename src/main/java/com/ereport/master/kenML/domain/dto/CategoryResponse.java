@@ -1,7 +1,6 @@
 package com.ereport.master.kenML.domain.dto;
 
-import com.ereport.master.domain.Contractor;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.ereport.master.kenML.domain.Companies;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,5 +16,5 @@ import java.util.List;
 public class CategoryResponse {
     private String categoryName;
     private String description;
-    private List<Contractor> contractors;
+    private List<Companies> contractors;
 }

@@ -1,8 +1,6 @@
 package com.ereport.master.kenML.repository;
 
-import com.ereport.master.domain.enums.Status;
 import com.ereport.master.kenML.domain.Publications;
-import com.ereport.master.kenML.domain.Reports;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

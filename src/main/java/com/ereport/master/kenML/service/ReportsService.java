@@ -1,8 +1,8 @@
 package com.ereport.master.kenML.service;
 
-import com.ereport.master.domain.dto.ExpirationTimeResponse;
 import com.ereport.master.kenML.domain.Publications;
 import com.ereport.master.kenML.domain.Reports;
+import com.ereport.master.kenML.domain.dto.ExpirationTimeResponse;
 import com.ereport.master.kenML.domain.dto.ReportResponse;
 import com.ereport.master.kenML.repository.ReportCategoriesRepo;
 import com.ereport.master.kenML.repository.ReportsRepo;
@@ -35,7 +35,9 @@ public class ReportsService {
     }
 
     public List<Reports> findAll(){
-        return reportsRepo.findAllReportsByDeletedAtIsNull();
+        List<Reports> reports =reportsRepo.findAllReportsByDeletedAtIsNull();
+//        String asd= "asd";/**/
+        return reports;
     }
 
     public Reports findById(Integer id){

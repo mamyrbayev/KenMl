@@ -29,6 +29,8 @@ public interface ReportsRepo extends JpaRepository<Reports, Integer> {
     @Query(value = "exec [kenml].[Booklet_FindAllReportsByDeletedAtIsNull]", nativeQuery = true)
     List<Reports> findAllReportsByDeletedAtIsNull();
 
+
+
     @Query(value = "exec [kenml].[Booklet_FindReportsByIdAndDeletedAtIsNull] @ReportsID = :id", nativeQuery = true)
     Reports findReportsByIdAndDeletedAtIsNull(Integer id);
 

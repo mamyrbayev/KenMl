@@ -23,13 +23,13 @@ public class Reports {
     @Column( name = "ID")
     private Integer id;
     
-    @Column( name = "Name")
+    @Column( name = "name")
     private String name;
 
-    @Column(name = "DaysOfPublications")
+    @Column(name = "time_of_publication")
     private String timeOfPublication;
 
-    @Column(name= "AutoSending")
+    @Column(name= "sending_automatically")
     private boolean autoSending = false;
 
     @Column(name = "Generate_on_Monday")
@@ -53,10 +53,10 @@ public class Reports {
     @Column(name = "Generate_on_Sunday")
     private boolean generateInSunday = false;
 
-    @Column(name= "IconPath")
+    @Column(name= "path_icon")
     private String iconPath;
 
-    @Column(name = "SendAfterTime")
+    @Column(name = "send_after_time")
     private Long sendAfterTime;
 
     @Column(name = "Publicate")

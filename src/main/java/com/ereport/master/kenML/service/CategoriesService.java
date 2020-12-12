@@ -1,7 +1,5 @@
 package com.ereport.master.kenML.service;
 
-import com.ereport.master.domain.Category;
-import com.ereport.master.domain.dto.CategoryDTO;
 import com.ereport.master.kenML.domain.Categories;
 import com.ereport.master.kenML.domain.dto.CategoryResponse;
 import com.ereport.master.kenML.repository.CategoriesRepo;

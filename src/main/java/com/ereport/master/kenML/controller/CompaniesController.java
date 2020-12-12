@@ -1,6 +1,5 @@
 package com.ereport.master.kenML.controller;
 
-import com.ereport.master.controller.BaseController;
 import com.ereport.master.kenML.domain.Companies;
 import com.ereport.master.kenML.service.CompaniesService;
 import lombok.AllArgsConstructor;

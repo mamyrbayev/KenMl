@@ -1,4 +1,4 @@
-package com.ereport.master.domain.dto;
+package com.ereport.master.kenML.domain.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

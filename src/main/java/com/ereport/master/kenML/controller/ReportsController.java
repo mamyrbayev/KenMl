@@ -1,9 +1,6 @@
 package com.ereport.master.kenML.controller;
 
-import com.ereport.master.controller.BaseController;
-import com.ereport.master.domain.Category;
 import com.ereport.master.exceptions.ServiceException;
-import com.ereport.master.kenML.domain.Categories;
 import com.ereport.master.kenML.domain.Reports;
 import com.ereport.master.kenML.service.ReportsService;
 import lombok.AllArgsConstructor;

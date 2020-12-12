@@ -1,11 +1,7 @@
 package com.ereport.master.kenML.controller;
 
-
-import com.ereport.master.controller.BaseController;
 import com.ereport.master.kenML.domain.Categories;
-import com.ereport.master.kenML.domain.Reports;
 import com.ereport.master.kenML.service.CategoriesService;
-import com.ereport.master.kenML.service.ReportsService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

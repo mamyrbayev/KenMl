@@ -1,6 +1,5 @@
 package com.ereport.master.kenML.domain.dto;
 
-import com.ereport.master.domain.MaterialList;
 import com.ereport.master.kenML.domain.Material;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

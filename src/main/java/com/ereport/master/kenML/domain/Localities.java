@@ -26,6 +26,6 @@ public class Localities {
     @Column(name = "RegionID")
     private Integer regionId;
 
-    @Column(name = "LastUpdatedOn")
+    @Column(name = "updated_at")
     private Date lastUpdatedOn;
 }

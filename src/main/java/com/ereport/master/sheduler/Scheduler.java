@@ -1,8 +1,8 @@
 package com.ereport.master.sheduler;
 
 import com.ereport.master.exceptions.ServiceException;
+import com.ereport.master.kenML.service.HtmlToPdfService;
 import com.ereport.master.kenML.service.PublicationsService;
-import com.ereport.master.service.HtmlToPdfService;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

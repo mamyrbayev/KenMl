@@ -1,4 +1,4 @@
-package com.ereport.master.controller;
+package com.ereport.master.kenML.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

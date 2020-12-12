@@ -1,6 +1,5 @@
 package com.ereport.master.kenML.controller;
 
-import com.ereport.master.controller.BaseController;
 import com.ereport.master.kenML.service.RegionsService;
 import io.swagger.annotations.Api;
 import lombok.AllArgsConstructor;

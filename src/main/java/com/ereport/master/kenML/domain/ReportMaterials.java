@@ -28,7 +28,7 @@ public class ReportMaterials {
     private Integer reportId;
 
 
-    @Column( name = "MaterialCode")
+    @Column( name = "material_code")
     private String mtCode;
 
 

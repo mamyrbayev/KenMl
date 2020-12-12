@@ -1,15 +1,13 @@
 package com.ereport.master.kenML.domain;
 
-import com.ereport.master.domain.enums.Status;
+import com.ereport.master.kenML.domain.enums.Status;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -29,11 +27,11 @@ public class Publications {
     @Column( name = "ReportID")
     private Integer reportId;
 
-    @Column( name = "PublicationDate")
+    @Column( name = "publication_date")
     @JsonFormat(shape = JsonFormat.Shape.STRING, timezone="Asia/Almaty")
     private Date publicationDate = new Date();
 
-    @Column( name = "SendingDate")
+    @Column( name = "sending_date")
     @JsonFormat(shape = JsonFormat.Shape.STRING, timezone="Asia/Almaty")
     private Date sendingDate;
 
@@ -41,10 +39,10 @@ public class Publications {
     @Column(name = "Status")
     private Status status;
 
-    @Column(name= "AutoSending")
+    @Column(name= "sending_automatically")
     private boolean autoSending = false;
 
-    @Column(name= "FilePath")
+    @Column(name= "file_path")
     private String filePath;
 
     @Column(name = "created_by")

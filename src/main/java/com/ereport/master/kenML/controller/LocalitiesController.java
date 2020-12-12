@@ -1,9 +1,6 @@
 package com.ereport.master.kenML.controller;
 
-import com.ereport.master.controller.BaseController;
 import com.ereport.master.kenML.service.LocalitiesService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,11 +1,10 @@
 package com.ereport.master.kenML.service;
 
-import com.ereport.master.domain.enums.Status;
 import com.ereport.master.kenML.domain.Publications;
 import com.ereport.master.kenML.domain.Reports;
+import com.ereport.master.kenML.domain.enums.Status;
 import com.ereport.master.kenML.repository.PublicationsRepo;
 import com.ereport.master.kenML.service.wrapper.ServiceWrapper;
-import com.ereport.master.service.HtmlToPdfService;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;

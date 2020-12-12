@@ -18,7 +18,7 @@ public class Objects {
     @Column(name = "ID")
     private Integer id;
 
-    @Column(name = "ObjectName")
+    @Column(name = "object_name")
     private String objectName;
 
     @Column(name = "CompanyID")
@@ -27,6 +27,6 @@ public class Objects {
     @Column(name = "LocalityID")
     private Integer localityId;
 
-    @Column(name = "LastUpdatedOn")
+    @Column(name = "updated_at")
     private Date lastUpdatedOn;
 }
