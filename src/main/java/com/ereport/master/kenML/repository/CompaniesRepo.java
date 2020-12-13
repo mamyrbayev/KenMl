@@ -44,5 +44,14 @@ public interface CompaniesRepo extends JpaRepository<Companies, Integer> {
                      String contactPhone);
 
 
-
+    @Query(value = "SELECT ID, LastUpdatedOn as updated_at, BIN as bin, Title as title, DirectorName as director_name,\n" +
+            "                                               DirectorPhone as director_phone, EmailAddress as email_address, PhysicalAddress as physical_address,\n" +
+            "                                               CategoryID, ContactName as contact_name, ContactPhone as contact_phone\n" +
+            "FROM [kenml].[Companies]\n" +
+            "WHERE CategoryID in(\n" +
+            "    SELECT ReportCategories.CategoryID\n" +
+            "    FROM [kenml].[ReportCategories]\n" +
+            "    WHERE ReportID = :reportId\n" +
+            "    )", nativeQuery = true)
+    List<Companies> findAllCompaniesByReportId(Integer reportId);
 }

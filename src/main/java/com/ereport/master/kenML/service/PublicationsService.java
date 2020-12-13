@@ -1,8 +1,11 @@
 package com.ereport.master.kenML.service;
 
+import com.ereport.master.kenML.domain.Companies;
 import com.ereport.master.kenML.domain.Publications;
 import com.ereport.master.kenML.domain.Reports;
+import com.ereport.master.kenML.domain.dto.PublicationsResponse;
 import com.ereport.master.kenML.domain.enums.Status;
+import com.ereport.master.kenML.repository.CompaniesRepo;
 import com.ereport.master.kenML.repository.PublicationsRepo;
 import com.ereport.master.kenML.service.wrapper.ServiceWrapper;
 import org.springframework.stereotype.Service;
@@ -21,11 +24,13 @@ public class PublicationsService {
     private final PublicationsRepo publicationsRepo;
     private final ServiceWrapper serviceWrapper;
     private final HtmlToPdfService htmlToPdfService;
+    private final CompaniesRepo companiesRepo;
 
-    public PublicationsService(PublicationsRepo publicationsRepo, ServiceWrapper serviceWrapper, HtmlToPdfService htmlToPdfService) {
+    public PublicationsService(PublicationsRepo publicationsRepo, ServiceWrapper serviceWrapper, HtmlToPdfService htmlToPdfService, CompaniesRepo companiesRepo) {
         this.publicationsRepo = publicationsRepo;
         this.serviceWrapper = serviceWrapper;
         this.htmlToPdfService = htmlToPdfService;
+        this.companiesRepo = companiesRepo;
     }
 
     public Publications add(Publications p){
@@ -42,8 +47,27 @@ public class PublicationsService {
         return publicationsRepo.findPublicationsByIdAndDeletedAtIsNull(id);
     }
 
-    public List<Publications> getAllByReportId(Integer id){
-        return publicationsRepo.findPublicationsByDeletedAtIsNullAndReportId(id);
+    public List<PublicationsResponse> getAllByReportId(Integer id){
+        List<PublicationsResponse> publicationsResponses = new ArrayList<>();
+        List<Publications> publications = publicationsRepo.findPublicationsByDeletedAtIsNullAndReportId(id);
+        List<Companies> companies = companiesRepo.findAllCompaniesByReportId(id);
+        for(Publications publication: publications){
+            publicationsResponses.add(PublicationsResponse.builder()
+                    .id(publication.getId())
+                    .autoSending(publication.isAutoSending())
+                    .createdAt(publication.getCreatedAt())
+                    .createdBy(publication.getCreatedBy())
+                    .filePath(publication.getFilePath())
+                    .publicationDate(publication.getPublicationDate())
+                    .receivers(companies)
+                    .reportId(publication.getReportId())
+                    .sendingDate(publication.getSendingDate())
+                    .status(publication.getStatus())
+                    .updatedAt(publication.getUpdatedAt())
+                    .updatedBy(publication.getUpdatedBy())
+                    .build());
+        }
+        return publicationsResponses;
     }
 
     public List<Publications> getAllByStatus(String status){
@@ -55,9 +79,9 @@ public class PublicationsService {
     }
 
     public String getStatusFromPublications(Integer reportId){
-        List<Publications> publications = getAllByReportId(reportId);
+        List<PublicationsResponse> publications = getAllByReportId(reportId);
         int sent = 0;
-        for(Publications publications1: publications){
+        for(PublicationsResponse publications1: publications){
             if(publications1.getStatus().equals(Status.SENT)) {
                 sent++;
             }
