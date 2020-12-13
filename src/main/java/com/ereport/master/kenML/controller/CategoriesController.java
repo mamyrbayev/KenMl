@@ -48,13 +48,8 @@ public class CategoriesController extends BaseController {
         return buildResponse(categoriesService.findAllByReportIdV2(id), HttpStatus.OK);
     }
 
-
-
     @DeleteMapping("/delete")
     public ResponseEntity<?> deleteById(@RequestParam Integer id) {
-        categoriesService.deleteCategory(id);
-        return buildResponse("deleted", HttpStatus.OK);
+        return buildResponse(categoriesService.deleteCategory(id), HttpStatus.OK);
     }
-
-
 }

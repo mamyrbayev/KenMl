@@ -6,6 +6,8 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface ReportCategoriesRepo extends JpaRepository<ReportCategories, Integer> {
 
@@ -18,6 +20,15 @@ public interface ReportCategoriesRepo extends JpaRepository<ReportCategories, In
     @Query(value = "DELETE FROM [kenml].[ReportCategories]\n" +
             "where ReportID = :reportId", nativeQuery = true)
     void deleteAllByReportIdd(Integer reportId);
+
+    @Query(value = "DELETE FROM [kenml].[ReportCategories]\n" +
+            "where CategoryID = :categoryId", nativeQuery = true)
+    void deleteAllByCategoryIdd(Integer categoryId);
+
+    @Query(value = "SELECT *\n" +
+            "    FROM [kenml].[ReportCategories]\n" +
+            "    WHERE CategoryID = :id", nativeQuery = true)
+    List<ReportCategories> findAllReportCategoriesByCategoryId(Integer id);
 
 
 

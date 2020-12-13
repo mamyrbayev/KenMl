@@ -47,4 +47,5 @@ public interface ReportsRepo extends JpaRepository<Reports, Integer> {
                 Boolean generateInThursday, Boolean generateInFriday, Boolean generateInSaturday,
                 Boolean generateInSunday, String iconPath, Long sendAfterTime, Boolean publicate,
                 Integer updatedBy, Date updatedAt);
+
 }

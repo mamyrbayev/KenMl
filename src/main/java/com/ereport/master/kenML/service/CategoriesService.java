@@ -2,9 +2,12 @@ package com.ereport.master.kenML.service;
 
 import com.ereport.master.kenML.domain.Categories;
 import com.ereport.master.kenML.domain.Companies;
+import com.ereport.master.kenML.domain.ReportCategories;
+import com.ereport.master.kenML.domain.Reports;
 import com.ereport.master.kenML.domain.dto.CategoryResponse;
 import com.ereport.master.kenML.repository.CategoriesRepo;
-import com.ereport.master.kenML.repository.CompaniesRepo;
+import com.ereport.master.kenML.repository.ReportCategoriesRepo;
+import com.ereport.master.kenML.repository.ReportsRepo;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -15,12 +18,12 @@ public class CategoriesService {
 
     private final CategoriesRepo categoriesRepo;
     private final CompaniesService companiesService;
-    private final CompaniesRepo companiesRepo;
+    private final ReportCategoriesRepo reportCategoriesRepo;
 
-    public CategoriesService(CategoriesRepo categoriesRepo, CompaniesService companiesService, CompaniesRepo companiesRepo) {
+    public CategoriesService(CategoriesRepo categoriesRepo, CompaniesService companiesService, ReportCategoriesRepo reportCategoriesRepo) {
         this.categoriesRepo = categoriesRepo;
         this.companiesService = companiesService;
-        this.companiesRepo = companiesRepo;
+        this.reportCategoriesRepo = reportCategoriesRepo;
     }
 
     public Categories save(Categories r){
@@ -61,16 +64,27 @@ public class CategoriesService {
 
 
 
-    public void deleteCategory(Integer id){
-        List<Companies> companies = companiesService.findAllCompaniesByCategoryId(id);
-        for(Companies company: companies){
-            company.setCategoryID(null);
-            companiesService.update(company);
-        }
-        try{
-            categoriesRepo.deleteCategoriesId(id);
-        }catch (Exception e){
+    public String deleteCategory(Integer id){
+        Categories categories = findById(id);
+        if(categories != null){
+            List<Companies> companies = companiesService.findAllCompaniesByCategoryId(id);
+            for(Companies company: companies){
+                company.setCategoryID(null);
+                companiesService.update(company);
+            }
+            try{
+                reportCategoriesRepo.deleteAllByCategoryIdd(id);
+            }catch (Exception e){
 
+            }
+            try{
+                categoriesRepo.deleteCategoriesId(id);
+            }catch (Exception e){
+
+            }
+            return "deleted";
+        }else {
+            return "Category" + id + "does not exists";
         }
     }
 }
