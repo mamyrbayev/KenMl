@@ -50,4 +50,11 @@ public class CategoriesController extends BaseController {
 
 
 
+    @DeleteMapping("/delete")
+    public ResponseEntity<?> deleteById(@RequestParam Integer id) {
+        categoriesService.deleteCategory(id);
+        return buildResponse("deleted", HttpStatus.OK);
+    }
+
+
 }

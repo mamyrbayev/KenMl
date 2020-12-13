@@ -1,8 +1,10 @@
 package com.ereport.master.kenML.service;
 
 import com.ereport.master.kenML.domain.Categories;
+import com.ereport.master.kenML.domain.Companies;
 import com.ereport.master.kenML.domain.dto.CategoryResponse;
 import com.ereport.master.kenML.repository.CategoriesRepo;
+import com.ereport.master.kenML.repository.CompaniesRepo;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -12,9 +14,13 @@ import java.util.List;
 public class CategoriesService {
 
     private final CategoriesRepo categoriesRepo;
+    private final CompaniesService companiesService;
+    private final CompaniesRepo companiesRepo;
 
-    public CategoriesService(CategoriesRepo categoriesRepo) {
+    public CategoriesService(CategoriesRepo categoriesRepo, CompaniesService companiesService, CompaniesRepo companiesRepo) {
         this.categoriesRepo = categoriesRepo;
+        this.companiesService = companiesService;
+        this.companiesRepo = companiesRepo;
     }
 
     public Categories save(Categories r){
@@ -47,9 +53,24 @@ public class CategoriesService {
             resp.add(CategoryResponse.builder()
                     .categoryName(category.getName())
                     .description(category.getDescription())
-//                    .contractors(contractorService.getAllByCategory(category.getId()))
+                    .contractors(companiesService.findAllCompaniesByCategoryId(category.getId()))
                     .build());
         }
         return resp;
+    }
+
+
+
+    public void deleteCategory(Integer id){
+        List<Companies> companies = companiesService.findAllCompaniesByCategoryId(id);
+        for(Companies company: companies){
+            company.setCategoryID(null);
+            companiesService.update(company);
+        }
+        try{
+            categoriesRepo.deleteCategoriesId(id);
+        }catch (Exception e){
+
+        }
     }
 }

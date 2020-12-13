@@ -34,5 +34,9 @@ public interface CategoriesRepo extends JpaRepository<Categories, Integer>{
     @Query(value = "exec [kenml].[Booklet_FindAllCategoriesByReportId] @ReportId = :id", nativeQuery = true)
     List<Categories> findAllCategoriesByReportId(Integer id);
 
+    @Query(value = "DELETE [kenml].[Categories]\n" +
+            "WHERE ID = :id", nativeQuery = true)
+    void deleteCategoriesId(Integer id);
+
 
 }
