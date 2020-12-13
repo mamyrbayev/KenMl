@@ -30,6 +30,9 @@ public class CompaniesController extends BaseController {
         return buildResponse(companiesService.update(companies), HttpStatus.OK);
     }
 
-
+    @GetMapping("/category")
+    public ResponseEntity<?> findAllCompaniesByCategoryId(@RequestParam Integer id) {
+        return buildResponse(companiesService.findAllCompaniesByCategoryId(id), HttpStatus.OK);
+    }
 
 }

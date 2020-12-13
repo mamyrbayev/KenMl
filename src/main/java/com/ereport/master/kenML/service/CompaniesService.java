@@ -33,4 +33,7 @@ public class CompaniesService {
                 c.getContactName(), c.getContactPhone());
     }
 
+    public List<Companies> findAllCompaniesByCategoryId(Integer categoryId){
+        return companiesRepo.findAllCompaniesByCategoryId(categoryId);
+    }
 }

@@ -54,4 +54,10 @@ public interface CompaniesRepo extends JpaRepository<Companies, Integer> {
             "    WHERE ReportID = :reportId\n" +
             "    )", nativeQuery = true)
     List<Companies> findAllCompaniesByReportId(Integer reportId);
+
+
+
+    @Query(value = "exec [kenml].[Booklet_FindAllCompaniesByCategoryId] @CategoriesID = :id", nativeQuery = true)
+    List<Companies> findAllCompaniesByCategoryId(Integer id);
+
 }
