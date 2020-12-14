@@ -20,25 +20,25 @@ public class Resources {
     @Column(name = "ID")
     private Integer id;
 
-    @Column(name = "FileSectionID")
+    @Column(name = "file_section_id")
     private Integer fileSectionId;
 
-    @Column(name = "ResourceID")
+    @Column(name = "resource_id")
     private String resourceId;
 
-    @Column(name = "ResourceName")
+    @Column(name = "resource_name")
     private String resourceName;
 
-    @Column(name = "ResourceType")
+    @Column(name = "resource_type")
     private Integer resourceType;
 
-    @Column(name = "ResourceVolume")
+    @Column(name = "resource_volume")
     private Float resourceVolume;
 
-    @Column(name = "CodeSNB")
+    @Column(name = "code_snb")
     private String codeSNB;
 
-    @Column(name = "CodeLocal")
+    @Column(name = "code_local")
     private String codeLocal;
 
     @Column(name = "Price")
@@ -47,13 +47,13 @@ public class Resources {
     @Column(name = "Norma")
     private Float norma;
 
-    @Column(name = "Measurer")
+    @Column(name = "measurer")
     private String measurer;
 
-    @Column(name = "Delivery")
+    @Column(name = "delivery")
     private String delivery;
 
-    @Column(name = "LastUpdatedOn")
+    @Column(name = "updated_at")
     private Date lastUpdatedOn;
 
     @Column(name = "PZ")
@@ -71,7 +71,7 @@ public class Resources {
     @Column(name = "EM")
     private Float em;
 
-    @Column(name = "Status")
+    @Column(name = "status")
     private String status;
 
 }

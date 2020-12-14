@@ -1,34 +1,35 @@
 package com.ereport.master.kenML.domain;
 
+
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Data
 @Entity
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Material {
+@Table(name="ReportMaterials")
+public class ReportMaterials {
+
     @Id
-    @Column(name = "id")
+    @Column( name = "ID")
     private Integer id;
 
-    @Column(name = "MT_LINK")
-    private Long mtLink;
 
-    @Column(name = "MT_OWNER")
-    private Long mtOwner;
+    @Column( name = "ReportID")
+    private Integer reportId;
 
-    @Column(name = "MT_CODE")
+
+    @Column( name = "material_code")
     private String mtCode;
 
-    @Column(name = "MT_NAME")
-    private String mtName;
 
-    @Column(name = "MT_MEASURE")
-    private String mtMeasure;
 }

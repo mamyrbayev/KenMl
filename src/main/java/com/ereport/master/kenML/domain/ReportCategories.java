@@ -8,24 +8,23 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.util.Date;
+import javax.persistence.Table;
 
 @Data
 @Entity
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Localities {
+@Table(name="ReportCategories")
+public class ReportCategories {
+
     @Id
-    @Column(name = "ID")
+    @Column( name = "ID")
     private Integer id;
 
-    @Column(name = "Name")
-    private String name;
+    @Column(name = "ReportID")
+    private Integer reportId;
 
-    @Column(name = "RegionID")
-    private Integer regionId;
-
-    @Column(name = "updated_at")
-    private Date lastUpdatedOn;
+    @Column(name = "CategoryID")
+    private Integer categoryId;
 }

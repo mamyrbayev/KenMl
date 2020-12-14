@@ -20,34 +20,34 @@ public class Companies {
     @Column(name = "ID")
     private Integer id;
 
-    @Column(name = "LastUpdatedOn")
-    private Date lastUpdatedOn;
+    @Column(name = "updated_at")
+    private Date lastUpdatedOn = new Date();
 
-    @Column(name = "BIN")
+    @Column(name = "bin")
     private String bin;
 
-    @Column(name = "Title")
+    @Column(name = "title")
     private String title;
 
-    @Column(name = "DirectorName")
+    @Column(name = "director_name")
     private String directorName;
 
-    @Column(name = "DirectorPhone")
+    @Column(name = "director_phone")
     private String directorPhone;
 
-    @Column(name = "EmailAddress")
+    @Column(name = "email_address")
     private String emailAddress;
 
-    @Column(name = "PhysicalAddress")
+    @Column(name = "physical_address")
     private String physicalAddress;
 
     @Column(name = "CategoryID")
     private Integer categoryID;
 
-    @Column(name = "ContactName")
+    @Column(name = "contact_name")
     private String contactName;
 
-    @Column(name = "ContactPhone")
+    @Column(name = "contact_phone")
     private String contactPhone;
 
 }

@@ -20,19 +20,19 @@ public class FileSections {
     @Column(name = "ID")
     private Integer id;
 
-    @Column(name = "Name")
+    @Column(name = "name")
     private String name;
 
-    @Column(name = "FileID")
+    @Column(name = "file_id")
     private Integer fileId;
 
-    @Column(name = "StageNumber")
+    @Column(name = "stage_number")
     private Integer stageNumber;
 
-    @Column(name = "StartDate")
+    @Column(name = "start_date")
     private Date startDate;
 
-    @Column(name = "EndDate")
+    @Column(name = "end_date")
     private Date endDate;
 
 }

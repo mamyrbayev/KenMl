@@ -1,18 +1,20 @@
 package com.ereport.master.kenML.domain.dto;
 
-import com.ereport.master.kenML.domain.Material;
+import com.ereport.master.kenML.domain.Companies;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
 import java.util.List;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Potrebnosti {
-    private Material material;
-    private List<LocalitiesByMatrial> localitiesByMatrials;
+public class CategoryResponse {
+    private String categoryName;
+    private String description;
+    private List<Companies> contractors;
 }

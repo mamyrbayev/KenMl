@@ -17,4 +17,23 @@ public class CompaniesService {
     public List<Companies> findAllByLocalityId(Integer localityId){
         return companiesRepo.findAllByLocalityId(localityId);
     }
+
+    public List<Companies> findAll(){
+        return companiesRepo.findAllCompaniesByDeletedAtIsNull();
+    }
+
+    public Companies findById(Integer id){
+        return companiesRepo.findCompaniesByIdAndDeletedAtIsNull(id);
+    }
+
+
+    public Companies update(Companies c){
+        return companiesRepo.update(c.getId(), c.getLastUpdatedOn(), c.getBin(), c.getTitle(), c.getDirectorName(),
+                c.getDirectorPhone(), c.getEmailAddress(), c.getPhysicalAddress(), c.getCategoryID(),
+                c.getContactName(), c.getContactPhone());
+    }
+
+    public List<Companies> findAllCompaniesByCategoryId(Integer categoryId){
+        return companiesRepo.findAllCompaniesByCategoryId(categoryId);
+    }
 }

@@ -1,9 +1,8 @@
 package com.ereport.master.sheduler;
 
 import com.ereport.master.exceptions.ServiceException;
-import com.ereport.master.service.HtmlToPdfService;
-import com.ereport.master.service.PublicationsService;
-import com.ereport.master.service.ReportService;
+import com.ereport.master.kenML.service.HtmlToPdfService;
+import com.ereport.master.kenML.service.PublicationsService;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,7 +15,6 @@ import java.text.ParseException;
 @Component
 @AllArgsConstructor
 public class Scheduler {
-    private final ReportService reportService;
     private final PublicationsService publicationsService;
     private final HtmlToPdfService htmlToPdfService;
     private static final Logger logger = LoggerFactory.getLogger(Scheduler.class);
