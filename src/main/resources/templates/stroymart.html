@@ -20,7 +20,7 @@
         background: -webkit-gradient(linear, left top, left bottom, from(#9AB6F0), color-stop(48.96%, #6AADF0), to(#F2F8FD));
         background: -o-linear-gradient(top, #9AB6F0 0%, #6AADF0 48.96%, #F2F8FD 100%);
         background: linear-gradient(180deg, #9AB6F0 0%, #6AADF0 48.96%, #F2F8FD 100%);
-        page-break-after: always;
+        /*page-break-after: always;*/
     }
 
     .header-title {
@@ -160,7 +160,7 @@
         -ms-transform-origin: right bottom;
         transform-origin: right bottom;
         position: absolute;
-        right: 0;
+        right: -120px;
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
@@ -168,7 +168,6 @@
         -ms-flex-align: center;
         align-items: center;
         width: 10%;
-        /* margin-right: 20px; */
     }
 
     .vector-text img {
@@ -295,10 +294,11 @@
     }
 
     .chart-page-title2 {
-        width: 100%;
+        width: 70%;
         -webkit-box-sizing: border-box;
         box-sizing: border-box;
-        margin-top: -5%;
+        margin-top: -100px;
+        margin-left: 40px;
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
@@ -743,7 +743,7 @@
     .content-items {
         margin-top: 50px;
         margin-left: 70px;
-        width: 60%;
+        width: 45%;
     }
 
     .content-item {
@@ -780,7 +780,7 @@
         -webkit-box-align: center;
         -ms-flex-align: center;
         align-items: center;
-        margin-top: 1400px;
+        margin-top: 1340px;
     }
 
     .more-content p {
@@ -802,9 +802,11 @@
     }
 
     .header-count-inner {
-        background: -webkit-linear-gradient(180deg, #00C136 0%, #6DFFCB 48.44%, #FFFFFF 100%);
+        background: -webkit-gradient(linear, left top, left bottom, from(#00C136), color-stop(48.44%, #6DFFCB), to(#FFFFFF));
+        background: -o-linear-gradient(top, #00C136 0%, #6DFFCB 48.44%, #FFFFFF 100%);
+        background: linear-gradient(180deg, #00C136 0%, #6DFFCB 48.44%, #FFFFFF 100%);
         width: 2480px;
-        height: 200px;
+        height: 300px;
         left: 0px;
         top: 0px;
 
@@ -866,7 +868,7 @@
         -webkit-box-align: center;
         -ms-flex-align: center;
         align-items: center;
-        margin-left: 5px;
+        margin-left: 10px;
     }
 
     .count-label--item span {
@@ -883,10 +885,10 @@
         display: -ms-flexbox;
         display: flex;
         position: relative;
-        margin-top: 100px;
-        margin-bottom: 70px;
+        margin-top: 50px;
+        margin-bottom: 90px;
         width: 100%;
-        height: 400px;
+        height: 100%;
     }
 
     .pieNums {
@@ -986,7 +988,7 @@
 
     .progress-block {
         width: 100%;
-        padding: 80px 0 100px;
+        padding: 80px 0 10px;
         -webkit-box-sizing: border-box;
         box-sizing: border-box;
 
@@ -1006,7 +1008,7 @@
         display: -webkit-box; /* wkhtmltopdf uses this one */
         display: -ms-flexbox;
         /*display: flex;*/
-        margin-top: 140px;
+        margin-top: 90px;
 
     }
 
@@ -1185,11 +1187,12 @@
     .header-bg img {
         height: 50%;
         width: 100%;
+        margin-top: 50px;
     }
 
     .logo-title {
         position: absolute;
-        top: 0;
+        top: 40px;
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
@@ -1448,7 +1451,7 @@
     table, caption, tbody, tfoot, thead, tr, th, td,
     article, aside, canvas, details, embed,
     figure, figcaption, footer, header, hgroup,
-    menu, nav, output, ruby, section, summary,
+    menu, nav, output, ruby, summary,
     time, mark, audio, video {
         margin: 0;
         padding: 0;
@@ -1458,13 +1461,13 @@
 
     }
 
-    section {
-        padding-left: 20px !important;
-    }
+    /*section {*/
+    /*    padding-left: 20px !important;*/
+    /*}*/
 
-    .header-count-inner1 {
-        margin-top: 20px;
-    }
+    /*.header-count-inner1 {*/
+    /*    margin-top: 20px;*/
+    /*}*/
 
     /* HTML5 display-role reset for older browsers */
     article, aside, details, figcaption, figure,
@@ -1519,22 +1522,32 @@
         margin-left: 70px;
     }
 
-    .footer {
-        width: 80%;
-    }
+    /*.footer {*/
+    /*    width: 80%;*/
+    /*    !*position: relative;*!*/
+    /*    !*bottom: 0px;*!*/
 
-    .header p {
-        padding-top: 40px;
-        font-size: 32px;
-        line-height: 36px;
-    }
+    /*}*/
 
-    .header p > span {
-        color: #fff
-    }
+    @media print {
+        .footer {
+            position: fixed;
+            bottom: 0;
+        }
 
-    .page {
-        height: 29cm;
+        .header p {
+            padding-top: 40px;
+            font-size: 32px;
+            line-height: 36px;
+        }
+
+        .header p > span {
+            color: #fff
+        }
+
+        .page {
+            height: 29cm;
+        }
     }
 
 </style>
@@ -1686,7 +1699,7 @@
     <div class="header-inner">
         <div class="container">
             <header class="header">
-                <p>StroyMart<span>kz</span></p>
+                <p style="font-size: 30px">StroyMart.<span style="color: #ffffff;">kz</span></p>
             </header>
             <div class="header-block">
                 <div class="header-bg">
@@ -1724,12 +1737,13 @@
 
 <div id="secondBlock"></div>
 
-<div style="page-break-before: always !important;">
+<div>
     <section class="count">
         <div class="header-chart-inner">
             <div class="container">
                 <header class="header">
-                    <p>StroyMart.kz<span>kz</span></p>
+                    <p style="font-size: 30px !important; margin-top: 3px; margin-left: 3px;">StroyMart<span
+                            style="color: #ffffff">kz</span></p>
                 </header>
                 <div class="header-block">
                     <div class="header-bg">
@@ -1739,7 +1753,7 @@
 
                         <h3>Потребность</h3>
 
-                        <h4>в стройметериалах
+                        <h4>в стройматериалах
                             в разрезе регионов </h4>
 
                     </div>
@@ -1800,18 +1814,135 @@
     var secondBlock = document.getElementById('secondBlock');
 
 
-    function testFunction() {
-        console.log(arrFirst);
+    function setFirstAndSecondTable(arr) {
+        var sum = arrFirst[0].overallByRegions.length;
+        if (arrFirst.length >= 2) {
+            sum = sum + arrFirst[1].overallByRegions.length;
+        }
+        if (sum >= 18) {
+            arr.push({yearList: [arrFirst[0].year]});
+            return false
+        }
+        arr.push({yearList: [arrFirst[0].year, arrFirst[1].year]});
+        return true
     }
 
-    testFunction();
+    function setOtherPage(arr) {
+        var sum = 0;
+        var years = [];
+        for (var pr1 = 0; pr1 < arrFirst.length; pr1++) {
+            if (pr1 === 0) {
+                continue
+            }
+            if (pr1 === 1) {
+                if (setFirstAndSecondTable(arr)) {
+                    continue;
+                }
+            }
+            sum = sum + arrFirst[pr1].overallByRegions.length;
+            years.push(arrFirst[pr1].year);
+            if (sum >= 36) {
+                var copyYears = JSON.parse(JSON.stringify(years))
+                arr.push({yearList: copyYears})
+                sum = 0;
+                years = [];
+            }
+        }
+        if (sum !== 0) {
+            var copyYears = JSON.parse(JSON.stringify(years));
+            arr.push({yearList: copyYears})
+            sum = 0;
+            years = [];
+        }
+    }
+
+    function setIncludesPoliffil() {
+        // https://tc39.github.io/ecma262/#sec-array.prototype.includes
+        if (!Array.prototype.includes) {
+            Object.defineProperty(Array.prototype, 'includes', {
+                value: function (searchElement, fromIndex) {
+
+                    if (this == null) {
+                        throw new TypeError('"this" is null or not defined');
+                    }
+
+                    // 1. Let O be ? ToObject(this value).
+                    var o = Object(this);
+
+                    // 2. Let len be ? ToLength(? Get(O, "length")).
+                    var len = o.length >>> 0;
+
+                    // 3. If len is 0, return false.
+                    if (len === 0) {
+                        return false;
+                    }
+
+                    // 4. Let n be ? ToInteger(fromIndex).
+                    //    (If fromIndex is undefined, this step produces the value 0.)
+                    var n = fromIndex | 0;
+
+                    // 5. If n ≥ 0, then
+                    //  a. Let k be n.
+                    // 6. Else n < 0,
+                    //  a. Let k be len + n.
+                    //  b. If k < 0, let k be 0.
+                    var k = Math.max(n >= 0 ? n : len - Math.abs(n), 0);
+
+                    function sameValueZero(x, y) {
+                        return x === y || (typeof x === 'number' && typeof y === 'number' && isNaN(x) && isNaN(y));
+                    }
+
+                    // 7. Repeat, while k < len
+                    while (k < len) {
+                        // a. Let elementK be the result of ? Get(O, ! ToString(k)).
+                        // b. If SameValueZero(searchElement, elementK) is true, return true.
+                        if (sameValueZero(o[k], searchElement)) {
+                            return true;
+                        }
+                        // c. Increase k by 1.
+                        k++;
+                    }
+
+                    // 8. Return false
+                    return false;
+                }
+            });
+        }
+    }
 
     function getProgress() {
+        var pdfPageOfTables = [];
+        setIncludesPoliffil()
+        setOtherPage(pdfPageOfTables)
         var progressId = 1;
         var allStr = '';
         var prStr = '';
+        var checkTable = false;
+        var tableSize = 0;
+        var pageSize = 0;
+        var isFooter = false
+
+
+        // function extracted() {
+        //     if (arrFirst[0].overallByRegions.length > 4) {
+        //         prStr += getFooter() + getSecondHeader();
+        //         return true
+        //     }
+        //     return false
+        // }
 
         for (var pr1 = 0; pr1 < arrFirst.length; pr1++) {
+
+            if (pdfPageOfTables[pageSize].yearList.includes(arrFirst[pr1].year)) {
+                console.error('year ', arrFirst[pr1].year)
+                console.error('years ', pdfPageOfTables)
+                isFooter = false
+            } else {
+                console.error('year ', arrFirst[pr1].year)
+                console.error('years ', pdfPageOfTables)
+                pageSize++;
+                isFooter = true
+            }
 
             prStr += '<div id="progress-height"><div class="header-count-inner1">' +
                 '<div class="container"><div class="header-block"><div class="logo-title-count" style="width: 60%;">' +
@@ -1839,21 +1970,17 @@
                 '<div class="row">';
             var breakStr = '';
 
+            var colSize = arrFirst[pr1].overallByRegions.length;
+
 
             for (var pr2 = 0; pr2 < arrFirst[pr1].overallByRegions.length; pr2++) {
-                console.log("pr2" + pr2);
-                console.log(arrFirst[pr1]);
-                console.log(prStr);
-                console.log(prStr.length);
 
-
-                console.log("progressId1  " + progressId);
 
                 var prStrLine = '';
-                console.log("progressId " + progressId);
                 if (pr2 === 0) {
                     prStr += '<div class="col-6">'
                 }
+
 
                 prStr += '<div class="progress-line">' +
                     '<p>' + arrFirst[pr1].overallByRegions[pr2].regionName + '</p>' +
@@ -1872,16 +1999,25 @@
                     '<p class="progress-sum">' + arrFirst[pr1].overallByRegions[pr2].overall + '</p>' +
                     '</div>';
 
-                if (pr2 === 8) {
+
+                if (pr2 % 2 !== 0) {
                     prStr += '</div><div class="col-6">'
                 }
-                console.log("pr2 " + pr2)
+
 
             }
+            tableSize = arrFirst[pr1].overallByRegions.length;
 
-            if (pr1 === 0) {
+
+            console.log(" checkTable " + checkTable)
+            console.log("Table N" + pr1 + " tableSize " + tableSize)
+
+
+            if (isFooter) {
                 breakStr = getFooter() + getSecondHeader();
-            } else if (pr1 % 2 === 0) {
+                console.log("pervii")
+            }
+            if (arrFirst.length === (pr1 + 1)) {
                 breakStr = getFooter();
             }
 
@@ -1982,15 +2118,19 @@
     var potrebnostis = /*[[${potrebnostis}]]*/ [];
 
     var potr = '';
+    var allPotr = '';
     var chartBarId = 1;
     var monthPrice = {};
+    var checkId = 0;
 
 
     for (var p = 0; p < potrebnostis.length; p++) {
+        var potrName = potrebnostis[p].material.mtName;
+
         potr += '<div class="chart-page-title">' +
             '<div class="chart-round">' +
             '<h3>1</h3>' +
-            '<p>' + potrebnostis[p].material.mtName + '</p>' +
+            '<p>' + potrName + '</p>' +
             '</div>' +
             '<div class="chart-img">' +
             '<img src="http://localhost:8080/assets/chart-ling.svg">' +
@@ -2062,6 +2202,7 @@
                         console.log("chartBarId " + chartBarId)
                         var months = [];
                         var prices = [];
+                        checkId++;
 
                         potr += '<div class="chart-bars-block-common">' +
                             '<div class="chart-bar-title">' +
@@ -2096,6 +2237,15 @@
 
                         potr += '</div>' + '</div>' + '</div>';
 
+                        console.log("OY " + oy)
+                        console.log("checkId " + checkId)
+                        if (checkId !== 0 && checkId % 2 === 0) {
+                            potr += '<div style="page-break-after: always"></div>'
+                            potr += getPotrSecondHeader(potrName);
+                            allPotr += potr;
+                            potr = '';
+                        }
+
                     }
 
                     objectId += 1;
@@ -2106,7 +2256,35 @@
         }
     }
 
-    document.getElementById('potrebnostis').innerHTML = potr;
+    document.getElementById('potrebnostis').innerHTML = allPotr;
+
+    function getPotrSecondHeader(potrName) {
+        return '<div class="header-chart-inner" style="padding-left: -15px !important;">' +
+            '<div class="container">' +
+            '<header class="header">' +
+            '<p style="font-size: 30px !important; margin-top: 3px; margin-left: 3px;">StroyMart.<span style="color: #ffffff;">kz</span></p>' +
+            '</header>' +
+            '<div class="header-block">' +
+            '<div class="header-bg">' +
+            '<img src="http://localhost:8080/assets/header-bg.svg">' +
+            '</div>' +
+            '<div class="logo-title-chart">' +
+            '<div class="chart-page-title2">' +
+            '<div class="chart-round2">' +
+            '<h3>1</h3>' +
+            '<p>' + potrName + '</p>' +
+            '</div>' +
+            '<div class="chart-img2">' +
+            '<img src="http://localhost:8080/assets/chart-l-w.svg">' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '<div style="transform: rotate(-180deg); background: linear-gradient(180deg, #FFB877 23.96%, #FFC896 48.44%, #FFFFFF 100%);"></div>' +
+            '</div>'
+
+    }
 
     for (var z = 1; z <= chartBarId; z++) {
         processChart(z)
@@ -2171,14 +2349,15 @@
             document.getElementById("pieNum-one").innerHTML = overall;
             document.getElementById("pieNum-two").innerHTML = completed;
             document.getElementById("pieNum-three").innerHTML = underConstruction;
+            document.getElementById("pieNum-year").innerHTML = currentYear;
 
-            chartNums += '<div class="chart-number">' +
-                '<p>' + currentYear + '</p>' +
-                '<span>год</span>' +
-                '</div>' +
-                '<div class="bar-img">' +
-                '<img src="http://localhost:8080/assets/lines.svg">' +
-                '</div>'
+            // chartNums += '<div class="chart-number">' +
+            //     '<p>' + currentYear + '</p>' +
+            //     '<span>год</span>' +
+            //     '</div>' +
+            //     '<div class="bar-img">' +
+            //     '<img src="http://localhost:8080/assets/lines.svg">' +
+            //     '</div>'
 
         }
 
@@ -2186,19 +2365,17 @@
 
     for (var b = 0; b < overallForYears.length; b++) {
         if (Number(currentYear) !== Number(overallForYears[b].year)) {
-            chartNums += '<div class="chart-number">' +
-                '<p>' + overallForYears[b].year + '</p>' +
-                '<span>год</span>' +
-                '</div>'
+            // chartNums += '<div class="chart-number">' +
+            //     '<p>' + overallForYears[b].year + '</p>' +
+            //     '<span>год</span>' +
+            //     '</div>'
 
             years.push(overallForYears[b].year);
             yearValues.push(Number(overallForYears[b].underConstruction));
+            console.log("years " +years)
+            console.log("yearValues " +yearValues)
             // overallForYearsBarChart(Number(overallForYears[a].year), Number(overallForYears[a].underConstruction))
 
-        } else if (b !== overallForYears.length - 1) {
-            chartNums += '<div class="bar-img">' +
-                '<img src="http://localhost:8080/assets/lines.svg">' +
-                '</div>'
         }
 
     }
@@ -2281,6 +2458,7 @@
             cutoutPercentage: 80,
             animation: false,
 
+
         }
     };
 
@@ -2289,7 +2467,7 @@
             '<div class="header-count-inner">' +
             '<div class="container">' +
             '<header class="header">' +
-            '<p>StroyMart.<span>kz</span></p>' +
+            '<p style="font-size: 30px !important; margin-top: 3px; margin-left: 3px;">StroyMart.<span style="color:#ffffff;">kz</span></p>' +
             '</header>' +
             '<div class="header-block">' +
             '<div class="header-bg">' +
@@ -2306,7 +2484,7 @@
             ' -ms-transform: rotate(-180deg);' +
             'transform: rotate(-180deg);background: -webkit-linear-gradient(180deg, #FFFFFF 0.34%, rgba(255, 255, 255, 0) 27.8%); padding: 20px 0;"></div>' +
             '</div>' +
-            '<div class="container" style="display:block; clear:both; ">' +
+            '<div class="container">' +
             '<div class="count-labels">' +
             '<div class="count-label--item">' +
             '<div class="color color-finished">' +
@@ -2338,9 +2516,13 @@
             "<p>Строящиеся</p>" +
             "<p id='pieNum-three'></p>" +
             "</div>" +
+            "<div class='pieNum year'>" +
+            "<p>Год</p>" +
+            "<p id='pieNum-year'></p>" +
+            "</div>" +
             "</div>" +
             "<div class='canvas-div' style='width: 1600px; height: 385px'>" +
-            "<canvas id='myChart' style='width: 1600px; height: 385px' >" +
+            "<canvas id='myChart' style='width: 1600px; height: 385px' >" + 2020 +
             "</canvas>" +
             "" +
             "<div class='bar-chart-canvas'>" +
@@ -2354,7 +2536,7 @@
         return "<div class='header-count-inner' style='page-break-before: always;'>" +
             "<div class='container'>" +
             "<header class='header'>" +
-            "<p>StroyMart.<span>kz</span></p>" +
+            "<p style='font-size: 30px !important; margin-top: 3px; margin-left: 3px;'>StroyMart.<span style='color:#ffffff;'>kz</span></p>" +
             "</header>" +
             "<div class='header-block'>" +
             "<div class='header-bg'>" +
@@ -2397,7 +2579,7 @@
     }
 
     function getFooter() {
-        return "<div>" +
+        return "<div style='page-break-after: always;'>" +
             "<footer class='footer'>" +
             "<p>Потребность строительного рынка на 2020-2021гг.</p>" +
             "<div class='line'></div>" +
