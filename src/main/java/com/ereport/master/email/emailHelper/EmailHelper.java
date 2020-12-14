@@ -25,18 +25,19 @@ public class EmailHelper
             Properties props = new Properties();
             props.put("mail.smtp.auth", "true");
             props.put("mail.smtp.starttls.enable", "true");
-            props.put("mail.smtp.host", "smtp.gmail.com");
-            props.put("mail.smtp.port", "587");
+            props.put("mail.host", "smtp.mail.ru");
+            props.put("mail.port", "465");
+            props.put("mail.protocol", "smtps");
 //          Адрес почты и пароль отправителя
             Session session = Session.getInstance(props, new javax.mail.Authenticator()
             {
                 protected PasswordAuthentication getPasswordAuthentication()
                 {
-                    return new PasswordAuthentication("stroymart2020@gmail.com", "Stroymart2432");
+                    return new PasswordAuthentication("bookletsender@idet.kz", "27ezL=ZCYtnx");
                 }
             });
             Message msg = new MimeMessage(session);
-            msg.setFrom(new InternetAddress("stroymart2020@gmail.com", false));
+            msg.setFrom(new InternetAddress("bookletsender@idet.kz", false));
 
             msg.setRecipients(Message.RecipientType.TO,
                     InternetAddress.parse(receiver));
