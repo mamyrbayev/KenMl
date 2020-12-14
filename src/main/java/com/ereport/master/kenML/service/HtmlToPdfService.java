@@ -32,6 +32,9 @@ public class HtmlToPdfService {
     @Autowired
     private EmailHelper helper;
 
+    @Autowired
+    private ReportGenerationService reportGenerationService;
+
     @Value("${system.file_locations}")
     private String location;
 
@@ -49,10 +52,7 @@ public class HtmlToPdfService {
 
         ClassLoader classLoader = getClass().getClassLoader();
 
-        BufferedReader br = new BufferedReader(new FileReader(Objects.requireNonNull(classLoader.getResource("json/response_1607324469558.json")).getFile()));
-        ReportGenerationResponse reportGenerationResponse = new Gson().fromJson(br, ReportGenerationResponse.class);
-
-        Gson g = new Gson();
+        ReportGenerationResponse reportGenerationResponse = reportGenerationService.getResponse();
 
         List<MaterialDTO> materialDTOS = reportGenerationResponse.getTopTen();
         List<OverallForYear> overallForYears = reportGenerationResponse.getOverallForYears();

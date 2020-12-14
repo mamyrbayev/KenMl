@@ -21,7 +21,7 @@ public class Scheduler {
 
     @Scheduled(cron = "0 * * * * *") //Every minute
     private void checkGenerationDate() throws ServiceException, ParseException, IOException, InterruptedException {
-        logger.info("KUKA KUKA || CHECK GENERATION DATE ");
+        publicationsService.createPublicationByScheduler();
 }
 
     @Scheduled(cron = "0 * * * * *") //Every minute

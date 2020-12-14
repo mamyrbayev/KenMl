@@ -119,7 +119,7 @@ public class PublicationsService {
 
 
 
-    public void createPublicationByScheduler() throws ParseException, IOException, InterruptedException {
+    public void createPublicationByScheduler() throws IOException, InterruptedException {
         List<Reports> reports = serviceWrapper.getReportsService().findAll();
         for(Reports report: reports){
             List<Integer> sendingDays = getSendingDays(report);
@@ -139,7 +139,17 @@ public class PublicationsService {
 
                     if(fullDate.equals(sendingDate)){
                         String fileName = htmlToPdfService.generate();
-                        System.out.println("PDF file name " + fileName);
+
+                        Publications publications = Publications.builder()
+                                .autoSending(report.isAutoSending())
+                                .createdAt(new Date())
+                                .filePath(fileName)
+                                .publicationDate(new Date())
+                                .reportId(report.getId())
+                                .status(Status.PUBLISHED)
+                                .updatedAt(new Date())
+                                .build();
+                        add(publications);
                     }
                 }
             }
