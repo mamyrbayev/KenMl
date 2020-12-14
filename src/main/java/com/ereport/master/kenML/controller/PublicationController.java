@@ -35,13 +35,4 @@ public class PublicationController extends BaseController {
         return buildResponse(publicationsService.getAllByReportId(id), HttpStatus.OK);
     }
 
-//    @GetMapping("/status")
-//    public ResponseEntity<?> getById(@RequestParam String status) {
-//        return buildResponse(publicationsService.getAllByStatus(status), HttpStatus.OK);
-//    }
-//
-//    @GetMapping("/last/report")
-//    public ResponseEntity<?> getLastByReportId(@RequestParam Integer id) {
-//        return buildResponse(publicationsService.getLastByReportId(id), HttpStatus.OK);
-//    }
 }

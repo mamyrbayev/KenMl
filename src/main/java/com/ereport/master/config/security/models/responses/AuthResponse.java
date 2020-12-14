@@ -1,6 +1,6 @@
 package com.ereport.master.config.security.models.responses;
 
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class AuthResponse {
     private String accessToken;

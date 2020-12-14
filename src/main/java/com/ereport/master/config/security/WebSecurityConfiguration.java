@@ -53,11 +53,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.PATCH).permitAll()
                 .antMatchers(HttpMethod.DELETE).permitAll()
                 .antMatchers(HttpMethod.GET, "/api/pdf/**").permitAll();
-//                .antMatchers(HttpMethod.POST).authenticated()
-//                .antMatchers(HttpMethod.GET).authenticated()
-//                .antMatchers(HttpMethod.PUT).authenticated()
-//                .antMatchers(HttpMethod.PATCH).authenticated()
-//                .antMatchers(HttpMethod.DELETE).authenticated();
 
         http.exceptionHandling()
                 .authenticationEntryPoint(entryPoint);

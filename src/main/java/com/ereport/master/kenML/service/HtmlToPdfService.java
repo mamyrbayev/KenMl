@@ -47,17 +47,12 @@ public class HtmlToPdfService {
         templateResolver.setOrder(1);
         templateResolver.setCheckExistence(true);
 
-//        BufferedReader br = new BufferedReader(
-//                new FileReader("json/response_1607324469558.json"));
         ClassLoader classLoader = getClass().getClassLoader();
 
         BufferedReader br = new BufferedReader(new FileReader(Objects.requireNonNull(classLoader.getResource("json/response_1607324469558.json")).getFile()));
         ReportGenerationResponse reportGenerationResponse = new Gson().fromJson(br, ReportGenerationResponse.class);
 
         Gson g = new Gson();
-//        ReportGenerationResponse reportGenerationResponse = g.fromJson(report, ReportGenerationResponse.class);
-
-//        List<TopTenResponse> topTenResponses = new ArrayList<>();
 
         List<MaterialDTO> materialDTOS = reportGenerationResponse.getTopTen();
         List<OverallForYear> overallForYears = reportGenerationResponse.getOverallForYears();
@@ -86,9 +81,7 @@ public class HtmlToPdfService {
         SimpleDateFormat sdfTime = new SimpleDateFormat("dd-MM-yyy HH-mm-ss");
         ClassLoader classLoader = getClass().getClassLoader();
 
-//        Pdf pdf = new Pdf(new WrapperConfig("C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe"));
         Pdf pdf = new Pdf();
-//        Pdf pdf = new Pdf(new WrapperConfig("/usr/local/bin/wkhtmltopdf"));
         pdf.addPageFromString(parseThymeleafTemplate());
         pdf.addParam(new Param("--page-size", "A4", "-B", "0", "-L", "0", "-R", "0", "-T", "0"));
 

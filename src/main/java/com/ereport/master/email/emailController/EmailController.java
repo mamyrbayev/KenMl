@@ -16,7 +16,7 @@ public class EmailController
 
     @Autowired
     private EmailHelper emailHelper;
-
+    //Принимает
     @PostMapping(value = "/sendemail")
     public String sendEmail(
             @RequestParam("receiver") String receiver,

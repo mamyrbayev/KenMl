@@ -22,14 +22,10 @@ public class Scheduler {
     @Scheduled(cron = "0 * * * * *") //Every minute
     private void checkGenerationDate() throws ServiceException, ParseException, IOException, InterruptedException {
         logger.info("KUKA KUKA || CHECK GENERATION DATE ");
-//        String s = htmlToPdfService.generate();
-//        System.out.println("PDF name " + s);
-//        publicationsService.createPublicationByScheduler();
-    }
+}
 
     @Scheduled(cron = "0 * * * * *") //Every minute
     private void checkSendingDate() throws ServiceException, ParseException {
         logger.info("CHECK SENDING DATE");
-//        publicationsService.sendPublicationByScheduler();
     }
 }

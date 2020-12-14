@@ -11,14 +11,6 @@ import java.util.List;
 @Repository
 public interface CompaniesRepo extends JpaRepository<Companies, Integer> {
 
-//    @Query(value = "select *\n" +
-//            "from kenml.Companies c\n" +
-//            "where c.ID in(\n" +
-//            "    select o.CompanyID\n" +
-//            "    from kenml.Objects o\n" +
-//            "    where o.LocalityID = ?\n" +
-//            "    )", nativeQuery = true)
-//    List<Companies> findAllByLocalityId(Integer localityId);
 
 
     @Query(value = "exec [kenml].[Booklet_FindAllCompaniesByLocalityId] @LocalityID = :localityId", nativeQuery = true)
