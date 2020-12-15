@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+
 @RestController
 @AllArgsConstructor
 @RequestMapping("/api/publications")
@@ -33,6 +35,12 @@ public class PublicationController extends BaseController {
     @GetMapping("/report")
     public ResponseEntity<?> getByReportId(@RequestParam Integer id) {
         return buildResponse(publicationsService.getAllByReportId(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/send/email")
+    public ResponseEntity<?> sendEmailToCompanies(@RequestParam Integer id) throws IOException {
+        publicationsService.sendEmailByPublicationId(id);
+        return buildResponse("sended", HttpStatus.OK);
     }
 
 }

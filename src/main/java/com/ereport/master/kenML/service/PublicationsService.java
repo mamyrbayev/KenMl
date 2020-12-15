@@ -1,5 +1,6 @@
 package com.ereport.master.kenML.service;
 
+import com.ereport.master.email.emailHelper.EmailHelper;
 import com.ereport.master.kenML.domain.Companies;
 import com.ereport.master.kenML.domain.Publications;
 import com.ereport.master.kenML.domain.Reports;
@@ -8,8 +9,17 @@ import com.ereport.master.kenML.domain.enums.Status;
 import com.ereport.master.kenML.repository.CompaniesRepo;
 import com.ereport.master.kenML.repository.PublicationsRepo;
 import com.ereport.master.kenML.service.wrapper.ServiceWrapper;
+import org.apache.commons.io.IOUtils;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -25,16 +35,27 @@ public class PublicationsService {
     private final ServiceWrapper serviceWrapper;
     private final HtmlToPdfService htmlToPdfService;
     private final CompaniesRepo companiesRepo;
+    private final EmailHelper emailHelper;
 
-    public PublicationsService(PublicationsRepo publicationsRepo, ServiceWrapper serviceWrapper, HtmlToPdfService htmlToPdfService, CompaniesRepo companiesRepo) {
+    @Value("${system.file_locations}")
+    private String location;
+
+    public PublicationsService(PublicationsRepo publicationsRepo, ServiceWrapper serviceWrapper, HtmlToPdfService htmlToPdfService, CompaniesRepo companiesRepo, EmailHelper emailHelper) {
         this.publicationsRepo = publicationsRepo;
         this.serviceWrapper = serviceWrapper;
         this.htmlToPdfService = htmlToPdfService;
         this.companiesRepo = companiesRepo;
+        this.emailHelper = emailHelper;
     }
 
     public Publications add(Publications p){
         return publicationsRepo.add(p.getReportId(), p.getPublicationDate(), p.getSendingDate(), p.getStatus().toString(),
+                p.isAutoSending(), p.getFilePath(), p.getCreatedBy(), p.getCreatedAt(), p.getUpdatedBy(),
+                p.getUpdatedAt());
+    }
+
+    public Publications update(Publications p){
+        return publicationsRepo.update(p.getId(), p.getReportId(), p.getPublicationDate(), p.getSendingDate(), p.getStatus().toString(),
                 p.isAutoSending(), p.getFilePath(), p.getCreatedBy(), p.getCreatedAt(), p.getUpdatedBy(),
                 p.getUpdatedAt());
     }
@@ -156,7 +177,7 @@ public class PublicationsService {
         }
     }
 
-    public void sendPublicationByScheduler() throws ParseException {
+    public void sendPublicationByScheduler() throws ParseException, IOException {
         List<Publications> publications = publicationsRepo.findAllPublicationsByStatus(String.valueOf(Status.PUBLISHED));
         for(Publications publication: publications){
             Reports reports = serviceWrapper.getReportsService().findById(publication.getReportId());
@@ -168,8 +189,51 @@ public class PublicationsService {
             Date afterAddingTenMins = new Date(t + tenMinsInMills);
 
             if(publication.getCreatedAt().equals(afterAddingTenMins)){
-                System.out.println("!!! SEND PDF TO CONTRACTORS !!!");
+                sendEmailByPublicationId(publication.getId());
             }
         }
+    }
+
+    public void sendEmailByPublicationId(Integer id) throws IOException {
+        Publications publications = getById(id);
+        if(publications != null){
+            if(publications.getFilePath() != null){
+                if(publications.getReportId() != null){
+                    try {
+                        File file = new File(location + publications.getFilePath());
+                        FileInputStream input = new FileInputStream(file);
+                        MultipartFile multipartFile = new MockMultipartFile("file", file.getName(), "text/plain",
+                                IOUtils.toByteArray(input));
+
+                        List<Companies> companies = companiesRepo.findAllCompaniesByReportId(publications.getReportId());
+
+                        for(Companies company: companies){
+                            if(company.getEmailAddress() != null){
+                                if(isValidEmailAddress(company.getEmailAddress())){
+                                    emailHelper.sendEmail(company.getEmailAddress(), multipartFile);
+                                    publications.setStatus(Status.SENT);
+                                    publications.setSendingDate(new Date());
+                                    update(publications);
+                                    System.out.println("Send to "+ company.getEmailAddress());
+                                }
+                            }
+                        }
+
+                    } catch (IOException e) {
+                    }
+                }
+            }
+        }
+    }
+
+    public boolean isValidEmailAddress(String email) {
+        boolean result = true;
+        try {
+            InternetAddress emailAddr = new InternetAddress(email);
+            emailAddr.validate();
+        } catch (AddressException ex) {
+            result = false;
+        }
+        return result;
     }
 }

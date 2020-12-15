@@ -25,7 +25,7 @@ public class Scheduler {
 }
 
     @Scheduled(cron = "0 * * * * *") //Every minute
-    private void checkSendingDate() throws ServiceException, ParseException {
-        logger.info("CHECK SENDING DATE");
+    private void checkSendingDate() throws ServiceException, ParseException, IOException {
+        publicationsService.sendPublicationByScheduler();
     }
 }

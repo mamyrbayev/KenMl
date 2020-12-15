@@ -18,6 +18,13 @@ public interface PublicationsRepo extends JpaRepository<Publications, Integer> {
                 Boolean autoSending, String filePath, Integer createdBy, Date createdAt,
                 Integer updatedBy, Date updatedAt);
 
+    @Query(value = "exec [kenml].[Booklet_UpdatePublications] @ID = :id, @ReportID = :reportId, @PublicationDate = :publicationDate, " +
+            "@SendingDate = :sendingDate, @Status = :status, @AutoSending = :autoSending, @FilePath = :filePath, " +
+            "@CreatedBy = :createdBy, @CreatedOn = :createdAt, @LastUpdatedBy = :updatedBy, @LastUpdatedOn = :updatedAt", nativeQuery = true)
+    Publications update(Integer id, Integer reportId, Date publicationDate, Date sendingDate, String status,
+                     Boolean autoSending, String filePath, Integer createdBy, Date createdAt,
+                     Integer updatedBy, Date updatedAt);
+
 
     @Query(value = "exec [kenml].[Booklet_FindAllPublicationsByDeletedAtIsNull]", nativeQuery = true)
     List<Publications> findAllPublicationsByDeletedAtIsNull();
