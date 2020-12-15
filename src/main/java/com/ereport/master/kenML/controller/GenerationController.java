@@ -35,9 +35,7 @@ public class GenerationController extends  BaseController {
 
     @GetMapping("/generate")
     public ResponseEntity<?> generatePDF() throws Exception {
-        publicationsService.createPublicationByScheduler();
-//        return buildResponse(null, HttpStatus.OK);
-        return new ResponseEntity<>("ulan krasavchik", HttpStatus.OK);
+        return new ResponseEntity<>(htmlToPdfService.generate(), HttpStatus.OK);
 
     }
 
