@@ -99,6 +99,7 @@ public class ReportsService {
                 .generateInSaturday(report.isGenerateInSaturday())
                 .generateInSunday(report.isGenerateInSunday())
                 .autoSending(report.isAutoSending())
+                .fileName(serviceWrapper.getPublicationsService().getLastByReportId(id).getFilePath())
                 .category(categoriesService.findAllByReportId(id))
                 .numOfReports(serviceWrapper.getPublicationsService().getAllByReportId(report.getId()).size())
                 .status(serviceWrapper.getPublicationsService().getStatusFromPublications(report.getId()))
@@ -131,6 +132,7 @@ public class ReportsService {
         }
         return categories;
     }
+
 
 
 }

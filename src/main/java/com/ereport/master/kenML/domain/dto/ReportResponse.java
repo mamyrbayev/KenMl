@@ -39,6 +39,7 @@ public class ReportResponse {
     private boolean publicate = false;
 
     private String iconPath;
+    private String fileName;
 
     private Long sendAfterTime;
 

@@ -46,7 +46,6 @@ public class GenerationController extends  BaseController {
     }
 
     @GetMapping(value = "/{photo:.+}", produces = {MediaType.APPLICATION_PDF_VALUE})
-
     @ResponseBody
     public byte[] showPdf(@PathVariable String photo) throws IOException {
         try (FileInputStream inputStream = new FileInputStream(this.location + "/" + photo)) {
