@@ -1,0 +1,88 @@
+<!doctype html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style type="text/css">
+
+        .footer p:first-child {
+            color: #424242;
+            font-size: 15px;
+            line-height: 12px;
+            font-weight: 400;
+            margin-left: 70px;
+        }
+
+        .footer p:last-child {
+            color: #9A9B9C;
+            font-size: 15px;
+            line-height: 12px;
+            font-weight: 400;
+            width: 70%;
+            margin-left: 70px;
+        }
+
+        .line {
+            border: 2px solid #11D0CF;
+            width: 20%;
+            margin: 0;
+            margin-left: 70px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div>
+        <footer class="footer1" id="stopFooter1" style="background-color: #eef5fc; height: 532.28px; width: 5000px; margin-left: -50px;">
+        </footer>
+    <footer class="footer" id="stopFooter">
+        <p>Потребность строительного рынка на 2020-2021гг.</p>
+        <div class='line'></div>
+        <p>Разработано на основании автоматического анализа KENML смет системой GENRO (АО Институт цифровой
+            техники
+            и технологий)</p>
+    </footer>
+</div>
+<script type="text/javascript" th:inline="javascript">
+    'use strict';
+    (function (setLineDash) {
+        CanvasRenderingContext2D.prototype.setLineDash = function () {
+            if (!arguments[0].length) {
+                arguments[0] = [1, 0];
+            }
+            // Now, call the original method
+            return setLineDash.apply(this, arguments);
+        };
+    })(CanvasRenderingContext2D.prototype.setLineDash);
+    Function.prototype.bind = Function.prototype.bind || function (thisp) {
+        var fn = this;
+        return function () {
+            return fn.apply(thisp, arguments);
+        };
+    };
+
+    (function() {
+        var vars = {};
+        var x = document.location.search.substring(1).split('&');
+        for (var i in x) {
+            var z = x[i].split('=', 2);
+            vars[z[0]] = unescape(z[1]);
+        }
+        var xx = ['frompage', 'topage', 'page', 'webpage', 'section', 'subsection', 'subsubsection'];
+        for (var ii in xx) {
+            var y = document.getElementsByClassName(xx[ii]);
+            for (var j = 0; j < y.length; ++j) y[j].textContent = vars[xx[ii]];
+
+            if (Number(vars['page']) === 1) { // If page is 1, set FakeHeaders display to none
+                document.getElementById("stopFooter").style.display = 'none';
+            } else { // If page is 1, set FakeHeaders display to none
+                document.getElementById("stopFooter1").style.display = 'none';
+            }
+
+        }
+    }) ();
+</script>
+
+</body>
+
+</html>

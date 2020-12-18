@@ -33,7 +33,7 @@
     }
 
     .container-title {
-        height: 1400px;
+        height: 1240px;
         width: 100%;
         margin-left: auto;
     }
@@ -72,6 +72,11 @@
         top: 0px;
         right: 0px;
     }
+
+    /*footer.footer {*/
+    /*    position: relative;*/
+    /*    top: 250px;*/
+    /*}*/
 
     .header-title-date p:first-child {
         color: #fff;
@@ -529,13 +534,16 @@
 
     .chart-bars-block-common {
         width: 95%;
-        page-break-inside: avoid;
         border-bottom-right-radius: 30px;
         border-top-right-radius: 30px;
         -webkit-box-shadow: 15px 15px 60px #EAEEF1;
         box-shadow: 15px 15px 60px #EAEEF1;
         padding: 50px 0;
         margin: 50px 0;
+    }
+
+    .potreb {
+        page-break-inside: avoid;
     }
 
     .chart-bar-title {
@@ -742,7 +750,8 @@
         font-size: 30px;
         line-height: 36px;
         font-weight: 400;
-        margin-left: 70px;
+        margin-left: 122px;
+        margin-top: -20px;
     }
 
     .more-content a {
@@ -1115,9 +1124,9 @@
         font-size: 16px;
     }
 
-    .top {
-        page-break-after: always;
-    }
+    /*.top {*/
+    /*    page-break-after: always;*/
+    /*}*/
 
     .header-bg img {
         height: 50%;
@@ -1195,12 +1204,12 @@
     }
 
     .bar-0 {
-        height: 1900px;
+        height: 1750px;
         background: #FFD056;
     }
 
     .bar-1 {
-        height: 1750px;
+        height: 1500px;
         background: #99E7AB;
     }
 
@@ -1209,7 +1218,7 @@
     }
 
     .bar-2 {
-        height: 1600px;
+        height: 1350px;
         background: #11D0CF;
     }
 
@@ -1218,7 +1227,7 @@
     }
 
     .bar-3 {
-        height: 1450px;
+        height: 1200px;
         background: #152731;
     }
 
@@ -1227,7 +1236,7 @@
     }
 
     .bar-4 {
-        height: 1300px;
+        height: 1050px;
         background: #2D2F32;
     }
 
@@ -1236,7 +1245,7 @@
     }
 
     .bar-5 {
-        height: 1150px;
+        height: 900px;
         background: #3A3C40;
     }
 
@@ -1245,7 +1254,7 @@
     }
 
     .bar-6 {
-        height: 1000px;
+        height: 750px;
         background: #515357;
     }
 
@@ -1254,7 +1263,7 @@
     }
 
     .bar-7 {
-        height: 850px;
+        height: 600px;
         background: #5E6167;
     }
 
@@ -1263,7 +1272,7 @@
     }
 
     .bar-8 {
-        height: 700px;
+        height: 450px;
         background: #767A81;
     }
 
@@ -1272,7 +1281,7 @@
     }
 
     .bar-9 {
-        height: 550px;
+        height: 300px;
         background: #9A9B9C;
     }
 
@@ -1289,7 +1298,7 @@
     }
 
     .bar-item:last-child {
-        margin-bottom: 450px;
+        margin-bottom: 200px;
     }
 
     .bar-rest {
@@ -1615,12 +1624,12 @@
             <a target="_blank" href="http://www.storymart.kz">StroyMart.<span>kz</span></a>
         </div>
 
-        <footer class="footer">
-            <p>Потребность строительного рынка на 2020-2021гг.</p>
-            <div class="line"></div>
-            <p>Разработано на основании автоматического анализа KENML смет системой GENRO (АО Институт цифровой техники
-                и технологий)</p>
-        </footer>
+        <!--        <footer class="footer">-->
+        <!--            <p>Потребность строительного рынка на 2020-2021гг.</p>-->
+        <!--            <div class="line"></div>-->
+        <!--            <p>Разработано на основании автоматического анализа KENML смет системой GENRO (АО Институт цифровой техники-->
+        <!--                и технологий)</p>-->
+        <!--        </footer>-->
     </div>
 </section>
 <section class="top">
@@ -1665,7 +1674,7 @@
 
 <div id="secondBlock"></div>
 
-<div>
+<div style="page-break-before: always">
     <section class="count">
         <div class="header-chart-inner">
             <div class="container">
@@ -1723,6 +1732,24 @@
         };
     };
 
+    var pdfInfo = {};
+    var x = document.location.search.substring(1).split('&');
+
+    for (var i in x) {
+        var z = x[i].split('=', 2);
+        pdfInfo[z[0]] = unescape(z[1]);
+    }
+
+    function getPdfInfo() {
+        var page = pdfInfo.page || 1;
+
+        if (page !== 1) {
+            document.getElementById('footer').style.display = 'none';
+        }
+    }
+
+    getPdfInfo();
+
     var months = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
     var date2 = new Date();
     var table = document.getElementById("pt1");
@@ -1768,14 +1795,14 @@
             years.push(arrFirst[pr1].year);
             if (sum >= 36) {
                 var copyYears = JSON.parse(JSON.stringify(years))
-                arr.push({yearList: copyYears})
+                arr.push({yearList: copyYears});
                 sum = 0;
                 years = [];
             }
         }
         if (sum !== 0) {
-            var copyYears = JSON.parse(JSON.stringify(years));
-            arr.push({yearList: copyYears})
+            var copyYears1 = JSON.parse(JSON.stringify(years));
+            arr.push({yearList: copyYears1});
             sum = 0;
             years = [];
         }
@@ -1911,7 +1938,7 @@
                     '</div>';
 
 
-                if (pr2 % 2 !== 0) {
+                if (pr2 % 2 === 0) {
                     prStr += '</div><div class="col-6">'
                 }
 
@@ -1920,16 +1947,16 @@
             tableSize = arrFirst[pr1].overallByRegions.length;
 
             if (isFooter) {
-                breakStr = getFooter() + getSecondHeader();
+                breakStr = getSecondHeader();
                 console.log("pervii")
             }
             if (arrFirst.length === (pr1 + 1)) {
-                breakStr = getFooter();
+                breakStr = "";
             }
 
             prStr += '</div></div>' +
                 '</div>' +
-                '</div>' + '</div>' + '</div>' + breakStr;
+                '</div>' + '</div>' + '</div>' + '</div>' + breakStr;
             allStr += prStr;
             prStr = '';
 
@@ -1941,8 +1968,6 @@
     }
 
     secondBlock.innerHTML = getFirstHeader() + getStat() + getProgress();
-
-    var overallForYears = /*[[${overallForYears}]]*/ [];
 
     var barItems = document.getElementById("bar-items");
 
@@ -1964,7 +1989,7 @@
                 + arrTop[i].name +
                 '</div>' +
                 '</div>' +
-                '<footer class="footer footer-top"> <p>Потребность строительного рынка на 2020-2021гг.</p><div class="line"></div><p>Разработано на основании автоматического анализа KENML смет системой GENRO (АО Институт цифровой техники и технологий)</p></footer>' +
+                // '<footer class="footer footer-top"> <p>Потребность строительного рынка на 2020-2021гг.</p><div class="line"></div><p>Разработано на основании автоматического анализа KENML смет системой GENRO (АО Институт цифровой техники и технологий)</p></footer>' +
                 '</div>' +
                 '<div class="bar-line bar-' + Number(i + 1) + '"></div>' +
                 '</div>';
@@ -2022,8 +2047,8 @@
 
             years.push(overallForYears[b].year);
             yearValues.push(Number(overallForYears[b].underConstruction));
-            console.log("years " +years)
-            console.log("yearValues " +yearValues)
+            console.log("years " + years)
+            console.log("yearValues " + yearValues)
 
         }
 
@@ -2121,9 +2146,9 @@
         var ctx = document.getElementById('myChart').getContext('2d');
         window.myPie = new Chart(ctx, config);
     }
+
     getMyChart();
     getBarChart();
-
 
 
     var potrebnostis = /*[[${potrebnostis}]]*/ [];
@@ -2148,7 +2173,7 @@
             '</div>';
         for (var q = 0; q < potrebnostis[p].localitiesByMatrials.length; q++) {
 
-            potr += '<div class="container">' +
+            potr += '<div class="potreb"> <div class="container">' +
                 '<div class="chart-city-num">' +
                 '<h1>' + potrebnostis[p].localitiesByMatrials[q].localities.name + '</h1>' +
                 '<div class="chart-vol-price">' +
@@ -2247,7 +2272,7 @@
 
                         chartBarId++;
 
-                        potr += '</div>' + '</div>' + '</div>';
+                        potr += '</div>' + '</div>' + '</div>' + '</div>';
 
                         // if (checkId !== 0 && checkId % 2 === 0) {
                         //     potr += '<div style="page-break-after: always"></div>'
@@ -2339,7 +2364,7 @@
     var val = document.getElementById("chart-values");
 
     function getFirstHeader() {
-        return '<section class="count">' +
+        return '<div id="forFooter"><section class="count">' +
             '<div class="header-count-inner">' +
             '<div class="container">' +
             '<header class="header">' +
@@ -2466,6 +2491,29 @@
             "</div>";
     }
 
+    (function () {
+        var vars = {};
+        var x = document.location.search.substring(1).split('&');
+        for (var i in x) {
+            var z = x[i].split('=', 2);
+            vars[z[0]] = unescape(z[1]);
+        }
+        var xx = ['frompage', 'topage', 'page', 'webpage', 'section', 'subsection', 'subsubsection'];
+        for (var ii in xx) {
+            var y = document.getElementsByClassName(xx[ii]);
+            for (var j = 0; j < y.length; ++j) y[j].textContent = vars[xx[ii]];
+
+            if (Number(vars['page']) === 1) { // If page is 1, set FakeHeaders display to none
+                // document.getElementById("stopFooter").style.zIndex = 'none';
+            }
+            if (Number(vars['page']) === 2) { // If page is 1, set FakeHeaders display to none
+                document.getElementById("stopFooter").style.display = 'none';
+            }
+            if (Number(vars['page']) === 3) { // If page is 1, set FakeHeaders display to none
+                document.getElementById("stopFooter").style.display = 'none';
+            }
+        }
+    })();
 </script>
 </body>
 </html>

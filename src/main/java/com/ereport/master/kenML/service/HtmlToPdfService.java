@@ -76,14 +76,37 @@ public class HtmlToPdfService {
     }
 
 
+    public String parseThymeleafFooter() throws IOException {
+        ClassLoaderTemplateResolver templateResolver = new ClassLoaderTemplateResolver();
+
+        templateResolver.setPrefix("/templates/");
+        templateResolver.setSuffix(".html");
+        templateResolver.setTemplateMode(TemplateMode.HTML);
+        templateResolver.setTemplateMode(TemplateMode.CSS);
+        templateResolver.setTemplateMode(TemplateMode.JAVASCRIPT);
+        templateResolver.setCharacterEncoding("UTF-8");
+        templateResolver.setOrder(1);
+        templateResolver.setCheckExistence(true);
+
+        ClassLoader classLoader = getClass().getClassLoader();
+
+        TemplateEngine templateEngine = new TemplateEngine();
+        templateEngine.setTemplateResolver(templateResolver);
+
+
+        return templateEngine.process("footer", new Context());
+    }
+
+
 
     public String generate() throws InterruptedException, IOException {
         SimpleDateFormat sdfTime = new SimpleDateFormat("dd-MM-yyy HH-mm-ss");
         ClassLoader classLoader = getClass().getClassLoader();
 
         Pdf pdf = new Pdf();
+        pdf.addParam(new Param("--footer-html", parseThymeleafFooter()));
         pdf.addPageFromString(parseThymeleafTemplate());
-        pdf.addParam(new Param("--page-size", "A4", "-B", "0", "-L", "0", "-R", "0", "-T", "0"));
+        pdf.addParam(new Param("--page-size", "A4", "-B", "20mm", "-L", "0", "-R", "0", "-T", "0"));
 
         pdf.addParam(new Param("--javascript-delay", "3000"));
 
