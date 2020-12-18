@@ -4,6 +4,7 @@ import com.ereport.master.email.emailHelper.EmailHelper;
 import com.ereport.master.kenML.domain.Companies;
 import com.ereport.master.kenML.domain.Publications;
 import com.ereport.master.kenML.domain.Reports;
+import com.ereport.master.kenML.domain.dto.ExpirationTimeResponse;
 import com.ereport.master.kenML.domain.dto.PublicationsResponse;
 import com.ereport.master.kenML.domain.enums.Status;
 import com.ereport.master.kenML.repository.CompaniesRepo;
@@ -24,10 +25,7 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class PublicationsService {
@@ -150,8 +148,13 @@ public class PublicationsService {
 
             if(sendingDays.size() > 0){
                 if(sendingDays.contains(dayOfWeek)){
+                    Calendar cal = Calendar.getInstance(); // creates calendar
+                    cal.setTime(new Date());               // sets calendar time/date
+                    cal.add(Calendar.HOUR_OF_DAY, 6);      // adds one hour
+                    cal.getTime();
+                    Date currentDateTimeZone = cal.getTime();
                     DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
-                    String fullDate = dateFormat.format(new Date());
+                    String fullDate = dateFormat.format(currentDateTimeZone);
 
                     DateFormat dateFormat1 = new SimpleDateFormat("dd-MM-yyyy");
                     String currentDate = dateFormat1.format(new Date());
@@ -177,20 +180,47 @@ public class PublicationsService {
         }
     }
 
+
+    public ExpirationTimeResponse getExpirationTime(Integer publicationId){
+        Publications publications = getById(publicationId);
+
+        Reports reports = serviceWrapper.getReportsService().findById(publications.getReportId());
+
+        Long sendingTime = publications.getPublicationDate().getTime() + reports.getSendAfterTime();
+        Long leftTime = sendingTime -  new Date().getTime();
+
+        int days = (int) ((leftTime / (1000*60*60*24)) % 7);
+
+        leftTime = leftTime - (days * 86400000L);
+
+        int hours   = (int) ((leftTime / (1000*60*60)) % 24);
+
+        leftTime = leftTime - (hours * 3600000L);
+
+        int minutes = (int) ((leftTime / (1000*60)) % 60);
+
+        leftTime = leftTime - (minutes * 60000L);
+
+        int seconds = (int) (leftTime / 1000) % 60 ;
+
+        return ExpirationTimeResponse.builder()
+                .day(days)
+                .hour(hours)
+                .minute(minutes)
+                .second(seconds)
+                .build();
+    }
+
     public void sendPublicationByScheduler() throws ParseException, IOException {
         List<Publications> publications = publicationsRepo.findAllPublicationsByStatus(String.valueOf(Status.PUBLISHED));
         for(Publications publication: publications){
-            Reports reports = serviceWrapper.getReportsService().findById(publication.getReportId());
-            long tenMinsInMills = reports.getSendAfterTime();//millisecs
-
-            Calendar date = Calendar.getInstance();
-            date.setTime(new Date());
-            long t = date.getTimeInMillis();
-            Date afterAddingTenMins = new Date(t + tenMinsInMills);
-
-            if(publication.getCreatedAt().equals(afterAddingTenMins)){
-                sendEmailByPublicationId(publication.getId());
+            if(!publication.getStatus().equals(Status.SENT)){
+                ExpirationTimeResponse expirationTimeResponse = getExpirationTime(publication.getId());
+                if(expirationTimeResponse.getSecond() <= 0){
+                    sendEmailByPublicationId(publication.getId());
+                }
             }
+
         }
     }
 

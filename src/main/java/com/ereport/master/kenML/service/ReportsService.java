@@ -9,9 +9,7 @@ import com.ereport.master.kenML.repository.ReportsRepo;
 import com.ereport.master.kenML.service.wrapper.ServiceWrapper;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class ReportsService {
@@ -105,6 +103,12 @@ public class ReportsService {
                 .status(serviceWrapper.getPublicationsService().getStatusFromPublications(report.getId()))
                 .build();
         return reportResponse;
+    }
+
+    public Map<String, String> findLastFileById(Integer id) {
+        Map<String, String> resp = new HashMap<String, String>();
+        resp.put("fileName", serviceWrapper.getPublicationsService().getLastByReportId(id).getFilePath());
+        return resp;
     }
 
     public List<ReportResponse> findAllToFront() {

@@ -6,6 +6,7 @@ import com.ereport.master.kenML.domain.dto.*;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -37,16 +38,28 @@ public class ReportGenerationService {
 
 
         List<Potrebnosti> potrebnostis = new ArrayList<>();
-        Material material = materialService.getByMaterialCode("210102010604");
-        List<LocalitiesByMatrial> localitiesByMatrials = localitiesService.getAllByMaterialCode(material.getMtCode());
-        potrebnostis.add(Potrebnosti.builder()
-                .material(material)
-                .localitiesByMatrials(localitiesByMatrials)
-                .build());
-        reportGenerationResponse.setPotrebnostis(potrebnostis);
+        List<ReportMaterialsResponse> reportMaterials = reportMaterialsService.findAll();
+        List<Integer> materialIds = new ArrayList<>();
+        for(ReportMaterialsResponse rmr: reportMaterials){
+            materialIds.add(rmr.getId());
+        }
+        Integer id = Collections.min(materialIds);
+        ReportMaterialsResponse reportMaterialsResponse = null;
+        for(ReportMaterialsResponse rmr: reportMaterials){
+            if (id.equals(rmr.getId())){
+                reportMaterialsResponse = rmr;
+            }
+        }
 
-
-
+        if(reportMaterialsResponse != null){
+            Material material = materialService.getByMaterialCode(reportMaterialsResponse.getMtCode());
+            List<LocalitiesByMatrial> localitiesByMatrials = localitiesService.getAllByMaterialCode(material.getMtCode());
+            potrebnostis.add(Potrebnosti.builder()
+                    .material(material)
+                    .localitiesByMatrials(localitiesByMatrials)
+                    .build());
+            reportGenerationResponse.setPotrebnostis(potrebnostis);
+        }
         return reportGenerationResponse;
     }
 

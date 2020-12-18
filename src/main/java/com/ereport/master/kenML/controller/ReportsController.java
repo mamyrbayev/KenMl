@@ -49,6 +49,11 @@ public class ReportsController extends BaseController {
         return buildResponse(reportsService.findByIdToFront(id), HttpStatus.OK);
     }
 
+    @GetMapping("/last/file")
+    public ResponseEntity<?> findLastFileById(@RequestParam Integer id) {
+        return buildResponse(reportsService.findLastFileById(id), HttpStatus.OK);
+    }
+
     @GetMapping("/findAll/V2")
     public ResponseEntity<?> getAllV2() {
         return buildResponse(reportsService.findAllToFront(), HttpStatus.OK);
