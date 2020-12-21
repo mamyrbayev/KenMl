@@ -9,9 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -80,8 +78,9 @@ public class ObjectService {
                     }
                 }
             }
+            int year = Integer.parseInt(uniqueYear);
             overallForYears.add(OverallForYear.builder()
-                    .year(uniqueYear)
+                    .year(year)
                     .completed(completed)
                     .underConstruction(underConstruction)
                     .overall(completed + underConstruction)
@@ -89,12 +88,11 @@ public class ObjectService {
         }
         List<OverallForYear> resp = new ArrayList<>();
         for(OverallForYear overallForYear: overallForYears){
-            if(overallForYear.getYear() != null){
-                if(overallForYear.getYear().equals("2020") || overallForYear.getYear().equals("2021") || overallForYear.getYear().equals("2022")){
-                    resp.add(overallForYear);
-                }
+            if(overallForYear.getYear() == 2020 || overallForYear.getYear() == 2021 || overallForYear.getYear() == 2022){
+                resp.add(overallForYear);
             }
         }
+        Collections.sort(resp, Comparator.comparingLong(OverallForYear::getYear));
         return resp;
     }
 
@@ -122,18 +120,19 @@ public class ObjectService {
         List<Objects> objects = objectsRepo.findAllByCompanyAndLocality(companyId, localityId);
 
         for(Objects object: objects){
-            ObjectsDto objectsDto = ObjectsDto.builder()
-                    .id(object.getId())
-                    .objectName(object.getObjectName())
-                    .companyId(object.getCompanyId())
-                    .localityId(object.getLocalityId())
-                    .lastUpdatedOn(object.getLastUpdatedOn())
-                    .objectInYearDtos(getObjectInYearDtos(mtCode, object.getId()))
-                    .build();
+            List<ObjectInYearDto> objectInYearDtos = getObjectInYearDtos(mtCode, object.getId());
 
-
-
-            objectsDtos.add(objectsDto);
+            if(objectInYearDtos.size() > 0){
+                ObjectsDto objectsDto = ObjectsDto.builder()
+                        .id(object.getId())
+                        .objectName(object.getObjectName())
+                        .companyId(object.getCompanyId())
+                        .localityId(object.getLocalityId())
+                        .lastUpdatedOn(object.getLastUpdatedOn())
+                        .objectInYearDtos(objectInYearDtos)
+                        .build();
+                objectsDtos.add(objectsDto);
+            }
         }
 
         return objectsDtos;

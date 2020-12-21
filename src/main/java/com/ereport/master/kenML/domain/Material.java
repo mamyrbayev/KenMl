@@ -13,9 +13,6 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Material {
-    @Id
-    @Column(name = "id")
-    private Integer id;
 
     @Column(name = "MT_LINK")
     private Long mtLink;
@@ -23,6 +20,7 @@ public class Material {
     @Column(name = "MT_OWNER")
     private Long mtOwner;
 
+    @Id
     @Column(name = "MT_CODE")
     private String mtCode;
 

@@ -12,7 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class OverallForYear {
-    private String year;
+    private int year;
     private int completed;
     private int underConstruction;
     private int overall;

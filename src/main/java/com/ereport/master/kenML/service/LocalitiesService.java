@@ -4,6 +4,7 @@ import com.ereport.master.kenML.domain.Companies;
 import com.ereport.master.kenML.domain.Localities;
 import com.ereport.master.kenML.domain.dto.CompaniesDto;
 import com.ereport.master.kenML.domain.dto.LocalitiesByMatrial;
+import com.ereport.master.kenML.domain.dto.ObjectsDto;
 import com.ereport.master.kenML.domain.dto.OverallVolumeAndPrice;
 import com.ereport.master.kenML.repository.LocalitiesRepo;
 import org.springframework.stereotype.Service;
@@ -36,33 +37,37 @@ public class LocalitiesService {
 
             for(Companies company: companies){
                 OverallVolumeAndPrice overallForCompany = resourcesService.getOverallForCompany(mtCode, company.getId(), locality.getId());
-
-                CompaniesDto companiesDto = CompaniesDto.builder()
-                        .id(company.getId())
-                        .bin(company.getBin())
-                        .title(company.getTitle())
-                        .directorName(company.getDirectorName())
-                        .directorPhone(company.getDirectorPhone())
-                        .emailAddress(company.getEmailAddress())
-                        .physicalAddress(company.getPhysicalAddress())
-                        .categoryID(company.getCategoryID())
-                        .objectsDto(objectService.getObjectsByCompanyAndLocality(mtCode, company.getId(), locality.getId()))
-                        .overallPrice(overallForCompany.getPrice())
-                        .overallVolume(overallForCompany.getVolume())
-                        .build();
-                companiesDtos.add(companiesDto);
+                List<ObjectsDto> objectsDto = objectService.getObjectsByCompanyAndLocality(mtCode, company.getId(), locality.getId());
+                if(objectsDto.size() > 0){
+                    CompaniesDto companiesDto = CompaniesDto.builder()
+                            .id(company.getId())
+                            .bin(company.getBin())
+                            .title(company.getTitle())
+                            .directorName(company.getDirectorName())
+                            .directorPhone(company.getDirectorPhone())
+                            .emailAddress(company.getEmailAddress())
+                            .physicalAddress(company.getPhysicalAddress())
+                            .categoryID(company.getCategoryID())
+                            .objectsDto(objectsDto)
+                            .overallPrice(overallForCompany.getPrice())
+                            .overallVolume(overallForCompany.getVolume())
+                            .build();
+                    companiesDtos.add(companiesDto);
+                }
 
             }
 
             OverallVolumeAndPrice overallVolumeAndPrice = resourcesService.getOverallVolumeAndPrice(mtCode, locality.getId());
+            if(overallVolumeAndPrice.getPrice() > 0f){
+                LocalitiesByMatrial localitiesByMatrial = LocalitiesByMatrial.builder()
+                        .localities(locality)
+                        .companiesList(companiesDtos)
+                        .overallPrice(overallVolumeAndPrice.getPrice())
+                        .overallVolume(overallVolumeAndPrice.getVolume())
+                        .build();
+                localitiesByMatrials.add(localitiesByMatrial);
+            }
 
-            LocalitiesByMatrial localitiesByMatrial = LocalitiesByMatrial.builder()
-                    .localities(locality)
-                    .companiesList(companiesDtos)
-                    .overallPrice(overallVolumeAndPrice.getPrice())
-                    .overallVolume(overallVolumeAndPrice.getVolume())
-                    .build();
-            localitiesByMatrials.add(localitiesByMatrial);
         }
 
         return localitiesByMatrials;

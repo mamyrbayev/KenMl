@@ -20,6 +20,9 @@ public class MaterialService {
     }
 
     public Material getByMaterialCode(String mtCode){
-        return materialRepo.findByMaterialCode(mtCode);
+//        System.out.println("MT CODE " + mtCode);
+        Material material = materialRepo.findByMaterialCode(mtCode);
+//        System.out.println("Material " + material);
+        return material;
     }
 }

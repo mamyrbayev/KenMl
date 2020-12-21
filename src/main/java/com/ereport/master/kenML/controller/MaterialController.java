@@ -25,4 +25,10 @@ public class MaterialController extends BaseController {
     public ResponseEntity<?> getAllSubByOwner(@RequestParam Long mtOwner) {
         return buildResponse(this.materialService.getAllMaterialsByOwner(mtOwner), HttpStatus.OK);
     }
+
+    @GetMapping
+    @ApiOperation("Получение всех материалов по коду")
+    public ResponseEntity<?> getAllSubByOwner(@RequestParam String mtCode) {
+        return buildResponse(this.materialService.getByMaterialCode(mtCode), HttpStatus.OK);
+    }
 }

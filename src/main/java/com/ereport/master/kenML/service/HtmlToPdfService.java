@@ -104,7 +104,7 @@ public class HtmlToPdfService {
         ClassLoader classLoader = getClass().getClassLoader();
 
         Pdf pdf = new Pdf();
-        pdf.addParam(new Param("--footer-html", parseThymeleafFooter()));
+        pdf.addParam(new Param("--footer-html", location + "footer.html"));
         pdf.addPageFromString(parseThymeleafTemplate());
         pdf.addParam(new Param("--page-size", "A4", "-B", "20mm", "-L", "0", "-R", "0", "-T", "0"));
 

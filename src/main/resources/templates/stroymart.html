@@ -803,12 +803,13 @@
     }
 
     .count-labels {
-        display: -webkit-box; /* wkhtmltopdf uses this one */
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-pack: end;
-        -ms-flex-pack: end;
-        justify-content: flex-end;
+        /*display: -webkit-box; !* wkhtmltopdf uses this one *!*/
+        /*display: -ms-flexbox;*/
+        /*display: flex;*/
+        /*-webkit-box-pack: end;*/
+        /*-ms-flex-pack: end;*/
+        /*justify-content: flex-end;*/
+        /*margin-right: 30px;*/
     }
 
     .color {
@@ -826,12 +827,12 @@
     }
 
     .count-label--item {
-        display: -webkit-box; /* wkhtmltopdf uses this one */
-        display: -ms-flexbox;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-        margin-left: 10px;
+        /*display: -webkit-box; !* wkhtmltopdf uses this one *!*/
+        /*display: -ms-flexbox;*/
+        /*-webkit-box-align: center;*/
+        /*-ms-flex-align: center;*/
+        /*align-items: center;*/
+        /*margin-left: 35px;*/
     }
 
     .count-label--item span {
@@ -840,6 +841,10 @@
         line-height: 26px;
         font-weight: 400;
         margin-left: 5px;
+    }
+
+    .finished-item {
+        width: 200px;
     }
 
 
@@ -858,8 +863,8 @@
         position: absolute;
         left: 13.5%;
         text-align: center;
-        margin-top: 150px;
-        margin-left: 27px;
+        margin-top: 170px;
+        /*margin-left: 22px;*/
 
     }
 
@@ -868,7 +873,7 @@
     }
 
     .pieNum p:nth-child(1) {
-        font-size: 14px;
+        font-size: 20px;
         color: #9A9B9C;
         margin: 0px 0;
         font-weight: 200;
@@ -953,7 +958,6 @@
         padding: 80px 0 10px;
         -webkit-box-sizing: border-box;
         box-sizing: border-box;
-
     }
 
     .pr-title {
@@ -1122,6 +1126,14 @@
     .progress-wrap3 p {
         margin-bottom: 10px;
         font-size: 16px;
+    }
+
+    .chart-left-padding {
+        padding-left: 200px;
+    }
+
+    .chart-right-padding {
+        padding-right: 380px;
     }
 
     /*.top {*/
@@ -1369,8 +1381,9 @@
     }
 
     .bar-item-text-right {
-        margin-left: 20px;
+        margin-left: 40px;
         /* width: 100%; */
+        font-size: 1.5rem !important;
         width: 650px;
     }
 
@@ -1496,7 +1509,7 @@
                 (АО Институт цифровой техники и технологий)</p>
 
             <div class="header-title-date">
-                <p id="monthName">Декабрь</p>
+                <p id="monthName"></p>
                 <br>
                 <p>Издание №1</p>
             </div>
@@ -1535,7 +1548,7 @@
                 </p>
             </div>
             <div class="header-content--right">
-                <p id="monthName2">Декабрь</p>
+                <p id="monthName2"></p>
                 <p>Издание 1</p>
             </div>
 
@@ -1750,12 +1763,19 @@
 
     getPdfInfo();
 
-    var months = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
-    var date2 = new Date();
     var table = document.getElementById("pt1");
     var table1 = document.getElementById("pt2");
     var table2 = document.getElementById("pt3");
 
+    var months1 = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
+
+    function currentMonth() {
+        var date2 = new Date();
+        return months1[date2.getMonth()];
+    }
+
+    document.getElementById("monthName").innerHTML = currentMonth();
+    document.getElementById("monthName2").innerHTML = currentMonth();
 
     var arrFirst = /*[[${overallForYearByRegions}]]*/ [];
 
@@ -1771,7 +1791,7 @@
         if (arrFirst.length >= 2) {
             sum = sum + arrFirst[1].overallByRegions.length;
         }
-        if (sum >= 18) {
+        if (sum >= 16) {
             arr.push({yearList: [arrFirst[0].year]});
             return false
         }
@@ -1888,7 +1908,7 @@
                 'в разрезе регионов на ' + arrFirst[pr1].year + ' год</h4></div></div></div>' +
                 '<div style="transform: rotate(-180deg);background: -webkit-linear-gradient(180deg, #FFFFFF 0.34%, rgba(255, 255, 255, 0) 27.8%); padding: 20px 0;"></div>' +
                 '</div>' +
-                '<div class="container">' +
+                '<div class="container" style="page-break-inside: avoid;">' +
                 '<div class="progress-block">' +
                 '<div class="progress-title">' +
                 '<div class="pr-title">' +
@@ -1904,8 +1924,7 @@
                 '<p>Всего</p>' +
                 '</div>' +
                 '</div>' +
-                '<div class="progress-table1" id="pt' + progressId + '">' +
-                '<div class="row">';
+                '<div class="progress-table1" id="pt' + progressId + '">';
             var breakStr = '';
 
             var colSize = arrFirst[pr1].overallByRegions.length;
@@ -1914,13 +1933,14 @@
             for (var pr2 = 0; pr2 < arrFirst[pr1].overallByRegions.length; pr2++) {
 
 
-                var prStrLine = '';
-                if (pr2 === 0) {
-                    prStr += '<div class="col-6">'
+                // var prStrLine = '';
+                if (pr2 % 2 === 0) {
+                    prStr += '<div class="row mb-3">'
                 }
 
 
-                prStr += '<div class="progress-line">' +
+                prStr += '<div class="col-6">' +
+                    '<div class="progress-line align-items-end">' +
                     '<p>' + arrFirst[pr1].overallByRegions[pr2].regionName + '</p>' +
                     '<div class="progress-wrap1">' +
                     '<p>' + arrFirst[pr1].overallByRegions[pr2].underConstruction + '</p>' +
@@ -1935,12 +1955,19 @@
                     '</div>' +
                     '</div>' +
                     '<p class="progress-sum">' + arrFirst[pr1].overallByRegions[pr2].overall + '</p>' +
+                    '</div>' +
                     '</div>';
 
-
-                if (pr2 % 2 === 0) {
-                    prStr += '</div><div class="col-6">'
+                if (pr2 % 2 === 1) {
+                    prStr += '</div>';
                 }
+
+                // if (pr2 === 0) {
+                //     prStr += '</div><div class="col-6">'
+                // }
+                // if (pr2 % 2 === 1) {
+                //     prStr += '</div><div class="col-6">'
+                // }
 
 
             }
@@ -1948,7 +1975,6 @@
 
             if (isFooter) {
                 breakStr = getSecondHeader();
-                console.log("pervii")
             }
             if (arrFirst.length === (pr1 + 1)) {
                 breakStr = "";
@@ -1956,7 +1982,7 @@
 
             prStr += '</div></div>' +
                 '</div>' +
-                '</div>' + '</div>' + '</div>' + '</div>' + breakStr;
+                '</div>';
             allStr += prStr;
             prStr = '';
 
@@ -2024,7 +2050,16 @@
     var chartNums = '';
     var years = [];
     var yearValues = [];
+    var colors = [];
+    var chartLabels = [];
+    var chartNumbers = document.getElementById('chart-numbers');
+    if (Number(overallForYears.length) === 2) {
+        chartNumbers.classList.remove("justify-content-around");
+        chartNumbers.classList.add("justify-content-between");
+        chartNumbers.classList.add("chart-right-padding");
+        chartNumbers.classList.add("chart-left-padding");
 
+    }
 
     for (var a = 0; a < overallForYears.length; a++) {
         if (Number(currentYear) === Number(overallForYears[a].year)) {
@@ -2036,23 +2071,46 @@
             document.getElementById("pieNum-one").innerHTML = overall;
             document.getElementById("pieNum-two").innerHTML = completed;
             document.getElementById("pieNum-three").innerHTML = underConstruction;
-            document.getElementById("pieNum-year").innerHTML = currentYear;
+            // document.getElementById("pieNum-year").innerHTML = currentYear;
+            chartNums += '<div class="chart-number">' +
+                '<p>' + currentYear + '</p>' +
+                '<span>год</span>' +
+                '</div>' +
+                '<div class="bar-img">' +
+                '</div>'
+
 
         }
 
+    }
+
+    for (var ch = 0; ch < overallForYears.length - 1; ch++) {
+        chartLabels.push("");
     }
 
     for (var b = 0; b < overallForYears.length; b++) {
         if (Number(currentYear) !== Number(overallForYears[b].year)) {
 
+            chartNums += '<div class="chart-number">' +
+                '<p>' + overallForYears[b].year + '</p>' +
+                '<span>год</span>' +
+                '</div>';
+
+
             years.push(overallForYears[b].year);
             yearValues.push(Number(overallForYears[b].underConstruction));
-            console.log("years " + years)
-            console.log("yearValues " + yearValues)
+            colors.push("#9A9B9C");
+
+        } else if (b !== overallForYears.length - 1) {
+            chartNums += '<div class="bar-img">' +
+                '</div>'
 
         }
 
     }
+
+    document.getElementById("chart-numbers").innerHTML = chartNums;
+
 
     function getBarChart() {
 
@@ -2060,11 +2118,11 @@
         new Chart(document.getElementById("bar-chart"), {
             type: 'bar',
             data: {
-                labels: years,
+                labels: chartLabels,
                 datasets: [
                     {
                         label: "Population (millions)",
-                        backgroundColor: ["#9A9B9C", "#9A9B9C",],
+                        backgroundColor: colors,
                         data: yearValues,
 
                     }
@@ -2234,14 +2292,12 @@
                         '</div>' +
                         '</div>';
 
-                    console.log("SIZE SUKA " + potrebnostis[p].localitiesByMatrials[q].companiesList[c].objectsDto.length)
-
                     for (var oy = 0; oy < potrebnostis[p].localitiesByMatrials[q].companiesList[c].objectsDto[o].objectInYearDtos.length; oy++) {
                         var months = [];
                         var prices = [];
                         checkId++;
 
-                        potr += '<div class="chart-bars-block-common">' +
+                        potr += '<div class="chart-bars-block-common" style="page-break-inside: avoid">' +
                             '<div class="chart-bar-title">' +
                             '<h1>' + potrebnostis[p].localitiesByMatrials[q].companiesList[c].objectsDto[o].objectInYearDtos[oy].year + '</h1>' +
                             '<div class="chart-vol-price">' +
@@ -2255,11 +2311,11 @@
                             '</div>' + '' +
                             '<div class="chart-bar' + chartBarId + '" style="width: 1400px; height: 308px">' +
                             '<canvas id="chart-bar' + chartBarId + '" style="width: 1400px; height: 308px" width="1400" height="308"></canvas>' +
-                            '<div class="chart-values" id="chart-values">'
+                            '<div class="chart-values" id="chart-values">';
 
 
                         for (var mv = 0; mv < potrebnostis[p].localitiesByMatrials[q].companiesList[c].objectsDto[o].objectInYearDtos[oy].monthVolumePrices.length; mv++) {
-                            months.push(potrebnostis[p].localitiesByMatrials[q].companiesList[c].objectsDto[o].objectInYearDtos[oy].monthVolumePrices[mv].monthIndex);
+                            months.push(getMonth(potrebnostis[p].localitiesByMatrials[q].companiesList[c].objectsDto[o].objectInYearDtos[oy].monthVolumePrices[mv].monthIndex));
                             prices.push(Number(potrebnostis[p].localitiesByMatrials[q].companiesList[c].objectsDto[o].objectInYearDtos[oy].monthVolumePrices[mv].price));
 
                             monthPrice[chartBarId] = [months, prices]
@@ -2272,7 +2328,7 @@
 
                         chartBarId++;
 
-                        potr += '</div>' + '</div>' + '</div>' + '</div>';
+                        potr += '</div>' + '</div>' + '</div>' + '</div>' + '</div>';
 
                         // if (checkId !== 0 && checkId % 2 === 0) {
                         //     potr += '<div style="page-break-after: always"></div>'
@@ -2386,16 +2442,16 @@
             'transform: rotate(-180deg);background: -webkit-linear-gradient(180deg, #FFFFFF 0.34%, rgba(255, 255, 255, 0) 27.8%); padding: 20px 0;"></div>' +
             '</div>' +
             '<div class="container">' +
-            '<div class="count-labels">' +
-            '<div class="count-label--item">' +
+            '<div class="count-labels d-flex justify-content-end">' +
+            '<div class="count-label--item d-flex align-items-center finished-item mr-3">' +
             '<div class="color color-finished">' +
             '</div>' +
-            '<span>- Завершенные</span>' +
+            '<span>-Завершенные</span>' +
             '</div>' +
-            '<div class="count-label--item">' +
+            '<div class="count-label--item d-flex align-items-center mr-3">' +
             '<div class="color color-progress">' +
             '</div>' +
-            '<span>- Строящиеся </span>' +
+            '<span>-Строящиеся </span>' +
             '</div>' +
             '</div>' +
             '</div>' +
@@ -2417,10 +2473,6 @@
             "<p>Строящиеся</p>" +
             "<p id='pieNum-three'></p>" +
             "</div>" +
-            "<div class='pieNum year'>" +
-            "<p>Год</p>" +
-            "<p id='pieNum-year'></p>" +
-            "</div>" +
             "</div>" +
             "<div class='canvas-div' style='width: 1600px; height: 385px'>" +
             "<canvas id='myChart' style='width: 1600px; height: 385px' >" + 2020 +
@@ -2429,6 +2481,8 @@
             "<div class='bar-chart-canvas'>" +
             "<canvas id='bar-chart'></canvas>" +
             "</div>" +
+            "</div>" +
+            "<div id='chart-numbers' class='d-flex justify-content-around'>" +
             "</div>" +
             "</div>"
     }
@@ -2458,7 +2512,7 @@
             '<div style="transform: rotate(-180deg);background: -webkit-linear-gradient(180deg, #FFFFFF 0.34%, rgba(255, 255, 255, 0) 27.8%); padding: 20px 0;"></div>' +
             '</div>' +
             '<div class="container">' +
-            '<div class="progress-block">' +
+            '<div class="progress-block" style="page-break-inside: avoid">' +
             '<div class="progress-title">' +
             '<div class="pr-title">' +
             '<p>Регион</p>' +
@@ -2491,29 +2545,28 @@
             "</div>";
     }
 
-    (function () {
-        var vars = {};
-        var x = document.location.search.substring(1).split('&');
-        for (var i in x) {
-            var z = x[i].split('=', 2);
-            vars[z[0]] = unescape(z[1]);
-        }
-        var xx = ['frompage', 'topage', 'page', 'webpage', 'section', 'subsection', 'subsubsection'];
-        for (var ii in xx) {
-            var y = document.getElementsByClassName(xx[ii]);
-            for (var j = 0; j < y.length; ++j) y[j].textContent = vars[xx[ii]];
+    function getMonth(monthNum) {
+        var monthNames = ["Янв", "Фев", "Мар", "Апр", "Май", "Июн",
+            "Июл", "Авг", "Сен", "Окт", "Ноя", "Дек"
+        ];
 
-            if (Number(vars['page']) === 1) { // If page is 1, set FakeHeaders display to none
-                // document.getElementById("stopFooter").style.zIndex = 'none';
-            }
-            if (Number(vars['page']) === 2) { // If page is 1, set FakeHeaders display to none
-                document.getElementById("stopFooter").style.display = 'none';
-            }
-            if (Number(vars['page']) === 3) { // If page is 1, set FakeHeaders display to none
-                document.getElementById("stopFooter").style.display = 'none';
-            }
+        switch (monthNum) {
+            case 1: return monthNames[0];
+            case 2: return monthNames[1];
+            case 3: return monthNames[2];
+            case 4: return monthNames[3];
+            case 5: return monthNames[4];
+            case 6: return monthNames[5];
+            case 7: return monthNames[6];
+            case 8: return monthNames[7];
+            case 9: return monthNames[8];
+            case 10: return monthNames[9];
+            case 11: return monthNames[10];
+            case 12: return monthNames[11];
+
         }
-    })();
+    }
+
 </script>
 </body>
 </html>

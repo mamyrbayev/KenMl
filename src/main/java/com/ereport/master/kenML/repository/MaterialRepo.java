@@ -16,7 +16,7 @@ public interface MaterialRepo extends JpaRepository<Material, Integer> {
     @Query(value = "exec [kenml].[Booklet_FindAllMaterialByOwner] @MT_OWNER = :mtOwner", nativeQuery = true)
     List<Material> findAllByOwner(Long mtOwner);
 
-    @Query(value = "exec [kenml].[Booklet_FindAllMaterialByMaterialCode] @MT_CODE = :mtCode", nativeQuery = true)
+    @Query(value = "exec [kenml].[Booklet_FindAllMaterialByMaterialCode] @MT_CODE = ?", nativeQuery = true)
     Material findByMaterialCode(String mtCode);
 
 }

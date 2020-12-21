@@ -155,15 +155,16 @@ public class PublicationsService {
                     Date currentDateTimeZone = cal.getTime();
                     DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
                     String fullDate = dateFormat.format(currentDateTimeZone);
-
+//                    System.out.println(fullDate);
                     DateFormat dateFormat1 = new SimpleDateFormat("dd-MM-yyyy");
-                    String currentDate = dateFormat1.format(new Date());
+                    String currentDate = dateFormat1.format(currentDateTimeZone);
 
                     String sendingDate = currentDate + " " + report.getTimeOfPublication();
-
+//                    System.out.println(sendingDate);
                     if(fullDate.equals(sendingDate)){
                         String fileName = htmlToPdfService.generate();
 
+//                        System.out.println(fileName);
                         Publications publications = Publications.builder()
                                 .autoSending(report.isAutoSending())
                                 .createdAt(new Date())
@@ -174,6 +175,7 @@ public class PublicationsService {
                                 .updatedAt(new Date())
                                 .build();
                         add(publications);
+//                        System.out.println(publications.getId());
                     }
                 }
             }
@@ -182,12 +184,18 @@ public class PublicationsService {
 
 
     public ExpirationTimeResponse getExpirationTime(Integer publicationId){
+        Calendar cal = Calendar.getInstance(); // creates calendar
+        cal.setTime(new Date());               // sets calendar time/date
+        cal.add(Calendar.HOUR_OF_DAY, 6);      // adds one hour
+        cal.getTime();
+        Date currentDateTimeZone = cal.getTime();
+
         Publications publications = getById(publicationId);
 
         Reports reports = serviceWrapper.getReportsService().findById(publications.getReportId());
 
         Long sendingTime = publications.getPublicationDate().getTime() + reports.getSendAfterTime();
-        Long leftTime = sendingTime -  new Date().getTime();
+        Long leftTime = sendingTime -  currentDateTimeZone.getTime();
 
         int days = (int) ((leftTime / (1000*60*60*24)) % 7);
 
@@ -215,9 +223,15 @@ public class PublicationsService {
         List<Publications> publications = publicationsRepo.findAllPublicationsByStatus(String.valueOf(Status.PUBLISHED));
         for(Publications publication: publications){
             if(!publication.getStatus().equals(Status.SENT)){
-                ExpirationTimeResponse expirationTimeResponse = getExpirationTime(publication.getId());
-                if(expirationTimeResponse.getSecond() <= 0){
-                    sendEmailByPublicationId(publication.getId());
+                if(publication.isAutoSending()){
+                    ExpirationTimeResponse expirationTimeResponse = getExpirationTime(publication.getId());
+                    if(expirationTimeResponse.getHour() <= 0){
+                        if(expirationTimeResponse.getMinute() <= 0){
+                            if(expirationTimeResponse.getSecond() <= 0){
+                                sendEmailByPublicationId(publication.getId());
+                            }
+                        }
+                    }
                 }
             }
 

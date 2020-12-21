@@ -22,14 +22,35 @@ public class ReportMaterialsService {
     }
 
 
-    public ReportMaterials save(ReportMaterials r){
+    public ReportMaterials save(ReportMaterials r) {
         return reportMaterialsRepo.add(r.getReportId(), r.getMtCode());
     }
 
-    public List<ReportMaterialsResponse> findAll(){
+    public List<ReportMaterialsResponse> findAll() {
         List<ReportMaterials> reportMaterials = reportMaterialsRepo.findAllReportMaterialsByDeletedAtIsNull();
         List<ReportMaterialsResponse> reportMaterialsResponses = new ArrayList<>();
-        for(ReportMaterials reportMaterial: reportMaterials){
+        Material material;
+        for (ReportMaterials reportMaterial : reportMaterials) {
+            material = materialService.getByMaterialCode(reportMaterial.getMtCode());
+            ReportMaterialsResponse reportMaterialsResponse = ReportMaterialsResponse.builder()
+                    .id(reportMaterial.getId())
+                    .reportId(reportMaterial.getReportId())
+                    .mtOwner(material.getMtOwner())
+                    .mtName(material.getMtName())
+                    .mtMeasure(material.getMtMeasure())
+                    .mtLink(material.getMtLink())
+                    .mtCode(material.getMtCode())
+                    .build();
+            reportMaterialsResponses.add(reportMaterialsResponse);
+        }
+        return reportMaterialsResponses;
+    }
+
+
+    public List<ReportMaterialsResponse> findAll2() {
+        List<ReportMaterials> reportMaterials = reportMaterialsRepo.findAllReportMaterialsByDeletedAtIsNull();
+        List<ReportMaterialsResponse> reportMaterialsResponses = new ArrayList<>();
+        for (ReportMaterials reportMaterial : reportMaterials) {
             Material material = materialService.getByMaterialCode(reportMaterial.getMtCode());
             reportMaterialsResponses.add(ReportMaterialsResponse.builder()
                     .id(reportMaterial.getId())
@@ -46,17 +67,17 @@ public class ReportMaterialsService {
 
 
     public List<ReportMaterialsResponse> useFilter(List<ReportMaterials> reportMaterialsList) throws ServiceException {
-        try{
+        try {
             reportMaterialsRepo.deleteraws();
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
         List<ReportMaterials> resp = new ArrayList<>();
-        for(ReportMaterials reportMaterials: reportMaterialsList){
+        for (ReportMaterials reportMaterials : reportMaterialsList) {
             resp.add(save(reportMaterials));
         }
         List<ReportMaterialsResponse> reportMaterialsResponses = new ArrayList<>();
-        for(ReportMaterials reportMaterial: resp){
+        for (ReportMaterials reportMaterial : resp) {
             Material material = materialService.getByMaterialCode(reportMaterial.getMtCode());
             reportMaterialsResponses.add(ReportMaterialsResponse.builder()
                     .id(reportMaterial.getId())
@@ -70,7 +91,6 @@ public class ReportMaterialsService {
         }
         return reportMaterialsResponses;
     }
-
 
 
 }
