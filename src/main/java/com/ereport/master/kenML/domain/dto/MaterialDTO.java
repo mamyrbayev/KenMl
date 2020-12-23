@@ -10,4 +10,5 @@ import lombok.NoArgsConstructor;
 public class MaterialDTO {
     private String name;
     private Integer marketShare;
+    private OverallVolumeAndPrice overallVolumeAndPrice;
 }

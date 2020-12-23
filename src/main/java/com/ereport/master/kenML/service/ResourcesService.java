@@ -35,6 +35,23 @@ public class ResourcesService {
                 .build();
     }
 
+    public OverallVolumeAndPrice getOverallVolumeAndPriceForMaterial(String codeSnb){
+        List<Resources> resources = resourcesRepo.findAllByCodeSNB(codeSnb);
+        Float volume = 0f;
+        Float price = 0f;
+        String measurer = null;
+        for(Resources resources1: resources){
+            volume += resources1.getNorma();
+            price += resources1.getPrice();
+            measurer = resources1.getMeasurer();
+        }
+        return OverallVolumeAndPrice.builder()
+                .price(price)
+                .volume(volume)
+                .measurer(measurer)
+                .build();
+    }
+
 
 
     public OverallVolumeAndPrice getOverallForCompany(String codeSnb, Integer companyId, Integer localityId){

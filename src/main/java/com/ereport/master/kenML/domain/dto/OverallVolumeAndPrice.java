@@ -12,4 +12,5 @@ import lombok.NoArgsConstructor;
 public class OverallVolumeAndPrice {
     private Float volume;
     private Float price;
+    private String measurer;
 }

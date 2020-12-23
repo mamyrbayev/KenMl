@@ -1,7 +1,6 @@
 package com.ereport.master.kenML.service;
 
 import com.ereport.master.kenML.domain.Material;
-import com.ereport.master.kenML.domain.ReportMaterials;
 import com.ereport.master.kenML.domain.dto.*;
 import org.springframework.stereotype.Service;
 
@@ -16,13 +15,15 @@ public class ReportGenerationService {
     private final RegionsService regionsService;
     private final MaterialService materialService;
     private final LocalitiesService localitiesService;
+    private final ResourcesService resourcesService;
 
-    public ReportGenerationService(ObjectService objectService, ReportMaterialsService reportMaterialsService, RegionsService regionsService, MaterialService materialService, LocalitiesService localitiesService) {
+    public ReportGenerationService(ObjectService objectService, ReportMaterialsService reportMaterialsService, RegionsService regionsService, MaterialService materialService, LocalitiesService localitiesService, ResourcesService resourcesService) {
         this.objectService = objectService;
         this.reportMaterialsService = reportMaterialsService;
         this.regionsService = regionsService;
         this.materialService = materialService;
         this.localitiesService = localitiesService;
+        this.resourcesService = resourcesService;
     }
 
     public ReportGenerationResponse getResponse(){
@@ -30,7 +31,7 @@ public class ReportGenerationService {
         List<MaterialDTO> materialDTOS = new ArrayList<>();
         List<ReportMaterialsResponse> materialLists = reportMaterialsService.findAll();
         for(ReportMaterialsResponse materialList: materialLists){
-            materialDTOS.add(new MaterialDTO(materialList.getMtName(), 0));
+            materialDTOS.add(new MaterialDTO(materialList.getMtName(), 0, resourcesService.getOverallVolumeAndPriceForMaterial(materialList.getMtCode())));
         }
         reportGenerationResponse.setTopTen(materialDTOS);
         reportGenerationResponse.setOverallForYears(objectService.getOverallForYear());
@@ -68,7 +69,7 @@ public class ReportGenerationService {
         List<MaterialDTO> materialDTOS = new ArrayList<>();
         List<ReportMaterialsResponse> materialLists = reportMaterialsService.findAll();
             for(ReportMaterialsResponse materialList: materialLists){
-            materialDTOS.add(new MaterialDTO(materialList.getMtName(), 0));
+            materialDTOS.add(new MaterialDTO(materialList.getMtName(), 0, resourcesService.getOverallVolumeAndPriceForMaterial(materialList.getMtCode())));
         }
         return materialDTOS;
     }
