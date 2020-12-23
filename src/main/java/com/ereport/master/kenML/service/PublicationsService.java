@@ -26,6 +26,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class PublicationsService {
@@ -87,6 +88,24 @@ public class PublicationsService {
                     .build());
         }
         return publicationsResponses;
+    }
+
+    public List<Integer> getPublicationDays(Integer id){
+        List<PublicationsResponse> publicationsResponses = new ArrayList<>();
+        List<Publications> publications = publicationsRepo.findPublicationsByDeletedAtIsNullAndReportId(id);
+        List<Integer> daysOfPublication = new ArrayList<>();
+        for(Publications publication: publications){
+            Calendar cal = Calendar.getInstance(); // creates calendar
+            cal.setTime(publication.getPublicationDate());               // sets calendar time/date
+            cal.add(Calendar.HOUR_OF_DAY, 6);      // adds one hour
+            cal.getTime();
+            Date date = cal.getTime();
+            DateFormat dateFormat = new SimpleDateFormat("dd");
+            String strDate = dateFormat.format(date);
+            daysOfPublication.add(Integer.valueOf(strDate));
+        }
+        List<Integer> resp = daysOfPublication.stream().distinct().collect(Collectors.toList());
+        return resp;
     }
 
     public List<Publications> getAllByStatus(String status){

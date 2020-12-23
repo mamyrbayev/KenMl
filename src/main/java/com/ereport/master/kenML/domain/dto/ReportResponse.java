@@ -41,6 +41,8 @@ public class ReportResponse {
     private String iconPath;
     private String fileName;
 
+    private List<Integer> daysOfPublication;
+
     private Long sendAfterTime;
 
     private List<Categories> category;

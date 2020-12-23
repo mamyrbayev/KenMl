@@ -101,6 +101,7 @@ public class ReportsService {
                 .category(categoriesService.findAllByReportId(id))
                 .numOfReports(serviceWrapper.getPublicationsService().getAllByReportId(report.getId()).size())
                 .status(serviceWrapper.getPublicationsService().getStatusFromPublications(report.getId()))
+                .daysOfPublication(serviceWrapper.getPublicationsService().getPublicationDays(report.getId()))
                 .build();
         return reportResponse;
     }

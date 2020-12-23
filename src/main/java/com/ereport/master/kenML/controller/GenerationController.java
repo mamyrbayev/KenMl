@@ -42,7 +42,7 @@ public class GenerationController extends  BaseController {
     @GetMapping("/view")
     public ModelAndView getView() {
 
-        return new ModelAndView("stroymart");
+        return new ModelAndView("index");
     }
 
     @GetMapping(value = "/{photo:.+}", produces = {MediaType.APPLICATION_PDF_VALUE})

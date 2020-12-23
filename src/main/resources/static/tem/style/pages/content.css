@@ -1,0 +1,119 @@
+.page-2 {
+    position: relative;
+    height: 2149px;
+}
+.content {
+    background-image: url('../../assets/content-bh.png') ;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding: 100px 0 0 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.container {
+    width: 100%;
+    margin: 0 auto;
+}
+.header-content {
+    display: flex;
+    justify-content: space-between;
+}
+.dot {
+    background: #71AEF0;;
+    margin: 0 15px;
+}
+.dot-4 {
+    width: 5px;
+    height: 5px;
+}
+.dot-3 {
+    width: 7px;
+    height: 7px;
+}
+.dot-2 {
+    width: 10px;
+    height: 10px;
+}
+.dot-1 {
+    width: 15px;
+    height: 15px;
+}
+.dots {
+    display: flex;
+    align-items: center;
+    margin: 0 30px;
+}
+.header-content--left h6 {
+    color: #152731;
+    font-size: 60px;
+    line-height: 54px;
+    font-weight: 600;
+}
+.header-content--left p {
+    color: #152731;
+    font-size: 30px;
+    line-height: 36px;
+    font-weight: 400;
+}
+.header-content--right p:first-child {
+    color: #71AEF0;
+    font-size: 42px;
+    line-height: 46px;
+    font-weight: 700;
+}
+.header-content--right p:last-child {
+    color: #424242;
+
+    font-size: 30px;
+    line-height: 36px;
+    font-weight: 400;
+}
+.content h1 {
+    margin-top: 100px;
+    color: #152731;
+    font-size: 58px;
+    line-height: 64px;
+    font-weight: 700;
+}
+.content-items {
+    margin-top: 50px;
+}
+.content-item {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+}
+.content-item h4 {
+    color: #152731;
+    font-size: 42px;
+    line-height: 48px;
+    font-weight: 700;
+}
+.content-item span {
+    color: #152731;
+    font-size: 30px;
+    line-height: 36px;
+    font-weight: 400;
+}
+.more-content {
+    display: flex;
+    align-items: center;
+    margin-bottom: 130px;
+    margin-top: 400px;
+}
+.more-content p {
+    color: #9A9B9C;
+    font-size: 30px;
+    line-height: 36px;
+    font-weight: 400;
+}
+.more-content a {
+    font-weight: 400;
+    font-size: 32px;
+    color: #000;
+}
+.more-content span {
+    color: #71AEF0;
+}

@@ -10,18 +10,18 @@ import com.github.jhonnymertz.wkhtmltopdf.wrapper.params.Param;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 
 import java.io.*;
-import java.nio.file.FileSystems;
-import java.nio.file.Path;
+import java.nio.file.*;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -98,27 +98,35 @@ public class HtmlToPdfService {
     }
 
 
-
     public String generate() throws InterruptedException, IOException {
+
+//        SimpleDateFormat sdfTime = new SimpleDateFormat("dd-MM-yyy HH-mm-ss");
+//        ClassLoader classLoader = getClass().getClassLoader();
+//
+//        Pdf pdf = new Pdf();
+//        pdf.addParam(new Param("--footer-html", location + "footer.html"));
+//        pdf.addPageFromString(parseThymeleafTemplate());
+//        pdf.addParam(new Param("--page-size", "A4", "-B", "20mm", "-L", "0", "-R", "0", "-T", "0"));
+//
+//        pdf.addParam(new Param("--javascript-delay", "3000"));
+//
+//        String pdfName = "pdf-" + sdfTime.format(new Date()) + ".pdf";
+//        pdf.saveAs(this.location + pdfName);
+
+        RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders headers = new HttpHeaders();
+        headers.setAccept(Arrays.asList(MediaType.APPLICATION_PDF, MediaType.APPLICATION_OCTET_STREAM));
+        HttpEntity<String> entity = new HttpEntity<>(headers);
+
+        ResponseEntity<byte[]> result =
+                restTemplate.exchange("http://0.0.0.0:3000/?url=http://0.0.0.0:9090/api/pdf/view", HttpMethod.GET, entity, byte[].class);
+
+        byte[] content = result.getBody();
         SimpleDateFormat sdfTime = new SimpleDateFormat("dd-MM-yyy HH-mm-ss");
-        ClassLoader classLoader = getClass().getClassLoader();
-
-        Pdf pdf = new Pdf();
-        pdf.addParam(new Param("--footer-html", location + "footer.html"));
-        pdf.addPageFromString(parseThymeleafTemplate());
-        pdf.addParam(new Param("--page-size", "A4", "-B", "20mm", "-L", "0", "-R", "0", "-T", "0"));
-
-        pdf.addParam(new Param("--javascript-delay", "3000"));
-
-        String pdfName = "pdf-" + sdfTime.format(new Date()) + ".pdf";
-        pdf.saveAs(this.location + pdfName);
-
+        String pdfName = sdfTime.format(new Date()) + ".pdf";
+        Files.write(Paths.get(location + pdfName), content, StandardOpenOption.CREATE);
         return pdfName;
     }
-
-
-
-
 
 
 }

@@ -1,0 +1,21 @@
+.line {
+    border: 2px solid #6EAFF0;
+    width: 20%;
+    margin: 20px 0;
+}
+.footer p:first-child {
+    color: #424242;
+
+    font-size: 18px;
+    line-height: 26px;
+    font-weight: 400;
+}
+.footer p:last-child {
+    color: #9A9B9C;
+    font-size: 18px;
+    line-height: 26px;
+    font-weight: 400;
+}
+.footer {
+    width: 80%;
+}

@@ -1,0 +1,14 @@
+@import url('vendor/reset.css');
+@import url('pages/title-page.css');
+@import url('pages/content.css');
+@import url('components/footer.css');
+@import url('components/header.css');
+@import url('pages/top.css');
+@import url('pages/count.css');
+@import url('pages/progress.css');
+@import url('pages/charts.css');
+
+.width-90{
+    max-width: 90%;
+    margin: auto;
+}

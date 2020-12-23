@@ -1,0 +1,129 @@
+.title-page {
+    background: linear-gradient(180deg, #9AB6F0 0%, #6AADF0 48.96%, #F2F8FD 100%);
+    width: 100%;
+    height: 2149px;
+    position: relative;
+}
+
+.header-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.header-years {
+    font-size: 50px !important;
+    font-weight: bold;
+}
+
+.container-title {
+    width: 90%;
+    margin-left: auto;
+}
+
+.header-title-text {
+    color: #152731;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 30px;
+    margin-right: 40px;
+    margin-top: 30px;
+}
+
+.header-title-date {
+    background: #FFC328;
+    border-radius: 0px 0px 0px 100px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    font-size: 70px;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px 0;
+}
+
+
+.header-title-date p:first-child {
+    color: #fff;
+    font-size: 35px;
+    font-weight: 700;
+    margin-bottom: 0 !important;
+}
+
+.header-title-date p:last-child {
+    margin-top: 5px;
+    color: #152731;
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 0 !important;
+}
+
+.title-vector {
+    padding: 600px 0 0 0;
+}
+
+.h1-title {
+    color: #fff;
+    font-size: 120px;
+    width: 70%;
+    line-height: 125px;
+}
+
+.title-vector p {
+    margin-top: 20px;
+    color: #152731;
+    font-size: 32px;
+    width: 50%;
+    line-height: 40px;
+}
+
+.vector {
+    background: url("../../assets/mountain.png") no-repeat bottom;
+    background-size: contain;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    align-items: flex-end;
+}
+
+.vector-img {
+    width: 100%;
+}
+
+.vector-img img {
+    width: 100%;
+}
+
+.vector-text {
+    bottom: 0;
+    position: absolute;
+    right: 0;
+    display: flex;
+    align-items: center;
+    writing-mode: vertical-rl;
+}
+
+.f-bold {
+    font-weight: bolder;
+}
+
+.vector-text img {
+    margin: 40px 40px;
+}
+
+.vector-text p {
+    font-size: 30px;
+    font-weight: bold;
+    -moz-transform: scaleX(-1) scaleY(-1); /* Gecko */
+    -o-transform: scaleX(-1) scaleY(-1); /* Opera */
+    -webkit-transform: scaleX(-1) scaleY(-1); /* Webkit */
+    transform: scaleX(-1) scaleY(-1); /* Standard */
+}
+
+.dot {
+    border-radius: 100%;
+    background-color: #fff;
+    margin-right: 5px;
+    margin-left: 5px;
+
+}

@@ -42,4 +42,11 @@ public class NewsController {
         return modelAndView;
     }
 
+
+    @GetMapping("/index")
+    public ModelAndView index(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("storymart/index");
+        return modelAndView;
+    }
 }
