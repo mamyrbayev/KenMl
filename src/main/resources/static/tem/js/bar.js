@@ -6,7 +6,7 @@ new Chart(document.getElementById("bar-chart"), {
             {
                 label: "Population (millions)",
                 backgroundColor: ["#9A9B9C", "#9A9B9C",],
-                data: [510, 215],
+                data: overallForYears.filter(e => e.year != 2020).map(e => e.overall),
 
             }
         ]

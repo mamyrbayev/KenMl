@@ -1,6 +1,4 @@
 const valueFor2020 = overallForYears[0];
-let barChartValues = overallForYears;
-barChartValues = barChartValues.splice(0, 1);
 const pieNumOverall = document.getElementById('pieNumOverall');
 const pieCompleted = document.getElementById('pieCompleted');
 const pieNumeUnderConstruction = document.getElementById('pieNumeUnderConstruction');
@@ -47,7 +45,8 @@ window.onload = function () {
 const chartNumberElement = document.getElementById('chartNumbers')
 
 overallForYears.forEach(e => {
-    barChartValues.innerHTML += `
+    if(e.year != 2020){
+        chartNumberElement.innerHTML += `
             <div class="bar-img">
                 <img src="/tem/assets/lines.svg">
             </div>
@@ -56,4 +55,5 @@ overallForYears.forEach(e => {
                 <span>год</span>
             </div>
     `;
+    }
 });
