@@ -1,103 +1,62 @@
 let table = document.getElementById("pt1")
 let table1 = document.getElementById("pt2")
 let table2 = document.getElementById("pt3")
-let arr = [
-	{
-		city: "Алматы",
-		building: 142,
-		done: 325,
-		sum: 487
-	},
-	{
-		city: "Нур-Султан",
-		building: 242,
-		done: 234,
-		sum: 486
-	},
-	{
-		city: "Шымкент",
-		building: 14,
-		done: 230,
-		sum:244
-	},
-	{
-		city: "Алматы",
-		building: 142,
-		done: 325,
-		sum: 487
-	},
-	{
-		city: "Нур-Султан",
-		building: 242,
-		done: 234,
-		sum: 486
-	},
-	{
-		city: "Шымкент",
-		building: 14,
-		done: 230,
-		sum:244
-	}
 
-]
+let overallForYearByRegions2020 = [];
+let overallForYearByRegions2021 = [];
+let overallForYearByRegions2022 = [];
 
+overallForYearByRegions.forEach(e => {
+    if (e.year == 2020) {
+        overallForYearByRegions2020 = e.overallByRegions;
+    } else if (e.year == 2021) {
+        overallForYearByRegions2021 = e.overallByRegions;
+    } else if (e.year == 2022) {
+        overallForYearByRegions2022 = e.overallByRegions;
+    }
+})
 
-function progressDataLoading(){
-	let str  = '';
-	for(let i = 0; i<arr.length; i++){
-		str+= '<div class="progress-line">' +
-                    '<p>'+arr[i].city+'</p>'+
-                    '<div class="progress-wrap1">'+
-                    	'<p>'+arr[i].building+'</p>'+
-                    	'<div class="progress">'+
-                      	  '<div class="progress-bar" role="progressbar" style="width:'+(arr[i].building/arr[i].sum)*100+'%;" aria-valuenow="'+arr[i].building+'" aria-valuemin="0" aria-valuemax="'+arr[i].sum+'"></div>'+
-                   		'</div>'+
-                    '</div>'+
-                    '<div class="progress-wrap2">'+
-                    	'<p>'+arr[i].done+'</p>'+
-                    	'<div class="progress">'+
-                      	  '<div class="progress-bar" role="progressbar" style="width:'+(arr[i].done/arr[i].sum)*100+'%;" aria-valuenow="'+arr[i].done+'" aria-valuemin="0" aria-valuemax="'+arr[i].sum+'"></div>'+
-                   		 '</div>'+
-                   	'</div>'+
-                    '<p class="progress-sum">'+arr[i].sum+'</p>'+
-                '</div>'
-	}
-	table.innerHTML = str
+function progressDataLoading(arr) {
+    let str = '';
+    for (let i = 0; i < arr.length; i++) {
+        str += '<div class="progress-line">' +
+            '<p>' + arr[i].regionName + '</p>' +
+            '<div class="progress-wrap1">' +
+            '<p>' + arr[i].underConstruction + '</p>' +
+            '<div class="progress">' +
+            '<div class="progress-bar" role="progressbar" style="width:' + (arr[i].underConstruction / arr[i].overall) * 100 + '%;" aria-valuenow="' + arr[i].underConstruction + '" aria-valuemin="0" aria-valuemax="' + arr[i].overall + '"></div>' +
+            '</div>' +
+            '</div>' +
+            '<div class="progress-wrap2">' +
+            '<p>' + arr[i].completed + '</p>' +
+            '<div class="progress">' +
+            '<div class="progress-bar" role="progressbar" style="width:' + (arr[i].completed / arr[i].overall) * 100 + '%;" aria-valuenow="' + arr[i].completed + '" aria-valuemin="0" aria-valuemax="' + arr[i].overall + '"></div>' +
+            '</div>' +
+            '</div>' +
+            '<p class="progress-sum">' + arr[i].overall + '</p>' +
+            '</div>'
+    }
+    table.innerHTML = str
 }
 
-function progressDataLoading2(){
-	let str  = '';
-	for(let i = 0; i<arr.length; i++){
-		str+= '<div class="progress-line">' +
-                    '<p>'+arr[i].city+'</p>'+
-                    '<div class="progress-wrap3">'+
-                    	'<p>'+arr[i].building+'</p>'+
-                    	'<div class="progress">'+
-                      	  '<div class="progress-bar" role="progressbar" style="width:'+(arr[i].building/arr[i].sum)*100+'%;" aria-valuenow="'+arr[i].building+'" aria-valuemin="0" aria-valuemax="'+arr[i].sum+'"></div>'+
-                   		'</div>'+
-                    '</div>'+
-                    '<p class="progress-sum">'+arr[i].sum+'</p>'+
-                '</div>'
-	}
-	table1.innerHTML = str
-}
-function progressDataLoading3(){
-	let str  = '';
-	for(let i = 0; i<arr.length; i++){
-		str+= '<div class="progress-line">' +
-                    '<p>'+arr[i].city+'</p>'+
-                    '<div class="progress-wrap3">'+
-                    	'<p>'+arr[i].building+'</p>'+
-                    	'<div class="progress">'+
-                      	  '<div class="progress-bar" role="progressbar" style="width:'+(arr[i].building/arr[i].sum)*100+'%;" aria-valuenow="'+arr[i].building+'" aria-valuemin="0" aria-valuemax="'+arr[i].sum+'"></div>'+
-                   		'</div>'+
-                    '</div>'+
-                    '<p class="progress-sum">'+arr[i].sum+'</p>'+
-                '</div>'
-	}
-	table2.innerHTML = str
+function progressDataLoading2(arr, table) {
+    let str = '';
+    for (let i = 0; i < arr.length; i++) {
+        str += '<div class="progress-line">' +
+            '<p>' + arr[i].regionName + '</p>' +
+            '<div class="progress-wrap3">' +
+            '<p>' + arr[i].underConstruction + '</p>' +
+            '<div class="progress">' +
+            '<div class="progress-bar" role="progressbar" style="width:' + (arr[i].underConstruction / arr[i].overall) * 100 + '%;" aria-valuenow="' + arr[i].underConstruction + '" aria-valuemin="0" aria-valuemax="' + arr[i].overall + '"></div>' +
+            '</div>' +
+            '</div>' +
+            '<p class="progress-sum">' + arr[i].overall + '</p>' +
+            '</div>'
+    }
+    table.innerHTML = str
 }
 
-progressDataLoading();
-progressDataLoading2();
-progressDataLoading3();
+
+progressDataLoading(overallForYearByRegions2020);
+progressDataLoading2(overallForYearByRegions2021, table1);
+progressDataLoading2(overallForYearByRegions2022, table2);
