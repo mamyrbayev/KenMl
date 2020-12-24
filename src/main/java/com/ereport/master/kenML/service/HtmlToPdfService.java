@@ -119,7 +119,7 @@ public class HtmlToPdfService {
         HttpEntity<String> entity = new HttpEntity<>(headers);
 
         ResponseEntity<byte[]> result =
-                restTemplate.exchange("http://0.0.0.0:3000/?url=http://0.0.0.0:9090/api/pdf/view", HttpMethod.GET, entity, byte[].class);
+                restTemplate.exchange("http://0.0.0.0:3000/?url=http://0.0.0.0:9090/view/pdf", HttpMethod.GET, entity, byte[].class);
 
         byte[] content = result.getBody();
         SimpleDateFormat sdfTime = new SimpleDateFormat("dd-MM-yyy HH-mm-ss");
