@@ -80,9 +80,9 @@
 
 .pieNums {
     position: absolute;
-    left: 17.5%;
+    margin-left: 100px;
     text-align: center;
-    margin-top: 45px;
+    margin-top: 50px;
 }
 
 .pieNum {

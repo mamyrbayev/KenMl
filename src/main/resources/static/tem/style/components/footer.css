@@ -3,6 +3,7 @@
     width: 20%;
     margin: 20px 0;
 }
+
 .footer p:first-child {
     color: #424242;
 
@@ -10,12 +11,15 @@
     line-height: 26px;
     font-weight: 400;
 }
+
 .footer p:last-child {
     color: #9A9B9C;
     font-size: 18px;
     line-height: 26px;
     font-weight: 400;
 }
+
 .footer {
+    margin: 0 auto;
     width: 80%;
 }

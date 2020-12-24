@@ -1,7 +1,7 @@
 const potrebnostiElement = document.getElementById("potrebnosti");
+
 function generatePotrebnosiByCity(id, potrebnost, index) {
-  console.log("cyka 123");
-  let html = `
+    let html = `
      <div class="page-4">
         <section class="count">
             <div class="header-chart-inner">
@@ -23,16 +23,16 @@ function generatePotrebnosiByCity(id, potrebnost, index) {
                     <p>${potrebnost.material.mtName}</p>
                 </div>
                 <div class="chart-img">
-                    <img src="/tem/assets/lines.svg">
+                    <img src="/tem/assets/orange-lines.png">
                 </div>
             </div>`;
-  const localities = potrebnost.localitiesByMatrials;
+    const localities = potrebnost.localitiesByMatrials;
 
-  localities.forEach((e) => {
-    html += generateLocality(e);
-  });
+    localities.forEach((e) => {
+        html += generateLocality(e);
+    });
 
-  html += `
+    html += `
                 <footer class="footer footer-count" style="position: absolute; bottom: 0">
                     <p>Потребность строительного рынка на 2020-2021гг.</p>
                     <div class="line"></div>
@@ -204,7 +204,7 @@ function generatePotrebnosiByCity(id, potrebnost, index) {
 }
 
 function generateLocality(locality) {
-  let html = `
+    let html = `
     <div class="width-90">
                 <div class="chart-city-num">
                     <h1>${locality.localities.name}</h1>
@@ -221,14 +221,14 @@ function generateLocality(locality) {
                 </div>
             </div>
     `;
-  locality.companiesList.forEach((e) => {
-    html += generateCompany(e);
-  });
-  return html;
+    locality.companiesList.forEach((e) => {
+        html += generateCompany(e);
+    });
+    return html;
 }
 
 function generateCompany(company) {
-  let html = `<div class="chart-grey-bg">
+    let html = `<div class="chart-grey-bg">
                 <div class="width-90">
                     <div class="chart-city-num" style="border-bottom: 1px solid white">
                         <div class="chart-str">
@@ -250,31 +250,31 @@ function generateCompany(company) {
                         <div class="chart-str2 str1">
                             <span>Телефон</span>
                             <p>${
-                              company.directorPhone
-                                ? company.directorPhone
-                                : "Нет телефона"
-                            }</p>
+        company.directorPhone
+            ? company.directorPhone
+            : "Нет телефона"
+    }</p>
                         </div>
                         <div class="chart-str2 str2">
                             <span>E-mail</span>
                             <p>${
-                              company.emailAddress
-                                ? company.emailAddress
-                                : "Нет email"
-                            }</p>
+        company.emailAddress
+            ? company.emailAddress
+            : "Нет email"
+    }</p>
                         </div>
                     </div>
                 </div>
             </div>
             `;
-  company.objectsDto.forEach((e) => {
-    html += generateObject(e);
-  });
-  return html;
+    company.objectsDto.forEach((e) => {
+        html += generateObject(e);
+    });
+    return html;
 }
 
 function generateObject(object) {
-  let html = `<div class="width-90">
+    let html = `<div class="width-90">
     
                 <div class="chart-wrap">
                     <div class="chart-obj">
@@ -287,15 +287,15 @@ function generateObject(object) {
                 </div>
                
     `;
-  object.objectInYearDtos.forEach((e) => {
-    html += generateObjectInYear(e);
-  });
-  html += "</div>";
-  return html;
+    object.objectInYearDtos.forEach((e) => {
+        html += generateObjectInYear(e);
+    });
+    html += "</div>";
+    return html;
 }
 
 function generateObjectInYear(objectInYear) {
-  let html = `<div class="chart-bars-block">
+    let html = `<div class="chart-bars-block">
                     <div class="chart-bar-title">
                         <h1>${objectInYear.year}</h1>
                         <div class="chart-vol-price">
@@ -312,190 +312,185 @@ function generateObjectInYear(objectInYear) {
                         <div class="chart-values" id="chart-values">
                             `;
 
-  html += `</div></div></div>`;
-  return html;
+    html += `</div></div></div>`;
+    return html;
 }
 
 window.onload = function () {
-  /* Add your logic here */
-  for (let i = 0; i < potrebnostis.length; i++) {
-    potrebnostiElement.innerHTML += generatePotrebnosiByCity(
-      i,
-      potrebnostis[i],
-      i + 1
-    );
-    console.log(generatePotrebnosiByCity(
-        i,
-        potrebnostis[i],
-        i + 1
-      ))
-  }
+    /* Add your logic here */
+    for (let i = 0; i < potrebnostis.length; i++) {
+        potrebnostiElement.innerHTML += generatePotrebnosiByCity(
+            i,
+            potrebnostis[i],
+            i + 1
+        );
+    }
 };
 
 new Chart(document.getElementById("chart-bar"), {
-  type: "bar",
-  data: {
-    labels: [
-      "Янв",
-      "Фев",
-      "Мар",
-      "Апр",
-      "Май",
-      "Июн",
-      "Июл",
-      "Авг",
-      "Сен",
-      "Окт",
-      "Ноя",
-      "Дек",
-    ],
-    datasets: [
-      {
-        label: "",
-        backgroundColor: "#FFB877",
-        data: [3500, 500, 0, 3600, 3100, 600, 1700, 2200, 0, 1000, 1600, 3200],
-      },
-    ],
-  },
-  options: {
-    animation: {
-      duration: 0,
+    type: "bar",
+    data: {
+        labels: [
+            "Янв",
+            "Фев",
+            "Мар",
+            "Апр",
+            "Май",
+            "Июн",
+            "Июл",
+            "Авг",
+            "Сен",
+            "Окт",
+            "Ноя",
+            "Дек",
+        ],
+        datasets: [
+            {
+                label: "",
+                backgroundColor: "#FFB877",
+                data: [3500, 500, 0, 3600, 3100, 600, 1700, 2200, 0, 1000, 1600, 3200],
+            },
+        ],
     },
-    legend: { display: false },
-    title: {
-      display: true,
-    },
-    responsive: false,
-    scales: {
-      xAxes: [
-        {
-          barThickness: 30,
+    options: {
+        animation: {
+            duration: 0,
         },
-      ],
+        legend: {display: false},
+        title: {
+            display: true,
+        },
+        responsive: false,
+        scales: {
+            xAxes: [
+                {
+                    barThickness: 30,
+                },
+            ],
+        },
     },
-  },
 });
 
 new Chart(document.getElementById("chart-bar2"), {
-  type: "bar",
-  data: {
-    labels: [
-      "Янв",
-      "Фев",
-      "Мар",
-      "Апр",
-      "Май",
-      "Июн",
-      "Июл",
-      "Авг",
-      "Сен",
-      "Окт",
-      "Ноя",
-      "Дек",
-    ],
-    datasets: [
-      {
-        label: "",
-        backgroundColor: "#FFB877",
-        data: [3500, 500, 0, 3600, 3100, 600, 1700, 2200, 0, 1000, 1600, 3200],
-      },
-    ],
-  },
-  options: {
-    legend: { display: false },
-    title: {
-      display: true,
+    type: "bar",
+    data: {
+        labels: [
+            "Янв",
+            "Фев",
+            "Мар",
+            "Апр",
+            "Май",
+            "Июн",
+            "Июл",
+            "Авг",
+            "Сен",
+            "Окт",
+            "Ноя",
+            "Дек",
+        ],
+        datasets: [
+            {
+                label: "",
+                backgroundColor: "#FFB877",
+                data: [3500, 500, 0, 3600, 3100, 600, 1700, 2200, 0, 1000, 1600, 3200],
+            },
+        ],
     },
-    responsive: false,
-    scales: {
-      xAxes: [
-        {
-          barThickness: 30,
+    options: {
+        legend: {display: false},
+        title: {
+            display: true,
         },
-      ],
+        responsive: false,
+        scales: {
+            xAxes: [
+                {
+                    barThickness: 30,
+                },
+            ],
+        },
     },
-  },
 });
 
 new Chart(document.getElementById("chart-bar3"), {
-  type: "bar",
-  data: {
-    labels: [
-      "Янв",
-      "Фев",
-      "Мар",
-      "Апр",
-      "Май",
-      "Июн",
-      "Июл",
-      "Авг",
-      "Сен",
-      "Окт",
-      "Ноя",
-      "Дек",
-    ],
-    datasets: [
-      {
-        label: "Population (millions)",
-        backgroundColor: "#FFB877",
-        data: [3500, 500, 0, 3600, 3100, 600, 1700, 2200, 0, 1000, 1600, 3200],
-      },
-    ],
-  },
-  options: {
-    legend: { display: false },
-    title: {
-      display: true,
+    type: "bar",
+    data: {
+        labels: [
+            "Янв",
+            "Фев",
+            "Мар",
+            "Апр",
+            "Май",
+            "Июн",
+            "Июл",
+            "Авг",
+            "Сен",
+            "Окт",
+            "Ноя",
+            "Дек",
+        ],
+        datasets: [
+            {
+                label: "Population (millions)",
+                backgroundColor: "#FFB877",
+                data: [3500, 500, 0, 3600, 3100, 600, 1700, 2200, 0, 1000, 1600, 3200],
+            },
+        ],
     },
-    responsive: false,
-    scales: {
-      xAxes: [
-        {
-          barThickness: 30,
+    options: {
+        legend: {display: false},
+        title: {
+            display: true,
         },
-      ],
+        responsive: false,
+        scales: {
+            xAxes: [
+                {
+                    barThickness: 30,
+                },
+            ],
+        },
     },
-  },
 });
 new Chart(document.getElementById("chart-bar4"), {
-  type: "bar",
-  data: {
-    labels: [
-      "Янв",
-      "Фев",
-      "Мар",
-      "Апр",
-      "Май",
-      "Июн",
-      "Июл",
-      "Авг",
-      "Сен",
-      "Окт",
-      "Ноя",
-      "Дек",
-    ],
-    datasets: [
-      {
-        label: "Population (millions)",
-        backgroundColor: "#FFB877",
-        data: [3500, 500, 0, 3600, 3100, 600, 1700, 2200, 0, 1000, 1600, 3200],
-      },
-    ],
-  },
-  options: {
-    legend: { display: false },
-    title: {
-      display: true,
+    type: "bar",
+    data: {
+        labels: [
+            "Янв",
+            "Фев",
+            "Мар",
+            "Апр",
+            "Май",
+            "Июн",
+            "Июл",
+            "Авг",
+            "Сен",
+            "Окт",
+            "Ноя",
+            "Дек",
+        ],
+        datasets: [
+            {
+                label: "Population (millions)",
+                backgroundColor: "#FFB877",
+                data: [3500, 500, 0, 3600, 3100, 600, 1700, 2200, 0, 1000, 1600, 3200],
+            },
+        ],
     },
-    responsive: false,
-    scales: {
-      xAxes: [
-        {
-          barThickness: 30,
+    options: {
+        legend: {display: false},
+        title: {
+            display: true,
         },
-      ],
+        responsive: false,
+        scales: {
+            xAxes: [
+                {
+                    barThickness: 30,
+                },
+            ],
+        },
     },
-  },
 });
 
 let val = document.getElementById("chart-values");
@@ -504,55 +499,55 @@ let val3 = document.getElementById("chart-values3");
 let val4 = document.getElementById("chart-values4");
 
 function putVal() {
-  let str = "";
-  for (let i = 0; i < 12; i++) {
-    str +=
-      '<div class="chart-val">' +
-      "<p>3500 m3</p>" +
-      "<p>3 500 000 тг</p>" +
-      "</div>";
-  }
+    let str = "";
+    for (let i = 0; i < 12; i++) {
+        str +=
+            '<div class="chart-val">' +
+            "<p>3500 m3</p>" +
+            "<p>3 500 000 тг</p>" +
+            "</div>";
+    }
 
-  val.innerHTML = str;
+    val.innerHTML = str;
 }
 
 function putVal2() {
-  let str = "";
-  for (let i = 0; i < 12; i++) {
-    str +=
-      '<div class="chart-val">' +
-      "<p>3500 m3</p>" +
-      "<p>3 500 000 тг</p>" +
-      "</div>";
-  }
+    let str = "";
+    for (let i = 0; i < 12; i++) {
+        str +=
+            '<div class="chart-val">' +
+            "<p>3500 m3</p>" +
+            "<p>3 500 000 тг</p>" +
+            "</div>";
+    }
 
-  val2.innerHTML = str;
+    val2.innerHTML = str;
 }
 
 function putVal3() {
-  let str = "";
-  for (let i = 0; i < 12; i++) {
-    str +=
-      '<div class="chart-val">' +
-      "<p>3500 m3</p>" +
-      "<p>3 500 000 тг</p>" +
-      "</div>";
-  }
+    let str = "";
+    for (let i = 0; i < 12; i++) {
+        str +=
+            '<div class="chart-val">' +
+            "<p>3500 m3</p>" +
+            "<p>3 500 000 тг</p>" +
+            "</div>";
+    }
 
-  val3.innerHTML = str;
+    val3.innerHTML = str;
 }
 
 function putVal4() {
-  let str = "";
-  for (let i = 0; i < 12; i++) {
-    str +=
-      '<div class="chart-val">' +
-      "<p>3500 m3</p>" +
-      "<p>3 500 000 тг</p>" +
-      "</div>";
-  }
+    let str = "";
+    for (let i = 0; i < 12; i++) {
+        str +=
+            '<div class="chart-val">' +
+            "<p>3500 m3</p>" +
+            "<p>3 500 000 тг</p>" +
+            "</div>";
+    }
 
-  val4.innerHTML = str;
+    val4.innerHTML = str;
 }
 
 //

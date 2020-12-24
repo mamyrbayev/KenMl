@@ -12,15 +12,15 @@ var config = {
     data: {
         datasets: [{
             data: [
+                valueFor2020.overall,
                 valueFor2020.completed,
                 valueFor2020.underConstruction,
-                valueFor2020.overall,
             ],
             backgroundColor: [
 
-                '#9A9B9C',
                 '#000000',
-                '#05C43C'
+                '#05C43C',
+                '#9A9B9C',
                 // window.chartColors.green,
                 // window.chartColors.blue,
             ],
@@ -37,15 +37,13 @@ var config = {
     }
 };
 
-window.onload = function () {
-    var ctx = document.getElementById('myChart').getContext('2d');
-    window.myPie = new Chart(ctx, config);
-};
+var ctx = document.getElementById('myChart').getContext('2d');
+window.myPie = new Chart(ctx, config);
 
 const chartNumberElement = document.getElementById('chartNumbers')
 
 overallForYears.forEach(e => {
-    if(e.year != 2020){
+    if (e.year != 2020) {
         chartNumberElement.innerHTML += `
             <div class="bar-img">
                 <img src="/tem/assets/lines.svg">
