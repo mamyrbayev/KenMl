@@ -23,7 +23,7 @@ public class Scheduler {
     private void checkGenerationDate() throws ServiceException, ParseException, IOException, InterruptedException {
 //        System.out.println("Scheduler");
         publicationsService.createPublicationByScheduler();
-}
+    }
 
     @Scheduled(cron = "0 * * * * *") //Every minute
     private void checkSendingDate() throws ServiceException, ParseException, IOException {

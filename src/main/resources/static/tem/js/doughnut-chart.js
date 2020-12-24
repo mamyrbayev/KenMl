@@ -1,18 +1,24 @@
-var randomScalingFactor = function() {
-    return Math.round(Math.random() * 100);
-};
-console.log(window.chartColors)
+var valueFor2020 = overallForYears.find(e => e.year == 2020);
+
+var pieNumOverall = document.getElementById('pieNumOverall');
+var pieCompleted = document.getElementById('pieCompleted');
+var pieNumeUnderConstruction = document.getElementById('pieNumeUnderConstruction');
+
+pieNumOverall.innerHTML = valueFor2020.overall;
+pieCompleted.innerHTML = valueFor2020.completed;
+pieNumeUnderConstruction.innerHTML = valueFor2020.underConstruction;
+
 var config = {
     type: 'doughnut',
     data: {
-        datasets: [{                  
+        datasets: [{
             data: [
-                randomScalingFactor(),
-                randomScalingFactor(),
-                randomScalingFactor(),
+                valueFor2020.completed,
+                valueFor2020.underConstruction,
+                valueFor2020.overall,
             ],
             backgroundColor: [
-                
+
                 '#9A9B9C',
                 '#000000',
                 '#05C43C'
@@ -21,9 +27,7 @@ var config = {
             ],
             label: 'Dataset 1'
         }],
-        labels: [
-            
-        ]
+        labels: []
     },
     options: {
         animation: {
@@ -34,7 +38,7 @@ var config = {
     }
 };
 
-window.onload = function() {
+window.onload = function () {
     var ctx = document.getElementById('myChart').getContext('2d');
     window.myPie = new Chart(ctx, config);
 };

@@ -19,7 +19,7 @@ import java.io.IOException;
 
 @Controller
 @RequestMapping("/api/pdf")
-public class GenerationController extends  BaseController {
+public class GenerationController extends BaseController {
 
     private final HtmlToPdfService htmlToPdfService;
     private final PublicationsService publicationsService;

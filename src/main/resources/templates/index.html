@@ -5,7 +5,7 @@
     <title>StoryMart</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" th:href="@{/tem/style/all.css}" >
+    <link rel="stylesheet" type="text/css" th:href="@{/tem/style/all.css}">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -34,7 +34,7 @@
     </div>
     <div class="vector">
         <div class="vector-img">
-            <img alt="vector" th:src="@{/tem/assets/page-1-vector.png}" >
+            <img alt="vector" th:src="@{/tem/assets/page-1-vector.png}">
         </div>
         <div class="vector-text">
             <p>StroyMart.<span class="text-white">kz</span></p>
@@ -221,15 +221,15 @@
         <div class="pieNums">
             <div class="pieNum one">
                 <p>Всего</p>
-                <p>700</p>
+                <p id="pieNumOverall"></p>
             </div>
             <div class="pieNum two">
                 <p>Завершенные</p>
-                <p>215</p>
+                <p id="pieCompleted"></p>
             </div>
             <div class="pieNum three">
                 <p>Строящиеся</p>
-                <p>485</p>
+                <p id="pieNumeUnderConstruction"></p>
             </div>
         </div>
         <div class="canvas-div">
@@ -514,7 +514,7 @@
                             <p>Трубы, рукава и шланги и их фитинги из пластмасс</p>
                         </div>
                         <div class="chart-img2">
-                            <img th:src="@{/tem/assets/chart-l-w.svg}" >
+                            <img th:src="@{/tem/assets/chart-l-w.svg}">
                         </div>
                     </div>
                 </div>
@@ -658,8 +658,6 @@
     </section>
 </div>
 
-<script  th:src="@{/tem/js/doughnut-chart.js}" ></script>
-<script  th:src="@{/tem/js/bar.js}" ></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
@@ -669,10 +667,20 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+
+<script th:inline="javascript">
+
+    var topTenList = /*[[${topTenList}]]*/ [];
+    var potrebnostis = /*[[${potrebnostis}]]*/ [];
+    var overallForYears = /*[[${overallForYears}]]*/ [];
+    var overallForYearByRegions = /*[[${overallForYearByRegions}]]*/ [];
+
+</script>
+
+<script th:src="@{/tem/js/doughnut-chart.js}"></script>
+<script th:src="@{/tem/js/bar.js}"></script>
 <script th:src="@{/tem/js/progress.js}"></script>
 <script th:src="@{/tem/js/bar-chart.js}"></script>
-<script th:src="@{/tem/js/bar-chart.js}"></script>
 <script th:src="@{/tem/js/top.js}"></script>
-
 </body>
 </html>

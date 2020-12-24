@@ -34,7 +34,7 @@ public class ReportsService {
 
     public List<Reports> findAll(){
         List<Reports> reports =reportsRepo.findAllReportsByDeletedAtIsNull();
-//        String asd= "asd";/**/
+//        String barItemsElement= "barItemsElement";/**/
         return reports;
     }
 

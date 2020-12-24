@@ -25,7 +25,7 @@ public class NewsController {
     }
 
     @GetMapping("/pdf")
-    public ModelAndView news(){
+    public ModelAndView news() {
         ReportGenerationResponse reportGenerationResponse = reportGenerationService.getResponse();
 
         List<MaterialDTO> materialDTOS = reportGenerationResponse.getTopTen();
@@ -38,13 +38,13 @@ public class NewsController {
         modelAndView.addObject("overallForYears", overallForYears);
         modelAndView.addObject("overallForYearByRegions", overallForYearByRegions);
         modelAndView.addObject("potrebnostis", potrebnostis);
-        modelAndView.setViewName("stroymart");
+        modelAndView.setViewName("index");
         return modelAndView;
     }
 
 
     @GetMapping("/index")
-    public ModelAndView index(){
+    public ModelAndView index() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("storymart/index");
         return modelAndView;
