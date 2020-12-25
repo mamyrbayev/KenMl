@@ -251,7 +251,6 @@
 
 .chart-bars-block {
     width: 95%;
-    float: left;
     border-bottom-right-radius: 30px;
     border-top-right-radius: 30px;
     box-shadow: 15px 15px 60px #EAEEF1 !important;
@@ -261,7 +260,7 @@
     -webkit-print-color-adjust: exact !important;;
     -webkit-filter: opacity(1) !important;;
     padding: 50px  0  50px 50px;
-    margin: 0 auto 0 0;
+    margin: 50px auto 50px 0;
 }
 
 .chart-bar-title {
