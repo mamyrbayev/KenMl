@@ -337,295 +337,480 @@
 
 
 <!--    Potrebnostis    -->
-<div class="page-4">
-    <section class="count">
-        <div class="header-chart-inner">
-            <header class="header">
-                <p>StroyMart.<span>kz</span></p>
-            </header>
-            <div class="header-block">
-                <div class="logo-title-chart">
-                    <h3>Потребность</h3>
-                    <h4>в стройметериалах
-                        в разрезе регионов </h4>
-                </div>
-            </div>
-        </div>
+<th:block th:with="localityLastFlag=0">
+    <th:block th:each="potrebnosti: ${potrebnostis}">
+        <th:block th:each="locality,lindex: ${potrebnosti.localitiesByMatrials}">
+            <th:block th:each="company,cindex: ${locality.companiesList}">
+                <th:block th:if="${(cindex.index + 1 == 1)}" th:with="localityLastFlag=1">
+                <th:block th:each="object,index: ${company.getObjectsDto()}">
+                    <th:block th:if="${(localityLastFlag == 1)  && (index.index + 1) == 1}">
 
-        <div class="chart-page-title">
-            <div class="chart-round">
-                <h3>1</h3>
-                <p>Трубы, рукава и шланги и их фитинги из пластмасс</p>
-            </div>
-            <div class="chart-img">
-                <img src="/tem/assets/orange-lines.png">
-            </div>
-        </div>
+                        <div class="page-4">
+                            <section class="count">
+                                <div class="header-chart-inner">
+                                    <header class="header">
+                                        <p>StroyMart.<span>kz</span></p>
+                                    </header>
+                                    <div class="header-block">
+                                        <div class="logo-title-chart">
+                                            <h3>Потребность</h3>
+                                            <h4>в стройметериалах
+                                                в разрезе регионов </h4>
+                                        </div>
+                                    </div>
+                                </div>
 
-        <div class="width-90 chart-city-num">
-            <h1>Алматы</h1>
-            <div class="chart-vol-price">
-                <div class="chart-vol">
-                    <span>Общий объем</span>
-                    <p>944 354 м3</p>
-                </div>
-                <div class="chart-price ">
-                    <span>Общая стоимость</span>
-                    <p>944 354 000 тг</p>
-                </div>
-            </div>
-        </div>
+                                <div class="chart-page-title">
+                                    <div class="chart-round">
+                                        <h3>1</h3>
+                                        <p th:text="${potrebnosti.material.getMtName()}">Трубы, рукава и шланги и их
+                                            фитинги из
+                                            пластмасс</p>
+                                    </div>
+                                    <div class="chart-img">
+                                        <img src="/tem/assets/orange-lines.png">
+                                    </div>
+                                </div>
 
-        <div class="chart-grey-bg">
-            <div class="width-90">
-                <div class="chart-city-num" style="border-bottom: 1px solid white">
-                    <div class="chart-str">
-                        <span>Застройщик</span>
-                        <p>BI Group</p>
-                    </div>
-                    <div class="chart-vol-price">
-                        <div class="chart-vol">
-                            <span>Общий объем</span>
-                            <p>944 354 м3</p>
+                                <div class="width-90 chart-city-num">
+                                    <h1 th:text="${locality.localities.getName()}">Алматы</h1>
+                                    <div class="chart-vol-price">
+                                        <div class="chart-vol">
+                                            <span>Общий объем</span>
+                                            <p><span th:text="${locality.overallVolume}"></span> м3</p>
+                                        </div>
+                                        <div class="chart-price ">
+                                            <span>Общая стоимость</span>
+                                            <p><span th:text="${locality.overallPrice}"></span> тг</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="chart-grey-bg">
+                                    <div class="width-90">
+                                        <div class="chart-city-num" style="border-bottom: 1px solid white">
+                                            <div class="chart-str">
+                                                <span>Застройщик</span>
+                                                <p th:text="${company.title}">BI Group</p>
+                                            </div>
+                                            <div class="chart-vol-price">
+                                                <div class="chart-vol">
+                                                    <span>Общий объем</span>
+                                                    <p><span th:text="${company.overallVolume}">944 354</span> м3</p>
+                                                </div>
+                                                <div class="chart-price ">
+                                                    <span>Общая стоимость</span>
+                                                    <p><span th:text="${company.overallPrice}"></span> тг</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="chart-city-num2">
+                                            <div class="chart-str2 str1">
+                                                <span>Телефон</span>
+                                                <p th:text="${company.getDirectorPhone()} ?: 'Нет номера'">8 777 170 70
+                                                    70</p>
+                                            </div>
+                                            <div class="chart-str2 str2">
+                                                <span>E-mail</span>
+                                                <p th:text="${company.getEmailAddress()} ?: 'Нет email'">
+                                                    Contact@Bi.group</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                    </th:block>
+                    <th:block th:if="${(localityLastFlag != 1) && (index.index + 1) != 1}">
+
+                        <div class="page-4">
+                            <section class="count">
+                                <div class="header-chart-inner" style="margin-bottom: 100px">
+                                    <header class="header">
+                                        <p>StroyMart.<span>kz</span></p>
+                                    </header>
+                                    <div class="header-block">
+                                        <div class="logo-title-chart">
+                                            <div class="chart-page-title2">
+                                                <div class="chart-round2">
+                                                    <h3>1</h3>
+                                                    <p th:text="${potrebnosti.material.getMtName()}">Трубы, рукава и
+                                                        шланги и их фитинги из пластмасс</p>
+                                                </div>
+                                                <div class="chart-img2">
+                                                    <img th:src="@{/tem/assets/chart-l-w.svg}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="chart-city-num3" style="margin: 130px 0 50px 0; padding-right: 5%">
+                                            <h1 th:text="${locality.localities.getName()}">Алматы</h1>
+                                            <div class="chart-vol-price">
+                                                <div class="chart-vol">
+                                                    <span>Общий объем</span>
+                                                    <p><span th:text="${locality.overallVolume}"></span> м3</p>
+                                                </div>
+                                                <div class="chart-price ">
+                                                    <span>Общая стоимость</span>
+                                                    <p><span th:text="${locality.overallPrice}"></span> тг</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="chart-grey-bg">
+                                    <div class="width-90 chart-city-num">
+                                        <div class="chart-str">
+                                            <span>Застройщик</span>
+                                            <p th:text="${company.title}">BI Group</p>
+                                        </div>
+                                        <div class="chart-vol-price">
+                                            <div class="chart-vol">
+                                                <span>Общий объем</span>
+                                                <p><span th:text="${company.overallVolume}">944 354</span> м3</p>
+                                            </div>
+                                            <div class="chart-price ">
+                                                <span>Общая стоимость</span>
+                                                <p><span th:text="${company.overallPrice}"></span> тг</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                    </th:block>
+                    <div class="chart-wrap">
+                        <div class="chart-obj">
+                            <p>Объект <span th:text="${index.index + 1}">1</span></p>
+                            <p>ID <span th:text="${object.getId()}"></span></p>
                         </div>
-                        <div class="chart-price ">
-                            <span>Общая стоимость</span>
-                            <p>944 354 000 тг</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="chart-city-num2">
-                    <div class="chart-str2 str1">
-                        <span>Телефон</span>
-                        <p>8 777 170 70 70</p>
-                    </div>
-                    <div class="chart-str2 str2">
-                        <span>E-mail</span>
-                        <p>Contact@Bi.group</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="chart-wrap">
-            <div class="chart-obj">
-                <p>Объект <span>1</span></p>
-                <p>ID 9128389</p>
-            </div>
-            <div class="chart-p">
-                <p>Строительство многоквартирных жилых домов в микрорайоне "Мадениет" в Алатауском районе города
-                    Алматы, участок №834/2 (без благоустройства и внутриплощадочных инженерных сетей)</p>
-            </div>
-        </div>
-
-        <div class="chart-bars-block">
-            <div class="chart-bar-title">
-                <h1>20<span class="text-orange">20</span></h1>
-                <div class="chart-vol-price">
-                    <div class="chart-vol">
-                        <p>944 354 м3</p>
-                    </div>
-                    <div class="chart-price ">
-                        <p>944 354 000 тг</p>
-                    </div>
-                </div>
-            </div>
-            <div class="chart-bar">
-                <canvas id="chart-bar" width="1300" height="215"></canvas>
-                <div class="chart-values" id="chart-values">
-                    <div class="chart-val">
-                        <p>3500 m3</p>
-                        <p>3 500 000 тг</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="chart-bars-block">
-            <div class="chart-bar-title">
-                <h1>20<span class="text-orange">21</span></h1>
-                <div class="chart-vol-price">
-                    <div class="chart-vol">
-                        <p>944 354 м3</p>
-                    </div>
-                    <div class="chart-price ">
-                        <p>944 354 000 тг</p>
-                    </div>
-                </div>
-            </div>
-            <div class="chart-bar">
-                <canvas id="chart-bar2" width="1300" height="215"></canvas>
-                <div class="chart-values" id="chart-values2">
-                    <div class="chart-val">
-                        <p>3500 m3</p>
-                        <p>3 500 000 тг</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <footer class="footer footer-count" style="position: absolute; bottom: 0; left: 80px;">
-            <p>Потребность строительного рынка на 2020-2021гг.</p>
-            <div class="line"></div>
-            <p>Разработано на основании автоматического анализа KENML смет системой GENRO (АО Институт цифровой
-                техники и технологий)</p>
-        </footer>
-    </section>
-</div>
-<div class="page-4">
-    <section class="count">
-        <div class="header-chart-inner" style="margin-bottom: 100px">
-            <header class="header">
-                <p>StroyMart.<span>kz</span></p>
-            </header>
-            <div class="header-block">
-                <div class="logo-title-chart">
-                    <div class="chart-page-title2">
-                        <div class="chart-round2">
-                            <h3>1</h3>
-                            <p>Трубы, рукава и шланги и их фитинги из пластмасс</p>
-                        </div>
-                        <div class="chart-img2">
-                            <img th:src="@{/tem/assets/chart-l-w.svg}">
+                        <div class="chart-p">
+                            <p th:text="${object.getObjectName()}">Строительство многоквартирных жилых домов в
+                                микрорайоне "Мадениет" в Алатауском районе города
+                                Алматы, участок №834/2 (без благоустройства и внутриплощадочных инженерных
+                                сетей)</p>
                         </div>
                     </div>
-                </div>
-                <div class="chart-city-num3" style="margin: 130px 0 50px 0; padding-right: 5%">
-                    <h1>Алматы</h1>
-                    <div class="chart-vol-price">
-                        <div class="chart-vol">
-                            <span>Общий объем</span>
-                            <p>944 354 м3</p>
+
+                    <th:block th:each="objectInYear : ${object.getObjectInYearDtos()}">
+                        <div class="chart-bars-block">
+                            <div class="chart-bar-title">
+                                <h1 th:text="${objectInYear.getYear()}">
+                                    <!--                                        20<span class="text-orange">20</span>-->
+                                </h1>
+                                <div class="chart-vol-price">
+                                    <div class="chart-vol">
+                                        <p><span th:text="${objectInYear.getOverallVolume()}">944 354</span> м3</p>
+                                    </div>
+                                    <div class="chart-price ">
+                                        <p><span th:text="${objectInYear.getOverallPrice()}">944 354 000</span> тг
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="chart-bar">
+                                <canvas id="chart-bar" width="1300" height="215"></canvas>
+                                <div class="chart-values" id="chart-values">
+                                    <div class="chart-val">
+                                        <p>3500 m3</p>
+                                        <p>3 500 000 тг</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="chart-price ">
-                            <span>Общая стоимость</span>
-                            <p>944 354 000 тг</p>
+                    </th:block>
+
+                    <th:block th:if="${((index.index + 1) % 2 == 0  ) || (index.size == index.index + 1)}">
+                        <footer class="footer footer-count" style="position: absolute; bottom: 0; left: 80px;">
+                            <p>Потребность строительного рынка на 2020-2021гг.</p>
+                            <div class="line"></div>
+                            <p>Разработано на основании автоматического анализа KENML смет системой GENRO (АО Институт
+                                цифровой
+                                техники и технологий)</p>
+                        </footer>
+                        </section>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                    </th:block>
+                </th:block>
+                </th:block>
+                <th:block th:if="${(cindex.index + 1 != 1)}" th:with="localityLastFlag=0">
+                    <th:block th:each="object,index: ${company.getObjectsDto()}">
+                        <th:block th:if="${(localityLastFlag == 1)  && (index.index + 1) == 1}">
 
-        <div class="chart-grey-bg">
-            <div class="width-90 chart-city-num">
-                <div class="chart-str">
-                    <span>Застройщик</span>
-                    <p>BI Group</p>
-                </div>
-                <div class="chart-vol-price">
-                    <div class="chart-vol">
-                        <span>Общий объем</span>
-                        <p>944 354 м3</p>
-                    </div>
-                    <div class="chart-price ">
-                        <span>Общая стоимость</span>
-                        <p>944 354 000 тг</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+                            <div class="page-4">
+                                <section class="count">
+                                    <div class="header-chart-inner">
+                                        <header class="header">
+                                            <p>StroyMart.<span>kz</span></p>
+                                        </header>
+                                        <div class="header-block">
+                                            <div class="logo-title-chart">
+                                                <h3>Потребность</h3>
+                                                <h4>в стройметериалах
+                                                    в разрезе регионов </h4>
+                                            </div>
+                                        </div>
+                                    </div>
 
-        <div class="chart-wrap">
-            <div class="chart-obj">
-                <p>Объект <span>1</span></p>
-                <p>ID 9128389</p>
-            </div>
-            <div class="chart-p">
-                <p>Строительство многоквартирных жилых домов в микрорайоне "Мадениет" в Алатауском районе
-                    города
-                    Алматы, участок №834/2 (без благоустройства и внутриплощадочных инженерных сетей)</p>
-            </div>
-        </div>
+                                    <div class="chart-page-title">
+                                        <div class="chart-round">
+                                            <h3>1</h3>
+                                            <p th:text="${potrebnosti.material.getMtName()}">Трубы, рукава и шланги и их
+                                                фитинги из
+                                                пластмасс</p>
+                                        </div>
+                                        <div class="chart-img">
+                                            <img src="/tem/assets/orange-lines.png">
+                                        </div>
+                                    </div>
 
-        <div class="chart-bars-block">
-            <div class="chart-bar-title">
-                <h1>20<span class="text-orange">20</span></h1>
-                <div class="chart-vol-price">
-                    <div class="chart-vol">
-                        <p>944 354 м3</p>
-                    </div>
-                    <div class="chart-price ">
-                        <p>944 354 000 тг</p>
-                    </div>
-                </div>
-            </div>
-            <div class="chart-bar">
-                <canvas id="chart-bar3" width="1300" height="215"></canvas>
-                <div class="chart-values" id="chart-values3">
-                    <!-- <div class="chart-val">
-                        <p>3500 m3</p>
-                        <p>3 500 000 тг</p>
-                    </div> -->
-                </div>
-            </div>
-        </div>
+                                    <div class="width-90 chart-city-num">
+                                        <h1 th:text="${locality.localities.getName()}">Алматы</h1>
+                                        <div class="chart-vol-price">
+                                            <div class="chart-vol">
+                                                <span>Общий объем</span>
+                                                <p><span th:text="${locality.overallVolume}"></span> м3</p>
+                                            </div>
+                                            <div class="chart-price ">
+                                                <span>Общая стоимость</span>
+                                                <p><span th:text="${locality.overallPrice}"></span> тг</p>
+                                            </div>
+                                        </div>
+                                    </div>
 
-        <div class="chart-grey-bg">
-            <div class="width-90">
-                <div class="chart-city-num" style="border-bottom: 1px solid white">
-                    <div class="chart-str">
-                        <span>Застройщик</span>
-                        <p>BI Group</p>
-                    </div>
-                    <div class="chart-vol-price">
-                        <div class="chart-vol">
-                            <span>Общий объем</span>
-                            <p>944 354 м3</p>
+                                    <div class="chart-grey-bg">
+                                        <div class="width-90">
+                                            <div class="chart-city-num" style="border-bottom: 1px solid white">
+                                                <div class="chart-str">
+                                                    <span>Застройщик</span>
+                                                    <p th:text="${company.title}">BI Group</p>
+                                                </div>
+                                                <div class="chart-vol-price">
+                                                    <div class="chart-vol">
+                                                        <span>Общий объем</span>
+                                                        <p><span th:text="${company.overallVolume}">944 354</span> м3</p>
+                                                    </div>
+                                                    <div class="chart-price ">
+                                                        <span>Общая стоимость</span>
+                                                        <p><span th:text="${company.overallPrice}"></span> тг</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="chart-city-num2">
+                                                <div class="chart-str2 str1">
+                                                    <span>Телефон</span>
+                                                    <p th:text="${company.getDirectorPhone()} ?: 'Нет номера'">8 777 170 70
+                                                        70</p>
+                                                </div>
+                                                <div class="chart-str2 str2">
+                                                    <span>E-mail</span>
+                                                    <p th:text="${company.getEmailAddress()} ?: 'Нет email'">
+                                                        Contact@Bi.group</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                        </th:block>
+                        <th:block th:if="${(localityLastFlag != 1) || ((cindex.index + 1 == 1) && (index.index + 1 != 1))}">
+
+                            <div class="page-4">
+                                <section class="count">
+                                    <div class="header-chart-inner" style="margin-bottom: 100px">
+                                        <header class="header">
+                                            <p>StroyMart.<span>kz</span></p>
+                                        </header>
+                                        <div class="header-block">
+                                            <div class="logo-title-chart">
+                                                <div class="chart-page-title2">
+                                                    <div class="chart-round2">
+                                                        <h3>1</h3>
+                                                        <p th:text="${potrebnosti.material.getMtName()}">Трубы, рукава и
+                                                            шланги и их фитинги из пластмасс</p>
+                                                    </div>
+                                                    <div class="chart-img2">
+                                                        <img th:src="@{/tem/assets/chart-l-w.svg}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="chart-city-num3" style="margin: 130px 0 50px 0; padding-right: 5%">
+                                                <h1 th:text="${locality.localities.getName()}">Алматы</h1>
+                                                <div class="chart-vol-price">
+                                                    <div class="chart-vol">
+                                                        <span>Общий объем</span>
+                                                        <p><span th:text="${locality.overallVolume}"></span> м3</p>
+                                                    </div>
+                                                    <div class="chart-price ">
+                                                        <span>Общая стоимость</span>
+                                                        <p><span th:text="${locality.overallPrice}"></span> тг</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="chart-grey-bg">
+                                        <div class="width-90 chart-city-num">
+                                            <div class="chart-str">
+                                                <span>Застройщик</span>
+                                                <p th:text="${company.title}">BI Group</p>
+                                            </div>
+                                            <div class="chart-vol-price">
+                                                <div class="chart-vol">
+                                                    <span>Общий объем</span>
+                                                    <p><span th:text="${company.overallVolume}">944 354</span> м3</p>
+                                                </div>
+                                                <div class="chart-price ">
+                                                    <span>Общая стоимость</span>
+                                                    <p><span th:text="${company.overallPrice}"></span> тг</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                        </th:block>
+                        <div class="chart-wrap">
+                            <div class="chart-obj">
+                                <p>Объект <span th:text="${index.index + 1}">1</span></p>
+                                <p>ID <span th:text="${object.getId()}"></span></p>
+                            </div>
+                            <div class="chart-p">
+                                <p th:text="${object.getObjectName()}">Строительство многоквартирных жилых домов в
+                                    микрорайоне "Мадениет" в Алатауском районе города
+                                    Алматы, участок №834/2 (без благоустройства и внутриплощадочных инженерных
+                                    сетей)</p>
+                            </div>
                         </div>
-                        <div class="chart-price ">
-                            <span>Общая стоимость</span>
-                            <p>944 354 000 тг</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="chart-city-num2">
-                    <div class="chart-str2 str1">
-                        <span>Телефон</span>
-                        <p>8 777 170 70 70</p>
-                    </div>
-                    <div class="chart-str2 str2">
-                        <span>E-mail</span>
-                        <p>Contact@Bi.group</p>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <div class="chart-bars-block">
-            <div class="chart-bar-title">
-                <h1>2021</h1>
-                <div class="chart-vol-price">
-                    <div class="chart-vol">
-                        <p>944 354 м3</p>
-                    </div>
-                    <div class="chart-price ">
-                        <p>944 354 000 тг</p>
-                    </div>
-                </div>
-            </div>
-            <div class="chart-bar">
-                <canvas id="chart-bar4" width="1300" height="215"></canvas>
-                <div class="chart-values" id="chart-values4">
-                    <!-- <div class="chart-val">
-                        <p>3500 m3</p>
-                        <p>3 500 000 тг</p>
-                    </div> -->
-                </div>
-            </div>
+                        <th:block th:each="objectInYear : ${object.getObjectInYearDtos()}">
+                            <div class="chart-bars-block">
+                                <div class="chart-bar-title">
+                                    <h1 th:text="${objectInYear.getYear()}">
+                                        <!--                                        20<span class="text-orange">20</span>-->
+                                    </h1>
+                                    <div class="chart-vol-price">
+                                        <div class="chart-vol">
+                                            <p><span th:text="${objectInYear.getOverallVolume()}">944 354</span> м3</p>
+                                        </div>
+                                        <div class="chart-price ">
+                                            <p><span th:text="${objectInYear.getOverallPrice()}">944 354 000</span> тг
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="chart-bar">
+                                    <canvas id="chart-bar" width="1300" height="180"></canvas>
+                                    <div class="chart-values" id="chart-values">
+                                        <div class="chart-val">
+                                            <p>3500 m3</p>
+                                            <p>3 500 000 тг</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </th:block>
 
-        </div>
+                        <th:block th:if="${((index.index + 1) % 2 == 0  ) || (index.size == index.index + 1)}">
+                            <footer class="footer footer-count" style="position: absolute; bottom: 0; left: 80px;">
+                                <p>Потребность строительного рынка на 2020-2021гг.</p>
+                                <div class="line"></div>
+                                <p>Разработано на основании автоматического анализа KENML смет системой GENRO (АО Институт
+                                    цифровой
+                                    техники и технологий)</p>
+                            </footer>
+                            </section>
+                            </div>
+                        </th:block>
+                    </th:block>
+                </th:block>
+            </th:block>
+        </th:block>
+    </th:block>
+</th:block>
+<!--<div class="chart-wrap">-->
+<!--    <div class="chart-obj">-->
+<!--        <p>Объект <span>1</span></p>-->
+<!--        <p>ID 9128389</p>-->
+<!--    </div>-->
+<!--    <div class="chart-p">-->
+<!--        <p>Строительство многоквартирных жилых домов в микрорайоне "Мадениет" в Алатауском районе-->
+<!--            города-->
+<!--            Алматы, участок №834/2 (без благоустройства и внутриплощадочных инженерных сетей)</p>-->
+<!--    </div>-->
+<!--</div>-->
 
+<!--<div class="chart-bars-block">-->
+<!--    <div class="chart-bar-title">-->
+<!--        <h1>20<span class="text-orange">20</span></h1>-->
+<!--        <div class="chart-vol-price">-->
+<!--            <div class="chart-vol">-->
+<!--                <p>944 354 м3</p>-->
+<!--            </div>-->
+<!--            <div class="chart-price ">-->
+<!--                <p>944 354 000 тг</p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="chart-bar">-->
+<!--        <canvas id="chart-bar3" width="1300" height="215"></canvas>-->
+<!--        <div class="chart-values" id="chart-values3">-->
+<!--            &lt;!&ndash; <div class="chart-val">-->
+<!--                <p>3500 m3</p>-->
+<!--                <p>3 500 000 тг</p>-->
+<!--            </div> &ndash;&gt;-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 
-        <footer class="footer footer-count" style="position: absolute; bottom: 0; left:80px;">
-            <p>Потребность строительного рынка на 2020-2021гг.</p>
-            <div class="line"></div>
-            <p>Разработано на основании автоматического анализа KENML смет системой GENRO (АО Институт
-                цифровой
-                техники и технологий)</p>
-        </footer>
-    </section>
-</div>
+<!--<div class="chart-grey-bg">-->
+<!--    <div class="width-90">-->
+<!--        <div class="chart-city-num" style="border-bottom: 1px solid white">-->
+<!--            <div class="chart-str">-->
+<!--                <span>Застройщик</span>-->
+<!--                <p>BI Group</p>-->
+<!--            </div>-->
+<!--            <div class="chart-vol-price">-->
+<!--                <div class="chart-vol">-->
+<!--                    <span>Общий объем</span>-->
+<!--                    <p>944 354 м3</p>-->
+<!--                </div>-->
+<!--                <div class="chart-price ">-->
+<!--                    <span>Общая стоимость</span>-->
+<!--                    <p>944 354 000 тг</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="chart-city-num2">-->
+<!--            <div class="chart-str2 str1">-->
+<!--                <span>Телефон</span>-->
+<!--                <p>8 777 170 70 70</p>-->
+<!--            </div>-->
+<!--            <div class="chart-str2 str2">-->
+<!--                <span>E-mail</span>-->
+<!--                <p>Contact@Bi.group</p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--<div class="chart-bars-block">-->
+<!--    <div class="chart-bar-title">-->
+<!--        <h1>2021</h1>-->
+<!--        <div class="chart-vol-price">-->
+<!--            <div class="chart-vol">-->
+<!--                <p>944 354 м3</p>-->
+<!--            </div>-->
+<!--            <div class="chart-price ">-->
+<!--                <p>944 354 000 тг</p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="chart-bar">-->
+<!--        <canvas id="chart-bar4" width="1300" height="215"></canvas>-->
+<!--        <div class="chart-values" id="chart-values4">-->
+<!--            &lt;!&ndash; <div class="chart-val">-->
+<!--                <p>3500 m3</p>-->
+<!--                <p>3 500 000 тг</p>-->
+<!--            </div> &ndash;&gt;-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--</div>-->
+
 
 <!--<canvas id="chart-bar"></canvas>-->
 <!--<canvas id="chart-bar2"></canvas>-->

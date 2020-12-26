@@ -259,8 +259,8 @@
     -o-box-shadow: 15px 15px 60px #EAEEF1 !important;;
     -webkit-print-color-adjust: exact !important;;
     -webkit-filter: opacity(1) !important;;
-    padding: 50px  0  50px 50px;
-    margin: 50px auto 50px 0;
+    padding: 25px  0  25px 50px;
+    margin: 25px auto 25px 0;
 }
 
 .chart-bar-title {
