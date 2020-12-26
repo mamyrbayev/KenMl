@@ -158,12 +158,11 @@
 }
 
 .chart-vol p {
-    font-size: 32px;
+    font-size: 37px;
     color: #FFB877;
     border-right: 2px solid #9A9B9C;
     padding-right: 40px;
 }
-
 
 .chart-price span {
     font-size: 20px;
@@ -173,7 +172,7 @@
 }
 
 .chart-price p {
-    font-size: 32px;
+    font-size: 37px;
     color: #152731;
 }
 
@@ -259,7 +258,7 @@
     -o-box-shadow: 15px 15px 60px #EAEEF1 !important;;
     -webkit-print-color-adjust: exact !important;;
     -webkit-filter: opacity(1) !important;;
-    padding: 25px  0  25px 50px;
+    padding: 25px 0 25px 50px;
     margin: 25px auto 25px 0;
 }
 
@@ -284,8 +283,7 @@
 }
 
 .chart-values p {
-    font-size: 12px;
-    font-style: bold;
+    font-size: 15px;
     margin: 0 0 2px;
     font-weight: 700;
 }
