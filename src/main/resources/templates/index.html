@@ -10,6 +10,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
 </head>
 <body>
 <section class="title-page">
@@ -342,53 +354,135 @@
         <th:block th:each="locality,lindex: ${potrebnosti.localitiesByMatrials}">
             <th:block th:each="company,cindex: ${locality.companiesList}">
                 <th:block th:if="${(cindex.index + 1 == 1)}" th:with="localityLastFlag=1">
-                <th:block th:each="object,index: ${company.getObjectsDto()}">
-                    <th:block th:if="${(localityLastFlag == 1)  && (index.index + 1) == 1}">
-
-                        <div class="page-4">
-                            <section class="count">
-                                <div class="header-chart-inner">
-                                    <header class="header">
-                                        <p>StroyMart.<span>kz</span></p>
-                                    </header>
-                                    <div class="header-block">
-                                        <div class="logo-title-chart">
-                                            <h3>Потребность</h3>
-                                            <h4>в стройметериалах
-                                                в разрезе регионов </h4>
+                    <th:block th:each="object,index: ${company.getObjectsDto()}">
+                        <th:block th:if="${(localityLastFlag == 1)  && (index.index + 1) == 1}">
+                            <div class="page-4">
+                                <section class="count">
+                                    <div class="header-chart-inner">
+                                        <header class="header">
+                                            <p>StroyMart.<span>kz</span></p>
+                                        </header>
+                                        <div class="header-block">
+                                            <div class="logo-title-chart">
+                                                <h3>Потребность</h3>
+                                                <h4>в стройметериалах
+                                                    в разрезе регионов </h4>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="chart-page-title">
-                                    <div class="chart-round">
-                                        <h3>1</h3>
-                                        <p th:text="${potrebnosti.material.getMtName()}">Трубы, рукава и шланги и их
-                                            фитинги из
-                                            пластмасс</p>
-                                    </div>
-                                    <div class="chart-img">
-                                        <img src="/tem/assets/orange-lines.png">
-                                    </div>
-                                </div>
-
-                                <div class="width-90 chart-city-num">
-                                    <h1 th:text="${locality.localities.getName()}">Алматы</h1>
-                                    <div class="chart-vol-price">
-                                        <div class="chart-vol">
-                                            <span>Общий объем</span>
-                                            <p><span th:text="${locality.overallVolume}"></span> м3</p>
+                                    <div class="chart-page-title">
+                                        <div class="chart-round">
+                                            <h3>1</h3>
+                                            <p th:text="${potrebnosti.material.getMtName()}">Трубы, рукава и шланги и их
+                                                фитинги из
+                                                пластмасс</p>
                                         </div>
-                                        <div class="chart-price ">
-                                            <span>Общая стоимость</span>
-                                            <p><span th:text="${locality.overallPrice}"></span> тг</p>
+                                        <div class="chart-img">
+                                            <img src="/tem/assets/orange-lines.png">
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="chart-grey-bg">
-                                    <div class="width-90">
-                                        <div class="chart-city-num" style="border-bottom: 1px solid white">
+                                    <div class="width-90 chart-city-num">
+                                        <h1 th:text="${locality.localities.getName()}">Алматы</h1>
+                                        <div class="chart-vol-price">
+                                            <div class="chart-vol">
+                                                <span>Общий объем</span>
+                                                <p>
+                                                    <th:block th:text="${locality.overallVolume}"></th:block>
+                                                    м3
+                                                </p>
+                                            </div>
+                                            <div class="chart-price ">
+                                                <span>Общая стоимость</span>
+                                                <p>
+                                                    <th:block th:text="${locality.overallPrice}"></th:block>
+                                                    тг
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="chart-grey-bg">
+                                        <div class="width-90">
+                                            <div class="chart-city-num" style="border-bottom: 1px solid white">
+                                                <div class="chart-str">
+                                                    <span>Застройщик</span>
+                                                    <p th:text="${company.title}">BI Group</p>
+                                                </div>
+                                                <div class="chart-vol-price">
+                                                    <div class="chart-vol">
+                                                        <span>Общий объем</span>
+                                                        <p>
+                                                            <th:block th:text="${company.overallVolume}">944 354
+                                                            </th:block>
+                                                            м3
+                                                        </p>
+                                                    </div>
+                                                    <div class="chart-price ">
+                                                        <span>Общая стоимость</span>
+                                                        <p>
+                                                            <th:block th:text="${company.overallPrice}"></th:block>
+                                                            тг
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="chart-city-num2">
+                                                <div class="chart-str2 str1">
+                                                    <span>Телефон</span>
+                                                    <p th:text="${company.getDirectorPhone()} ?: 'Нет номера'">8 777 170
+                                                        70
+                                                        70</p>
+                                                </div>
+                                                <div class="chart-str2 str2">
+                                                    <span>E-mail</span>
+                                                    <p th:text="${company.getEmailAddress()} ?: 'Нет email'">
+                                                        Contact@Bi.group</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                        </th:block>
+                        <th:block th:if="${(localityLastFlag != 1) && (index.index + 1) != 1}">
+                            <div class="page-4">
+                                <section class="count">
+                                    <div class="header-chart-inner" style="margin-bottom: 100px">
+                                        <header class="header">
+                                            <p>StroyMart.<span>kz</span></p>
+                                        </header>
+                                        <div class="header-block">
+                                            <div class="logo-title-chart">
+                                                <div class="chart-page-title2">
+                                                    <div class="chart-round2">
+                                                        <h3>1</h3>
+                                                        <p th:text="${potrebnosti.material.getMtName()}">Трубы, рукава и
+                                                            шланги и их фитинги из пластмасс</p>
+                                                    </div>
+                                                    <div class="chart-img2">
+                                                        <img th:src="@{/tem/assets/chart-l-w.svg}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="chart-city-num3"
+                                                 style="margin: 130px 0 50px 0; padding-right: 5%">
+                                                <h1 th:text="${locality.localities.getName()}">Алматы</h1>
+                                                <div class="chart-vol-price">
+                                                    <div class="chart-vol">
+                                                        <span>Общий объем</span>
+                                                        <p><th:block  th:text="${locality.overallVolume}"></th:block> м3</p>
+                                                    </div>
+                                                    <div class="chart-price ">
+                                                        <span>Общая стоимость</span>
+                                                        <p><th:block  th:text="${locality.overallPrice}"></th:block> тг</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="chart-grey-bg">
+                                        <div class="width-90 chart-city-num">
                                             <div class="chart-str">
                                                 <span>Застройщик</span>
                                                 <p th:text="${company.title}">BI Group</p>
@@ -396,138 +490,124 @@
                                             <div class="chart-vol-price">
                                                 <div class="chart-vol">
                                                     <span>Общий объем</span>
-                                                    <p><span th:text="${company.overallVolume}">944 354</span> м3</p>
+                                                    <p><th:block th:text="${company.overallVolume}">944 354</th:block> м3</p>
                                                 </div>
                                                 <div class="chart-price ">
                                                     <span>Общая стоимость</span>
-                                                    <p><span th:text="${company.overallPrice}"></span> тг</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="chart-city-num2">
-                                            <div class="chart-str2 str1">
-                                                <span>Телефон</span>
-                                                <p th:text="${company.getDirectorPhone()} ?: 'Нет номера'">8 777 170 70
-                                                    70</p>
-                                            </div>
-                                            <div class="chart-str2 str2">
-                                                <span>E-mail</span>
-                                                <p th:text="${company.getEmailAddress()} ?: 'Нет email'">
-                                                    Contact@Bi.group</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                    </th:block>
-                    <th:block th:if="${(localityLastFlag != 1) && (index.index + 1) != 1}">
-
-                        <div class="page-4">
-                            <section class="count">
-                                <div class="header-chart-inner" style="margin-bottom: 100px">
-                                    <header class="header">
-                                        <p>StroyMart.<span>kz</span></p>
-                                    </header>
-                                    <div class="header-block">
-                                        <div class="logo-title-chart">
-                                            <div class="chart-page-title2">
-                                                <div class="chart-round2">
-                                                    <h3>1</h3>
-                                                    <p th:text="${potrebnosti.material.getMtName()}">Трубы, рукава и
-                                                        шланги и их фитинги из пластмасс</p>
-                                                </div>
-                                                <div class="chart-img2">
-                                                    <img th:src="@{/tem/assets/chart-l-w.svg}">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="chart-city-num3" style="margin: 130px 0 50px 0; padding-right: 5%">
-                                            <h1 th:text="${locality.localities.getName()}">Алматы</h1>
-                                            <div class="chart-vol-price">
-                                                <div class="chart-vol">
-                                                    <span>Общий объем</span>
-                                                    <p><span th:text="${locality.overallVolume}"></span> м3</p>
-                                                </div>
-                                                <div class="chart-price ">
-                                                    <span>Общая стоимость</span>
-                                                    <p><span th:text="${locality.overallPrice}"></span> тг</p>
+                                                    <p><th:block th:text="${company.overallPrice}"></th:block> тг</p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="chart-grey-bg">
-                                    <div class="width-90 chart-city-num">
-                                        <div class="chart-str">
-                                            <span>Застройщик</span>
-                                            <p th:text="${company.title}">BI Group</p>
-                                        </div>
-                                        <div class="chart-vol-price">
-                                            <div class="chart-vol">
-                                                <span>Общий объем</span>
-                                                <p><span th:text="${company.overallVolume}">944 354</span> м3</p>
-                                            </div>
-                                            <div class="chart-price ">
-                                                <span>Общая стоимость</span>
-                                                <p><span th:text="${company.overallPrice}"></span> тг</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                    </th:block>
-                    <div class="chart-wrap">
-                        <div class="chart-obj">
-                            <p>Объект <span th:text="${index.index + 1}">1</span></p>
-                            <p>ID <span th:text="${object.getId()}"></span></p>
+                        </th:block>
+                        <div class="chart-wrap">
+                            <div class="chart-obj">
+                                <p>Объект <span th:text="${index.index + 1}">1</span></p>
+                                <p>ID <span th:text="${object.getId()}"></span></p>
+                            </div>
+                            <div class="chart-p">
+                                <p th:text="${object.getObjectName()}">Строительство многоквартирных жилых домов в
+                                    микрорайоне "Мадениет" в Алатауском районе города
+                                    Алматы, участок №834/2 (без благоустройства и внутриплощадочных инженерных
+                                    сетей)</p>
+                            </div>
                         </div>
-                        <div class="chart-p">
-                            <p th:text="${object.getObjectName()}">Строительство многоквартирных жилых домов в
-                                микрорайоне "Мадениет" в Алатауском районе города
-                                Алматы, участок №834/2 (без благоустройства и внутриплощадочных инженерных
-                                сетей)</p>
-                        </div>
-                    </div>
 
-                    <th:block th:each="objectInYear : ${object.getObjectInYearDtos()}">
-                        <div class="chart-bars-block">
-                            <div class="chart-bar-title">
-                                <h1 th:text="${objectInYear.getYear()}">
-                                    <!--                                        20<span class="text-orange">20</span>-->
-                                </h1>
-                                <div class="chart-vol-price">
-                                    <div class="chart-vol">
-                                        <p><span th:text="${objectInYear.getOverallVolume()}">944 354</span> м3</p>
+                        <th:block th:each="objectInYear : ${object.getObjectInYearDtos()}">
+                            <div class="chart-bars-block">
+                                <div class="chart-bar-title">
+                                    <h1>
+                                        <span th:text="${objectInYear.getYear().substring(0,2)}"></span><span
+                                            th:text="${objectInYear.getYear().substring(2,4)}"
+                                            class="text-orange">20</span>
+                                    </h1>
+                                    <div class="chart-vol-price">
+                                        <div class="chart-vol">
+                                            <p>
+                                                <th:block th:text="${objectInYear.getOverallVolume()}">944 354
+                                                </th:block>
+                                                м3
+                                            </p>
+                                        </div>
+                                        <div class="chart-price ">
+                                            <p>
+                                                <th:block th:text="${objectInYear.getOverallPrice()}">944 354 000
+                                                </th:block>
+                                                тг
+                                            </p>
+                                        </div>
                                     </div>
-                                    <div class="chart-price ">
-                                        <p><span th:text="${objectInYear.getOverallPrice()}">944 354 000</span> тг
-                                        </p>
+                                </div>
+                                <div class="chart-bar">
+                                    <canvas th:attr="id=${object.getId().toString()+objectInYear.getYear()}" width="1300" height="215"></canvas>
+                                    <script th:inline="javascript">
+                                        new Chart(document.getElementById(/*[[${object.getId().toString()+objectInYear.getYear()}]]*/ 'default'), {
+                                            type: "bar",
+                                            data: {
+                                                labels: [
+                                                    "Янв",
+                                                    "Фев",
+                                                    "Мар",
+                                                    "Апр",
+                                                    "Май",
+                                                    "Июн",
+                                                    "Июл",
+                                                    "Авг",
+                                                    "Сен",
+                                                    "Окт",
+                                                    "Ноя",
+                                                    "Дек",
+                                                ],
+                                                datasets: [
+                                                    {
+                                                        label: "",
+                                                        backgroundColor: "#FFB877",
+                                                        data: /*[[${objectInYear.getMonthVolumePriceArray()}]]*/ [],
+                                                    },
+                                                ],
+                                            },
+                                            options: {
+                                                animation: {
+                                                    duration: 0,
+                                                },
+                                                legend: {display: false},
+                                                title: {
+                                                    display: true,
+                                                },
+                                                responsive: false,
+                                                scales: {
+                                                    xAxes: [
+                                                        {
+                                                            barThickness: 30,
+                                                        },
+                                                    ],
+                                                },
+                                            },
+                                        });
+                                    </script>
+                                    <div class="chart-values">
+                                        <div class="chart-val" th:each="monthVolumePrice : ${objectInYear.monthVolumePrices}" >
+                                            <p><th:block th:text="${monthVolumePrice.getVolume()}"></th:block> m3</p>
+                                            <p><th:block th:text="${monthVolumePrice.getPrice()}"></th:block> тг</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="chart-bar">
-                                <canvas id="chart-bar" width="1300" height="215"></canvas>
-                                <div class="chart-values" id="chart-values">
-                                    <div class="chart-val">
-                                        <p>3500 m3</p>
-                                        <p>3 500 000 тг</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </th:block>
+                        </th:block>
 
-                    <th:block th:if="${((index.index + 1) % 2 == 0  ) || (index.size == index.index + 1)}">
-                        <footer class="footer footer-count" style="position: absolute; bottom: 0; left: 80px;">
-                            <p>Потребность строительного рынка на 2020-2021гг.</p>
-                            <div class="line"></div>
-                            <p>Разработано на основании автоматического анализа KENML смет системой GENRO (АО Институт
-                                цифровой
-                                техники и технологий)</p>
-                        </footer>
-                        </section>
-                        </div>
+                        <th:block th:if="${((index.index + 1) % 2 == 0  ) || (index.size == index.index + 1)}">
+                            <footer class="footer footer-count" style="position: absolute; bottom: 0; left: 80px;">
+                                <p>Потребность строительного рынка на 2020-2021гг.</p>
+                                <div class="line"></div>
+                                <p>Разработано на основании автоматического анализа KENML смет системой GENRO (АО
+                                    Институт
+                                    цифровой
+                                    техники и технологий)</p>
+                            </footer>
+                            </section>
+                            </div>
+                        </th:block>
                     </th:block>
-                </th:block>
                 </th:block>
                 <th:block th:if="${(cindex.index + 1 != 1)}" th:with="localityLastFlag=0">
                     <th:block th:each="object,index: ${company.getObjectsDto()}">
@@ -565,11 +645,11 @@
                                         <div class="chart-vol-price">
                                             <div class="chart-vol">
                                                 <span>Общий объем</span>
-                                                <p><span th:text="${locality.overallVolume}"></span> м3</p>
+                                                <p><th:block th:text="${locality.overallVolume}"></th:block> м3</p>
                                             </div>
                                             <div class="chart-price ">
                                                 <span>Общая стоимость</span>
-                                                <p><span th:text="${locality.overallPrice}"></span> тг</p>
+                                                <p><th:block th:text="${locality.overallPrice}"></th:block> тг</p>
                                             </div>
                                         </div>
                                     </div>
@@ -584,18 +664,20 @@
                                                 <div class="chart-vol-price">
                                                     <div class="chart-vol">
                                                         <span>Общий объем</span>
-                                                        <p><span th:text="${company.overallVolume}">944 354</span> м3</p>
+                                                        <p><th:block th:text="${company.overallVolume}">944 354</th:block> м3
+                                                        </p>
                                                     </div>
                                                     <div class="chart-price ">
                                                         <span>Общая стоимость</span>
-                                                        <p><span th:text="${company.overallPrice}"></span> тг</p>
+                                                        <p><th:block th:text="${company.overallPrice}"></th:block> тг</p>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="chart-city-num2">
                                                 <div class="chart-str2 str1">
                                                     <span>Телефон</span>
-                                                    <p th:text="${company.getDirectorPhone()} ?: 'Нет номера'">8 777 170 70
+                                                    <p th:text="${company.getDirectorPhone()} ?: 'Нет номера'">8 777 170
+                                                        70
                                                         70</p>
                                                 </div>
                                                 <div class="chart-str2 str2">
@@ -608,7 +690,8 @@
                                     </div>
 
                         </th:block>
-                        <th:block th:if="${(localityLastFlag != 1) || ((cindex.index + 1 == 1) && (index.index + 1 != 1))}">
+                        <th:block
+                                th:if="${(localityLastFlag != 1) || ((cindex.index + 1 == 1) && (index.index + 1 != 1))}">
 
                             <div class="page-4">
                                 <section class="count">
@@ -629,16 +712,17 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="chart-city-num3" style="margin: 130px 0 50px 0; padding-right: 5%">
+                                            <div class="chart-city-num3"
+                                                 style="margin: 130px 0 50px 0; padding-right: 5%">
                                                 <h1 th:text="${locality.localities.getName()}">Алматы</h1>
                                                 <div class="chart-vol-price">
                                                     <div class="chart-vol">
                                                         <span>Общий объем</span>
-                                                        <p><span th:text="${locality.overallVolume}"></span> м3</p>
+                                                        <p><th:block th:text="${locality.overallVolume}"></th:block> м3</p>
                                                     </div>
                                                     <div class="chart-price ">
                                                         <span>Общая стоимость</span>
-                                                        <p><span th:text="${locality.overallPrice}"></span> тг</p>
+                                                        <p><th:block th:text="${locality.overallPrice}"></th:block> тг</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -653,11 +737,11 @@
                                             <div class="chart-vol-price">
                                                 <div class="chart-vol">
                                                     <span>Общий объем</span>
-                                                    <p><span th:text="${company.overallVolume}">944 354</span> м3</p>
+                                                    <p><th:block th:text="${company.overallVolume}">944 354</th:block> м3</p>
                                                 </div>
                                                 <div class="chart-price ">
                                                     <span>Общая стоимость</span>
-                                                    <p><span th:text="${company.overallPrice}"></span> тг</p>
+                                                    <p><th:block th:text="${company.overallPrice}"></th:block> тг</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -679,25 +763,79 @@
                         <th:block th:each="objectInYear : ${object.getObjectInYearDtos()}">
                             <div class="chart-bars-block">
                                 <div class="chart-bar-title">
-                                    <h1 th:text="${objectInYear.getYear()}">
-                                        <!--                                        20<span class="text-orange">20</span>-->
+                                    <h1>
+                                        <span th:text="${objectInYear.getYear().substring(0,2)}"></span><span
+                                            th:text="${objectInYear.getYear().substring(2,4)}"
+                                            class="text-orange">20</span>
                                     </h1>
                                     <div class="chart-vol-price">
                                         <div class="chart-vol">
-                                            <p><span th:text="${objectInYear.getOverallVolume()}">944 354</span> м3</p>
+                                            <p>
+                                                <th:block th:text="${objectInYear.getOverallVolume()}">944 354
+                                                </th:block>
+                                                м3
+                                            </p>
                                         </div>
                                         <div class="chart-price ">
-                                            <p><span th:text="${objectInYear.getOverallPrice()}">944 354 000</span> тг
+                                            <p>
+                                                <th:block th:text="${objectInYear.getOverallPrice()}">944 354 000
+                                                </th:block>
+                                                тг
                                             </p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="chart-bar">
-                                    <canvas id="chart-bar" width="1300" height="180"></canvas>
-                                    <div class="chart-values" id="chart-values">
-                                        <div class="chart-val">
-                                            <p>3500 m3</p>
-                                            <p>3 500 000 тг</p>
+                                    <canvas th:attr="id=${object.getId().toString()+objectInYear.getYear()}" width="1300" height="215"></canvas>
+                                    <script th:inline="javascript">
+                                        new Chart(document.getElementById(/*[[${object.getId().toString()+objectInYear.getYear()}]]*/ 'default'), {
+                                            type: "bar",
+                                            data: {
+                                                labels: [
+                                                    "Янв",
+                                                    "Фев",
+                                                    "Мар",
+                                                    "Апр",
+                                                    "Май",
+                                                    "Июн",
+                                                    "Июл",
+                                                    "Авг",
+                                                    "Сен",
+                                                    "Окт",
+                                                    "Ноя",
+                                                    "Дек",
+                                                ],
+                                                datasets: [
+                                                    {
+                                                        label: "",
+                                                        backgroundColor: "#FFB877",
+                                                        data: [3500, 500, 0, 3600, 3100, 600, 1700, 2200, 0, 1000, 1600, 3200],
+                                                    },
+                                                ],
+                                            },
+                                            options: {
+                                                animation: {
+                                                    duration: 0,
+                                                },
+                                                legend: {display: false},
+                                                title: {
+                                                    display: true,
+                                                },
+                                                responsive: false,
+                                                scales: {
+                                                    xAxes: [
+                                                        {
+                                                            barThickness: 30,
+                                                        },
+                                                    ],
+                                                },
+                                            },
+                                        });
+                                    </script>
+                                    <div class="chart-values">
+                                        <div class="chart-val" th:each="monthVolumePrice : ${objectInYear.monthVolumePrices}" >
+                                            <p><th:block th:text="${monthVolumePrice.getVolume()}"></th:block> m3</p>
+                                            <p><th:block th:text="${monthVolumePrice.getPrice()}"></th:block> тг</p>
                                         </div>
                                     </div>
                                 </div>
@@ -708,7 +846,8 @@
                             <footer class="footer footer-count" style="position: absolute; bottom: 0; left: 80px;">
                                 <p>Потребность строительного рынка на 2020-2021гг.</p>
                                 <div class="line"></div>
-                                <p>Разработано на основании автоматического анализа KENML смет системой GENRO (АО Институт
+                                <p>Разработано на основании автоматического анализа KENML смет системой GENRO (АО
+                                    Институт
                                     цифровой
                                     техники и технологий)</p>
                             </footer>
@@ -816,17 +955,6 @@
 <!--<canvas id="chart-bar2"></canvas>-->
 <!--<canvas id="chart-bar3"></canvas>-->
 <!--<canvas id="chart-bar4"></canvas>-->
-
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
 <script th:inline="javascript">
 
