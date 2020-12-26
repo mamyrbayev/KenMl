@@ -760,7 +760,23 @@
                             </div>
                         </div>
 
-                        <th:block th:each="objectInYear : ${object.getObjectInYearDtos()}">
+                        <th:block th:each="objectInYear, oyindex : ${object.getObjectInYearDtos()}">
+
+                            <th:block th:if="${(oyindex.index + 1 % 2 == 0)}">
+                                <div class="chart-wrap">
+                                    <div class="chart-obj">
+                                        <p>Объект <span th:text="${index.index + 1}">1</span></p>
+                                        <p>ID <span th:text="${object.getId()}"></span></p>
+                                    </div>
+                                    <div class="chart-p">
+                                        <p th:text="${object.getObjectName()}">Строительство многоквартирных жилых домов в
+                                            микрорайоне "Мадениет" в Алатауском районе города
+                                            Алматы, участок №834/2 (без благоустройства и внутриплощадочных инженерных
+                                            сетей)</p>
+                                    </div>
+                                </div>
+                            </th:block>
+
                             <div class="chart-bars-block">
                                 <div class="chart-bar-title">
                                     <h1>
@@ -840,6 +856,43 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <th:block th:if="${(oyindex.index + 1 % 2 == 1)}">
+                                <div class="chart-grey-bg">
+                                    <div class="width-90">
+                                        <div class="chart-city-num" style="border-bottom: 1px solid white">
+                                            <div class="chart-str">
+                                                <span>Застройщик</span>
+                                                <p th:text="${company.title}">BI Group</p>
+                                            </div>
+                                            <div class="chart-vol-price">
+                                                <div class="chart-vol">
+                                                    <span>Общий объем</span>
+                                                    <p><th:block th:text="${company.overallVolume}">944 354</th:block> м3
+                                                    </p>
+                                                </div>
+                                                <div class="chart-price ">
+                                                    <span>Общая стоимость</span>
+                                                    <p><th:block th:text="${company.overallPrice}"></th:block> тг</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="chart-city-num2">
+                                            <div class="chart-str2 str1">
+                                                <span>Телефон</span>
+                                                <p th:text="${company.getDirectorPhone()} ?: 'Нет номера'">8 777 170
+                                                    70
+                                                    70</p>
+                                            </div>
+                                            <div class="chart-str2 str2">
+                                                <span>E-mail</span>
+                                                <p th:text="${company.getEmailAddress()} ?: 'Нет email'">
+                                                    Contact@Bi.group</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </th:block>
                         </th:block>
 
                         <th:block th:if="${((index.index + 1) % 2 == 0  ) || (index.size == index.index + 1)}">
