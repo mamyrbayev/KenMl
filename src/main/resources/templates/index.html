@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>StoryMart</title>
+    <title>StroyMart</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" th:href="@{/tem/style/all.css}">
@@ -471,11 +471,17 @@
                                                 <div class="chart-vol-price">
                                                     <div class="chart-vol">
                                                         <span>Общий объем</span>
-                                                        <p><th:block  th:text="${locality.overallVolume}"></th:block> м3</p>
+                                                        <p>
+                                                            <th:block th:text="${locality.overallVolume}"></th:block>
+                                                            м3
+                                                        </p>
                                                     </div>
                                                     <div class="chart-price ">
                                                         <span>Общая стоимость</span>
-                                                        <p><th:block  th:text="${locality.overallPrice}"></th:block> тг</p>
+                                                        <p>
+                                                            <th:block th:text="${locality.overallPrice}"></th:block>
+                                                            тг
+                                                        </p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -490,11 +496,17 @@
                                             <div class="chart-vol-price">
                                                 <div class="chart-vol">
                                                     <span>Общий объем</span>
-                                                    <p><th:block th:text="${company.overallVolume}">944 354</th:block> м3</p>
+                                                    <p>
+                                                        <th:block th:text="${company.overallVolume}">944 354</th:block>
+                                                        м3
+                                                    </p>
                                                 </div>
                                                 <div class="chart-price ">
                                                     <span>Общая стоимость</span>
-                                                    <p><th:block th:text="${company.overallPrice}"></th:block> тг</p>
+                                                    <p>
+                                                        <th:block th:text="${company.overallPrice}"></th:block>
+                                                        тг
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -539,7 +551,8 @@
                                     </div>
                                 </div>
                                 <div class="chart-bar">
-                                    <canvas th:attr="id=${object.getId().toString()+objectInYear.getYear()}" width="1300" height="215"></canvas>
+                                    <canvas th:attr="id=${object.getId().toString()+objectInYear.getYear()}"
+                                            width="1300" height="215"></canvas>
                                     <script th:inline="javascript">
                                         new Chart(document.getElementById(/*[[${object.getId().toString()+objectInYear.getYear()}]]*/ 'default'), {
                                             type: "bar",
@@ -586,9 +599,16 @@
                                         });
                                     </script>
                                     <div class="chart-values">
-                                        <div class="chart-val" th:each="monthVolumePrice : ${objectInYear.monthVolumePrices}" >
-                                            <p><th:block th:text="${monthVolumePrice.getVolume()}"></th:block> m3</p>
-                                            <p><th:block th:text="${monthVolumePrice.getPrice()}"></th:block> тг</p>
+                                        <div class="chart-val"
+                                             th:each="monthVolumePrice : ${objectInYear.monthVolumePrices}">
+                                            <p>
+                                                <th:block th:text="${monthVolumePrice.getVolume()}"></th:block>
+                                                m3
+                                            </p>
+                                            <p>
+                                                <th:block th:text="${monthVolumePrice.getPrice()}"></th:block>
+                                                тг
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -645,11 +665,17 @@
                                         <div class="chart-vol-price">
                                             <div class="chart-vol">
                                                 <span>Общий объем</span>
-                                                <p><th:block th:text="${locality.overallVolume}"></th:block> м3</p>
+                                                <p>
+                                                    <th:block th:text="${locality.overallVolume}"></th:block>
+                                                    м3
+                                                </p>
                                             </div>
                                             <div class="chart-price ">
                                                 <span>Общая стоимость</span>
-                                                <p><th:block th:text="${locality.overallPrice}"></th:block> тг</p>
+                                                <p>
+                                                    <th:block th:text="${locality.overallPrice}"></th:block>
+                                                    тг
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
@@ -664,12 +690,18 @@
                                                 <div class="chart-vol-price">
                                                     <div class="chart-vol">
                                                         <span>Общий объем</span>
-                                                        <p><th:block th:text="${company.overallVolume}">944 354</th:block> м3
+                                                        <p>
+                                                            <th:block th:text="${company.overallVolume}">944 354
+                                                            </th:block>
+                                                            м3
                                                         </p>
                                                     </div>
                                                     <div class="chart-price ">
                                                         <span>Общая стоимость</span>
-                                                        <p><th:block th:text="${company.overallPrice}"></th:block> тг</p>
+                                                        <p>
+                                                            <th:block th:text="${company.overallPrice}"></th:block>
+                                                            тг
+                                                        </p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -718,11 +750,17 @@
                                                 <div class="chart-vol-price">
                                                     <div class="chart-vol">
                                                         <span>Общий объем</span>
-                                                        <p><th:block th:text="${locality.overallVolume}"></th:block> м3</p>
+                                                        <p>
+                                                            <th:block th:text="${locality.overallVolume}"></th:block>
+                                                            м3
+                                                        </p>
                                                     </div>
                                                     <div class="chart-price ">
                                                         <span>Общая стоимость</span>
-                                                        <p><th:block th:text="${locality.overallPrice}"></th:block> тг</p>
+                                                        <p>
+                                                            <th:block th:text="${locality.overallPrice}"></th:block>
+                                                            тг
+                                                        </p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -737,11 +775,17 @@
                                             <div class="chart-vol-price">
                                                 <div class="chart-vol">
                                                     <span>Общий объем</span>
-                                                    <p><th:block th:text="${company.overallVolume}">944 354</th:block> м3</p>
+                                                    <p>
+                                                        <th:block th:text="${company.overallVolume}">944 354</th:block>
+                                                        м3
+                                                    </p>
                                                 </div>
                                                 <div class="chart-price ">
                                                     <span>Общая стоимость</span>
-                                                    <p><th:block th:text="${company.overallPrice}"></th:block> тг</p>
+                                                    <p>
+                                                        <th:block th:text="${company.overallPrice}"></th:block>
+                                                        тг
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -769,7 +813,8 @@
                                         <p>ID <span th:text="${object.getId()}"></span></p>
                                     </div>
                                     <div class="chart-p">
-                                        <p th:text="${object.getObjectName()}">Строительство многоквартирных жилых домов в
+                                        <p th:text="${object.getObjectName()}">Строительство многоквартирных жилых домов
+                                            в
                                             микрорайоне "Мадениет" в Алатауском районе города
                                             Алматы, участок №834/2 (без благоустройства и внутриплощадочных инженерных
                                             сетей)</p>
@@ -802,7 +847,8 @@
                                     </div>
                                 </div>
                                 <div class="chart-bar">
-                                    <canvas th:attr="id=${object.getId().toString()+objectInYear.getYear()}" width="1300" height="215"></canvas>
+                                    <canvas th:attr="id=${object.getId().toString()+objectInYear.getYear()}"
+                                            width="1300" height="215"></canvas>
                                     <script th:inline="javascript">
                                         new Chart(document.getElementById(/*[[${object.getId().toString()+objectInYear.getYear()}]]*/ 'default'), {
                                             type: "bar",
@@ -849,9 +895,16 @@
                                         });
                                     </script>
                                     <div class="chart-values">
-                                        <div class="chart-val" th:each="monthVolumePrice : ${objectInYear.monthVolumePrices}" >
-                                            <p><th:block th:text="${monthVolumePrice.getVolume()}"></th:block> m3</p>
-                                            <p><th:block th:text="${monthVolumePrice.getPrice()}"></th:block> тг</p>
+                                        <div class="chart-val"
+                                             th:each="monthVolumePrice : ${objectInYear.monthVolumePrices}">
+                                            <p>
+                                                <th:block th:text="${monthVolumePrice.getVolume()}"></th:block>
+                                                m3
+                                            </p>
+                                            <p>
+                                                <th:block th:text="${monthVolumePrice.getPrice()}"></th:block>
+                                                тг
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -868,12 +921,17 @@
                                             <div class="chart-vol-price">
                                                 <div class="chart-vol">
                                                     <span>Общий объем</span>
-                                                    <p><th:block th:text="${company.overallVolume}">944 354</th:block> м3
+                                                    <p>
+                                                        <th:block th:text="${company.overallVolume}">944 354</th:block>
+                                                        м3
                                                     </p>
                                                 </div>
                                                 <div class="chart-price ">
                                                     <span>Общая стоимость</span>
-                                                    <p><th:block th:text="${company.overallPrice}"></th:block> тг</p>
+                                                    <p>
+                                                        <th:block th:text="${company.overallPrice}"></th:block>
+                                                        тг
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
