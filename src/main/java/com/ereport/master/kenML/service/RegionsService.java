@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -36,6 +37,9 @@ public class RegionsService {
 
         List<Regions> regionsList = getAll();
         List<RegionsWorkDate> regionsWorkDates = new ArrayList<>();
+
+        List<OverallByRegion> zeroOverallByRegions = new ArrayList<>();
+
 
         List<String> years = new ArrayList<>();
         List<Objects> objectsList = objectService.getAll();
@@ -71,18 +75,17 @@ public class RegionsService {
                     }
                 }
                 if(regions.getName() != null){
-                    if(completed + underConstruction != 0){
-                        OverallByRegion overallByRegion = OverallByRegion.builder()
-                                .regionName(regions.getName())
-                                .regionId(regions.getId())
-                                .completed(completed)
-                                .underConstruction(underConstruction)
-                                .overall(completed + underConstruction)
-                                .build();
-                        overallByRegions.add(overallByRegion);
-                    }
+                    OverallByRegion overallByRegion = OverallByRegion.builder()
+                            .regionName(regions.getName())
+                            .regionId(regions.getId())
+                            .completed(completed)
+                            .underConstruction(underConstruction)
+                            .overall(completed + underConstruction)
+                            .build();
+                    overallByRegions.add(overallByRegion);
                 }
-
+                overallByRegions.sort(Comparator.comparing(OverallByRegion::getRegionId));
+                zeroOverallByRegions.sort(Comparator.comparing(OverallByRegion::getRegionId));
             }
             OverallForYearByRegion overallForYearByRegion = OverallForYearByRegion.builder()
                     .year(uniqueYear)
@@ -98,6 +101,52 @@ public class RegionsService {
                     resp.add(o);
                 }
             }
+        }
+
+        boolean year2020 = false;
+        boolean year2021 = false;
+        boolean year2022 = false;
+
+        for(OverallForYearByRegion res: resp){
+            if(res.getYear().equals("2020")){
+                year2020 = true;
+            }
+            if(res.getYear().equals("2021")){
+                year2021 = true;
+            }
+            if(res.getYear().equals("2022")){
+                year2022 = true;
+            }
+        }
+
+        for(Regions regions: regionsList){
+            zeroOverallByRegions.add(OverallByRegion.builder()
+                    .regionName(regions.getName())
+                    .regionId(regions.getId())
+                    .completed(0)
+                    .underConstruction(0)
+                    .overall(0)
+                    .build());
+        }
+
+
+        if(!year2020){
+        resp.add(OverallForYearByRegion.builder()
+                .year("2020")
+                .overallByRegions(zeroOverallByRegions)
+                .build());
+        }
+        if(!year2021){
+            resp.add(OverallForYearByRegion.builder()
+                    .year("2021")
+                    .overallByRegions(zeroOverallByRegions)
+                    .build());
+        }
+        if(!year2022){
+            resp.add(OverallForYearByRegion.builder()
+                    .year("2022")
+                    .overallByRegions(zeroOverallByRegions)
+                    .build());
         }
 
         return resp;

@@ -217,7 +217,7 @@
             </div>
         </div>
         <div class="width-90">
-            <div class="pieNums">
+            <div class="pieNums" style="margin-left: 160px">
                 <div class="pieNum one">
                     <p>Всего</p>
                     <p id="pieNumOverall"></p>
@@ -232,7 +232,7 @@
                 </div>
             </div>
             <div class="canvas-div">
-                <canvas id="myChart" style="margin-left: 195px" width="1000" height="340">
+                <canvas id="myChart" style="margin-left: 270px" width="1000" height="340">
                 </canvas>
 
                 <div class="bar-chart-canvas">
@@ -388,14 +388,14 @@
                                         <div class="chart-vol-price">
                                             <div class="chart-vol">
                                                 <span>Общий объем</span>
-                                                <p>
+                                                <p style="width: 20vw">
                                                     <th:block th:text="${locality.overallVolume}"></th:block>
                                                     м3
                                                 </p>
                                             </div>
                                             <div class="chart-price ">
                                                 <span>Общая стоимость</span>
-                                                <p>
+                                                <p style="width: 25vw">
                                                     <th:block th:text="${locality.overallPrice}"></th:block>
                                                     тг
                                                 </p>
@@ -515,10 +515,10 @@
                         <div class="chart-wrap">
                             <div class="chart-obj">
                                 <p>Объект <span th:text="${index.index + 1}">1</span></p>
-                                <p>ID <span th:text="${object.getId()}"></span></p>
+                                <p style="font-size: 25px; color: #000000">ID <span th:text="${object.getId()}"></span></p>
                             </div>
                             <div class="chart-p">
-                                <p th:text="${object.getObjectName()}">Строительство многоквартирных жилых домов в
+                                <p style="font-size: 20px; color: #000000" th:text="${object.getObjectName()}">Строительство многоквартирных жилых домов в
                                     микрорайоне "Мадениет" в Алатауском районе города
                                     Алматы, участок №834/2 (без благоустройства и внутриплощадочных инженерных
                                     сетей)</p>
@@ -794,10 +794,10 @@
                         <div class="chart-wrap">
                             <div class="chart-obj">
                                 <p>Объект <span th:text="${index.index + 1}">1</span></p>
-                                <p>ID <span th:text="${object.getId()}"></span></p>
+                                <p  style="font-size: 25px; color: #000000">ID <span th:text="${object.getId()}"></span></p>
                             </div>
                             <div class="chart-p">
-                                <p th:text="${object.getObjectName()}">Строительство многоквартирных жилых домов в
+                                <p  style="font-size: 20px; color: #000000" th:text="${object.getObjectName()}">Строительство многоквартирных жилых домов в
                                     микрорайоне "Мадениет" в Алатауском районе города
                                     Алматы, участок №834/2 (без благоустройства и внутриплощадочных инженерных
                                     сетей)</p>
@@ -810,10 +810,10 @@
                                 <div class="chart-wrap">
                                     <div class="chart-obj">
                                         <p>Объект <span th:text="${index.index + 1}">1</span></p>
-                                        <p>ID <span th:text="${object.getId()}"></span></p>
+                                        <p style="font-size: 25px; color: #000000">ID <span th:text="${object.getId()}"></span></p>
                                     </div>
                                     <div class="chart-p">
-                                        <p th:text="${object.getObjectName()}">Строительство многоквартирных жилых домов
+                                        <p style="font-size: 20px; color: #000000" th:text="${object.getObjectName()}">Строительство многоквартирных жилых домов
                                             в
                                             микрорайоне "Мадениет" в Алатауском районе города
                                             Алматы, участок №834/2 (без благоустройства и внутриплощадочных инженерных
@@ -871,7 +871,8 @@
                                                     {
                                                         label: "",
                                                         backgroundColor: "#FFB877",
-                                                        data: [3500, 500, 0, 3600, 3100, 600, 1700, 2200, 0, 1000, 1600, 3200],
+                                                        // data: [3500, 500, 0, 3600, 3100, 600, 1700, 2200, 0, 1000, 1600, 3200],
+                                                        data: /*[[${objectInYear.getMonthVolumePriceArray()}]]*/ [],
                                                     },
                                                 ],
                                             },
@@ -910,48 +911,48 @@
                                 </div>
                             </div>
 
-                            <th:block th:if="${(oyindex.index + 1 % 2 == 1)}">
-                                <div class="chart-grey-bg">
-                                    <div class="width-90">
-                                        <div class="chart-city-num" style="border-bottom: 1px solid white">
-                                            <div class="chart-str">
-                                                <span>Застройщик</span>
-                                                <p th:text="${company.title}">BI Group</p>
-                                            </div>
-                                            <div class="chart-vol-price">
-                                                <div class="chart-vol">
-                                                    <span>Общий объем</span>
-                                                    <p>
-                                                        <th:block th:text="${company.overallVolume}">944 354</th:block>
-                                                        м3
-                                                    </p>
-                                                </div>
-                                                <div class="chart-price ">
-                                                    <span>Общая стоимость</span>
-                                                    <p>
-                                                        <th:block th:text="${company.overallPrice}"></th:block>
-                                                        тг
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="chart-city-num2">
-                                            <div class="chart-str2 str1">
-                                                <span>Телефон</span>
-                                                <p th:text="${company.getDirectorPhone()} ?: 'Нет номера'">8 777 170
-                                                    70
-                                                    70</p>
-                                            </div>
-                                            <div class="chart-str2 str2">
-                                                <span>E-mail</span>
-                                                <p th:text="${company.getEmailAddress()} ?: 'Нет email'">
-                                                    Contact@Bi.group</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </th:block>
-                        </th:block>
+<!--                            <th:block th:if="${(oyindex.index + 1 % 2 == 1)}">-->
+<!--                                <div class="chart-grey-bg">-->
+<!--                                    <div class="width-90">-->
+<!--                                        <div class="chart-city-num" style="border-bottom: 1px solid white">-->
+<!--                                            <div class="chart-str">-->
+<!--                                                <span>Застройщик</span>-->
+<!--                                                <p th:text="${company.title}">BI Group</p>-->
+<!--                                            </div>-->
+<!--                                            <div class="chart-vol-price">-->
+<!--                                                <div class="chart-vol">-->
+<!--                                                    <span>Общий объем</span>-->
+<!--                                                    <p>-->
+<!--                                                        <th:block th:text="${company.overallVolume}">944 354</th:block>-->
+<!--                                                        м3-->
+<!--                                                    </p>-->
+<!--                                                </div>-->
+<!--                                                <div class="chart-price ">-->
+<!--                                                    <span>Общая стоимость</span>-->
+<!--                                                    <p>-->
+<!--                                                        <th:block th:text="${company.overallPrice}"></th:block>-->
+<!--                                                        тг-->
+<!--                                                    </p>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                        <div class="chart-city-num2">-->
+<!--                                            <div class="chart-str2 str1">-->
+<!--                                                <span>Телефон</span>-->
+<!--                                                <p th:text="${company.getDirectorPhone()} ?: 'Нет номера'">8 777 170-->
+<!--                                                    70-->
+<!--                                                    70</p>-->
+<!--                                            </div>-->
+<!--                                            <div class="chart-str2 str2">-->
+<!--                                                <span>E-mail</span>-->
+<!--                                                <p th:text="${company.getEmailAddress()} ?: 'Нет email'">-->
+<!--                                                    Contact@Bi.group</p>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </th:block>-->
+<!--                        </th:block>-->
 
                         <th:block th:if="${((index.index + 1) % 2 == 0  ) || (index.size == index.index + 1)}">
                             <footer class="footer footer-count" style="position: absolute; bottom: 0; left: 80px;">

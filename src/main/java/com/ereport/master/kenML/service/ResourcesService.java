@@ -26,11 +26,13 @@ public class ResourcesService {
         Float price = 0f;
 
         for(Resources resources1: resources){
-            volume += resources1.getNorma();
-            price += resources1.getPrice();
+            volume += resources1.getResourceVolume();
+            price = resources1.getPrice();
         }
+
+
         return OverallVolumeAndPrice.builder()
-                .price(price)
+                .price(price * volume)
                 .volume(volume)
                 .build();
     }
@@ -41,12 +43,12 @@ public class ResourcesService {
         Float price = 0f;
         String measurer = null;
         for(Resources resources1: resources){
-            volume += resources1.getNorma();
-            price += resources1.getPrice();
+            volume += resources1.getResourceVolume();
+            price = resources1.getPrice();
             measurer = resources1.getMeasurer();
         }
         return OverallVolumeAndPrice.builder()
-                .price(price)
+                .price(price * volume)
                 .volume(volume)
                 .measurer(measurer)
                 .build();
@@ -60,11 +62,11 @@ public class ResourcesService {
         Float price = 0f;
 
         for(Resources resources1: resources){
-            volume += resources1.getNorma();
-            price += resources1.getPrice();
+            volume += resources1.getResourceVolume();
+            price = resources1.getPrice();
         }
         return OverallVolumeAndPrice.builder()
-                .price(price)
+                .price(price * volume)
                 .volume(volume)
                 .build();
     }
@@ -75,11 +77,11 @@ public class ResourcesService {
         Float price = 0f;
 
         for(Resources resources1: resources){
-            volume += resources1.getNorma();
-            price += resources1.getPrice();
+            volume += resources1.getResourceVolume();
+            price = resources1.getPrice();
         }
         return OverallVolumeAndPrice.builder()
-                .price(price)
+                .price(price * volume)
                 .volume(volume)
                 .build();
     }
@@ -91,11 +93,11 @@ public class ResourcesService {
         Float price = 0f;
 
         for(Resources resources1: resources){
-            volume += resources1.getNorma();
-            price += resources1.getPrice();
+            volume += resources1.getResourceVolume();
+            price = resources1.getPrice();
         }
         return OverallVolumeAndPrice.builder()
-                .price(price)
+                .price(price * volume)
                 .volume(volume)
                 .build();
     }

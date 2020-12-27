@@ -151,7 +151,6 @@ public class ObjectService {
 
         for(Objects object: objects){
             List<ObjectInYearDto> objectInYearDtos = getObjectInYearDtos(mtCode, object.getId());
-
             if(objectInYearDtos.size() > 0){
                 ObjectsDto objectsDto = ObjectsDto.builder()
                         .id(object.getId())
@@ -164,7 +163,6 @@ public class ObjectService {
                 objectsDtos.add(objectsDto);
             }
         }
-
         return objectsDtos;
     }
 
@@ -178,7 +176,7 @@ public class ObjectService {
 
         for(FileSections fileSection: fileSections){
             DateFormat dateFormat = new SimpleDateFormat("yyyy");
-            years.add(dateFormat.format(fileSection.getEndDate()));
+            years.add(dateFormat.format(fileSection.getStartDate()));
         }
 
         List<String> uniqueYears = new ArrayList<>();
@@ -188,7 +186,7 @@ public class ObjectService {
             List<OverallVolumeAndPrice> volumeAndPrices = new ArrayList<>();
             for(FileSections fileSection: fileSections){
                 DateFormat dateFormat = new SimpleDateFormat("yyyy");
-                if(year.equals(dateFormat.format(fileSection.getEndDate()))){
+                if(year.equals(dateFormat.format(fileSection.getStartDate()))){
                     volumeAndPrices.add(resourcesService.getOverallForFileSection(mtCode, fileSection.getId()));
                 }
             }
@@ -206,7 +204,7 @@ public class ObjectService {
                 List<OverallVolumeAndPrice> volumeAndPricesMonths = new ArrayList<>();
                 for(FileSections fileSection: fileSections){
                     DateFormat dateFormat = new SimpleDateFormat("yyyy:MM");
-                    if(date.equals(dateFormat.format(fileSection.getEndDate()))){
+                    if(date.equals(dateFormat.format(fileSection.getStartDate()))){
                         volumeAndPricesMonths.add(resourcesService.getOverallForFileSection(mtCode, fileSection.getId()));
                     }
                 }
