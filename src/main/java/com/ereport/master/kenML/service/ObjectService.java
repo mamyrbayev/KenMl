@@ -2,9 +2,11 @@ package com.ereport.master.kenML.service;
 
 import com.ereport.master.kenML.domain.FileSections;
 import com.ereport.master.kenML.domain.Objects;
+import com.ereport.master.kenML.domain.Resources;
 import com.ereport.master.kenML.domain.dto.*;
 import com.ereport.master.kenML.repository.FileSectionRepo;
 import com.ereport.master.kenML.repository.ObjectsRepo;
+import com.ereport.master.kenML.repository.ResourcesRepo;
 import org.springframework.stereotype.Service;
 
 import java.text.DateFormat;
@@ -16,13 +18,15 @@ import java.util.stream.Collectors;
 public class ObjectService {
     private final ObjectsRepo objectsRepo;
     private final ResourcesService resourcesService;
+    private final ResourcesRepo resourcesRepo;
     private final FileSectionRepo fileSectionRepo;
 
     private static String[] monthKeys = {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"};
 
-    public ObjectService(ObjectsRepo objectsRepo, ResourcesService resourcesService, FileSectionRepo fileSectionRepo) {
+    public ObjectService(ObjectsRepo objectsRepo, ResourcesService resourcesService, ResourcesRepo resourcesRepo, FileSectionRepo fileSectionRepo) {
         this.objectsRepo = objectsRepo;
         this.resourcesService = resourcesService;
+        this.resourcesRepo = resourcesRepo;
         this.fileSectionRepo = fileSectionRepo;
     }
 
@@ -151,7 +155,6 @@ public class ObjectService {
 
         for(Objects object: objects){
             List<ObjectInYearDto> objectInYearDtos = getObjectInYearDtos(mtCode, object.getId());
-
             if(objectInYearDtos.size() > 0){
                 ObjectsDto objectsDto = ObjectsDto.builder()
                         .id(object.getId())
@@ -164,7 +167,6 @@ public class ObjectService {
                 objectsDtos.add(objectsDto);
             }
         }
-
         return objectsDtos;
     }
 
@@ -178,7 +180,7 @@ public class ObjectService {
 
         for(FileSections fileSection: fileSections){
             DateFormat dateFormat = new SimpleDateFormat("yyyy");
-            years.add(dateFormat.format(fileSection.getEndDate()));
+            years.add(dateFormat.format(fileSection.getStartDate()));
         }
 
         List<String> uniqueYears = new ArrayList<>();
@@ -186,10 +188,12 @@ public class ObjectService {
 
         for(String year: uniqueYears){
             List<OverallVolumeAndPrice> volumeAndPrices = new ArrayList<>();
+            List<FileSections> fileSectionsForYear = new ArrayList<>();
             for(FileSections fileSection: fileSections){
                 DateFormat dateFormat = new SimpleDateFormat("yyyy");
-                if(year.equals(dateFormat.format(fileSection.getEndDate()))){
+                if(year.equals(dateFormat.format(fileSection.getStartDate()))){
                     volumeAndPrices.add(resourcesService.getOverallForFileSection(mtCode, fileSection.getId()));
+                    fileSectionsForYear.add(fileSection);
                 }
             }
             Float overallVolume = 0f;
@@ -200,29 +204,31 @@ public class ObjectService {
             }
 
 
-            List<MonthVolumePrice> monthVolumePrices = new ArrayList<>();
-            for(String month: monthKeys){
-                String date = year + ":" + month;
-                List<OverallVolumeAndPrice> volumeAndPricesMonths = new ArrayList<>();
-                for(FileSections fileSection: fileSections){
-                    DateFormat dateFormat = new SimpleDateFormat("yyyy:MM");
-                    if(date.equals(dateFormat.format(fileSection.getEndDate()))){
-                        volumeAndPricesMonths.add(resourcesService.getOverallForFileSection(mtCode, fileSection.getId()));
-                    }
-                }
-                Float overallVolumeMonths = 0f;
-                Float overallPriceMonths = 0f;
-                for(OverallVolumeAndPrice vp: volumeAndPricesMonths){
-                    overallVolumeMonths += vp.getVolume();
-                    overallPriceMonths += vp.getPrice();
-                }
-                MonthVolumePrice monthVolumePrice = MonthVolumePrice.builder()
-                        .monthIndex(month)
-                        .price(overallPriceMonths)
-                        .volume(overallVolumeMonths)
-                        .build();
-                monthVolumePrices.add(monthVolumePrice);
-            }
+
+
+            List<MonthVolumePrice> monthVolumePrices = getMonthVolumePricesByYear(fileSectionsForYear, mtCode);
+//            for(String month: monthKeys){
+//                String date = year + ":" + month;
+//                List<OverallVolumeAndPrice> volumeAndPricesMonths = new ArrayList<>();
+//                for(FileSections fileSection: fileSections){
+//                    DateFormat dateFormat = new SimpleDateFormat("yyyy:MM");
+//                    if(date.equals(dateFormat.format(fileSection.getStartDate()))){
+//                        volumeAndPricesMonths.add(resourcesService.getOverallForFileSection(mtCode, fileSection.getId()));
+//                    }
+//                }
+//                Float overallVolumeMonths = 0f;
+//                Float overallPriceMonths = 0f;
+//                for(OverallVolumeAndPrice vp: volumeAndPricesMonths){
+//                    overallVolumeMonths += vp.getVolume();
+//                    overallPriceMonths += vp.getPrice();
+//                }
+//                MonthVolumePrice monthVolumePrice = MonthVolumePrice.builder()
+//                        .monthIndex(month)
+//                        .price(overallPriceMonths)
+//                        .volume(overallVolumeMonths)
+//                        .build();
+//                monthVolumePrices.add(monthVolumePrice);
+//            }
 
             ObjectInYearDto objectInYearDto = ObjectInYearDto.builder()
                     .year(year)
@@ -237,4 +243,65 @@ public class ObjectService {
 
         return objectInYearDtos;
     }
+
+
+    public List<MonthVolumePrice> getMonthVolumePricesByYear(List<FileSections> fileSections, String mtCode){
+        Map<String, Float> volumeByMonth = new HashMap<>();
+        Float price = 0f;
+        volumeByMonth.put("01", 0f);
+        volumeByMonth.put("02", 0f);
+        volumeByMonth.put("03", 0f);
+        volumeByMonth.put("04", 0f);
+        volumeByMonth.put("05", 0f);
+        volumeByMonth.put("06", 0f);
+        volumeByMonth.put("07", 0f);
+        volumeByMonth.put("08", 0f);
+        volumeByMonth.put("09", 0f);
+        volumeByMonth.put("10", 0f);
+        volumeByMonth.put("11", 0f);
+        volumeByMonth.put("12", 0f);
+        List<OverallVolumeAndPrice> volumeAndPricesMonths = new ArrayList<>();
+        for(FileSections fileSection: fileSections){
+            OverallVolumeAndPrice overallVolumeAndPrice = resourcesService.getOverallForFileSection(mtCode, fileSection.getId());
+
+            List<Resources> resources = resourcesRepo.findAllByFileSectionIdd(mtCode, fileSection.getId());
+            if(resources.size() > 0){
+                price = resources.get(0).getPrice();
+            }
+
+            Calendar day1 = Calendar.getInstance();
+            Calendar day2 = Calendar.getInstance();
+            day1.setTime(fileSection.getStartDate());
+            day2.setTime(fileSection.getEndDate());
+
+            int daysBetween = Math.abs(day1.get(Calendar.DAY_OF_YEAR) - day2.get(Calendar.DAY_OF_YEAR));
+
+            Float volumeInOneDay =  overallVolumeAndPrice.getVolume()/daysBetween;
+
+            Date startDate = fileSection.getStartDate();
+            while (startDate.before(fileSection.getEndDate())){
+                DateFormat dateFormat = new SimpleDateFormat("MM");
+                volumeByMonth.put(dateFormat.format(startDate), volumeByMonth.get(dateFormat.format(startDate)) + volumeInOneDay);
+
+                Calendar cal = Calendar.getInstance();
+                cal.setTime(startDate);
+                cal.add(Calendar.DAY_OF_WEEK, 1);
+                startDate = cal.getTime();
+            }
+        }
+
+        List<MonthVolumePrice> monthVolumePrices = new ArrayList<>();
+
+        for (String month: monthKeys){
+            MonthVolumePrice monthVolumePrice = MonthVolumePrice.builder()
+                    .monthIndex(month)
+                    .price(volumeByMonth.get(month) * price)
+                    .volume(volumeByMonth.get(month))
+                    .build();
+            monthVolumePrices.add(monthVolumePrice);
+        }
+
+        return monthVolumePrices;
+    }
+
 }

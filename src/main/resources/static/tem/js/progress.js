@@ -7,20 +7,22 @@ let overallForYearByRegions2021 = [];
 let overallForYearByRegions2022 = [];
 
 overallForYearByRegions.forEach(e => {
-    if (e.year == 2020) {
+    if (e.year === "2020") {
         overallForYearByRegions2020 = e.overallByRegions;
-    } else if (e.year == 2021) {
+    } else if (e.year === "2021") {
         overallForYearByRegions2021 = e.overallByRegions;
-    } else if (e.year == 2022) {
+    } else if (e.year === "2022") {
         overallForYearByRegions2022 = e.overallByRegions;
     }
 })
 
 function progressDataLoading(arr) {
     let str = '';
+    console.log("2020" + arr);
+    console.log(arr.length);
     for (let i = 0; i < arr.length; i++) {
         str += `<div class="progress-line"> 
-            <p>  ${arr[i].regionName}  </p> 
+            <p style="width: 110vw;">  ${arr[i].regionName}  </p> 
             <div class="progress-wrap1"> 
             <p>  ${arr[i].underConstruction}  </p> 
             <div class="progress"> 
@@ -45,11 +47,13 @@ function progressDataLoading(arr) {
     table.innerHTML = str
 }
 
-function progressDataLoading2(arr, table) {
+function progressDataLoading2(arr) {
     let str = '';
+    console.log("2021" + arr);
+    console.log(arr.length);
     for (let i = 0; i < arr.length; i++) {
-        str = `<div class="progress-line">
-            <p>${arr[i].regionName}</p> 
+        str += `<div class="progress-line">
+            <p style="width: 110vw;">${arr[i].regionName}</p> 
             <div class="progress-wrap3"> 
             <p>  ${arr[i].underConstruction}  </p> 
             <div class="progress"> 
@@ -60,10 +64,31 @@ function progressDataLoading2(arr, table) {
             <p class="progress-sum">  ${arr[i].overall}  </p> 
             </div>`;
     }
-    table.innerHTML = str
+    table1.innerHTML += str
+}
+
+
+function progressDataLoading3(arr) {
+    let str = '';
+    console.log("2022" + arr);
+    console.log(arr.length);
+    for (let i = 0; i < arr.length; i++) {
+        str += `<div class="progress-line">
+            <p style="width: 110vw;">${arr[i].regionName}</p> 
+            <div class="progress-wrap3"> 
+            <p>  ${arr[i].underConstruction}  </p> 
+            <div class="progress"> 
+            <div class="progress-bar" role="progressbar" style="width: ${(arr[i].underConstruction / arr[i].overall) * 100}%;" 
+            aria-valuenow="${arr[i].underConstruction}" aria-valuemin="0" aria-valuemax="${arr[i].overall}"></div> 
+            </div> 
+            </div> 
+            <p class="progress-sum">  ${arr[i].overall}  </p> 
+            </div>`;
+    }
+    table2.innerHTML = str
 }
 
 
 progressDataLoading(overallForYearByRegions2020);
-progressDataLoading2(overallForYearByRegions2021, table1);
-progressDataLoading2(overallForYearByRegions2022, table2);
+progressDataLoading2(overallForYearByRegions2021);
+progressDataLoading3(overallForYearByRegions2022);

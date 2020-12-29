@@ -5,6 +5,7 @@ import com.ereport.master.kenML.domain.dto.OverallVolumeAndPrice;
 import com.ereport.master.kenML.repository.ResourcesRepo;
 import org.springframework.stereotype.Service;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 @Service
@@ -26,27 +27,31 @@ public class ResourcesService {
         Float price = 0f;
 
         for(Resources resources1: resources){
-            volume += resources1.getNorma();
-            price += resources1.getPrice();
+            volume += resources1.getResourceVolume();
+            price = resources1.getPrice();
         }
+
+
         return OverallVolumeAndPrice.builder()
-                .price(price)
+                .price(price * volume)
                 .volume(volume)
                 .build();
     }
 
     public OverallVolumeAndPrice getOverallVolumeAndPriceForMaterial(String codeSnb){
+
         List<Resources> resources = resourcesRepo.findAllByCodeSNB(codeSnb);
         Float volume = 0f;
         Float price = 0f;
         String measurer = null;
         for(Resources resources1: resources){
-            volume += resources1.getNorma();
-            price += resources1.getPrice();
+            volume += resources1.getResourceVolume();
+            price = resources1.getPrice();
             measurer = resources1.getMeasurer();
         }
+
         return OverallVolumeAndPrice.builder()
-                .price(price)
+                .price(price * volume)
                 .volume(volume)
                 .measurer(measurer)
                 .build();
@@ -60,11 +65,11 @@ public class ResourcesService {
         Float price = 0f;
 
         for(Resources resources1: resources){
-            volume += resources1.getNorma();
-            price += resources1.getPrice();
+            volume += resources1.getResourceVolume();
+            price = resources1.getPrice();
         }
         return OverallVolumeAndPrice.builder()
-                .price(price)
+                .price(price * volume)
                 .volume(volume)
                 .build();
     }
@@ -75,11 +80,11 @@ public class ResourcesService {
         Float price = 0f;
 
         for(Resources resources1: resources){
-            volume += resources1.getNorma();
-            price += resources1.getPrice();
+            volume += resources1.getResourceVolume();
+            price = resources1.getPrice();
         }
         return OverallVolumeAndPrice.builder()
-                .price(price)
+                .price(price * volume)
                 .volume(volume)
                 .build();
     }
@@ -91,11 +96,11 @@ public class ResourcesService {
         Float price = 0f;
 
         for(Resources resources1: resources){
-            volume += resources1.getNorma();
-            price += resources1.getPrice();
+            volume += resources1.getResourceVolume();
+            price = resources1.getPrice();
         }
         return OverallVolumeAndPrice.builder()
-                .price(price)
+                .price(price * volume)
                 .volume(volume)
                 .build();
     }

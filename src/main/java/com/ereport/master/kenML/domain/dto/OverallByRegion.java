@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class OverallByRegion {
     private Integer regionId;
     private String regionName;
-    private int completed;
-    private int underConstruction;
-    private int overall;
+    private int completed = 0;
+    private int underConstruction = 0;
+    private int overall = 0;
 }

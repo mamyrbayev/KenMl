@@ -39,20 +39,22 @@ public class LocalitiesService {
                 OverallVolumeAndPrice overallForCompany = resourcesService.getOverallForCompany(mtCode, company.getId(), locality.getId());
                 List<ObjectsDto> objectsDto = objectService.getObjectsByCompanyAndLocality(mtCode, company.getId(), locality.getId());
                 if(objectsDto.size() > 0){
-                    CompaniesDto companiesDto = CompaniesDto.builder()
-                            .id(company.getId())
-                            .bin(company.getBin())
-                            .title(company.getTitle())
-                            .directorName(company.getDirectorName())
-                            .directorPhone(company.getDirectorPhone())
-                            .emailAddress(company.getEmailAddress())
-                            .physicalAddress(company.getPhysicalAddress())
-                            .categoryID(company.getCategoryID())
-                            .objectsDto(objectsDto)
-                            .overallPrice(overallForCompany.getPrice())
-                            .overallVolume(overallForCompany.getVolume())
-                            .build();
-                    companiesDtos.add(companiesDto);
+                    if(overallForCompany.getPrice() > 0f){
+                        CompaniesDto companiesDto = CompaniesDto.builder()
+                                .id(company.getId())
+                                .bin(company.getBin())
+                                .title(company.getTitle())
+                                .directorName(company.getDirectorName())
+                                .directorPhone(company.getDirectorPhone())
+                                .emailAddress(company.getEmailAddress())
+                                .physicalAddress(company.getPhysicalAddress())
+                                .categoryID(company.getCategoryID())
+                                .objectsDto(objectsDto)
+                                .overallPrice(overallForCompany.getPrice())
+                                .overallVolume(overallForCompany.getVolume())
+                                .build();
+                        companiesDtos.add(companiesDto);
+                    }
                 }
 
             }
