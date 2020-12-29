@@ -631,9 +631,10 @@
                         </th:block>
                     </th:block>
                 </th:block>
+
                 <th:block th:if="${(cindex.index + 1 != 1)}" th:with="localityLastFlag=0">
                     <th:block th:each="object,index: ${company.getObjectsDto()}">
-                        <th:block th:if="${(localityLastFlag == 1)  && (index.index + 1) == 1}">
+                        <th:block th:if="${(index.index + 1) == 1}">
 
                             <div class="page-4">
                                 <section class="count">
@@ -725,7 +726,7 @@
 
                         </th:block>
                         <th:block
-                                th:if="${(localityLastFlag != 1) || ((cindex.index + 1 == 1) && (index.index + 1 != 1)) || (index.index + 1 % 2 ==0)}">
+                                th:if="${(localityLastFlag != 1) || ((cindex.index + 1 == 1) && (index.index + 1 != 1))}">
 
                             <div class="page-4">
                                 <section class="count">
