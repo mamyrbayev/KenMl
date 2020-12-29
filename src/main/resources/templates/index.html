@@ -605,7 +605,7 @@
                                              th:each="monthVolumePrice : ${objectInYear.monthVolumePrices}">
                                             <p>
                                                 <th:block th:text="${monthVolumePrice.getVolume()}"></th:block>
-                                                m3
+                                                <th:block th:text="${potrebnosti.material.mtMeasure}"></th:block>
                                             </p>
                                             <p>
                                                 <th:block th:text="${monthVolumePrice.getPrice()}"></th:block>
@@ -906,7 +906,7 @@
                                              th:each="monthVolumePrice : ${objectInYear.monthVolumePrices}">
                                             <p>
                                                 <th:block th:text="${monthVolumePrice.getVolume()}"></th:block>
-                                                m3
+                                                <th:block th:text="${potrebnosti.material.mtMeasure}"></th:block>
                                             </p>
                                             <p>
                                                 <th:block th:text="${monthVolumePrice.getPrice()}"></th:block>
