@@ -515,10 +515,12 @@
                         <div class="chart-wrap">
                             <div class="chart-obj">
                                 <p>Объект <span th:text="${index.index + 1}">1</span></p>
-                                <p style="font-size: 25px; color: #000000">ID <span th:text="${object.getId()}"></span></p>
+                                <p style="font-size: 25px; color: #000000">ID <span th:text="${object.getId()}"></span>
+                                </p>
                             </div>
                             <div class="chart-p">
-                                <p style="font-size: 20px; color: #000000" th:text="${object.getObjectName()}">Строительство многоквартирных жилых домов в
+                                <p style="font-size: 20px; color: #000000" th:text="${object.getObjectName()}">
+                                    Строительство многоквартирных жилых домов в
                                     микрорайоне "Мадениет" в Алатауском районе города
                                     Алматы, участок №834/2 (без благоустройства и внутриплощадочных инженерных
                                     сетей)</p>
@@ -794,10 +796,12 @@
                         <div class="chart-wrap">
                             <div class="chart-obj">
                                 <p>Объект <span th:text="${index.index + 1}">1</span></p>
-                                <p  style="font-size: 25px; color: #000000">ID <span th:text="${object.getId()}"></span></p>
+                                <p style="font-size: 25px; color: #000000">ID <span th:text="${object.getId()}"></span>
+                                </p>
                             </div>
                             <div class="chart-p">
-                                <p  style="font-size: 20px; color: #000000" th:text="${object.getObjectName()}">Строительство многоквартирных жилых домов в
+                                <p style="font-size: 20px; color: #000000" th:text="${object.getObjectName()}">
+                                    Строительство многоквартирных жилых домов в
                                     микрорайоне "Мадениет" в Алатауском районе города
                                     Алматы, участок №834/2 (без благоустройства и внутриплощадочных инженерных
                                     сетей)</p>
@@ -810,10 +814,12 @@
                                 <div class="chart-wrap">
                                     <div class="chart-obj">
                                         <p>Объект <span th:text="${index.index + 1}">1</span></p>
-                                        <p style="font-size: 25px; color: #000000">ID <span th:text="${object.getId()}"></span></p>
+                                        <p style="font-size: 25px; color: #000000">ID <span
+                                                th:text="${object.getId()}"></span></p>
                                     </div>
                                     <div class="chart-p">
-                                        <p style="font-size: 20px; color: #000000" th:text="${object.getObjectName()}">Строительство многоквартирных жилых домов
+                                        <p style="font-size: 20px; color: #000000" th:text="${object.getObjectName()}">
+                                            Строительство многоквартирных жилых домов
                                             в
                                             микрорайоне "Мадениет" в Алатауском районе города
                                             Алматы, участок №834/2 (без благоустройства и внутриплощадочных инженерных
@@ -910,177 +916,38 @@
                                     </div>
                                 </div>
                             </div>
-
-<!--                            <th:block th:if="${(oyindex.index + 1 % 2 == 1)}">-->
-<!--                                <div class="chart-grey-bg">-->
-<!--                                    <div class="width-90">-->
-<!--                                        <div class="chart-city-num" style="border-bottom: 1px solid white">-->
-<!--                                            <div class="chart-str">-->
-<!--                                                <span>Застройщик</span>-->
-<!--                                                <p th:text="${company.title}">BI Group</p>-->
-<!--                                            </div>-->
-<!--                                            <div class="chart-vol-price">-->
-<!--                                                <div class="chart-vol">-->
-<!--                                                    <span>Общий объем</span>-->
-<!--                                                    <p>-->
-<!--                                                        <th:block th:text="${company.overallVolume}">944 354</th:block>-->
-<!--                                                        м3-->
-<!--                                                    </p>-->
-<!--                                                </div>-->
-<!--                                                <div class="chart-price ">-->
-<!--                                                    <span>Общая стоимость</span>-->
-<!--                                                    <p>-->
-<!--                                                        <th:block th:text="${company.overallPrice}"></th:block>-->
-<!--                                                        тг-->
-<!--                                                    </p>-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                        <div class="chart-city-num2">-->
-<!--                                            <div class="chart-str2 str1">-->
-<!--                                                <span>Телефон</span>-->
-<!--                                                <p th:text="${company.getDirectorPhone()} ?: 'Нет номера'">8 777 170-->
-<!--                                                    70-->
-<!--                                                    70</p>-->
-<!--                                            </div>-->
-<!--                                            <div class="chart-str2 str2">-->
-<!--                                                <span>E-mail</span>-->
-<!--                                                <p th:text="${company.getEmailAddress()} ?: 'Нет email'">-->
-<!--                                                    Contact@Bi.group</p>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </th:block>-->
-<!--                        </th:block>-->
-
-                        <th:block th:if="${((index.index + 1) % 2 == 0  ) || (index.size == index.index + 1)}">
-                            <footer class="footer footer-count" style="position: absolute; bottom: 0; left: 80px;">
-                                <p>Потребность строительного рынка на 2020-2021гг.</p>
-                                <div class="line"></div>
-                                <p>Разработано на основании автоматического анализа KENML смет системой GENRO (АО
-                                    Институт
-                                    цифровой
-                                    техники и технологий)</p>
-                            </footer>
-                            </section>
-                            </div>
+                            <th:block th:if="${((index.index + 1) % 2 == 0  ) || (index.size == index.index + 1)}">
+                                <footer class="footer footer-count" style="position: absolute; bottom: 0; left: 80px;">
+                                    <p>Потребность строительного рынка на 2020-2021гг.</p>
+                                    <div class="line"></div>
+                                    <p>Разработано на основании автоматического анализа KENML смет системой GENRO (АО
+                                        Институт
+                                        цифровой
+                                        техники и технологий)</p>
+                                </footer>
+                                </section>
+                                </div>
+                            </th:block>
                         </th:block>
                     </th:block>
                 </th:block>
             </th:block>
         </th:block>
     </th:block>
-</th:block>
-<!--<div class="chart-wrap">-->
-<!--    <div class="chart-obj">-->
-<!--        <p>Объект <span>1</span></p>-->
-<!--        <p>ID 9128389</p>-->
-<!--    </div>-->
-<!--    <div class="chart-p">-->
-<!--        <p>Строительство многоквартирных жилых домов в микрорайоне "Мадениет" в Алатауском районе-->
-<!--            города-->
-<!--            Алматы, участок №834/2 (без благоустройства и внутриплощадочных инженерных сетей)</p>-->
-<!--    </div>-->
-<!--</div>-->
+   
+    <script th:inline="javascript">
 
-<!--<div class="chart-bars-block">-->
-<!--    <div class="chart-bar-title">-->
-<!--        <h1>20<span class="text-orange">20</span></h1>-->
-<!--        <div class="chart-vol-price">-->
-<!--            <div class="chart-vol">-->
-<!--                <p>944 354 м3</p>-->
-<!--            </div>-->
-<!--            <div class="chart-price ">-->
-<!--                <p>944 354 000 тг</p>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    <div class="chart-bar">-->
-<!--        <canvas id="chart-bar3" width="1300" height="215"></canvas>-->
-<!--        <div class="chart-values" id="chart-values3">-->
-<!--            &lt;!&ndash; <div class="chart-val">-->
-<!--                <p>3500 m3</p>-->
-<!--                <p>3 500 000 тг</p>-->
-<!--            </div> &ndash;&gt;-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
+        var topTenList = /*[[${topTenList}]]*/ [];
+        var potrebnostis = /*[[${potrebnostis}]]*/ [];
+        var overallForYears = /*[[${overallForYears}]]*/ [];
+        var overallForYearByRegions = /*[[${overallForYearByRegions}]]*/ [];
 
-<!--<div class="chart-grey-bg">-->
-<!--    <div class="width-90">-->
-<!--        <div class="chart-city-num" style="border-bottom: 1px solid white">-->
-<!--            <div class="chart-str">-->
-<!--                <span>Застройщик</span>-->
-<!--                <p>BI Group</p>-->
-<!--            </div>-->
-<!--            <div class="chart-vol-price">-->
-<!--                <div class="chart-vol">-->
-<!--                    <span>Общий объем</span>-->
-<!--                    <p>944 354 м3</p>-->
-<!--                </div>-->
-<!--                <div class="chart-price ">-->
-<!--                    <span>Общая стоимость</span>-->
-<!--                    <p>944 354 000 тг</p>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="chart-city-num2">-->
-<!--            <div class="chart-str2 str1">-->
-<!--                <span>Телефон</span>-->
-<!--                <p>8 777 170 70 70</p>-->
-<!--            </div>-->
-<!--            <div class="chart-str2 str2">-->
-<!--                <span>E-mail</span>-->
-<!--                <p>Contact@Bi.group</p>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
+    </script>
 
-<!--<div class="chart-bars-block">-->
-<!--    <div class="chart-bar-title">-->
-<!--        <h1>2021</h1>-->
-<!--        <div class="chart-vol-price">-->
-<!--            <div class="chart-vol">-->
-<!--                <p>944 354 м3</p>-->
-<!--            </div>-->
-<!--            <div class="chart-price ">-->
-<!--                <p>944 354 000 тг</p>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    <div class="chart-bar">-->
-<!--        <canvas id="chart-bar4" width="1300" height="215"></canvas>-->
-<!--        <div class="chart-values" id="chart-values4">-->
-<!--            &lt;!&ndash; <div class="chart-val">-->
-<!--                <p>3500 m3</p>-->
-<!--                <p>3 500 000 тг</p>-->
-<!--            </div> &ndash;&gt;-->
-<!--        </div>-->
-<!--    </div>-->
-
-<!--</div>-->
-
-
-<!--<canvas id="chart-bar"></canvas>-->
-<!--<canvas id="chart-bar2"></canvas>-->
-<!--<canvas id="chart-bar3"></canvas>-->
-<!--<canvas id="chart-bar4"></canvas>-->
-
-<script th:inline="javascript">
-
-    var topTenList = /*[[${topTenList}]]*/ [];
-    var potrebnostis = /*[[${potrebnostis}]]*/ [];
-    var overallForYears = /*[[${overallForYears}]]*/ [];
-    var overallForYearByRegions = /*[[${overallForYearByRegions}]]*/ [];
-
-</script>
-
-<script th:src="@{/tem/js/top.js}"></script>
-<script th:src="@{/tem/js/doughnut-chart.js}"></script>
-<script th:src="@{/tem/js/bar.js}"></script>
-<script th:src="@{/tem/js/progress.js}"></script>
-<script th:src="@{/tem/js/bar-chart.js}"></script>
+    <script th:src="@{/tem/js/top.js}"></script>
+    <script th:src="@{/tem/js/doughnut-chart.js}"></script>
+    <script th:src="@{/tem/js/bar.js}"></script>
+    <script th:src="@{/tem/js/progress.js}"></script>
+    <script th:src="@{/tem/js/bar-chart.js}"></script>
 </body>
 </html>
