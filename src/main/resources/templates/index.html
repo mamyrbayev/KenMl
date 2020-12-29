@@ -389,14 +389,14 @@
                                         <div class="chart-vol-price">
                                             <div class="chart-vol">
                                                 <span>Общий объем</span>
-                                                <p style="width: 20vw">
+                                                <p>
                                                     <th:block th:text="${locality.overallVolume}"></th:block>
                                                     м3
                                                 </p>
                                             </div>
                                             <div class="chart-price ">
                                                 <span>Общая стоимость</span>
-                                                <p style="width: 25vw">
+                                                <p>
                                                     <th:block th:text="${locality.overallPrice}"></th:block>
                                                     тг
                                                 </p>
@@ -616,6 +616,7 @@
                                 </div>
                             </div>
                         </th:block>
+
                         <th:block>
                             <footer class="footer footer-count" style="position: absolute; bottom: 0; left: 80px;">
                                 <p>Потребность строительного рынка на 2020-2021гг.</p>
@@ -727,7 +728,7 @@
 
                         </th:block>
                         <th:block
-                                th:if="${(localityLastFlag != 1) || ((cindex.index + 1 == 1) && (index.index + 1 != 1))}">
+                                th:if="${(index.index + 1 != 1)}">
 
                             <div class="page-4">
                                 <section class="count">
@@ -948,6 +949,5 @@
     <script th:src="@{/tem/js/doughnut-chart.js}"></script>
     <script th:src="@{/tem/js/bar.js}"></script>
     <script th:src="@{/tem/js/progress.js}"></script>
-    <script th:src="@{/tem/js/bar-chart.js}"></script>
 </body>
 </html>
