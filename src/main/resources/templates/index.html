@@ -633,6 +633,8 @@
                 </th:block>
 
                 <th:block th:if="${(cindex.index + 1 != 1)}" th:with="localityLastFlag=0">
+
+                    <h2>SALAM</h2>
                     <th:block th:each="object,index: ${company.getObjectsDto()}">
                         <th:block th:if="${(index.index + 1) == 1}">
 
