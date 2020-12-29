@@ -616,7 +616,7 @@
                                 </div>
                             </div>
                         </th:block>
-                        <th:block th:if="${((index.index + 1) % 2 == 0  ) || (index.size == index.index + 1)}">
+                        <th:block>
                             <footer class="footer footer-count" style="position: absolute; bottom: 0; left: 80px;">
                                 <p>Потребность строительного рынка на 2020-2021гг.</p>
                                 <div class="line"></div>
@@ -628,7 +628,6 @@
                             </section>
                             </div>
                         </th:block>
-
                     </th:block>
                 </th:block>
 
@@ -919,8 +918,7 @@
                             </div>
                         </th:block>
 
-                        <th:block
-                                th:if="${((index.index + 1) % 2 == 0  ) || (index.size == index.index + 1) || (index.size == 0) || true}">
+                        <th:block >
                             <footer class="footer footer-count" style="position: absolute; bottom: 0; left: 80px;">
                                 <p>Потребность строительного рынка на 2020-2021гг.</p>
                                 <div class="line"></div>
@@ -932,7 +930,6 @@
                             </section>
                             </div>
                         </th:block>
-                        ¬
                     </th:block>
 
                 </th:block>
