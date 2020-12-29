@@ -446,7 +446,7 @@
                                     </div>
 
                         </th:block>
-                        <th:block th:if="${(localityLastFlag != 1) && (index.index + 1) != 1}">
+                        <th:block th:if="${!((localityLastFlag == 1)  && (index.index + 1) == 1)}">
                             <div class="page-4">
                                 <section class="count">
                                     <div class="header-chart-inner" style="margin-bottom: 100px">
@@ -809,7 +809,6 @@
                                     сетей)</p>
                             </div>
                         </div>
-                        <h1>SALAM</h1>
                         <th:block th:each="objectInYear, oyindex : ${object.getObjectInYearDtos()}">
                             <th:block th:if="${(oyindex.index + 1 % 2 == 0)}">
                                 <div class="chart-wrap">
@@ -917,8 +916,7 @@
                                 </div>
                             </div>
                         </th:block>
-
-                        <th:block >
+                        <th:block>
                             <footer class="footer footer-count" style="position: absolute; bottom: 0; left: 80px;">
                                 <p>Потребность строительного рынка на 2020-2021гг.</p>
                                 <div class="line"></div>
