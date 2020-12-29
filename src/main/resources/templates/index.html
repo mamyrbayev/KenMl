@@ -725,7 +725,7 @@
 
                         </th:block>
                         <th:block
-                                th:if="${(localityLastFlag != 1) || ((cindex.index + 1 == 1) && (index.index + 1 != 1))}">
+                                th:if="${(localityLastFlag != 1) || ((cindex.index + 1 == 1) && (index.index + 1 != 1)) || (index.index + 1 % 2 ==0)}">
 
                             <div class="page-4">
                                 <section class="count">
@@ -934,7 +934,7 @@
             </th:block>
         </th:block>
     </th:block>
-   
+
     <script th:inline="javascript">
 
         var topTenList = /*[[${topTenList}]]*/ [];
