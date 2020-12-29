@@ -355,6 +355,7 @@
             <th:block th:each="company,cindex: ${locality.companiesList}">
                 <th:block th:if="${(cindex.index + 1 == 1)}" th:with="localityLastFlag=1">
                     <th:block th:each="object,index: ${company.getObjectsDto()}">
+
                         <th:block th:if="${(localityLastFlag == 1)  && (index.index + 1) == 1}">
                             <div class="page-4">
                                 <section class="count">
@@ -526,7 +527,6 @@
                                     сетей)</p>
                             </div>
                         </div>
-
                         <th:block th:each="objectInYear : ${object.getObjectInYearDtos()}">
                             <div class="chart-bars-block">
                                 <div class="chart-bar-title">
@@ -616,7 +616,6 @@
                                 </div>
                             </div>
                         </th:block>
-
                         <th:block th:if="${((index.index + 1) % 2 == 0  ) || (index.size == index.index + 1)}">
                             <footer class="footer footer-count" style="position: absolute; bottom: 0; left: 80px;">
                                 <p>Потребность строительного рынка на 2020-2021гг.</p>
@@ -629,13 +628,13 @@
                             </section>
                             </div>
                         </th:block>
+
                     </th:block>
                 </th:block>
 
                 <th:block th:if="${(cindex.index + 1 != 1)}" th:with="localityLastFlag=0">
 
                     <th:block th:each="object,index: ${company.getObjectsDto()}">
-                        <h2>SALAM</h2>
 
                         <th:block th:if="${(index.index + 1) == 1}">
 
@@ -813,7 +812,6 @@
                         </div>
 
                         <th:block th:each="objectInYear, oyindex : ${object.getObjectInYearDtos()}">
-
                             <th:block th:if="${(oyindex.index + 1 % 2 == 0)}">
                                 <div class="chart-wrap">
                                     <div class="chart-obj">
@@ -831,7 +829,6 @@
                                     </div>
                                 </div>
                             </th:block>
-
                             <div class="chart-bars-block">
                                 <div class="chart-bar-title">
                                     <h1>
@@ -921,7 +918,9 @@
                                 </div>
                             </div>
                         </th:block>
-                        <th:block th:if="${((index.index + 1) % 2 == 0  ) || (index.size == index.index + 1)}">
+
+                        <th:block
+                                th:if="${((index.index + 1) % 2 == 0  ) || (index.size == index.index + 1) || (index.size == 0) || true}">
                             <footer class="footer footer-count" style="position: absolute; bottom: 0; left: 80px;">
                                 <p>Потребность строительного рынка на 2020-2021гг.</p>
                                 <div class="line"></div>
@@ -933,6 +932,7 @@
                             </section>
                             </div>
                         </th:block>
+                        ¬
                     </th:block>
 
                 </th:block>
