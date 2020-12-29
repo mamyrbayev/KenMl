@@ -5,6 +5,7 @@ import com.ereport.master.kenML.domain.dto.OverallVolumeAndPrice;
 import com.ereport.master.kenML.repository.ResourcesRepo;
 import org.springframework.stereotype.Service;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 @Service
@@ -38,6 +39,7 @@ public class ResourcesService {
     }
 
     public OverallVolumeAndPrice getOverallVolumeAndPriceForMaterial(String codeSnb){
+
         List<Resources> resources = resourcesRepo.findAllByCodeSNB(codeSnb);
         Float volume = 0f;
         Float price = 0f;
@@ -47,6 +49,7 @@ public class ResourcesService {
             price = resources1.getPrice();
             measurer = resources1.getMeasurer();
         }
+
         return OverallVolumeAndPrice.builder()
                 .price(price * volume)
                 .volume(volume)
