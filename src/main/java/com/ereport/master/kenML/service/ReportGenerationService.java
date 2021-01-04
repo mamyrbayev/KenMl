@@ -55,6 +55,12 @@ public class ReportGenerationService {
 
         if(reportMaterialsResponse != null){
             Material material = materialService.getByMaterialCode(reportMaterialsResponse.getMtCode());
+            if(material.getMtMeasure().equals("м3")){
+                material.setMtMeasure("м<sup>3</sup>");
+            }
+            if(material.getMtMeasure().equals("м2")){
+                material.setMtMeasure("м<sup>2</sup>");
+            }
             List<LocalitiesByMatrial> localitiesByMatrials = localitiesService.getAllByMaterialCode(material.getMtCode());
             potrebnostis.add(Potrebnosti.builder()
                     .material(material)

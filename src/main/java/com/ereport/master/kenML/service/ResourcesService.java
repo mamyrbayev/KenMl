@@ -55,6 +55,13 @@ public class ResourcesService {
             measurer = resources1.getMeasurer();
         }
 
+        if(measurer.equals("м3")){
+            measurer = "м<sup>3</sup>";
+        }
+        if(measurer.equals("м2")){
+            measurer = "м<sup>2</sup>";
+        }
+
         if(price >= 1){
             price = (float) Math.round(price);
         } else {
@@ -95,6 +102,14 @@ public class ResourcesService {
         }else{
             return 0f;
         }
+    }
+
+    public static String fmt(double d)
+    {
+        if(d == (long) d)
+            return String.format("%d",(long)d);
+        else
+            return String.format("%s",d);
     }
 
 

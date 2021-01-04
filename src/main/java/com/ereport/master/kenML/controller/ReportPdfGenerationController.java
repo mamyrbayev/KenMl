@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.text.ParseException;
 
+import static com.ereport.master.kenML.util.StringUtil.formatNumber;
+
 @RestController
 @AllArgsConstructor
 @RequestMapping("/api/pdf")
@@ -38,6 +40,6 @@ public class ReportPdfGenerationController extends BaseController {
 
     @GetMapping("/rounding")
     public ResponseEntity<?> rounding(Float num) throws ParseException {
-        return buildResponse(resourcesService.formatNumber(num), HttpStatus.OK);
+        return buildResponse(formatNumber(num), HttpStatus.OK);
     }
 }
