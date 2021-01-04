@@ -2,30 +2,27 @@ package com.ereport.master.kenML.controller;
 
 import com.ereport.master.kenML.domain.dto.*;
 import com.ereport.master.kenML.service.ReportGenerationService;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
+import com.ereport.master.kenML.service.ResourcesService;
 import org.springframework.stereotype.Controller;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-import org.thymeleaf.context.Context;
 
-import java.io.File;
-import java.io.IOException;
+import java.text.ParseException;
 import java.util.List;
 
 @Controller
 @RequestMapping(path = "/view")
 public class NewsController {
     private final ReportGenerationService reportGenerationService;
+    private final ResourcesService resourcesService;
 
-    public NewsController(ReportGenerationService reportGenerationService) {
+    public NewsController(ReportGenerationService reportGenerationService, ResourcesService resourcesService) {
         this.reportGenerationService = reportGenerationService;
+        this.resourcesService = resourcesService;
     }
 
     @GetMapping("/pdf")
-    public ModelAndView news() {
+    public ModelAndView news() throws ParseException {
         ReportGenerationResponse reportGenerationResponse = reportGenerationService.getResponse();
 
         List<MaterialDTO> materialDTOS = reportGenerationResponse.getTopTen();
@@ -49,4 +46,7 @@ public class NewsController {
         modelAndView.setViewName("storymart/index");
         return modelAndView;
     }
+
+
+
 }

@@ -20,6 +20,7 @@ import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 
 import java.io.*;
 import java.nio.file.*;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
@@ -38,7 +39,7 @@ public class HtmlToPdfService {
     @Value("${system.file_locations}")
     private String location;
 
-    public String parseThymeleafTemplate() throws IOException {
+    public String parseThymeleafTemplate() throws IOException, ParseException {
         ClassLoaderTemplateResolver templateResolver = new ClassLoaderTemplateResolver();
 
         templateResolver.setPrefix("/templates/");

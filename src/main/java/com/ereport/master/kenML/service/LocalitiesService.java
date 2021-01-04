@@ -7,10 +7,15 @@ import com.ereport.master.kenML.domain.dto.LocalitiesByMatrial;
 import com.ereport.master.kenML.domain.dto.ObjectsDto;
 import com.ereport.master.kenML.domain.dto.OverallVolumeAndPrice;
 import com.ereport.master.kenML.repository.LocalitiesRepo;
+import com.google.common.base.CharMatcher;
 import org.springframework.stereotype.Service;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 @Service
 public class LocalitiesService {
@@ -26,7 +31,8 @@ public class LocalitiesService {
         this.objectService = objectService;
     }
 
-    public List<LocalitiesByMatrial> getAllByMaterialCode(String mtCode){
+
+    public List<LocalitiesByMatrial> getAllByMaterialCode(String mtCode) throws ParseException {
 
         List<LocalitiesByMatrial> localitiesByMatrials = new ArrayList<>();
 
@@ -37,6 +43,16 @@ public class LocalitiesService {
 
             for(Companies company: companies){
                 OverallVolumeAndPrice overallForCompany = resourcesService.getOverallForCompany(mtCode, company.getId(), locality.getId());
+                if(overallForCompany.getPrice() >= 1){
+                    overallForCompany.setPrice((float) Math.round(overallForCompany.getPrice()));
+                }else {
+                    overallForCompany.setPrice(resourcesService.formatNumber(overallForCompany.getPrice()));
+                }
+                if(overallForCompany.getVolume() >= 1){
+                    overallForCompany.setVolume((float) Math.round(overallForCompany.getVolume()));
+                }else {
+                    overallForCompany.setVolume(resourcesService.formatNumber(overallForCompany.getVolume()));
+                }
                 List<ObjectsDto> objectsDto = objectService.getObjectsByCompanyAndLocality(mtCode, company.getId(), locality.getId());
                 if(objectsDto.size() > 0){
                     if(overallForCompany.getPrice() > 0f){
@@ -60,6 +76,16 @@ public class LocalitiesService {
             }
 
             OverallVolumeAndPrice overallVolumeAndPrice = resourcesService.getOverallVolumeAndPrice(mtCode, locality.getId());
+            if(overallVolumeAndPrice.getPrice() >= 1){
+                overallVolumeAndPrice.setPrice((float) Math.round(overallVolumeAndPrice.getPrice()));
+            }else {
+                overallVolumeAndPrice.setPrice(resourcesService.formatNumber(overallVolumeAndPrice.getPrice()));
+            }
+            if(overallVolumeAndPrice.getVolume() >= 1){
+                overallVolumeAndPrice.setVolume((float) Math.round(overallVolumeAndPrice.getVolume()));
+            }else {
+                overallVolumeAndPrice.setVolume(resourcesService.formatNumber(overallVolumeAndPrice.getVolume()));
+            }
             if(overallVolumeAndPrice.getPrice() > 0f){
                 LocalitiesByMatrial localitiesByMatrial = LocalitiesByMatrial.builder()
                         .localities(locality)
@@ -67,6 +93,7 @@ public class LocalitiesService {
                         .overallPrice(overallVolumeAndPrice.getPrice())
                         .overallVolume(overallVolumeAndPrice.getVolume())
                         .build();
+
                 localitiesByMatrials.add(localitiesByMatrial);
             }
 

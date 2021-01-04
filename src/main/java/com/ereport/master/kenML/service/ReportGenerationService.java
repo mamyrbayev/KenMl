@@ -4,6 +4,7 @@ import com.ereport.master.kenML.domain.Material;
 import com.ereport.master.kenML.domain.dto.*;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -26,7 +27,7 @@ public class ReportGenerationService {
         this.resourcesService = resourcesService;
     }
 
-    public ReportGenerationResponse getResponse(){
+    public ReportGenerationResponse getResponse() throws ParseException {
         ReportGenerationResponse reportGenerationResponse = new ReportGenerationResponse();
         List<MaterialDTO> materialDTOS = new ArrayList<>();
         List<ReportMaterialsResponse> materialLists = reportMaterialsService.findAll();
@@ -65,7 +66,7 @@ public class ReportGenerationService {
     }
 
 
-    public List<MaterialDTO> getTopTen(){
+    public List<MaterialDTO> getTopTen() throws ParseException {
         List<MaterialDTO> materialDTOS = new ArrayList<>();
         List<ReportMaterialsResponse> materialLists = reportMaterialsService.findAll();
             for(ReportMaterialsResponse materialList: materialLists){

@@ -3,10 +3,15 @@ package com.ereport.master.kenML.service;
 import com.ereport.master.kenML.domain.Resources;
 import com.ereport.master.kenML.domain.dto.OverallVolumeAndPrice;
 import com.ereport.master.kenML.repository.ResourcesRepo;
+import com.google.common.base.CharMatcher;
 import org.springframework.stereotype.Service;
 
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
+import java.text.ParseException;
 import java.util.List;
+import java.util.Locale;
 
 @Service
 public class ResourcesService {
@@ -38,7 +43,7 @@ public class ResourcesService {
                 .build();
     }
 
-    public OverallVolumeAndPrice getOverallVolumeAndPriceForMaterial(String codeSnb){
+    public OverallVolumeAndPrice getOverallVolumeAndPriceForMaterial(String codeSnb) throws ParseException {
 
         List<Resources> resources = resourcesRepo.findAllByCodeSNB(codeSnb);
         Float volume = 0f;
@@ -50,11 +55,46 @@ public class ResourcesService {
             measurer = resources1.getMeasurer();
         }
 
+        if(price >= 1){
+            price = (float) Math.round(price);
+        } else {
+            price = formatNumber(price);
+        }
+        if(volume >= 1){
+            volume = (float) Math.round(volume);
+        } else {
+            volume = formatNumber(volume);
+        }
+
         return OverallVolumeAndPrice.builder()
                 .price(price * volume)
                 .volume(volume)
                 .measurer(measurer)
                 .build();
+    }
+
+    public float formatNumber(float num) throws ParseException {
+        if(num != 0f){
+            DecimalFormat decimalFormat = new DecimalFormat("0.0000000000");
+            String str = decimalFormat.format(num);
+            if(str.length() > 1){
+                while (str.endsWith("0")) {
+                    str = str.substring(0, str.length() - 1);
+                }
+            }
+            int count = CharMatcher.is('0').countIn(str);
+            String secondPart = str.substring(2, count + 2);
+            String finalPart = "0." + secondPart;
+            NumberFormat nf = NumberFormat.getInstance(Locale.US);
+            float f = nf.parse(finalPart).floatValue();
+            int c = count;
+            String format = "%."+c+"f";
+            String number = String.format(format, f);
+            number = number.replace(',', '.');
+            return new Float(number);
+        }else{
+            return 0f;
+        }
     }
 
 
