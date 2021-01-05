@@ -21,14 +21,24 @@
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script th:inline="javascript">
 
+        var topTenList = /*[[${topTenList}]]*/ [];
+        var potrebnostis = /*[[${potrebnostis}]]*/ [];
+        var overallForYears = /*[[${overallForYears}]]*/ [];
+        var overallForYearByRegions = /*[[${overallForYearByRegions}]]*/ [];
+
+        function removeSup(str) {
+            return str.replace("<sup>", "").replace("</sup>", "");
+        }
+    </script>
 </head>
 <body>
 <section class="title-page">
     <div class="container-title">
         <div class="header-title">
             <p class="header-title-text">Разработано на основании автоматического анализа KENML смет системой GENRO
-                (АО Институт цифровой техники и технологий)</p>
+                (АО <br> Институт цифровой техники и технологий)</p>
             <div class="header-title-date">
                 <p>Декабрь</p>
                 <p>Издание №1</p>
@@ -38,9 +48,9 @@
             <h1 class="h1-title">
                 Потребность
                 строительного
-                рынка на 2020г.
+                рынка
             </h1>
-            <p class="header-years">2020- 2022 год.</p>
+<!--            <p class="header-years">2020- 2022 год.</p>-->
         </div>
     </div>
     <div class="vector">
@@ -48,7 +58,7 @@
             <img alt="vector" th:src="@{/tem/assets/page-1-vector.png}">
         </div>
         <div class="vector-text">
-            <p>StroyMart.<span class="text-white">kz</span></p>
+            <p>StroyMart</p>
             <img th:src="@{/tem/assets/dots.png}">
             <p>Подробнее на </p>
         </div>
@@ -147,7 +157,7 @@
             <footer class="footer" style="position: absolute; bottom: 0;">
                 <p>Потребность строительного рынка на 2020-2021гг.</p>
                 <div class="line"></div>
-                <p>Разработано на основании автоматического анализа KENML смет системой GENRO (АО Институт цифровой
+                <p>Разработано на основании автоматического анализа KENML смет системой GENRO (АО <br> Институт цифровой
                     техники
                     и технологий)</p>
             </footer>
@@ -272,7 +282,7 @@
             <footer class="footer footer-count" style="position: absolute; bottom: 0;">
                 <p>Потребность строительного рынка на 2020-2021гг.</p>
                 <div class="line"></div>
-                <p>Разработано на основании автоматического анализа KENML смет системой GENRO (АО Институт цифровой
+                <p>Разработано на основании автоматического анализа KENML смет системой GENRO (АО <br> Институт цифровой
                     техники
                     и
                     технологий)</p>
@@ -339,7 +349,7 @@
             <footer class="footer footer-count" style="position: absolute; bottom: 0">
                 <p>Потребность строительного рынка на 2020-2021гг.</p>
                 <div class="line"></div>
-                <p>Разработано на основании автоматического анализа KENML смет системой GENRO (АО Институт цифровой
+                <p>Разработано на основании автоматического анализа KENML смет системой GENRO (АО <br> Институт цифровой
                     техники
                     и технологий)</p>
             </footer>
@@ -366,7 +376,7 @@
                                         <div class="header-block">
                                             <div class="logo-title-chart">
                                                 <h3>Потребность</h3>
-                                                <h4>в стройметериалах
+                                                <h4>в стройматериалах
                                                     в разрезе регионов </h4>
                                             </div>
                                         </div>
@@ -556,6 +566,7 @@
                                     <canvas th:attr="id=${object.getId().toString()+objectInYear.getYear()}"
                                             width="1300" height="215"></canvas>
                                     <script th:inline="javascript">
+                                        var measurement = /*[[${potrebnosti.material.mtMeasure}]]*/ ' ';
                                         new Chart(document.getElementById(/*[[${object.getId().toString()+objectInYear.getYear()}]]*/ 'default'), {
                                             type: "bar",
                                             data: {
@@ -582,6 +593,15 @@
                                                 ],
                                             },
                                             options: {
+                                                tooltips: {
+                                                    enabled: true,
+                                                    mode: 'single',
+                                                    callbacks: {
+                                                        label: function(tooltipItems, data) {
+                                                            return tooltipItems.yLabel + ' ' +measurement;
+                                                        }
+                                                    }
+                                                },
                                                 animation: {
                                                     duration: 0,
                                                 },
@@ -593,7 +613,20 @@
                                                 scales: {
                                                     xAxes: [
                                                         {
+                                                            ticks: {
+                                                                fontSize: 25,
+                                                            },
                                                             barThickness: 30,
+                                                        },
+                                                    ],
+                                                    yAxes: [
+                                                        {
+                                                            ticks: {
+                                                                fontSize: 25,
+                                                                callback: function(value) {
+                                                                    return value + ' ' + removeSup(measurement);
+                                                                }
+                                                            },
                                                         },
                                                     ],
                                                 },
@@ -621,7 +654,7 @@
                             <footer class="footer footer-count" style="position: absolute; bottom: 0; left: 80px;">
                                 <p>Потребность строительного рынка на 2020-2021гг.</p>
                                 <div class="line"></div>
-                                <p>Разработано на основании автоматического анализа KENML смет системой GENRO (АО
+                                <p>Разработано на основании автоматического анализа KENML смет системой GENRO (АО <br>
                                     Институт
                                     цифровой
                                     техники и технологий)</p>
@@ -647,7 +680,7 @@
                                         <div class="header-block">
                                             <div class="logo-title-chart">
                                                 <h3>Потребность</h3>
-                                                <h4>в стройметериалах
+                                                <h4>в стройматериалах
                                                     в разрезе регионов </h4>
                                             </div>
                                         </div>
@@ -856,6 +889,8 @@
                                     <canvas th:attr="id=${object.getId().toString()+objectInYear.getYear()}"
                                             width="1300" height="215"></canvas>
                                     <script th:inline="javascript">
+
+                                        var measurement = /*[[${potrebnosti.material.mtMeasure}]]*/ ' ';
                                         new Chart(document.getElementById(/*[[${object.getId().toString()+objectInYear.getYear()}]]*/ 'default'), {
                                             type: "bar",
                                             data: {
@@ -877,12 +912,20 @@
                                                     {
                                                         label: "",
                                                         backgroundColor: "#FFB877",
-                                                        // data: [3500, 500, 0, 3600, 3100, 600, 1700, 2200, 0, 1000, 1600, 3200],
                                                         data: /*[[${objectInYear.getMonthVolumePriceArray()}]]*/ [],
                                                     },
                                                 ],
                                             },
                                             options: {
+                                                tooltips: {
+                                                    enabled: true,
+                                                    mode: 'single',
+                                                    callbacks: {
+                                                        label: function(tooltipItems, data) {
+                                                            return tooltipItems.yLabel + ' ' +measurement;
+                                                        }
+                                                    }
+                                                },
                                                 animation: {
                                                     duration: 0,
                                                 },
@@ -894,12 +937,86 @@
                                                 scales: {
                                                     xAxes: [
                                                         {
+                                                            ticks: {
+                                                                fontSize: 25,
+                                                            },
                                                             barThickness: 30,
+                                                        },
+                                                    ],
+                                                    yAxes: [
+                                                        {
+                                                            ticks: {
+                                                                fontSize: 25,
+                                                                callback: function(value) {
+                                                                    return value + ' ' + removeSup(measurement);
+                                                                }
+                                                            },
                                                         },
                                                     ],
                                                 },
                                             },
                                         });
+
+                                        // var measurement = /*[[${potrebnosti.material.mtMeasure}]]*/ ' ';
+                                        // new Chart(document.getElementById(/*[[${object.getId().toString()+objectInYear.getYear()}]]*/ 'default'), {
+                                        //     type: "bar",
+                                        //     data: {
+                                        //         labels: [
+                                        //             "Янв",
+                                        //             "Фев",
+                                        //             "Мар",
+                                        //             "Апр",
+                                        //             "Май",
+                                        //             "Июн",
+                                        //             "Июл",
+                                        //             "Авг",
+                                        //             "Сен",
+                                        //             "Окт",
+                                        //             "Ноя",
+                                        //             "Дек",
+                                        //         ],
+                                        //         datasets: [
+                                        //             {
+                                        //                 label: "",
+                                        //                 backgroundColor: "#FFB877",
+                                        //                 // data: [3500, 500, 0, 3600, 3100, 600, 1700, 2200, 0, 1000, 1600, 3200],
+                                        //                 data: /*[[${objectInYear.getMonthVolumePriceArray()}]]*/ [],
+                                        //             },
+                                        //         ],
+                                        //     },
+                                        //     options: {
+                                        //         tooltips: {
+                                        //             enabled: true,
+                                        //             mode: 'single',
+                                        //             callbacks: {
+                                        //                 label: function(tooltipItems, data) {
+                                        //                     return tooltipItems.yLabel + ' ' +measurement;
+                                        //                 }
+                                        //             }
+                                        //         },
+                                        //         animation: {
+                                        //             duration: 0,
+                                        //         },
+                                        //         legend: {display: false},
+                                        //         title: {
+                                        //             display: true,
+                                        //         },
+                                        //         responsive: false,
+                                        //         scales: {
+                                        //             xAxes: [
+                                        //                 {
+                                        //                     fontSize:25,
+                                        //                     barThickness: 30,
+                                        //                 },
+                                        //             ],
+                                        //             yAxes: [
+                                        //                 {
+                                        //                     fontSize: 25,
+                                        //                 },
+                                        //             ],
+                                        //         },
+                                        //     },
+                                        // });
                                     </script>
                                     <div class="chart-values">
                                         <div class="chart-val"
@@ -921,7 +1038,7 @@
                             <footer class="footer footer-count" style="position: absolute; bottom: 0; left: 80px;">
                                 <p>Потребность строительного рынка на 2020-2021гг.</p>
                                 <div class="line"></div>
-                                <p>Разработано на основании автоматического анализа KENML смет системой GENRO (АО
+                                <p>Разработано на основании автоматического анализа KENML смет системой GENRO (АО <br>
                                     Институт
                                     цифровой
                                     техники и технологий)</p>
@@ -936,14 +1053,7 @@
         </th:block>
     </th:block>
 
-    <script th:inline="javascript">
 
-        var topTenList = /*[[${topTenList}]]*/ [];
-        var potrebnostis = /*[[${potrebnostis}]]*/ [];
-        var overallForYears = /*[[${overallForYears}]]*/ [];
-        var overallForYearByRegions = /*[[${overallForYearByRegions}]]*/ [];
-
-    </script>
 
     <script th:src="@{/tem/js/top.js}"></script>
     <script th:src="@{/tem/js/doughnut-chart.js}"></script>

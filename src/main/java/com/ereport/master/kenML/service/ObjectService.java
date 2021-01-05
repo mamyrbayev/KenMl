@@ -241,6 +241,7 @@ public class ObjectService {
 
     public List<MonthVolumePrice> getMonthVolumePricesByYear(List<FileSections> fileSections, String mtCode) throws ParseException {
         Map<String, Float> volumeByMonth = new HashMap<>();
+        Date endDate = null;
         Float price = 0f;
         volumeByMonth.put("01", 0f);
         volumeByMonth.put("02", 0f);
@@ -254,7 +255,6 @@ public class ObjectService {
         volumeByMonth.put("10", 0f);
         volumeByMonth.put("11", 0f);
         volumeByMonth.put("12", 0f);
-        List<OverallVolumeAndPrice> volumeAndPricesMonths = new ArrayList<>();
         for(FileSections fileSection: fileSections){
             OverallVolumeAndPrice overallVolumeAndPrice = resourcesService.getOverallForFileSection(mtCode, fileSection.getId());
 
@@ -273,6 +273,7 @@ public class ObjectService {
             Float volumeInOneDay =  overallVolumeAndPrice.getVolume()/daysBetween;
 
             Date startDate = fileSection.getStartDate();
+            endDate = fileSection.getStartDate();
             while (startDate.before(fileSection.getEndDate())){
                 DateFormat dateFormat = new SimpleDateFormat("MM");
                 volumeByMonth.put(dateFormat.format(startDate), volumeByMonth.get(dateFormat.format(startDate)) + volumeInOneDay);
@@ -286,27 +287,34 @@ public class ObjectService {
 
         List<MonthVolumePrice> monthVolumePrices = new ArrayList<>();
 
-        for (String month: monthKeys){
-            Float overallVolume = volumeByMonth.get(month);
-            Float overallPrice = volumeByMonth.get(month) * price;
-            if(overallPrice >= 1){
-                overallPrice = (float) Math.round(overallPrice);
-            }else {
-                overallPrice = resourcesService.formatNumber(overallPrice);
-            }
-            if(overallVolume >= 1){
-                overallVolume = (float) Math.round(overallVolume);
-            }else {
-                overallVolume = resourcesService.formatNumber(overallVolume);
-            }
-            MonthVolumePrice monthVolumePrice = MonthVolumePrice.builder()
-                    .monthIndex(month)
-                    .price(overallPrice)
-                    .volume(overallVolume)
-                    .build();
-            monthVolumePrices.add(monthVolumePrice);
-        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String strDate = "2020-01-01";
+        Date date = sdf.parse(strDate);
 
+        if(endDate != null){
+            if(endDate.after(date)){
+                for (String month: monthKeys){
+                    Float overallVolume = volumeByMonth.get(month);
+                    Float overallPrice = volumeByMonth.get(month) * price;
+                    if(overallPrice >= 1){
+                        overallPrice = (float) Math.round(overallPrice);
+                    }else {
+                        overallPrice = resourcesService.formatNumber(overallPrice);
+                    }
+                    if(overallVolume >= 1){
+                        overallVolume = (float) Math.round(overallVolume);
+                    }else {
+                        overallVolume = resourcesService.formatNumber(overallVolume);
+                    }
+                    MonthVolumePrice monthVolumePrice = MonthVolumePrice.builder()
+                            .monthIndex(month)
+                            .price(overallPrice)
+                            .volume(overallVolume)
+                            .build();
+                    monthVolumePrices.add(monthVolumePrice);
+                }
+            }
+        }
         return monthVolumePrices;
     }
 

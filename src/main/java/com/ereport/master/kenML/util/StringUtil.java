@@ -19,13 +19,13 @@ public class StringUtil {
             }
             int count = CharMatcher.is('0').countIn(str);
             String secondPart = str.substring(2, count + 2);
-            String finalPart = "0." + secondPart;
-            NumberFormat nf = NumberFormat.getInstance(Locale.US);
-            float f = nf.parse(finalPart).floatValue();
-            int c = count;
-            String format = "%."+c+"f";
-            String number = String.format(format, f);
-            number = number.replace(',', '.');
+            String number = "0." + secondPart;
+//            NumberFormat nf = NumberFormat.getInstance(Locale.US);
+//            float f = nf.parse(finalPart).floatValue();
+//            int c = count;
+//            String format = "%."+c+"f";
+//            String number = String.format(format, f);
+//            number = number.replace(',', '.');
             if(number.length() > 1){
                 while (number.endsWith("0")) {
                     number = number.substring(0, number.length() - 1);
@@ -35,5 +35,11 @@ public class StringUtil {
         }else{
             return "0";
         }
+    }
+
+    public static String formatNumberMillion(float num) throws ParseException {
+        num = num/1000000;
+        String number = String.format("%.1f", num);
+        return number + " млн ";
     }
 }

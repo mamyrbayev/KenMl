@@ -1,7 +1,5 @@
 package com.ereport.master.sheduler;
 
-import com.ereport.master.exceptions.ServiceException;
-import com.ereport.master.kenML.service.HtmlToPdfService;
 import com.ereport.master.kenML.service.PublicationsService;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
@@ -16,17 +14,16 @@ import java.text.ParseException;
 @AllArgsConstructor
 public class Scheduler {
     private final PublicationsService publicationsService;
-    private final HtmlToPdfService htmlToPdfService;
     private static final Logger logger = LoggerFactory.getLogger(Scheduler.class);
 
     @Scheduled(cron = "0 * * * * *") //Every minute
-    private void checkGenerationDate() throws ServiceException, ParseException, IOException, InterruptedException {
+    private void checkGenerationDate() throws IOException, InterruptedException {
 //        System.out.println("Scheduler");
         publicationsService.createPublicationByScheduler();
     }
 
     @Scheduled(cron = "0 * * * * *") //Every minute
-    private void checkSendingDate() throws ServiceException, ParseException, IOException {
+    private void checkSendingDate() throws ParseException, IOException {
         publicationsService.sendPublicationByScheduler();
     }
 }

@@ -10,9 +10,9 @@ function topLoad() {
         if (!overallVolumeAndPrice) {
             overallVolumeAndPrice = {};
         }
-        const volume = overallVolumeAndPrice.volume;
+        const volume = overallVolumeAndPrice.volumeStr;
         const measurer = overallVolumeAndPrice.measurer ? overallVolumeAndPrice.measurer : '';
-        const price = overallVolumeAndPrice.price;
+        const price = overallVolumeAndPrice.priceStr;
 
         if (i === arrTop.length - 1) {
             str += '<div class="bar-item">' +

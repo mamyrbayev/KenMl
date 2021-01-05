@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.text.ParseException;
 
 import static com.ereport.master.kenML.util.StringUtil.formatNumber;
+import static com.ereport.master.kenML.util.StringUtil.formatNumberMillion;
 
 @RestController
 @AllArgsConstructor
@@ -41,5 +42,10 @@ public class ReportPdfGenerationController extends BaseController {
     @GetMapping("/rounding")
     public ResponseEntity<?> rounding(Float num) throws ParseException {
         return buildResponse(formatNumber(num), HttpStatus.OK);
+    }
+
+    @GetMapping("/rounding/million")
+    public ResponseEntity<?> roundingMillion(Float num) throws ParseException {
+        return buildResponse(formatNumberMillion(num), HttpStatus.OK);
     }
 }

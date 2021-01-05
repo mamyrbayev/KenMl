@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static com.ereport.master.kenML.util.StringUtil.formatNumber;
+import static com.ereport.master.kenML.util.StringUtil.formatNumberMillion;
 
 @Data
 @Builder
@@ -27,7 +28,11 @@ public class ObjectInYearDto {
 
     public String getOverallVolumeStr() throws ParseException {
         if(overallVolume >= 1){
-            return String.valueOf(Math.round(overallVolume));
+            if (overallVolume >= 1000000){
+                return formatNumberMillion(overallVolume);
+            }else {
+                return String.valueOf(Math.round(overallVolume));
+            }
         }else {
             return formatNumber(overallVolume);
         }
@@ -35,7 +40,11 @@ public class ObjectInYearDto {
 
     public String getOverallPriceStr() throws ParseException {
         if(overallPrice >= 1){
-            return String.valueOf(Math.round(overallPrice));
+            if (overallPrice >= 1000000){
+                return formatNumberMillion(overallPrice);
+            }else {
+                return String.valueOf(Math.round(overallPrice));
+            }
         }else {
             return formatNumber(overallPrice);
         }

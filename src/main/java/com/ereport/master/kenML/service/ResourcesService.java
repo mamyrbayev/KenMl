@@ -13,6 +13,9 @@ import java.text.ParseException;
 import java.util.List;
 import java.util.Locale;
 
+import static com.ereport.master.kenML.util.StringUtil.formatNumber;
+import static com.ereport.master.kenML.util.StringUtil.formatNumberMillion;
+
 @Service
 public class ResourcesService {
     private final ResourcesRepo resourcesRepo;
@@ -62,6 +65,7 @@ public class ResourcesService {
             measurer = "м<sup>2</sup>";
         }
 
+
         if(price >= 1){
             price = (float) Math.round(price);
         } else {
@@ -72,10 +76,35 @@ public class ResourcesService {
         } else {
             volume = formatNumber(volume);
         }
+        float finalPrice = price * volume;
+        String priceStr;
+        String volumeStr;
+
+        if(finalPrice >= 1){
+            if (finalPrice >= 1000000){
+                priceStr = formatNumberMillion(finalPrice);
+            }else {
+                priceStr =  String.valueOf(Math.round(finalPrice));
+            }
+        }else {
+            priceStr = String.valueOf(formatNumber(finalPrice));
+        }
+
+        if(volume >= 1){
+            if (volume >= 1000000){
+                volumeStr = formatNumberMillion(volume);
+            }else {
+                volumeStr = String.valueOf(Math.round(volume));
+            }
+        }else {
+            volumeStr = String.valueOf(formatNumber(volume));
+        }
 
         return OverallVolumeAndPrice.builder()
-                .price(price * volume)
+                .price(finalPrice)
                 .volume(volume)
+                .priceStr(priceStr)
+                .volumeStr(volumeStr)
                 .measurer(measurer)
                 .build();
     }

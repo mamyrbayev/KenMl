@@ -36,7 +36,6 @@ public class RegionsService {
         List<OverallForYearByRegion> overallForYearByRegions = new ArrayList<>();
 
         List<Regions> regionsList = getAll();
-        List<RegionsWorkDate> regionsWorkDates = new ArrayList<>();
 
         List<OverallByRegion> zeroOverallByRegions = new ArrayList<>();
 

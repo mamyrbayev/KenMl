@@ -7,15 +7,11 @@ import com.ereport.master.kenML.domain.dto.LocalitiesByMatrial;
 import com.ereport.master.kenML.domain.dto.ObjectsDto;
 import com.ereport.master.kenML.domain.dto.OverallVolumeAndPrice;
 import com.ereport.master.kenML.repository.LocalitiesRepo;
-import com.google.common.base.CharMatcher;
 import org.springframework.stereotype.Service;
 
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 @Service
 public class LocalitiesService {
@@ -38,6 +34,8 @@ public class LocalitiesService {
 
         List<Localities> localities = localitiesRepo.findAllByMaterialCode(mtCode);
         for(Localities locality: localities){
+            String name=locality.getName().replace(" Г.А.","");
+            locality.setName(name);
             List<Companies> companies = companiesService.findAllByLocalityId(locality.getId());
             List<CompaniesDto> companiesDtos = new ArrayList<>();
 
