@@ -40,6 +40,15 @@ public class StringUtil {
     public static String formatNumberMillion(float num) throws ParseException {
         num = num/1000000;
         String number = String.format("%.1f", num);
-        return number + " млн ";
+        return number + " млн. ";
+    }
+
+    public static String formatNumberSpaces(float num) {
+        DecimalFormat df = new DecimalFormat("#,###");
+        return rmComma(df.format(num));
+    }
+
+    public static String rmComma(String data){
+        return data.replace(",", " ");
     }
 }

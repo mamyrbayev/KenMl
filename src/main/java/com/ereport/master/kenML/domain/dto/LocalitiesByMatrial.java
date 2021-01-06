@@ -9,8 +9,7 @@ import lombok.NoArgsConstructor;
 import java.text.ParseException;
 import java.util.List;
 
-import static com.ereport.master.kenML.util.StringUtil.formatNumber;
-import static com.ereport.master.kenML.util.StringUtil.formatNumberMillion;
+import static com.ereport.master.kenML.util.StringUtil.*;
 
 @Data
 @Builder
@@ -27,7 +26,7 @@ public class LocalitiesByMatrial {
             if (overallVolume >= 1000000){
                 return formatNumberMillion(overallVolume);
             }else {
-                return String.valueOf(Math.round(overallVolume));
+                return formatNumberSpaces(overallVolume);
             }
         }else {
             return formatNumber(overallVolume);
@@ -39,7 +38,7 @@ public class LocalitiesByMatrial {
             if (overallPrice >= 1000000){
                 return formatNumberMillion(overallPrice);
             }else {
-                return String.valueOf(Math.round(overallPrice));
+                return formatNumberSpaces(overallPrice);
             }
         }else {
             return formatNumber(overallPrice);
