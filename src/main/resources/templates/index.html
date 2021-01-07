@@ -27,7 +27,7 @@
         var potrebnostis = /*[[${potrebnostis}]]*/ [];
         var overallForYears = /*[[${overallForYears}]]*/ [];
         var overallForYearByRegions = /*[[${overallForYearByRegions}]]*/ [];
-        
+
 
         function removeSup(str) {
             return str.replace("<sup>", "").replace("</sup>", "");
@@ -47,7 +47,7 @@
             <h1 class="h1-title">
                 Потребность по строительным материалам в рамках государственной программы "Нурлы Жер"
             </h1>
-<!--            <p class="header-years">2020- 2022 год.</p>-->
+            <!--            <p class="header-years">2020- 2022 год.</p>-->
         </div>
     </div>
     <div class="vector">
@@ -73,7 +73,7 @@
                     </p>
                 </div>
                 <div class="header-content--right">
-                    <p style="margin-bottom: 0"  class="month-name">Декабрь </p>
+                    <p style="margin-bottom: 0" class="month-name">Декабрь </p>
                     <p>Издание 1</p>
                 </div>
 
@@ -148,13 +148,13 @@
                     <div class="dot dot-2"></div>
                     <div class="dot dot-1"></div>
                 </div>
-                <a target="_blank" href="http://www.stroymart.kz">StroyMart.<span>kz</span></a>
+                <a target="_blank" th:href="${siteUrl}">Stroimaterial.<span>kz</span></a>
             </div>
 
             <footer class="footer" style="position: absolute; bottom: 0;">
                 <p>Потребность строительного рынка на 2021гг.</p>
                 <div class="line"></div>
-                <p style="text-align: right" class = "page-num">1 из <span class="overall-pages">100</span></p>
+                <p style="text-align: right" class="page-num">1 из <span class="overall-pages">100</span></p>
             </footer>
         </div>
     </section>
@@ -162,7 +162,7 @@
 <section class="top" style="padding: 0">
     <div class="header-inner">
         <header class="header" style="padding-top: 50px">
-            <a href="http://stroymart.kz">StroyMart.<span>kz</span></a>
+            <a th:href="${siteUrl}">Stroimaterial.<span>kz</span></a>
         </header>
         <div class="header-block">
             <div class="logo-title">
@@ -196,7 +196,7 @@
     <section class="count">
         <div class="header-count-inner">
             <header class="header" style="padding-top: 50px">
-                <a href="http://stroymart.kz">StroyMart.<span>kz</span></a>
+                <a th:href="${siteUrl}">Stroimaterial.<span>kz</span></a>
             </header>
             <div class="header-block">
                 <div class="logo-title">
@@ -278,7 +278,7 @@
             <footer class="footer footer-count" style="position: absolute; bottom: 0;">
                 <p>Потребность строительного рынка на 2021гг.</p>
                 <div class="line"></div>
-                <p style="text-align: right" class = "page-num">2 из <span class="overall-pages">100</span></p>
+                <p style="text-align: right" class="page-num">2 из <span class="overall-pages">100</span></p>
             </footer>
         </div>
     </section>
@@ -287,7 +287,7 @@
     <section class="count">
         <div class="header-count-inner">
             <header class="header" style="padding-top: 50px">
-                <a href="http://stroymart.kz">StroyMart.<span>kz</span></a>
+                <a th:href="${siteUrl}">Stroimaterial.<span>kz</span></a>
             </header>
             <div class="header-block">
                 <div class="logo-title-count">
@@ -314,35 +314,35 @@
             <div class="progress-table1" id="pt2">
             </div>
 
-<!--            <div class="header-count-inner1">-->
-<!--                <div class="header-block">-->
-<!--                    <div class="logo-title-count">-->
-<!--                        <h4>Строящиеся объекты-->
-<!--                            <br>-->
-<!--                            в разрезе регионов на 2022 год</h4>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="progress-block pr-bl3">-->
-<!--                <div class="progress-title">-->
-<!--                    <div class="pr-title2">-->
-<!--                        <p>Регион</p>-->
-<!--                        <p>Строящиеся </p>-->
-<!--                        <p>Всего</p>-->
-<!--                    </div>-->
-<!--                    <div class="pr-title2">-->
-<!--                        <p>Регион</p>-->
-<!--                        <p>Строящиеся </p>-->
-<!--                        <p>Всего</p>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="progress-table1" id="pt3">-->
-<!--            </div>-->
+            <!--            <div class="header-count-inner1">-->
+            <!--                <div class="header-block">-->
+            <!--                    <div class="logo-title-count">-->
+            <!--                        <h4>Строящиеся объекты-->
+            <!--                            <br>-->
+            <!--                            в разрезе регионов на 2022 год</h4>-->
+            <!--                    </div>-->
+            <!--                </div>-->
+            <!--            </div>-->
+            <!--            <div class="progress-block pr-bl3">-->
+            <!--                <div class="progress-title">-->
+            <!--                    <div class="pr-title2">-->
+            <!--                        <p>Регион</p>-->
+            <!--                        <p>Строящиеся </p>-->
+            <!--                        <p>Всего</p>-->
+            <!--                    </div>-->
+            <!--                    <div class="pr-title2">-->
+            <!--                        <p>Регион</p>-->
+            <!--                        <p>Строящиеся </p>-->
+            <!--                        <p>Всего</p>-->
+            <!--                    </div>-->
+            <!--                </div>-->
+            <!--            </div>-->
+            <!--            <div class="progress-table1" id="pt3">-->
+            <!--            </div>-->
             <footer class="footer footer-count" style="position: absolute; bottom: 0">
                 <p>Потребность строительного рынка на 2021гг.</p>
                 <div class="line"></div>
-                <p style="text-align: right" class = "page-num">3 из <span class="overall-pages">100</span></p>
+                <p style="text-align: right" class="page-num">3 из <span class="overall-pages">100</span></p>
 
             </footer>
         </div>
@@ -363,7 +363,7 @@
                                 <section class="count">
                                     <div class="header-chart-inner">
                                         <header class="header" style="padding-top: 50px">
-                                            <a href="http://stroymart.kz">StroyMart.<span>kz</span></a>
+                                            <a th:href="${siteUrl}">Stroimaterial.<span>kz</span></a>
                                         </header>
                                         <div class="header-block">
                                             <div class="logo-title-chart">
@@ -419,13 +419,15 @@
                                                         <p>
                                                             <th:block th:text="${company.getOverallVolumeStr()}">944 354
                                                             </th:block>
-                                                            <th:block th:utext="${potrebnosti.material.mtMeasure}"></th:block>
+                                                            <th:block
+                                                                    th:utext="${potrebnosti.material.mtMeasure}"></th:block>
                                                         </p>
                                                     </div>
                                                     <div class="chart-price ">
                                                         <span>Общая стоимость</span>
                                                         <p>
-                                                            <th:block th:text="${company.getOverallPriceStr()}"></th:block>
+                                                            <th:block
+                                                                    th:text="${company.getOverallPriceStr()}"></th:block>
                                                             тг
                                                         </p>
                                                     </div>
@@ -453,7 +455,7 @@
                                 <section class="count">
                                     <div class="header-chart-inner" style="margin-bottom: 100px">
                                         <header class="header" style="padding-top: 50px">
-                                            <a href="http://stroymart.kz">StroyMart.<span>kz</span></a>
+                                            <a th:href="${siteUrl}">Stroimaterial.<span>kz</span></a>
                                         </header>
                                         <div class="header-block">
                                             <div class="logo-title-chart">
@@ -475,14 +477,17 @@
                                                     <div class="chart-vol">
                                                         <span>Общий объем</span>
                                                         <p>
-                                                            <th:block th:text="${locality.getOverallVolumeStr()}"></th:block>
-                                                            <th:block th:utext="${potrebnosti.material.mtMeasure}"></th:block>
+                                                            <th:block
+                                                                    th:text="${locality.getOverallVolumeStr()}"></th:block>
+                                                            <th:block
+                                                                    th:utext="${potrebnosti.material.mtMeasure}"></th:block>
                                                         </p>
                                                     </div>
                                                     <div class="chart-price ">
                                                         <span>Общая стоимость</span>
                                                         <p>
-                                                            <th:block th:text="${locality.getOverallPriceStr()}"></th:block>
+                                                            <th:block
+                                                                    th:text="${locality.getOverallPriceStr()}"></th:block>
                                                             тг
                                                         </p>
                                                     </div>
@@ -500,8 +505,10 @@
                                                 <div class="chart-vol">
                                                     <span>Общий объем</span>
                                                     <p>
-                                                        <th:block th:text="${company.getOverallVolumeStr()}">944 354</th:block>
-                                                        <th:block th:utext="${potrebnosti.material.mtMeasure}"></th:block>
+                                                        <th:block th:text="${company.getOverallVolumeStr()}">944 354
+                                                        </th:block>
+                                                        <th:block
+                                                                th:utext="${potrebnosti.material.mtMeasure}"></th:block>
                                                     </p>
                                                 </div>
                                                 <div class="chart-price ">
@@ -589,8 +596,8 @@
                                                     enabled: true,
                                                     mode: 'single',
                                                     callbacks: {
-                                                        label: function(tooltipItems, data) {
-                                                            return tooltipItems.yLabel + ' ' +measurement;
+                                                        label: function (tooltipItems, data) {
+                                                            return tooltipItems.yLabel + ' ' + measurement;
                                                         }
                                                     }
                                                 },
@@ -615,7 +622,7 @@
                                                         {
                                                             ticks: {
                                                                 fontSize: 25,
-                                                                callback: function(value) {
+                                                                callback: function (value) {
                                                                     return value + ' ' + removeSup(measurement);
                                                                 }
                                                             },
@@ -646,7 +653,8 @@
                             <footer class="footer footer-count" style="position: absolute; bottom: 0; left: 80px;">
                                 <p>Потребность строительного рынка на 2021гг.</p>
                                 <div class="line"></div>
-                                <p style="text-align: right" class = "page-num">4 из <span class="overall-pages">100</span></p>
+                                <p style="text-align: right" class="page-num">4 из <span
+                                        class="overall-pages">100</span></p>
 
                             </footer>
                             </section>
@@ -665,7 +673,7 @@
                                 <section class="count">
                                     <div class="header-chart-inner">
                                         <header class="header" style="padding-top: 50px">
-                                            <a href="http://stroymart.kz">StroyMart.<span>kz</span></a>
+                                            <a th:href="${siteUrl}">Stroimaterial.<span>kz</span></a>
                                         </header>
                                         <div class="header-block">
                                             <div class="logo-title-chart">
@@ -721,13 +729,15 @@
                                                         <p>
                                                             <th:block th:text="${company.getOverallVolumeStr()}">944 354
                                                             </th:block>
-                                                            <th:block th:utext="${potrebnosti.material.mtMeasure}"></th:block>
+                                                            <th:block
+                                                                    th:utext="${potrebnosti.material.mtMeasure}"></th:block>
                                                         </p>
                                                     </div>
                                                     <div class="chart-price ">
                                                         <span>Общая стоимость</span>
                                                         <p>
-                                                            <th:block th:text="${company.getOverallPriceStr()}"></th:block>
+                                                            <th:block
+                                                                    th:text="${company.getOverallPriceStr()}"></th:block>
                                                             тг
                                                         </p>
                                                     </div>
@@ -757,7 +767,7 @@
                                 <section class="count">
                                     <div class="header-chart-inner" style="margin-bottom: 100px">
                                         <header class="header" style="padding-top: 50px">
-                                            <a href="http://stroymart.kz">StroyMart.<span>kz</span></a>
+                                            <a th:href="${siteUrl}">Stroimaterial.<span>kz</span></a>
                                         </header>
                                         <div class="header-block">
                                             <div class="logo-title-chart">
@@ -779,14 +789,17 @@
                                                     <div class="chart-vol">
                                                         <span>Общий объем</span>
                                                         <p>
-                                                            <th:block th:text="${locality.getOverallVolumeStr()}"></th:block>
-                                                            <th:block th:utext="${potrebnosti.material.mtMeasure}"></th:block>
+                                                            <th:block
+                                                                    th:text="${locality.getOverallVolumeStr()}"></th:block>
+                                                            <th:block
+                                                                    th:utext="${potrebnosti.material.mtMeasure}"></th:block>
                                                         </p>
                                                     </div>
                                                     <div class="chart-price ">
                                                         <span>Общая стоимость</span>
                                                         <p>
-                                                            <th:block th:text="${locality.getOverallPriceStr()}"></th:block>
+                                                            <th:block
+                                                                    th:text="${locality.getOverallPriceStr()}"></th:block>
                                                             тг
                                                         </p>
                                                     </div>
@@ -804,8 +817,10 @@
                                                 <div class="chart-vol">
                                                     <span>Общий объем</span>
                                                     <p>
-                                                        <th:block th:text="${company.getOverallVolumeStr()}">944 354</th:block>
-                                                        <th:block th:utext="${potrebnosti.material.mtMeasure}"></th:block>
+                                                        <th:block th:text="${company.getOverallVolumeStr()}">944 354
+                                                        </th:block>
+                                                        <th:block
+                                                                th:utext="${potrebnosti.material.mtMeasure}"></th:block>
                                                     </p>
                                                 </div>
                                                 <div class="chart-price ">
@@ -911,8 +926,8 @@
                                                     enabled: true,
                                                     mode: 'single',
                                                     callbacks: {
-                                                        label: function(tooltipItems, data) {
-                                                            return tooltipItems.yLabel + ' ' +measurement;
+                                                        label: function (tooltipItems, data) {
+                                                            return tooltipItems.yLabel + ' ' + measurement;
                                                         }
                                                     }
                                                 },
@@ -937,7 +952,7 @@
                                                         {
                                                             ticks: {
                                                                 fontSize: 25,
-                                                                callback: function(value) {
+                                                                callback: function (value) {
                                                                     return value + ' ' + removeSup(measurement);
                                                                 }
                                                             },
@@ -1028,7 +1043,8 @@
                             <footer class="footer footer-count" style="position: absolute; bottom: 0; left: 80px;">
                                 <p>Потребность строительного рынка на 2021гг.</p>
                                 <div class="line"></div>
-                                <p style="text-align: right" class = "page-num">5 из <span class="overall-pages">100</span></p>
+                                <p style="text-align: right" class="page-num">5 из <span
+                                        class="overall-pages">100</span></p>
 
                             </footer>
                             </section>
@@ -1042,23 +1058,22 @@
     </th:block>
 
 
-
     <script th:src="@{/tem/js/top.js}"></script>
     <script th:src="@{/tem/js/doughnut-chart.js}"></script>
     <script th:src="@{/tem/js/bar.js}"></script>
     <script th:src="@{/tem/js/progress.js}"></script>
     <script>
         var pagesContainers = document.getElementsByClassName("page-num");
-        for(var i=0; i< pagesContainers.length; i++){
+        for (var i = 0; i < pagesContainers.length; i++) {
             var pageContainer = pagesContainers[i];
-            pageContainer.innerHTML = `${(i+1)} из <span class="overall-pages">${(pagesContainers.length)}</span>`;
+            pageContainer.innerHTML = `${(i + 1)} из <span class="overall-pages">${(pagesContainers.length)}</span>`;
         }
 
         var monthNames = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
         var currantMonthNum = (new Date().getMonth());
         var currentMonth = monthNames[currantMonthNum];
         var monthContainers = document.getElementsByClassName("month-name");
-        for(var i=0; i< monthContainers.length; i++){
+        for (var i = 0; i < monthContainers.length; i++) {
             var monthContainer = monthContainers[i];
             monthContainer.innerHTML = currentMonth;
         }
