@@ -25,6 +25,8 @@ public class NewsController {
     public ModelAndView news() throws ParseException {
         ReportGenerationResponse reportGenerationResponse = reportGenerationService.getResponse();
 
+        String siteUrl = "https://test.stroimaterial.kz";
+
         List<MaterialDTO> materialDTOS = reportGenerationResponse.getTopTen();
         List<OverallForYear> overallForYears = reportGenerationResponse.getOverallForYears();
         List<OverallForYearByRegion> overallForYearByRegions = reportGenerationResponse.getOverallForYearByRegions();
@@ -35,6 +37,7 @@ public class NewsController {
         modelAndView.addObject("overallForYears", overallForYears);
         modelAndView.addObject("overallForYearByRegions", overallForYearByRegions);
         modelAndView.addObject("potrebnostis", potrebnostis);
+        modelAndView.addObject("siteUrl", siteUrl);
         modelAndView.setViewName("index");
         return modelAndView;
     }
@@ -46,7 +49,6 @@ public class NewsController {
         modelAndView.setViewName("storymart/index");
         return modelAndView;
     }
-
 
 
 }
