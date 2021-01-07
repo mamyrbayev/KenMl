@@ -92,13 +92,12 @@ public class ObjectService {
         }
         List<OverallForYear> resp = new ArrayList<>();
         for(OverallForYear overallForYear: overallForYears){
-            if(overallForYear.getYear() == 2020 || overallForYear.getYear() == 2021 || overallForYear.getYear() == 2022){
+            if(overallForYear.getYear() == 2020 || overallForYear.getYear() == 2021){
                 resp.add(overallForYear);
             }
         }
         boolean contains2020 = false;
         boolean contains2021 = false;
-        boolean contains2022 = false;
 
         for(OverallForYear overallForYear: resp){
             if(overallForYear.getYear() == 2020){
@@ -106,9 +105,6 @@ public class ObjectService {
             }
             if(overallForYear.getYear() == 2021){
                 contains2021 = true;
-            }
-            if(overallForYear.getYear() == 2022){
-                contains2022 = true;
             }
         }
         if(!contains2020){
@@ -119,11 +115,6 @@ public class ObjectService {
         if(!contains2021){
             OverallForYear forYear = new OverallForYear();
             forYear.setYear(2021);
-            resp.add(forYear);
-        }
-        if(!contains2022){
-            OverallForYear forYear = new OverallForYear();
-            forYear.setYear(2022);
             resp.add(forYear);
         }
         Collections.sort(resp, Comparator.comparingLong(OverallForYear::getYear));
@@ -234,7 +225,7 @@ public class ObjectService {
             }
 
         }
-
+        objectInYearDtos.sort(Comparator.comparing(ObjectInYearDto::getOverallVolume).reversed());
         return objectInYearDtos;
     }
 

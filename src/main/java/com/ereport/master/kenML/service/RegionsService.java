@@ -74,8 +74,18 @@ public class RegionsService {
                     }
                 }
                 if(regions.getName() != null){
+                    String name = null;
+                    if(regions.getName().equals("Западно-Казахстанская")){
+                        name = "ЗКО";
+                    }else if (regions.getName().equals("Северо-Казахстанская")){
+                        name = "СКО";
+                    }else if (regions.getName().equals("Восточно-Казахстанская")){
+                        name = "ВКО";
+                    } else {
+                        name = regions.getName();
+                    }
                     OverallByRegion overallByRegion = OverallByRegion.builder()
-                            .regionName(regions.getName())
+                            .regionName(name)
                             .regionId(regions.getId())
                             .completed(completed)
                             .underConstruction(underConstruction)
@@ -96,7 +106,7 @@ public class RegionsService {
         List<OverallForYearByRegion> resp = new ArrayList<>();
         for(OverallForYearByRegion o: overallForYearByRegions){
             if(o != null){
-                if(o.getYear().equals("2020") || o.getYear().equals("2021") || o.getYear().equals("2022")){
+                if(o.getYear().equals("2020") || o.getYear().equals("2021")){
                     resp.add(o);
                 }
             }
@@ -104,7 +114,6 @@ public class RegionsService {
 
         boolean year2020 = false;
         boolean year2021 = false;
-        boolean year2022 = false;
 
         for(OverallForYearByRegion res: resp){
             if(res.getYear().equals("2020")){
@@ -112,9 +121,6 @@ public class RegionsService {
             }
             if(res.getYear().equals("2021")){
                 year2021 = true;
-            }
-            if(res.getYear().equals("2022")){
-                year2022 = true;
             }
         }
 
@@ -138,12 +144,6 @@ public class RegionsService {
         if(!year2021){
             resp.add(OverallForYearByRegion.builder()
                     .year("2021")
-                    .overallByRegions(zeroOverallByRegions)
-                    .build());
-        }
-        if(!year2022){
-            resp.add(OverallForYearByRegion.builder()
-                    .year("2022")
                     .overallByRegions(zeroOverallByRegions)
                     .build());
         }
