@@ -118,7 +118,18 @@
     -o-transform: scaleX(-1) scaleY(-1); /* Opera */
     -webkit-transform: scaleX(-1) scaleY(-1); /* Webkit */
     transform: scaleX(-1) scaleY(-1); /* Standard */
-    text-decoration: none;
+    text-decoration: none !important;
+    color: black;
+}
+
+.vector-text p {
+    font-size: 30px;
+    font-weight: bold;
+    -moz-transform: scaleX(-1) scaleY(-1); /* Gecko */
+    -o-transform: scaleX(-1) scaleY(-1); /* Opera */
+    -webkit-transform: scaleX(-1) scaleY(-1); /* Webkit */
+    transform: scaleX(-1) scaleY(-1); /* Standard */
+    text-decoration: none !important;
     color: black;
 }
 
