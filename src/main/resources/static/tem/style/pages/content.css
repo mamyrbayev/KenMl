@@ -117,3 +117,8 @@
 .more-content span {
     color: #71AEF0;
 }
+
+.title-link{
+    text-decoration: none !important;
+    color: black !important;
+}

@@ -95,7 +95,7 @@
                         <div class="dot dot-4"></div>
                         <div class="dot dot-4"></div>
                     </div>
-                    <span>Топ 10 стройматериалов</span>
+                    <span><a class="title-link" href="#topten">Топ 10 стройматериалов</a></span>
                 </div>
                 <div class="content-item">
                     <h4>3</h4>
@@ -113,7 +113,7 @@
                         <div class="dot dot-4"></div>
                         <div class="dot dot-4"></div>
                     </div>
-                    <span>Количество строящихся<br> объектов</span>
+                    <span><a class="title-link" href="#objectsquantity">Количество строящихся<br> объектов</a></span>
                 </div>
                 <div class="content-item">
                     <h4>5</h4>
@@ -127,7 +127,7 @@
                         <div class="dot dot-4"></div>
                         <div class="dot dot-4"></div>
                     </div>
-                    <span>Потребности в стройматериалах <br> в разрезе регионов</span>
+                    <span><a class="title-link" href="#materialpotrebnost">Потребности в стройматериалах <br> в разрезе регионов</a></span>
                 </div>
             </div>
             <div class="more-content" style="position: absolute; bottom: 0;">
@@ -155,7 +155,7 @@
         </div>
     </section>
 </div>
-<section class="top" style="padding: 0">
+<section id="topten" class="top" style="padding: 0">
     <div class="header-inner">
         <header class="header" style="padding-top: 50px">
             <a th:href="${siteUrl}">Stroimaterial.<span>kz</span></a>
@@ -188,7 +188,7 @@
         </div>
     </div>
 </section>
-<section class="page-4">
+<section id="objectsquantity" class="page-4">
     <section class="count">
         <div class="header-count-inner">
             <header class="header" style="padding-top: 50px">
@@ -347,6 +347,7 @@
 
 
 <!--    Potrebnostis    -->
+<div id = "materialpotrebnost"></div>
 <th:block th:with="localityLastFlag=0">
     <th:block th:each="potrebnosti: ${potrebnostis}">
         <th:block th:each="locality,lindex: ${potrebnosti.localitiesByMatrials}">
