@@ -561,7 +561,7 @@
                                     <canvas th:attr="id=${object.getId().toString()+objectInYear.getYear()}"
                                             width="1300" height="215"></canvas>
                                     <script th:inline="javascript">
-                                        var measurement = /*[[${potrebnosti.material.mtMeasure}]]*/ ' ';
+                                        var measurement = ' ';
                                         new Chart(document.getElementById(/*[[${object.getId().toString()+objectInYear.getYear()}]]*/ 'default'), {
                                             type: "bar",
                                             data: {
@@ -891,7 +891,7 @@
                                             width="1300" height="215"></canvas>
                                     <script th:inline="javascript">
 
-                                        var measurement = /*[[${potrebnosti.material.mtMeasure}]]*/ ' ';
+                                        var measurement = ' ';
                                         new Chart(document.getElementById(/*[[${object.getId().toString()+objectInYear.getYear()}]]*/ 'default'), {
                                             type: "bar",
                                             data: {
