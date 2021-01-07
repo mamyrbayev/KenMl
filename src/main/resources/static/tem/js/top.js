@@ -20,7 +20,7 @@ function topLoad() {
                 '<div class="bar-item-text--inner">' +
                 '<div class="bar-item-text-left">' +
                 '<p class="bar-item-top">Топ<span class="bar-number number-' + Number(i + 1) + '">' + Number(i + 1) + '</span></p>' +
-                `<p>Объем: ${volume} ${measurer}<br>Цена: ${price}тг</p>` +
+                `<p>Объем: ${volume} ${measurer}<br>Цена: ${price}₸</p>` +
                 '</div>' +
                 '<div class="bar-item-text-right">'
                 + arrTop[i].name +
@@ -38,7 +38,7 @@ function topLoad() {
             '<div class="bar-item-text--inner">' +
             '<div class="bar-item-text-left">' +
             '<p class="bar-item-top">Топ<span class="bar-number number-' + Number(i + 1) + '">' + Number(i + 1) + '</span></p>' +
-            `<p>Объем: ${volume} ${measurer}<br>Цена: ${price}тг </p>` +
+            `<p>Объем: ${volume} ${measurer}<br>Цена: ${price}₸ </p>` +
             '</div>' +
             '<div class="bar-item-text-right">'
             + arrTop[i].name +
