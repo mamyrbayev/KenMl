@@ -535,8 +535,10 @@
                         <th:block th:each="objectInYear : ${object.getObjectInYearDtos()}">
                             <div class="chart-bars-block">
                                 <div class="chart-bar-title">
-                                    <p><th:block th:utext="${potrebnosti.material.mtMeasure}"></th:block></p>
                                     <h1>
+                                        <span class="measurement">
+                                            <th:block th:utext="${potrebnosti.material.mtMeasure}"></th:block>
+                                        </span>
                                         <span th:text="${objectInYear.getYear().substring(0,2)}"></span><span
                                             th:text="${objectInYear.getYear().substring(2,4)}"
                                             class="text-orange">20</span>
@@ -865,8 +867,11 @@
                             </th:block>
                             <div class="chart-bars-block">
                                 <div class="chart-bar-title">
-                                    <p><th:block th:utext="${potrebnosti.material.mtMeasure}"></th:block></p>
                                     <h1>
+                                        <span class="measurement">
+                                            <th:block th:utext="${potrebnosti.material.mtMeasure}"></th:block>
+                                        </span>
+
                                         <span th:text="${objectInYear.getYear().substring(0,2)}"></span><span
                                             th:text="${objectInYear.getYear().substring(2,4)}"
                                             class="text-orange">20</span>
