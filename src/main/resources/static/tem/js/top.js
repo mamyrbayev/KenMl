@@ -26,7 +26,7 @@ function topLoad() {
                 + arrTop[i].name +
                 '</div>' +
                 '</div>' +
-                '<footer class="footer footer-top"> <span>Потребность строительного рынка на 2021гг.</span><div class="line"></div><p style="text-align: right" class = "page-num">2 из <span class="overall-pages">100</span></p></footer>' +
+                '<footer class="footer footer-top"> <div class="line"></div><p style="text-align: right" class = "page-num">2 из <span class="overall-pages">100</span></p></footer>' +
                 '</div>' +
                 '<div class="bar-line bar-' + Number(i + 1) + '"></div>' +
 
