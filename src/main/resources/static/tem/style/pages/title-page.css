@@ -7,8 +7,8 @@
 
 .header-title {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    justify-content: flex-end;
+    align-items: flex-end;
 }
 
 .header-years {
@@ -65,8 +65,8 @@
 .h1-title {
     color: #fff;
     font-size: 80px;
-    width: 70%;
-    line-height: 125px;
+    width: 80%;
+    line-height: 85px;
 }
 
 .title-vector p {

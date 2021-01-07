@@ -27,6 +27,7 @@
         var potrebnostis = /*[[${potrebnostis}]]*/ [];
         var overallForYears = /*[[${overallForYears}]]*/ [];
         var overallForYearByRegions = /*[[${overallForYearByRegions}]]*/ [];
+        
 
         function removeSup(str) {
             return str.replace("<sup>", "").replace("</sup>", "");
@@ -37,10 +38,8 @@
 <section class="title-page">
     <div class="container-title">
         <div class="header-title">
-            <p class="header-title-text">Разработано на основании автоматического анализа KENML смет системой GENRO
-                (АО <br> Институт цифровой техники и технологий)</p>
             <div class="header-title-date">
-                <p>Декабрь</p>
+                <p class="month-name">Декабрь</p>
                 <p>Издание №1</p>
             </div>
         </div>
@@ -74,7 +73,7 @@
                     </p>
                 </div>
                 <div class="header-content--right">
-                    <p style="margin-bottom: 0">Декабрь </p>
+                    <p style="margin-bottom: 0"  class="month-name">Декабрь </p>
                     <p>Издание 1</p>
                 </div>
 
@@ -149,23 +148,21 @@
                     <div class="dot dot-2"></div>
                     <div class="dot dot-1"></div>
                 </div>
-                <a target="_blank" href="http://www.storymart.kz">StroyMart.<span>kz</span></a>
+                <a target="_blank" href="http://www.stroymart.kz">StroyMart.<span>kz</span></a>
             </div>
 
             <footer class="footer" style="position: absolute; bottom: 0;">
                 <p>Потребность строительного рынка на 2021гг.</p>
                 <div class="line"></div>
-                <p>Разработано на основании автоматического анализа KENML смет системой GENRO (АО <br> Институт цифровой
-                    техники
-                    и технологий)</p>
+                <p style="text-align: right" class = "page-num">1 из <span class="overall-pages">100</span></p>
             </footer>
         </div>
     </section>
 </div>
 <section class="top" style="padding: 0">
     <div class="header-inner">
-        <header class="header">
-            <p>StroyMart.<span>kz</span></p>
+        <header class="header" style="padding-top: 50px">
+            <a href="http://stroymart.kz">StroyMart.<span>kz</span></a>
         </header>
         <div class="header-block">
             <div class="logo-title">
@@ -198,8 +195,8 @@
 <section class="page-4">
     <section class="count">
         <div class="header-count-inner">
-            <header class="header">
-                <p>StroyMart.<span>kz</span></p>
+            <header class="header" style="padding-top: 50px">
+                <a href="http://stroymart.kz">StroyMart.<span>kz</span></a>
             </header>
             <div class="header-block">
                 <div class="logo-title">
@@ -248,6 +245,7 @@
                 </div>
             </div>
             <div class="chart-numbers" id="chartNumbers">
+                <div style="width: 170px;"></div>
                 <div class="chart-number">
                     <p>2020</p>
                     <span>год</span>
@@ -280,10 +278,7 @@
             <footer class="footer footer-count" style="position: absolute; bottom: 0;">
                 <p>Потребность строительного рынка на 2021гг.</p>
                 <div class="line"></div>
-                <p>Разработано на основании автоматического анализа KENML смет системой GENRO (АО <br> Институт цифровой
-                    техники
-                    и
-                    технологий)</p>
+                <p style="text-align: right" class = "page-num">2 из <span class="overall-pages">100</span></p>
             </footer>
         </div>
     </section>
@@ -291,8 +286,8 @@
 <section class="page-4">
     <section class="count">
         <div class="header-count-inner">
-            <header class="header">
-                <p>StroyMart.<span>kz</span></p>
+            <header class="header" style="padding-top: 50px">
+                <a href="http://stroymart.kz">StroyMart.<span>kz</span></a>
             </header>
             <div class="header-block">
                 <div class="logo-title-count">
@@ -319,37 +314,36 @@
             <div class="progress-table1" id="pt2">
             </div>
 
-            <div class="header-count-inner1">
-                <div class="header-block">
-                    <div class="logo-title-count">
-                        <h4>Строящиеся объекты
-                            <br>
-                            в разрезе регионов на 2022 год</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="progress-block pr-bl3">
-                <div class="progress-title">
-                    <div class="pr-title2">
-                        <p>Регион</p>
-                        <p>Строящиеся </p>
-                        <p>Всего</p>
-                    </div>
-                    <div class="pr-title2">
-                        <p>Регион</p>
-                        <p>Строящиеся </p>
-                        <p>Всего</p>
-                    </div>
-                </div>
-            </div>
-            <div class="progress-table1" id="pt3">
-            </div>
+<!--            <div class="header-count-inner1">-->
+<!--                <div class="header-block">-->
+<!--                    <div class="logo-title-count">-->
+<!--                        <h4>Строящиеся объекты-->
+<!--                            <br>-->
+<!--                            в разрезе регионов на 2022 год</h4>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="progress-block pr-bl3">-->
+<!--                <div class="progress-title">-->
+<!--                    <div class="pr-title2">-->
+<!--                        <p>Регион</p>-->
+<!--                        <p>Строящиеся </p>-->
+<!--                        <p>Всего</p>-->
+<!--                    </div>-->
+<!--                    <div class="pr-title2">-->
+<!--                        <p>Регион</p>-->
+<!--                        <p>Строящиеся </p>-->
+<!--                        <p>Всего</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="progress-table1" id="pt3">-->
+<!--            </div>-->
             <footer class="footer footer-count" style="position: absolute; bottom: 0">
                 <p>Потребность строительного рынка на 2021гг.</p>
                 <div class="line"></div>
-                <p>Разработано на основании автоматического анализа KENML смет системой GENRO (АО <br> Институт цифровой
-                    техники
-                    и технологий)</p>
+                <p style="text-align: right" class = "page-num">3 из <span class="overall-pages">100</span></p>
+
             </footer>
         </div>
     </section>
@@ -368,8 +362,8 @@
                             <div class="page-4">
                                 <section class="count">
                                     <div class="header-chart-inner">
-                                        <header class="header">
-                                            <p>StroyMart.<span>kz</span></p>
+                                        <header class="header" style="padding-top: 50px">
+                                            <a href="http://stroymart.kz">StroyMart.<span>kz</span></a>
                                         </header>
                                         <div class="header-block">
                                             <div class="logo-title-chart">
@@ -458,8 +452,8 @@
                             <div class="page-4">
                                 <section class="count">
                                     <div class="header-chart-inner" style="margin-bottom: 100px">
-                                        <header class="header">
-                                            <p>StroyMart.<span>kz</span></p>
+                                        <header class="header" style="padding-top: 50px">
+                                            <a href="http://stroymart.kz">StroyMart.<span>kz</span></a>
                                         </header>
                                         <div class="header-block">
                                             <div class="logo-title-chart">
@@ -652,10 +646,8 @@
                             <footer class="footer footer-count" style="position: absolute; bottom: 0; left: 80px;">
                                 <p>Потребность строительного рынка на 2021гг.</p>
                                 <div class="line"></div>
-                                <p>Разработано на основании автоматического анализа KENML смет системой GENRO (АО <br>
-                                    Институт
-                                    цифровой
-                                    техники и технологий)</p>
+                                <p style="text-align: right" class = "page-num">4 из <span class="overall-pages">100</span></p>
+
                             </footer>
                             </section>
                             </div>
@@ -672,8 +664,8 @@
                             <div class="page-4">
                                 <section class="count">
                                     <div class="header-chart-inner">
-                                        <header class="header">
-                                            <p>StroyMart.<span>kz</span></p>
+                                        <header class="header" style="padding-top: 50px">
+                                            <a href="http://stroymart.kz">StroyMart.<span>kz</span></a>
                                         </header>
                                         <div class="header-block">
                                             <div class="logo-title-chart">
@@ -764,8 +756,8 @@
                             <div class="page-4">
                                 <section class="count">
                                     <div class="header-chart-inner" style="margin-bottom: 100px">
-                                        <header class="header">
-                                            <p>StroyMart.<span>kz</span></p>
+                                        <header class="header" style="padding-top: 50px">
+                                            <a href="http://stroymart.kz">StroyMart.<span>kz</span></a>
                                         </header>
                                         <div class="header-block">
                                             <div class="logo-title-chart">
@@ -1036,10 +1028,8 @@
                             <footer class="footer footer-count" style="position: absolute; bottom: 0; left: 80px;">
                                 <p>Потребность строительного рынка на 2021гг.</p>
                                 <div class="line"></div>
-                                <p>Разработано на основании автоматического анализа KENML смет системой GENRO (АО <br>
-                                    Институт
-                                    цифровой
-                                    техники и технологий)</p>
+                                <p style="text-align: right" class = "page-num">5 из <span class="overall-pages">100</span></p>
+
                             </footer>
                             </section>
                             </div>
@@ -1057,5 +1047,21 @@
     <script th:src="@{/tem/js/doughnut-chart.js}"></script>
     <script th:src="@{/tem/js/bar.js}"></script>
     <script th:src="@{/tem/js/progress.js}"></script>
+    <script>
+        var pagesContainers = document.getElementsByClassName("page-num");
+        for(var i=0; i< pagesContainers.length; i++){
+            var pageContainer = pagesContainers[i];
+            pageContainer.innerHTML = `${(i+1)} из <span class="overall-pages">${(pagesContainers.length)}</span>`;
+        }
+
+        var monthNames = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
+        var currantMonthNum = (new Date().getMonth());
+        var currentMonth = monthNames[currantMonthNum];
+        var monthContainers = document.getElementsByClassName("month-name");
+        for(var i=0; i< monthContainers.length; i++){
+            var monthContainer = monthContainers[i];
+            monthContainer.innerHTML = currentMonth;
+        }
+    </script>
 </body>
 </html>

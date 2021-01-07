@@ -71,7 +71,7 @@ public class LocalitiesService {
                     }
 
                 }
-                companiesDtos.sort(Comparator.comparing(CompaniesDto::getOverallVolume).reversed());
+                companiesDtos.sort(Comparator.comparing(CompaniesDto::getOverallPrice).reversed());
 
                 OverallVolumeAndPrice overallVolumeAndPrice = resourcesService.getOverallVolumeAndPrice(mtCode, locality.getId());
                 if(overallVolumeAndPrice.getPrice() >= 1){
@@ -94,7 +94,7 @@ public class LocalitiesService {
 
                     localitiesByMatrials.add(localitiesByMatrial);
                 }
-                localitiesByMatrials.sort(Comparator.comparing(LocalitiesByMatrial::getOverallVolume).reversed());
+                localitiesByMatrials.sort(Comparator.comparing(LocalitiesByMatrial::getOverallPrice).reversed());
             }
         }
 

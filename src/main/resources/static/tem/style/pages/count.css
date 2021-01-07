@@ -128,7 +128,7 @@
 
 .chart-numbers {
     display: flex;
-    justify-content: center;
+    justify-content: start;
 }
 
 .bar-img {

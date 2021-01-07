@@ -1,9 +1,12 @@
-.header p {
+.header a {
     padding-top: 40px;
     font-size: 32px;
     line-height: 36px;
+    text-decoration: none !important;
+    color: black !important;
+    margin-top: 40px !important;
 }
-.header p > span {
+.header a > span {
     color: #fff
 }
 

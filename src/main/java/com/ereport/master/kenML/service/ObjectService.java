@@ -225,7 +225,7 @@ public class ObjectService {
             }
 
         }
-        objectInYearDtos.sort(Comparator.comparing(ObjectInYearDto::getOverallVolume).reversed());
+        objectInYearDtos.sort(Comparator.comparing(ObjectInYearDto::getOverallPrice).reversed());
         return objectInYearDtos;
     }
 
