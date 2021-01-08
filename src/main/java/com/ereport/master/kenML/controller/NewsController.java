@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
 import java.util.List;
 
@@ -22,7 +23,8 @@ public class NewsController {
     }
 
     @GetMapping("/pdf")
-    public ModelAndView news() throws ParseException {
+    public ModelAndView news(HttpServletRequest request) throws ParseException {
+        String domainName = request.getRemoteAddr();
         ReportGenerationResponse reportGenerationResponse = reportGenerationService.getResponse();
 
         String siteUrl = "https://test.stroimaterial.kz";
@@ -38,6 +40,7 @@ public class NewsController {
         modelAndView.addObject("overallForYearByRegions", overallForYearByRegions);
         modelAndView.addObject("potrebnostis", potrebnostis);
         modelAndView.addObject("siteUrl", siteUrl);
+        modelAndView.addObject("domainName", domainName);
         modelAndView.setViewName("index");
         return modelAndView;
     }
