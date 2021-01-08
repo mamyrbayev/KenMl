@@ -19,14 +19,14 @@
 }
 
 .logo-title-count h3 {
-    color: #152731;
+    color: #152731 !important;
     font-size: 100px;
     line-height: 110px;
     font-weight: 700;
 }
 
 .logo-title-count h4 {
-    color: #152731;
+    color: #152731 !important;
     font-size: 50px;
     line-height: 50px;
     font-weight: 600;

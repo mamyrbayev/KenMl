@@ -213,6 +213,7 @@ public class ObjectService {
                 }
             }
 
+
             ObjectInYearDto objectInYearDto = ObjectInYearDto.builder()
                     .year(year)
                     .overallPrice(overallPrice)
@@ -279,7 +280,7 @@ public class ObjectService {
         List<MonthVolumePrice> monthVolumePrices = new ArrayList<>();
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        String strDate = "2020-01-01";
+        String strDate = "2021-01-01";
         Date date = sdf.parse(strDate);
 
         if(endDate != null){

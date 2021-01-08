@@ -13,14 +13,14 @@
 }
 
 .logo-title-chart h3 {
-    color: #152731;
+    color: #152731 !important;
     font-size: 68px;
     line-height: 72px;
     font-weight: 700;
 }
 
 .logo-title-chart h4 {
-    color: #152731;
+    color: #152731 !important;
     font-size: 24px;
     line-height: 26px;
     font-weight: 400;

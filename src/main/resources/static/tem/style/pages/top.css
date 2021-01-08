@@ -42,7 +42,7 @@
 }
 
 .logo-title h2 {
-    color: #152731;
+    color: #152731 !important;
     font-size: 80px;
     line-height: 110px;
     font-weight: 700;
@@ -50,7 +50,7 @@
 }
 
 .logo-title h2 > span {
-    color: #20D3CB;
+    color: #20D3CB !important;
 }
 
 .logo-text {
