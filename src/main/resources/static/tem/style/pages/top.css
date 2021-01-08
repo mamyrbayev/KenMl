@@ -46,7 +46,7 @@
     font-size: 80px;
     line-height: 110px;
     font-weight: 700;
-    width: 450px;
+    width: auto;
 }
 
 .logo-title h2 > span {
