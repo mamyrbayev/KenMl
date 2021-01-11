@@ -73,7 +73,7 @@
 }
 
 .bar-line {
-    width: 40px;
+    width: 0px;
 }
 
 .bar-item--text {
@@ -85,12 +85,12 @@
 
 .bar-0 {
     height: 1700px;
-    background: #FFD056;
+    /*background: #FFD056;*/
 }
 
 .bar-1 {
     height: 1550px;
-    background: #99E7AB;
+    /*background: #99E7AB;*/
 }
 
 .number-1 {
@@ -99,7 +99,7 @@
 
 .bar-2 {
     height: 1400px;
-    background: #11D0CF;
+    /*background: #11D0CF;*/
 }
 
 .number-2 {
@@ -108,7 +108,7 @@
 
 .bar-3 {
     height: 1250px;
-    background: #152731;
+    /*background: #152731;*/
 }
 
 .number-3 {
@@ -117,7 +117,7 @@
 
 .bar-4 {
     height: 1100px;
-    background: #2D2F32;
+    /*background: #2D2F32;*/
 }
 
 .number-4 {
@@ -126,7 +126,7 @@
 
 .bar-5 {
     height: 950px;
-    background: #3A3C40;
+    /*background: #3A3C40;*/
 }
 
 .number-5 {
@@ -135,7 +135,7 @@
 
 .bar-6 {
     height: 800px;
-    background: #515357;
+    /*background: #515357;*/
 }
 
 .number-6 {
@@ -144,7 +144,7 @@
 
 .bar-7 {
     height: 650px;
-    background: #5E6167;
+    /*background: #5E6167;*/
 }
 
 .number-7 {
@@ -153,7 +153,7 @@
 
 .bar-8 {
     height: 500px;
-    background: #767A81;
+    /*background: #767A81;*/
 }
 
 .number-8 {
@@ -162,7 +162,7 @@
 
 .bar-9 {
     height: 350px;
-    background: #9A9B9C;
+    /*background: #9A9B9C;*/
 }
 
 .number-9 {
@@ -170,7 +170,7 @@
 }
 
 .bar-item {
-    width: 40px;
+    width: 0px;
 }
 
 .number-10 {

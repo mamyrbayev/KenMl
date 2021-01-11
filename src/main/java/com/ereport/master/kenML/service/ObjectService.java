@@ -145,6 +145,15 @@ public class ObjectService {
         List<Objects> objects = objectsRepo.findAllByCompanyAndLocality(companyId, localityId);
 
         for(Objects object: objects){
+            List<FileSections> fileSections = fileSectionRepo.findAllByObjectIdAndMaterial(object.getId(), mtCode);
+            Date startDate = null;
+            Date endDate = null;
+            if (fileSections.size() > 0){
+                startDate = fileSections.stream().map(FileSections::getStartDate).min(Date::compareTo).get();
+                endDate = fileSections.stream().map(FileSections::getEndDate).max(Date::compareTo).get();
+            }
+
+
             List<ObjectInYearDto> objectInYearDtos = getObjectInYearDtos(mtCode, object.getId());
             if(objectInYearDtos.size() > 0){
                 ObjectsDto objectsDto = ObjectsDto.builder()
@@ -154,6 +163,8 @@ public class ObjectService {
                         .localityId(object.getLocalityId())
                         .lastUpdatedOn(object.getLastUpdatedOn())
                         .objectInYearDtos(objectInYearDtos)
+                        .startDate(startDate)
+                        .endDate(endDate)
                         .build();
                 objectsDtos.add(objectsDto);
             }

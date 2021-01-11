@@ -142,3 +142,12 @@
     text-decoration: none !important;
     color: #152731 !important;
 }
+
+.footer-link-decoration{
+    text-decoration: none !important;
+}
+
+.footer-link-decoration-page{
+    text-decoration: none !important;
+    color: #9A9B9C !important;
+}

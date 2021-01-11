@@ -24,5 +24,7 @@ public class ObjectsDto {
     private Date lastUpdatedOn;
     private List<ObjectInYearDto> objectInYearDtos;
 
+    private Date startDate;
+    private Date endDate;
 
 }

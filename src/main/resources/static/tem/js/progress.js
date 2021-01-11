@@ -52,16 +52,27 @@ function progressDataLoading2(arr) {
     console.log("2021" + arr);
     console.log(arr.length);
     for (let i = 0; i < arr.length; i++) {
-        str += `<div class="progress-line">
-            <p style="width: 110vw;">${arr[i].regionName}</p> 
-            <div class="progress-wrap3"> 
+        str += `<div class="progress-line"> 
+            <p style="width: 110vw;">  ${arr[i].regionName}  </p> 
+            <div class="progress-wrap1"> 
             <p>  ${arr[i].underConstruction}  </p> 
             <div class="progress"> 
-            <div class="progress-bar" role="progressbar" style="width: ${(arr[i].underConstruction / arr[i].overall) * 100}%;" 
-            aria-valuenow="${arr[i].underConstruction}" aria-valuemin="0" aria-valuemax="${arr[i].overall}"></div> 
+            <div class="progress-bar" role="progressbar" 
+            style="width:  ${(arr[i].underConstruction / arr[i].overall) * 100}%;" 
+            aria-valuenow="${arr[i].underConstruction}" aria-valuemin="0" 
+            aria-valuemax="${arr[i].overall}"></div> 
             </div> 
             </div> 
-            <p class="progress-sum">  ${arr[i].overall}  </p> 
+            <div class="progress-wrap2"> 
+            <p>  ${arr[i].completed}  </p> 
+            <div class="progress"> 
+            <div class="progress-bar" role="progressbar" 
+            style="width: ${(arr[i].completed / arr[i].overall) * 100}%;" 
+            aria-valuenow="${arr[i].completed}" 
+            aria-valuemin="0" aria-valuemax="${arr[i].overall}"></div> 
+            </div> 
+            </div> 
+            <p class="progress-sum">${arr[i].overall}</p> 
             </div>`;
     }
     table1.innerHTML += str

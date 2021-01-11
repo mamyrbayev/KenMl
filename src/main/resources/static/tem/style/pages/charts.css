@@ -48,7 +48,7 @@
 }
 
 .chart-round {
-    width: 35%;
+    width: 100%;
     padding: 10px 50px;
     display: flex;
     align-items: center;
@@ -57,7 +57,7 @@
 }
 
 .chart-round2 {
-    width: 40%;
+    width: 95%;
     padding: 10px 50px;
     display: flex;
     align-items: center;

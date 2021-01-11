@@ -149,8 +149,8 @@
 
             <footer class="footer" style="position: absolute; bottom: 0;">
 
-                <div class="line"></div>
-                <p style="text-align: right" class="page-num">1 из <span class="overall-pages">100</span></p>
+                <a class="footer-link-decoration" href="#content-sec"><div class="line"></div></a>
+                <p style="text-align: right" class="page-num"><a class="footer-link-decoration-page" href="#content-sec">1 из <span class="overall-pages">100</span></a></p>
             </footer>
         </div>
     </section>
@@ -273,8 +273,8 @@
 
             <footer class="footer footer-count" style="position: absolute; bottom: 0;">
 
-                <div class="line"></div>
-                <p style="text-align: right" class="page-num">2 из <span class="overall-pages">100</span></p>
+                <a class="footer-link-decoration" href="#content-sec"><div class="line"></div></a>
+                <p style="text-align: right" class="page-num"><a class="footer-link-decoration-page" href="#content-sec">2 из <span class="overall-pages">100</span></a></p>
             </footer>
         </div>
     </section>
@@ -295,14 +295,16 @@
         <div class="width-90">
             <div class="progress-block pr-bl2">
                 <div class="progress-title">
-                    <div class="pr-title2">
+                    <div class="pr-title">
                         <p>Регион</p>
                         <p>Строящиеся </p>
+                        <p>Завершенные</p>
                         <p>Всего</p>
                     </div>
-                    <div class="pr-title2">
+                    <div class="pr-title">
                         <p>Регион</p>
                         <p>Строящиеся </p>
+                        <p>Завершенные</p>
                         <p>Всего</p>
                     </div>
                 </div>
@@ -337,8 +339,8 @@
             <!--            </div>-->
             <footer class="footer footer-count" style="position: absolute; bottom: 0">
 
-                <div class="line"></div>
-                <p style="text-align: right" class="page-num">3 из <span class="overall-pages">100</span></p>
+                <a class="footer-link-decoration" href="#content-sec"><div class="line"></div></a>
+                <p style="text-align: right" class="page-num"><a class="footer-link-decoration-page" href="#content-sec">3 из <span class="overall-pages">100</span></a></p>
 
             </footer>
         </div>
@@ -378,9 +380,7 @@
                                                 фитинги из
                                                 пластмасс</p>
                                         </div>
-                                        <div class="chart-img">
-                                            <img src="/tem/assets/orange-lines.png">
-                                        </div>
+                                        
                                     </div>
 
                                     <div class="width-90 chart-city-num">
@@ -462,9 +462,6 @@
                                                         <p th:text="${potrebnosti.material.getMtName()}">Трубы, рукава и
                                                             шланги и их фитинги из пластмасс</p>
                                                     </div>
-                                                    <div class="chart-img2">
-                                                        <img th:src="@{/tem/assets/chart-l-w.svg}">
-                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="chart-city-num3"
@@ -521,7 +518,7 @@
                         </th:block>
                         <div class="chart-wrap">
                             <div class="chart-obj">
-                                <p>Объект <span th:text="${index.index + 1}">1</span></p>
+                                <p>Объект </p>
                                 <p style="font-size: 25px; color: #000000">ID <span th:text="${object.getId()}"></span>
                                 </p>
                             </div>
@@ -657,9 +654,9 @@
                         <th:block>
                             <footer class="footer footer-count" style="position: absolute; bottom: 0; left: 80px;">
 
-                                <div class="line"></div>
-                                <p style="text-align: right" class="page-num">4 из <span
-                                        class="overall-pages">100</span></p>
+                                <a class="footer-link-decoration" href="#content-sec"><div class="line"></div></a>
+                                <p style="text-align: right" class="page-num"><a class="footer-link-decoration-page" href="#content-sec">4 из <span
+                                        class="overall-pages">100</span></a></p>
 
                             </footer>
                             </section>
@@ -696,9 +693,7 @@
                                                 фитинги из
                                                 пластмасс</p>
                                         </div>
-                                        <div class="chart-img">
-                                            <img src="/tem/assets/orange-lines.png">
-                                        </div>
+
                                     </div>
 
                                     <div class="width-90 chart-city-num">
@@ -782,9 +777,6 @@
                                                         <p th:text="${potrebnosti.material.getMtName()}">Трубы, рукава и
                                                             шланги и их фитинги из пластмасс</p>
                                                     </div>
-                                                    <div class="chart-img2">
-                                                        <img th:src="@{/tem/assets/chart-l-w.svg}">
-                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="chart-city-num3"
@@ -841,7 +833,7 @@
                         </th:block>
                         <div class="chart-wrap">
                             <div class="chart-obj">
-                                <p>Объект <span th:text="${index.index + 1}">1</span></p>
+                                <p>Объект </p>
                                 <p style="font-size: 25px; color: #000000">ID <span th:text="${object.getId()}"></span>
                                 </p>
                             </div>
@@ -857,7 +849,7 @@
                             <th:block th:if="${(oyindex.index + 1 % 2 == 0)}">
                                 <div class="chart-wrap">
                                     <div class="chart-obj">
-                                        <p>Объект <span th:text="${index.index + 1}">1</span></p>
+                                        <p>Объект </p>
                                         <p style="font-size: 25px; color: #000000">ID <span
                                                 th:text="${object.getId()}"></span></p>
                                     </div>
@@ -1055,9 +1047,9 @@
                         <th:block>
                             <footer class="footer footer-count" style="position: absolute; bottom: 0; left: 80px;">
 
-                                <div class="line"></div>
-                                <p style="text-align: right" class="page-num">5 из <span
-                                        class="overall-pages">100</span></p>
+                                <a class="footer-link-decoration" href="#content-sec"><div class="line"></div></a>
+                                <p style="text-align: right" class="page-num"><a class="footer-link-decoration-page" href="#content-sec">5 из <span
+                                        class="overall-pages">100</span></a></p>
 
                             </footer>
                             </section>
@@ -1079,7 +1071,7 @@
         var pagesContainers = document.getElementsByClassName("page-num");
         for (var i = 0; i < pagesContainers.length; i++) {
             var pageContainer = pagesContainers[i];
-            pageContainer.innerHTML = `${(i + 1)} из <span class="overall-pages">${(pagesContainers.length)}</span>`;
+            pageContainer.innerHTML = `<a class="footer-link-decoration-page" href="#content-sec">${(i + 1)} из <span class="overall-pages">${(pagesContainers.length)}</span></a>`;
         }
 
         var monthNames = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];

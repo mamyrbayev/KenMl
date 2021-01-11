@@ -131,6 +131,7 @@
     transform: scaleX(-1) scaleY(-1); /* Standard */
     text-decoration: none !important;
     color: black;
+    height: 230px;
 }
 
 .dot {
