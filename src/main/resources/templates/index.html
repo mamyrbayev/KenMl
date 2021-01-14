@@ -443,6 +443,16 @@
                                                         Contact@Bi.group</p>
                                                 </div>
                                             </div>
+                                            <div class="chart-city-num2">
+                                                <div class="chart-str2 str1">
+                                                    <span>Дата начала строительства</span>
+                                                    <p th:text="${object.startDate()}"></p>
+                                                </div>
+                                                <div class="chart-str2 str2">
+                                                    <span>Дата окончания строительства</span>
+                                                    <p th:text="${object.endDate}"></p>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -754,6 +764,16 @@
                                                     <span>E-mail</span>
                                                     <p th:text="${company.getEmailAddress()} ?: 'Нет email'">
                                                         Contact@Bi.group</p>
+                                                </div>
+                                            </div>
+                                            <div class="chart-city-num2">
+                                                <div class="chart-str2 str1">
+                                                    <span>Дата начала строительства</span>
+                                                    <p th:text="${object.startDate()}"></p>
+                                                </div>
+                                                <div class="chart-str2 str2">
+                                                    <span>Дата окончания строительства</span>
+                                                    <p th:text="${object.endDate}"></p>
                                                 </div>
                                             </div>
                                         </div>
