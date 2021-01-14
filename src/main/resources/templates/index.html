@@ -460,16 +460,6 @@
                                                     <i class="fa fa-map-marker" aria-hidden="true"></i>
                                                 </div>
                                             </div>
-                                            <div class="chart-city-num2">
-                                                <div class="chart-str2 str1">
-                                                    <span>Дата начала строительства</span>
-                                                    <p th:text="${object.getStartDateStr()}"></p>
-                                                </div>
-                                                <div class="chart-str2 str2">
-                                                    <span>Дата окончания строительства</span>
-                                                    <p th:text="${object.getEndDateStr()}"></p>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
 
@@ -557,6 +547,23 @@
                                     сетей)</p>
                             </div>
                         </div>
+
+                        <div class="chart-wrap">
+
+                            <div class="chart-city-num2">
+                                <div class="chart-str2 str1">
+                                    <span>Дата старта</span>
+                                    <p th:text="${object.getStartDateStr()}"></p>
+                                </div>
+                                <div class="chart-str2 str2">
+                                    <span>Дата окончания</span>
+                                    <p th:text="${object.getEndDateStr()}"></p>
+                                </div>
+                            </div>
+
+                        </div>
+
+
                         <th:block th:each="objectInYear : ${object.getObjectInYearDtos()}">
                             <div class="chart-bars-block">
                                 <div class="chart-bar-title">
@@ -789,16 +796,6 @@
                                                     <i class="fa fa-map-marker" aria-hidden="true"></i>
                                                 </div>
                                             </div>
-                                            <div class="chart-city-num2">
-                                                <div class="chart-str2 str1">
-                                                    <span>Дата начала строительства</span>
-                                                    <p th:text="${object.getStartDateStr()}"></p>
-                                                </div>
-                                                <div class="chart-str2 str2">
-                                                    <span>Дата окончания строительства</span>
-                                                    <p th:text="${object.getEndDateStr()}"></p>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
 
@@ -888,6 +885,22 @@
                                     сетей)</p>
                             </div>
                         </div>
+
+                        <div class="chart-wrap">
+
+                            <div class="chart-city-num2">
+                                <div class="chart-str2 str1">
+                                    <span>Дата старта</span>
+                                    <p th:text="${object.getStartDateStr()}"></p>
+                                </div>
+                                <div class="chart-str2 str2">
+                                    <span>Дата окончания</span>
+                                    <p th:text="${object.getEndDateStr()}"></p>
+                                </div>
+                            </div>
+
+                        </div>
+
                         <th:block th:each="objectInYear, oyindex : ${object.getObjectInYearDtos()}">
                             <th:block th:if="${(oyindex.index + 1 % 2 == 0)}">
                                 <div class="chart-wrap">
@@ -905,6 +918,22 @@
                                             сетей)</p>
                                     </div>
                                 </div>
+
+                                <div class="chart-wrap">
+
+                                    <div class="chart-city-num2">
+                                        <div class="chart-str2 str1">
+                                            <span>Дата старта</span>
+                                            <p th:text="${object.getStartDateStr()}"></p>
+                                        </div>
+                                        <div class="chart-str2 str2">
+                                            <span>Дата окончания</span>
+                                            <p th:text="${object.getEndDateStr()}"></p>
+                                        </div>
+                                    </div>
+
+                                </div>
+
                             </th:block>
                             <div class="chart-bars-block">
                                 <div class="chart-bar-title">
