@@ -149,8 +149,12 @@
 
             <footer class="footer" style="position: absolute; bottom: 0;">
 
-                <a class="footer-link-decoration" href="#content-sec"><div class="line"></div></a>
-                <p style="text-align: right" class="page-num"><a class="footer-link-decoration-page" href="#content-sec">1 из <span class="overall-pages">100</span></a></p>
+                <a class="footer-link-decoration" href="#content-sec">
+                    <div class="line"></div>
+                </a>
+                <p style="text-align: right" class="page-num"><a class="footer-link-decoration-page"
+                                                                 href="#content-sec">1 из <span class="overall-pages">100</span></a>
+                </p>
             </footer>
         </div>
     </section>
@@ -165,9 +169,12 @@
                 <div>
                     <img th:src="@{/tem/assets/logo.png}">
                 </div>
-                <h2><a class="title-link-top" href="#content-sec">Топ</a> <span><a class="title-link-ten" href="#content-sec">10</a></span></h2>
+                <h2><a class="title-link-top" href="#content-sec">Топ</a> <span><a class="title-link-ten"
+                                                                                   href="#content-sec">10</a></span>
+                </h2>
                 <div class="logo-text">
-                    <h4><a class="title-link-text-topten" href="#content-sec">потребностей в <br>строительных материалах</a></h4>
+                    <h4><a class="title-link-text-topten" href="#content-sec">потребностей в <br>строительных материалах</a>
+                    </h4>
                     <p><a class="title-link-top" href="#content-sec">по Республике Казахстан</a></p>
                 </div>
             </div>
@@ -273,8 +280,12 @@
 
             <footer class="footer footer-count" style="position: absolute; bottom: 0;">
 
-                <a class="footer-link-decoration" href="#content-sec"><div class="line"></div></a>
-                <p style="text-align: right" class="page-num"><a class="footer-link-decoration-page" href="#content-sec">2 из <span class="overall-pages">100</span></a></p>
+                <a class="footer-link-decoration" href="#content-sec">
+                    <div class="line"></div>
+                </a>
+                <p style="text-align: right" class="page-num"><a class="footer-link-decoration-page"
+                                                                 href="#content-sec">2 из <span class="overall-pages">100</span></a>
+                </p>
             </footer>
         </div>
     </section>
@@ -349,7 +360,7 @@
 
 
 <!--    Potrebnostis    -->
-<div id = "materialpotrebnost"></div>
+<div id="materialpotrebnost"></div>
 <th:block th:with="localityLastFlag=0">
     <th:block th:each="potrebnosti: ${potrebnostis}">
         <th:block th:each="locality,lindex: ${potrebnosti.localitiesByMatrials}">
@@ -366,8 +377,10 @@
                                         </header>
                                         <div class="header-block">
                                             <div class="logo-title-chart">
-                                                <h3><a class="title-link-decoration" href="#content-sec">Потребность</a></h3>
-                                                <h4><a class="title-link-decoration" href="#content-sec">в стройматериалах
+                                                <h3><a class="title-link-decoration" href="#content-sec">Потребность</a>
+                                                </h3>
+                                                <h4><a class="title-link-decoration" href="#content-sec">в
+                                                    стройматериалах
                                                     в разрезе регионов </a></h4>
                                             </div>
                                         </div>
@@ -380,7 +393,7 @@
                                                 фитинги из
                                                 пластмасс</p>
                                         </div>
-                                        
+
                                     </div>
 
                                     <div class="width-90 chart-city-num">
@@ -446,11 +459,11 @@
                                             <div class="chart-city-num2">
                                                 <div class="chart-str2 str1">
                                                     <span>Дата начала строительства</span>
-                                                    <p th:text="${object.startDate()}"></p>
+                                                    <p th:text="${object.getStartDateStr()}"></p>
                                                 </div>
                                                 <div class="chart-str2 str2">
                                                     <span>Дата окончания строительства</span>
-                                                    <p th:text="${object.endDate}"></p>
+                                                    <p th:text="${object.getEndDateStr()}"></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -664,8 +677,11 @@
                         <th:block>
                             <footer class="footer footer-count" style="position: absolute; bottom: 0; left: 80px;">
 
-                                <a class="footer-link-decoration" href="#content-sec"><div class="line"></div></a>
-                                <p style="text-align: right" class="page-num"><a class="footer-link-decoration-page" href="#content-sec">4 из <span
+                                <a class="footer-link-decoration" href="#content-sec">
+                                    <div class="line"></div>
+                                </a>
+                                <p style="text-align: right" class="page-num"><a class="footer-link-decoration-page"
+                                                                                 href="#content-sec">4 из <span
                                         class="overall-pages">100</span></a></p>
 
                             </footer>
@@ -769,11 +785,11 @@
                                             <div class="chart-city-num2">
                                                 <div class="chart-str2 str1">
                                                     <span>Дата начала строительства</span>
-                                                    <p th:text="${object.startDate()}"></p>
+                                                    <p th:text="${object.getStartDateStr()}"></p>
                                                 </div>
                                                 <div class="chart-str2 str2">
                                                     <span>Дата окончания строительства</span>
-                                                    <p th:text="${object.endDate}"></p>
+                                                    <p th:text="${object.getEndDateStr()}"></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1067,8 +1083,11 @@
                         <th:block>
                             <footer class="footer footer-count" style="position: absolute; bottom: 0; left: 80px;">
 
-                                <a class="footer-link-decoration" href="#content-sec"><div class="line"></div></a>
-                                <p style="text-align: right" class="page-num"><a class="footer-link-decoration-page" href="#content-sec">5 из <span
+                                <a class="footer-link-decoration" href="#content-sec">
+                                    <div class="line"></div>
+                                </a>
+                                <p style="text-align: right" class="page-num"><a class="footer-link-decoration-page"
+                                                                                 href="#content-sec">5 из <span
                                         class="overall-pages">100</span></a></p>
 
                             </footer>
