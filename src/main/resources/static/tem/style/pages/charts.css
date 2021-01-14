@@ -120,12 +120,10 @@
 }
 
 .chart-city-num2 {
-
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
 }
 
 .chart-city-num3 {
@@ -187,10 +185,6 @@
     color: #9A9B9C;
     font-weight: normal;
     margin-bottom: 10px;
-}
-
-.chart-city-num2 {
-    display: flex;
 }
 
 .chart-str2 span {
