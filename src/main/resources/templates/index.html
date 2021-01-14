@@ -7,6 +7,7 @@
     <title th:text="${domainName}"></title>
     <link rel="stylesheet" type="text/css" th:href="@{/tem/style/all.css}">
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -455,6 +456,9 @@
                                                     <p th:text="${company.getEmailAddress()} ?: 'Нет email'">
                                                         Contact@Bi.group</p>
                                                 </div>
+                                                <div class="chart-str2 str3">
+                                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                                </div>
                                             </div>
                                             <div class="chart-city-num2">
                                                 <div class="chart-str2 str1">
@@ -780,6 +784,9 @@
                                                     <span>E-mail</span>
                                                     <p th:text="${company.getEmailAddress()} ?: 'Нет email'">
                                                         Contact@Bi.group</p>
+                                                </div>
+                                                <div class="chart-str2 str3">
+                                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
                                                 </div>
                                             </div>
                                             <div class="chart-city-num2">
