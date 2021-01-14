@@ -43,7 +43,7 @@ window.myPie = new Chart(ctx, config);
 const chartNumberElement = document.getElementById('chartNumbers')
 
 overallForYears.forEach(e => {
-    if (e.year != 2020) {
+    if (e.year != 2021) {
         chartNumberElement.innerHTML += `
             <div class="bar-img">
                 <img src="/tem/assets/lines.svg">

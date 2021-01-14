@@ -2,24 +2,16 @@ let table = document.getElementById("pt1")
 let table1 = document.getElementById("pt2")
 let table2 = document.getElementById("pt3")
 
-let overallForYearByRegions2020 = [];
 let overallForYearByRegions2021 = [];
-let overallForYearByRegions2022 = [];
 
 overallForYearByRegions.forEach(e => {
-    if (e.year === "2020") {
-        overallForYearByRegions2020 = e.overallByRegions;
-    } else if (e.year === "2021") {
+    if (e.year === "2021") {
         overallForYearByRegions2021 = e.overallByRegions;
-    } else if (e.year === "2022") {
-        overallForYearByRegions2022 = e.overallByRegions;
     }
 })
 
 function progressDataLoading(arr) {
     let str = '';
-    console.log("2020" + arr);
-    console.log(arr.length);
     for (let i = 0; i < arr.length; i++) {
         str += `<div class="progress-line"> 
             <p style="width: 110vw;">  ${arr[i].regionName}  </p> 
@@ -49,8 +41,6 @@ function progressDataLoading(arr) {
 
 function progressDataLoading2(arr) {
     let str = '';
-    console.log("2021" + arr);
-    console.log(arr.length);
     for (let i = 0; i < arr.length; i++) {
         str += `<div class="progress-line"> 
             <p style="width: 110vw;">  ${arr[i].regionName}  </p> 
@@ -81,8 +71,6 @@ function progressDataLoading2(arr) {
 
 function progressDataLoading3(arr) {
     let str = '';
-    console.log("2022" + arr);
-    console.log(arr.length);
     for (let i = 0; i < arr.length; i++) {
         str += `<div class="progress-line">
             <p style="width: 110vw;">${arr[i].regionName}</p> 
@@ -100,6 +88,6 @@ function progressDataLoading3(arr) {
 }
 
 
-progressDataLoading(overallForYearByRegions2020);
-progressDataLoading2(overallForYearByRegions2021);
-progressDataLoading3(overallForYearByRegions2022);
+progressDataLoading(overallForYearByRegions2021);
+// progressDataLoading2(overallForYearByRegions2020);
+// progressDataLoading3(overallForYearByRegions2022);

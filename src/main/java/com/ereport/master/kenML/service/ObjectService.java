@@ -92,26 +92,26 @@ public class ObjectService {
         }
         List<OverallForYear> resp = new ArrayList<>();
         for(OverallForYear overallForYear: overallForYears){
-            if(overallForYear.getYear() == 2020 || overallForYear.getYear() == 2021){
+            if(overallForYear.getYear() == 2021){
                 resp.add(overallForYear);
             }
         }
-        boolean contains2020 = false;
+//        boolean contains2020 = false;
         boolean contains2021 = false;
 
         for(OverallForYear overallForYear: resp){
-            if(overallForYear.getYear() == 2020){
-                contains2020 = true;
-            }
+//            if(overallForYear.getYear() == 2020){
+//                contains2020 = true;
+//            }
             if(overallForYear.getYear() == 2021){
                 contains2021 = true;
             }
         }
-        if(!contains2020){
-            OverallForYear forYear = new OverallForYear();
-            forYear.setYear(2020);
-            resp.add(forYear);
-        }
+//        if(!contains2020){
+//            OverallForYear forYear = new OverallForYear();
+//            forYear.setYear(2020);
+//            resp.add(forYear);
+//        }
         if(!contains2021){
             OverallForYear forYear = new OverallForYear();
             forYear.setYear(2021);
